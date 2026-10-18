@@ -241,6 +241,16 @@ table.nc-t{table-layout:fixed;min-width:52rem;width:100%}
 .nc-la.a1{background:var(--blue-soft);color:var(--blue)}.nc-la.a2{background:var(--chip);color:var(--muted);border:1px solid var(--line)}.nc-la.a3{background:var(--nk-end-bg);color:var(--red)}
 .nc-an strong{font-weight:800}.nc-nb{display:block;font-size:11px;color:var(--muted)}
 .nc-src a{display:inline-block;margin-right:6px;color:var(--blue);font-size:13px}
+/* ===== 최상단 카테고리: 뉴스레터 / 공지 레이더 ===== */
+.modes{display:flex;gap:6px;margin:0 0 6px;flex-wrap:wrap}
+.mode{font:inherit;font-size:14px;font-weight:800;color:#fff;background:rgba(10,22,44,.55);border:0;padding:7px 16px;cursor:pointer;display:inline-flex;align-items:center;gap:8px;box-shadow:2px 0 0 0 rgba(255,255,255,.55),-2px 0 0 0 rgba(255,255,255,.55),0 2px 0 0 rgba(255,255,255,.55),0 -2px 0 0 rgba(255,255,255,.55);margin:2px;backdrop-filter:blur(4px)}
+.mode:hover{background:rgba(10,22,44,.75)}
+.mode[aria-selected="true"]{background:#fff;color:#0B1630;box-shadow:2px 0 0 0 #fff,-2px 0 0 0 #fff,0 2px 0 0 #fff,0 -2px 0 0 #fff,4px 4px 0 0 rgba(0,0,0,.25)}
+.mode i{width:8px;height:8px;display:inline-block;background:#FFE27A}
+.mode[data-mode="radar"] i{background:#03C75A}
+.radar-cta{display:none}
+body[data-mode="radar"] .news-cta,body[data-mode="radar"] #hot,body[data-mode="radar"] .kpis,body[data-mode="radar"] nav.tabs{display:none!important}
+body[data-mode="radar"] .radar-cta{display:flex}
 /* page banners: small pixel scenes */
 .strip{position:relative;height:clamp(130px,16vw,170px);margin:3px;overflow:hidden;box-shadow:3px 0 0 0 var(--frame),-3px 0 0 0 var(--frame),0 3px 0 0 var(--frame),0 -3px 0 0 var(--frame),6px 6px 0 0 var(--pshadow)}
 .strip canvas{position:absolute;inset:0;width:100%;height:100%;image-rendering:pixelated;image-rendering:crisp-edges}
@@ -278,11 +288,16 @@ table.nc-t{table-layout:fixed;min-width:52rem;width:100%}
   <section class="hero" aria-label="오늘의 요약">
     <canvas id="scene" aria-hidden="true"></canvas>
     <div class="hero-in">
+      <nav class="modes" role="tablist" aria-label="카테고리"><button class="mode" role="tab" type="button" data-mode="news" aria-selected="true"><i></i>뉴스레터</button><button class="mode" role="tab" type="button" data-mode="radar" aria-selected="false"><i></i>공지 레이더</button></nav>
       <h1>클라우드 뉴스레터</h1>
       <p class="oneline intro">공공·금융·민간 클라우드 시장의 뉴스와 입찰·사업 기회를 매일 아침 한곳에 정리해 전해 드립니다.</p>
-      <div class="hero-cta">
+      <div class="hero-cta news-cta">
         <button class="cta p" type="button" id="go-opps">사업 기회 보기</button>
         <button class="cta s" type="button" data-doc="full"><span>종합 보고서 Word</span></button>
+      </div>
+      <div class="hero-cta radar-cta">
+        <button class="cta p" type="button" data-radar-go="soon">60일 안 적용 공지 보기</button>
+        <button class="cta s" type="button" data-radar-go="종료"><span>종료 예정 서비스 보기</span></button>
       </div>
       <div class="meta-line"><span id="h-updated"></span></div>
     </div>
@@ -304,7 +319,6 @@ table.nc-t{table-layout:fixed;min-width:52rem;width:100%}
     <button class="tab" role="tab" data-page="today" id="t-today"><canvas class="spr" data-spr="board" data-scale="2"></canvas>오늘</button>
     <button class="tab" role="tab" data-page="opps" id="t-opps"><canvas class="spr" data-spr="flag" data-scale="2"></canvas>사업 기회</button>
     <button class="tab" role="tab" data-page="news" id="t-news"><canvas class="spr" data-spr="news" data-scale="2"></canvas>뉴스</button>
-    <button class="tab" role="tab" data-page="ncloud" id="t-ncloud"><canvas class="spr" data-spr="radar" data-scale="2"></canvas>공지 레이더</button>
     <button class="tab" role="tab" data-page="schedule" id="t-schedule"><canvas class="spr" data-spr="calendar" data-scale="2"></canvas>일정</button>
     <button class="tab" role="tab" data-page="library" id="t-library"><canvas class="spr" data-spr="folder" data-scale="2"></canvas>자료실</button>
     <button class="tab" role="tab" data-page="history" id="t-history"><canvas class="spr" data-spr="book" data-scale="2"></canvas>발행 이력</button>
@@ -478,7 +492,7 @@ table.nc-t{table-layout:fixed;min-width:52rem;width:100%}
     const cr=cv.getBoundingClientRect(); const boxes=[];
     const addBox=(b)=>{ if(b&&b.width>0) boxes.push([(b.left-cr.left)/P-2,(b.top-cr.top)/P-2,(b.right-cr.left)/P+2,(b.bottom-cr.top)/P+2]); };
     document.querySelectorAll('.hero-in h1, .hero-in .oneline').forEach(e=>{ const rg=document.createRange(); rg.selectNodeContents(e); Array.from(rg.getClientRects()).forEach(addBox); });
-    document.querySelectorAll('.hero-in .hero-cta > *, .hero-in .meta-line, #hot').forEach(e=>{ if(e.hidden||e.offsetParent===null) return; addBox(e.getBoundingClientRect()); });
+    document.querySelectorAll('.hero-in .hero-cta > *, .hero-in .meta-line, .hero-in .modes > *, #hot').forEach(e=>{ if(e.hidden||e.offsetParent===null) return; addBox(e.getBoundingClientRect()); });
     const clear=(x0,y0,pad=0)=>!boxes.some(b=>x0>=b[0]-pad&&x0<=b[2]+pad&&y0>=b[1]-pad&&y0<=b[3]+pad);
     if(pal.night){ for(let i=0;i<lw*0.5;i++){const x0=Math.floor(rand()*lw),y0=Math.floor(rand()*hy*0.85); if(!clear(x0,y0)) continue; stars.push([x0,y0,rand()]); }
       const mr=Math.max(4,Math.round(lh*0.045));
@@ -677,7 +691,7 @@ table.nc-t{table-layout:fixed;min-width:52rem;width:100%}
   /* ---------- state ---------- */
   const D={meta:null,opportunities:[],news:[],schedule:[],issues:[],keywords:[],todos:[],ncloud:[]};
   const loaded={}; let dbReady=null;
-  const ui={page:'today',fit:'',q:'',area:'',soon:false,nz:'',nk:''};
+  const ui={page:'today',fit:'',q:'',area:'',soon:false,nz:'',nk:'',mode:'news'};
 
   /* ---------- tabs ---------- */
   const PAGES=['today','opps','news','ncloud','schedule','library','history'];
@@ -690,7 +704,7 @@ table.nc-t{table-layout:fixed;min-width:52rem;width:100%}
   // always open at the top: drop any #section from the address and reset scroll
   try{ if('scrollRestoration' in history) history.scrollRestoration='manual'; if(location.hash) history.replaceState(null,'',location.pathname+location.search); }catch(e){}
   const toTop=()=>window.scrollTo(0,0); toTop(); requestAnimationFrame(toTop); window.addEventListener('load',toTop); window.addEventListener('pageshow',toTop); setTimeout(toTop,300); setTimeout(toTop,900);
-  $('hot-more').addEventListener('click',()=>{show('today'); document.getElementById('t-today').scrollIntoView({block:'start',behavior:'smooth'});});
+  $('hot-more').addEventListener('click',()=>{if(ui.mode==='radar') setMode('news'); show('today'); document.getElementById('t-today').scrollIntoView({block:'start',behavior:'smooth'});});
   $('go-opps').addEventListener('click',()=>{show('opps'); document.getElementById('t-opps').scrollIntoView({block:'start',behavior:'smooth'});});
   const setFit=(f)=>{ui.fit=f; document.querySelectorAll('[data-fit]').forEach(x=>x.setAttribute('aria-pressed',String(x.dataset.fit===f))); renderOpps();};
   const setArea=(a)=>{ui.area=a; document.querySelectorAll('[data-area]').forEach(x=>x.setAttribute('aria-pressed',String(x.dataset.area===a))); renderNews();};
@@ -782,7 +796,7 @@ table.nc-t{table-layout:fixed;min-width:52rem;width:100%}
       const zc=el('div'); zs(r).forEach(z=>zc.append(el('span','nc-z '+z,z))); tr.append(td(zc));
       tr.append(td(r.svc,'strong'));
       const sc=el('div');
-      const l1=el('div','nc-sch'); l1.append(el('span','nc-lb n','고지')); if(r.noticed){ l1.append(document.createTextNode(ncYmd(r.noticed))); const ag=daysTo(r.noticed); if(ag!=null) l1.append(el('span','nc-ago',ag<0?(-ag)+'일 전':(ag===0?'오늘':''))); } else l1.append(document.createTextNode('미확인')); if(r.noticed_note) l1.append(el('span','nc-alt',r.noticed_note));
+      const l1=el('div','nc-sch'); l1.append(el('span','nc-lb n','고지')); if(r.noticed){ l1.append(document.createTextNode(ncYmd(r.noticed))); const ag=daysTo(r.noticed); if(ag!=null) l1.append(el('span','nc-ago',ag<0?(-ag)+'일 전':(ag===0?'오늘':''))); } else l1.append(document.createTextNode('확인 예정')); if(r.noticed_note) l1.append(el('span','nc-alt',r.noticed_note));
       const n=daysTo(r.apply); const l2=el('div','nc-sch'); l2.append(el('span','nc-lb a','적용'),document.createTextNode(ncYmd(r.apply)),el('span','nc-dd'+(n!=null&&n>=0&&n<=60?' nc-hot':''),n==null?'':(n>0?'D-'+n:(n===0?'D-DAY':'적용됨')))); if(r.apply_note) l2.append(el('span','nc-alt',r.apply_note));
       sc.append(l1,l2); tr.append(td(sc));
       const an=el('div');
@@ -797,6 +811,17 @@ table.nc-t{table-layout:fixed;min-width:52rem;width:100%}
   }
   document.querySelectorAll('[data-nz]').forEach(b=>b.addEventListener('click',()=>{ui.nz=b.dataset.nz; document.querySelectorAll('[data-nz]').forEach(x=>x.setAttribute('aria-pressed',String(x===b))); renderNcloud();}));
   document.querySelectorAll('[data-nk]').forEach(b=>b.addEventListener('click',()=>{ui.nk=ui.nk===b.dataset.nk?'':b.dataset.nk; document.querySelectorAll('[data-nk]').forEach(x=>x.setAttribute('aria-pressed',String(x.dataset.nk===ui.nk))); renderNcloud();}));
+
+  /* ---------- 최상단 카테고리(뉴스레터 / 공지 레이더) ---------- */
+  const MODE_TXT={news:{h:'클라우드 뉴스레터',p:'공공·금융·민간 클라우드 시장의 뉴스와 입찰·사업 기회를 매일 아침 한곳에 정리해 전해 드립니다.'},radar:{h:'공지 레이더',p:'네이버클라우드 민간·공공·금융 존의 서비스 종료·신규 출시·요금 변경 공지를 모아 대응 방향까지 정리해 드립니다.'}};
+  const setMode=(m)=>{ if(!MODE_TXT[m]) m='news'; ui.mode=m; document.body.dataset.mode=m;
+    document.querySelectorAll('.mode').forEach(b=>b.setAttribute('aria-selected',String(b.dataset.mode===m)));
+    const h=document.querySelector('.hero-in h1'), p=document.querySelector('.hero-in .oneline.intro'); if(h) h.textContent=MODE_TXT[m].h; if(p) p.textContent=MODE_TXT[m].p;
+    show(m==='radar'?'ncloud':'today');
+    requestAnimationFrame(()=>{ try{ buildScene(); }catch(e){} }); };
+  document.querySelectorAll('.mode').forEach(b=>b.addEventListener('click',()=>setMode(b.dataset.mode)));
+  document.querySelectorAll('[data-radar-go]').forEach(b=>b.addEventListener('click',()=>{ ui.nk=b.dataset.radarGo; document.querySelectorAll('[data-nk]').forEach(x=>x.setAttribute('aria-pressed',String(x.dataset.nk===ui.nk))); renderNcloud(); const t=document.getElementById('card-ncloud'); if(t) t.scrollIntoView({block:'start',behavior:window.matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth'}); }));
+  document.body.dataset.mode='news';
   function renderAll(){renderHero(); renderChips(); renderToday(); renderOpps(); renderNews(); renderSchedule(); renderHistory(); renderNcloud();}
   renderAll();
   drawAllPixels();
