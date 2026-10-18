@@ -1,0 +1,516 @@
+{
+ "meta": {
+  "updatedAt": "2026-10-18T10:30:00+09:00",
+  "basis": "공개판",
+  "latestNo": 11
+ },
+ "issues": [
+  {
+   "no": 11,
+   "date": "2026-10-16",
+   "day": "금",
+   "articles": 11,
+   "bids": 0,
+   "oneline": "50개 시스템 CSP 회신 마감, 은행권 내년 보안 예산 확대 시작 — 공공은 선택 결과, 금융은 예산 의결 전 제안",
+   "url": "https://claude.ai/code/artifact/c6e0fc66-3e3e-4694-a9f0-8802d2629d7e"
+  },
+  {
+   "no": 10,
+   "date": "2026-10-15",
+   "day": "목",
+   "articles": 7,
+   "bids": 0,
+   "oneline": "금융권 해킹 16곳·약 10만 건, 555개사 중 130곳 보안 미흡",
+   "url": "https://claude.ai/code/artifact/a8f06d20-2aa3-4467-b2f6-c8646d4896ea"
+  },
+  {
+   "no": 9,
+   "date": "2026-10-14",
+   "day": "수",
+   "articles": 11,
+   "bids": 0,
+   "oneline": "개인정보위 공공·금융권 유출 중점 조사, 2030년 전면 전환 12월 로드맵",
+   "url": "https://claude.ai/code/artifact/08442468-8c6e-4a8b-9494-6fc2bcc6ba31"
+  },
+  {
+   "no": 8,
+   "date": "2026-10-13",
+   "day": "화",
+   "articles": 10,
+   "bids": 4,
+   "oneline": "CSP 6개사 비교 설명회, HW2 아이티센엔텍 우선협상",
+   "url": "https://claude.ai/code/artifact/0ad56dc6-70bc-415c-9f63-a3e807c21d75"
+  },
+  {
+   "no": 7,
+   "date": "2026-10-12",
+   "day": "월",
+   "articles": 14,
+   "bids": 6,
+   "oneline": "입찰·사업 공고 섹션 신설, 주말 이슈 포함",
+   "url": "https://claude.ai/code/artifact/7c9e174b-6070-465f-96d2-4a24bbc6e3e9"
+  },
+  {
+   "no": 6,
+   "date": "2026-10-09",
+   "day": "금",
+   "articles": 15,
+   "bids": null,
+   "oneline": "한글날 발행, 직전 호 누락 보완 4건 포함",
+   "url": "https://claude.ai/code/artifact/c3f573c5-5ec1-4c6d-8463-14da667d1aab"
+  },
+  {
+   "no": 5,
+   "date": "2026-10-08",
+   "day": "목",
+   "articles": 18,
+   "bids": null,
+   "oneline": "10/7 미발행분 포함 이틀 치 묶음",
+   "url": "https://claude.ai/code/artifact/0ef05a8f-9ab2-4758-a62d-a7f6bf77d093"
+  },
+  {
+   "no": 4,
+   "date": "2026-10-06",
+   "day": "화",
+   "articles": 22,
+   "bids": null,
+   "oneline": "9/30~10/5 미발행분 포함 한 주 치 묶음",
+   "url": "https://claude.ai/code/artifact/2537ba60-9c0c-4dae-b70a-2a5649218aa7"
+  }
+ ],
+ "schedule": [
+  {
+   "id": "s1",
+   "date": "2026-10-19",
+   "label": "10/19(월)",
+   "item": "정무위 금감원 국감(5대 은행장 증인)",
+   "check": "보안 예산·망분리 완화 답변",
+   "area": "금융"
+  },
+  {
+   "id": "s2",
+   "date": "2026-10-19",
+   "label": "10/19~10/30",
+   "item": "조달청 용역 입찰 196건·2,087억 원",
+   "check": "정보화·클라우드 개별 공고",
+   "area": "입찰"
+  },
+  {
+   "id": "s3",
+   "date": "2026-10-20",
+   "label": "10/20(화)",
+   "item": "금감원 신한은행 정식 검사 종료(예정)",
+   "check": "검사 결과·제재 수위",
+   "area": "금융"
+  },
+  {
+   "id": "s4",
+   "date": "2026-10-22",
+   "label": "10/22(목)",
+   "item": "KERIS AI 사이버공격 대응 플랫폼 3단계 평가(예정)",
+   "check": "수행사·참여 보안 솔루션",
+   "area": "입찰"
+  },
+  {
+   "id": "s5",
+   "date": "2026-10-23",
+   "label": "10/22~10/26",
+   "item": "정무위·과방위·행안위 종합감사",
+   "check": "G드라이브·정부24, 금융권 보안 대책",
+   "area": "공공"
+  },
+  {
+   "id": "s6",
+   "date": "2026-10-27",
+   "label": "10/27(화)",
+   "item": "고용정보원 보안관제센터 운영지원 평가(예정)",
+   "check": "수행사",
+   "area": "입찰"
+  },
+  {
+   "id": "s7",
+   "date": "2026-10-28",
+   "label": "10월 하순",
+   "item": "13개 핵심 시스템 DR 발주(예정)",
+   "check": "발주 단위·평가 비중",
+   "area": "입찰"
+  },
+  {
+   "id": "s8",
+   "date": "2026-10-31",
+   "label": "10월 말",
+   "item": "신협 차세대 컨설팅 사업자 선정(예정)",
+   "check": "클라우드 적용 범위",
+   "area": "금융"
+  },
+  {
+   "id": "s9",
+   "date": "2026-12-01",
+   "label": "12월",
+   "item": "범정부 클라우드 로드맵, 50개 시스템 운영 개시",
+   "check": "2027년 대상 규모·예산",
+   "area": "공공"
+  },
+  {
+   "id": "s10",
+   "date": "2026-12-17",
+   "label": "12월 17일",
+   "item": "네이버클라우드 공공 DaaS 서비스 종료",
+   "check": "이용 기관 이전처",
+   "area": "민간"
+  },
+  {
+   "id": "s11",
+   "date": "2027-03-10",
+   "label": "2027년 3월",
+   "item": "50개 시스템 전환 완료, AIDC 특별법 시행(3월 10일)",
+   "check": "후속 전환 발주",
+   "area": "공공"
+  }
+ ],
+ "news": [
+  {
+   "id": "n1016-hira",
+   "date": "2026-10-16",
+   "area": "공공",
+   "change": "NEW",
+   "title": "국정자원 화재 심평원 연계 자료 354만4,973건 단절, 복구 약 10개월",
+   "point": "DR 제안에 기관 간 연계·재동기화 복구 포함",
+   "source": "연합뉴스(서플 전재)",
+   "url": "https://supple.kr/news/cmva233sq001j36o1yncbdjrd"
+  },
+  {
+   "id": "n1015-bankbudget",
+   "date": "2026-10-15",
+   "area": "금융",
+   "change": "NEW",
+   "title": "KB국민 내년 정보보호 예산 1,000억 원 이상, 우리 20% 이상 증액 방안",
+   "point": "은행 이사회 예산 의결 전 관제·점검·DR 제안",
+   "source": "파이낸셜뉴스",
+   "url": "https://www.fnnews.com/news/202610151827259077"
+  },
+  {
+   "id": "n1015-fss",
+   "date": "2026-10-15",
+   "area": "금융",
+   "change": "NEW",
+   "title": "10/19 금감원 국감, 5대 은행장 증인·보안 감독 실효성 쟁점",
+   "point": "망분리 완화 속도도 질의 대상",
+   "source": "파이낸셜뉴스",
+   "url": "https://www.fnnews.com/news/202610151417174719"
+  },
+  {
+   "id": "n1015-banks",
+   "date": "2026-10-15",
+   "area": "금융",
+   "change": "UPDATE",
+   "title": "은행별 유출: 신한 약 2만5,000명, KB국민 119명, 하나 89명, 예가람 약 4만 명",
+   "point": "위탁사·외부 연결 지점 접근통제 수요",
+   "source": "이슈온",
+   "url": "https://www.issueon.co.kr/news/articleView.html?idxno=14118"
+  },
+  {
+   "id": "n1015-kisa",
+   "date": "2026-10-15",
+   "area": "공공",
+   "change": "NEW",
+   "title": "과방위 NIA·KISA 국감: KISA 원장 거취, 보안 컨트롤타워 부재 지적",
+   "point": "클라우드 전환·DR 질의는 보도 미확인",
+   "source": "머니투데이",
+   "url": "https://www.mt.co.kr/politics/2026/10/15/2026101513151191949"
+  },
+  {
+   "id": "n1015-pps",
+   "date": "2026-10-15",
+   "area": "입찰",
+   "change": "NEW",
+   "title": "조달청 용역 입찰 10/19~10/30: 196건·2,087억 원",
+   "point": "정보화 개별 공고 확인 필요",
+   "source": "한국건설기술신문",
+   "url": "https://www.kcenews.kr/10171"
+  },
+  {
+   "id": "n1014-daas",
+   "date": "2026-10-14",
+   "area": "민간",
+   "change": "NEW",
+   "title": "네이버클라우드 공공 DaaS, 12월 17일 서비스 종료",
+   "point": "이용 기관 이전 수요 발생",
+   "source": "이데일리",
+   "url": "https://edaily.co.kr/News/Read?mediaCodeNo=257&newsId=04952806645612920"
+  },
+  {
+   "id": "n1014-fsc",
+   "date": "2026-10-14",
+   "area": "금융",
+   "change": "유지",
+   "title": "금융위 2차 긴급회의: 16곳·약 10만 건 유출, 555개사 중 130곳 미흡",
+   "point": "중소형사 공동 보안관제·망분리 완화 추진",
+   "source": "파이낸셜뉴스",
+   "url": "https://www.fnnews.com/news/202610141509024816"
+  },
+  {
+   "id": "n1013-roadmap",
+   "date": "2026-10-13",
+   "area": "공공",
+   "change": "유지",
+   "title": "2030년 범정부 클라우드 전면 전환, 12월 로드맵",
+   "point": "2027년 민간 클라우드 이전 예산안 548억 원",
+   "source": "ZDNet",
+   "url": "https://zdnet.co.kr/view/?no=20261013092218"
+  },
+  {
+   "id": "n1012-csp6",
+   "date": "2026-10-12",
+   "area": "공공",
+   "change": "유지",
+   "title": "50개 시스템 CSP 6개사 설명회, 네이버클라우드 30% 할인 제안",
+   "point": "선택 결과에 따라 이전·운영 수요",
+   "source": "디지털데일리",
+   "url": "https://www.ddaily.co.kr/page/view/2026101216392869273"
+  },
+  {
+   "id": "n1012-fpt",
+   "date": "2026-10-12",
+   "area": "민간",
+   "change": "유지",
+   "title": "네이버클라우드-베트남 FPT MOU, GPUaaS 협력",
+   "point": "국내 CSP의 해외 GPU 인프라 협력 확대",
+   "source": "뉴스핌",
+   "url": "https://www.newspim.com/news/view/20261012001184"
+  },
+  {
+   "id": "n1012-hw2",
+   "date": "2026-10-12",
+   "area": "입찰",
+   "change": "유지",
+   "title": "정보자원 통합구축 HW2 아이티센엔텍 우선협상",
+   "point": "대형 HW 사업은 특정 SI 계열 연속 수주",
+   "source": "ZDNet",
+   "url": "https://zdnet.co.kr/view/?no=20261012100230"
+  }
+ ],
+ "keywords": [
+  {
+   "keyword": "50개 시스템 CSP 회신",
+   "area": "입찰",
+   "core": "22개 기관 10/16 회신 마감, 결과 보도 대기",
+   "point": "선택된 CSP 생태계의 이전·운영 수요"
+  },
+  {
+   "keyword": "은행 보안 예산 확대",
+   "area": "금융",
+   "core": "KB국민 1,000억 원 이상, 우리 20% 이상 증액",
+   "point": "예산 의결 전 관제·점검·DR 수요"
+  },
+  {
+   "keyword": "기관 간 연계 복구",
+   "area": "공공",
+   "core": "심평원 연계 자료 354만4,973건, 복구 약 10개월",
+   "point": "DR 제안에서 연계 복구가 차별화 요소"
+  },
+  {
+   "keyword": "네이버클라우드 공공 DaaS 종료",
+   "area": "민간",
+   "core": "12월 17일 종료, 데이터 파기",
+   "point": "이용 기관의 이전 수요 발생"
+  }
+ ],
+ "opportunities": [
+  {
+   "id": "nc-50sys",
+   "fit": "A",
+   "name": "1차 50개 시스템 민간 클라우드 이전·운영",
+   "agency": "행안부·NIA / 22개 기관 중 네이버클라우드 선택 기관",
+   "scale": "사업비 미공개(2027년 예산안 민간 클라우드 이전 548억 원)",
+   "scale_eok": null,
+   "stage": "지원사업",
+   "status": "10/16 CSP 회신 마감, 결과 대기",
+   "due": "2026-10-16",
+   "how": "선택된 CSP의 파트너 MSP로 이전·운영 참여",
+   "url": "https://www.ddaily.co.kr/page/view/2026101216392869273"
+  },
+  {
+   "id": "nc-daas",
+   "fit": "A",
+   "name": "종료되는 공공 DaaS 이용 기관의 이전 지원",
+   "agency": "네이버클라우드 공공 DaaS 이용 기관",
+   "scale": "기관별 소규모(미공개)",
+   "scale_eok": null,
+   "stage": "시장 기회",
+   "status": "12월 17일 서비스 종료",
+   "due": "2026-12-17",
+   "how": "다른 DaaS·VDI로 이전·운영 지원",
+   "url": "https://edaily.co.kr/News/Read?mediaCodeNo=257&newsId=04952806645612920"
+  },
+  {
+   "id": "nia-dataplatform",
+   "fit": "A",
+   "name": "2027년 국가데이터통합플랫폼 운영 및 유지관리",
+   "agency": "NIA",
+   "scale": "미공개",
+   "scale_eok": null,
+   "stage": "사전규격",
+   "status": "사전규격(10/1), 본공고 대기",
+   "due": null,
+   "how": "규모 확인 후 단독 주관 또는 운영 파트너",
+   "url": "https://www.nia.or.kr/site/nia_kor/ex/bbs/List.do?cbIdx=78336"
+  },
+  {
+   "id": "mois-dr13",
+   "fit": "B",
+   "name": "13개 핵심 정보시스템 재해복구 체계 구축",
+   "agency": "행안부",
+   "scale": "예산 2,120억 원",
+   "scale_eok": 2120,
+   "stage": "공고 예정",
+   "status": "10월 설계 마무리 → 발주 → 연내 착수",
+   "due": null,
+   "how": "SI 컨소시엄의 민간 클라우드 재해복구 구간",
+   "url": "https://www.ghnews.net/news/article.html?no=244758"
+  },
+  {
+   "id": "nia-npu",
+   "fit": "B",
+   "name": "NPU 기반 범정부 AI 서비스 구현",
+   "agency": "NIA(대구지방조달청)",
+   "scale": "배정예산 134억 원",
+   "scale_eok": 134,
+   "stage": "재공고",
+   "status": "재공고 마감·개찰 미확인",
+   "due": null,
+   "how": "SI 컨소시엄의 클라우드·AI 인프라 운영 구간",
+   "url": "https://todayjiwon.co.kr/procurement/9e16a98d-1662-4d8c-87b6-ea0dc2490165"
+  },
+  {
+   "id": "keris-edufine",
+   "fit": "B",
+   "name": "K-에듀파인 운영환경 고도화 및 재해복구 체계 구축",
+   "agency": "KERIS",
+   "scale": "사업 금액 2,173억 원",
+   "scale_eok": 2173,
+   "stage": "우선협상",
+   "status": "아이티센엔텍 컨소시엄 우선협상, 본계약 미확인",
+   "due": null,
+   "how": "수행사 하도급(클라우드·DR 운영)",
+   "url": "https://www.ddaily.co.kr/page/view/2026100116483807277"
+  },
+  {
+   "id": "keris-aisec",
+   "fit": "B",
+   "name": "AI 사이버공격 대응 플랫폼 구축(3단계)",
+   "agency": "KERIS",
+   "scale": "사업 금액 614.1억 원",
+   "scale_eok": 614.1,
+   "stage": "평가 예정",
+   "status": "10/22 제안서 평가(예정)",
+   "due": "2026-10-22",
+   "how": "수행사 하도급(클라우드 보안·인프라)",
+   "url": "https://www.jodaleconomy.com/news/articleView.html?idxno=3294"
+  },
+  {
+   "id": "shinhyup",
+   "fit": "B",
+   "name": "신협 차세대 전산시스템(컨설팅 후 개발)",
+   "agency": "신협중앙회(민간 금융)",
+   "scale": "전체 투입액 약 3,500억 원",
+   "scale_eok": 3500,
+   "stage": "공고 예정",
+   "status": "10월 말 컨설팅 사업자 선정",
+   "due": "2026-10-31",
+   "how": "2027년 하반기 개발 단계의 클라우드 구간",
+   "url": "https://www.fnnews.com/news/202610121819227584"
+  },
+  {
+   "id": "nirs-hw2",
+   "fit": "C",
+   "name": "2026년 제2차 정보자원 통합구축 HW2",
+   "agency": "조달청 / 국가정보자원관리원",
+   "scale": "사업 금액 약 247억 원",
+   "scale_eok": 247,
+   "stage": "우선협상",
+   "status": "아이티센엔텍 우선협상, 계약 미확인",
+   "due": null,
+   "how": "참고(HW 장비 사업)",
+   "url": "https://www.jodaleconomy.com/news/articleView.html?idxno=3352"
+  },
+  {
+   "id": "nirs-hw1",
+   "fit": "C",
+   "name": "2026년 제2차 정보자원 통합구축 HW1",
+   "agency": "조달청 / 국가정보자원관리원",
+   "scale": "사업 금액 439.8억 원",
+   "scale_eok": 439.8,
+   "stage": "평가 완료",
+   "status": "10/1 평가, 결과 미확인",
+   "due": null,
+   "how": "참고(HW 장비 사업)",
+   "url": "https://www.jodaleconomy.com/news/articleView.html?idxno=3294"
+  },
+  {
+   "id": "keis-soc",
+   "fit": "C",
+   "name": "국가고용전산망 사이버보안관제센터 운영지원",
+   "agency": "한국고용정보원",
+   "scale": "사업 금액 454.5억 원",
+   "scale_eok": 454.5,
+   "stage": "평가 예정",
+   "status": "10/27 제안서 평가(예정)",
+   "due": "2026-10-27",
+   "how": "참고(보안관제 전문)",
+   "url": "https://www.jodaleconomy.com/news/articleView.html?idxno=3294"
+  },
+  {
+   "id": "pps-hw",
+   "fit": "C",
+   "name": "26년 조달정보시스템 노후장비 교체",
+   "agency": "조달청",
+   "scale": "사업 금액 205.8억 원",
+   "scale_eok": 205.8,
+   "stage": "평가 완료",
+   "status": "10/15 평가, 결과 미확인",
+   "due": null,
+   "how": "참고(HW 장비 사업)",
+   "url": "https://www.jodaleconomy.com/news/articleView.html?idxno=3294"
+  },
+  {
+   "id": "kcomwel",
+   "fit": "C",
+   "name": "지능형 생활안정지원시스템 구축",
+   "agency": "근로복지공단",
+   "scale": "사업 금액 595.7억 원",
+   "scale_eok": 595.7,
+   "stage": "평가 완료",
+   "status": "10/13 평가, 결과 미확인",
+   "due": null,
+   "how": "참고(클라우드 구성 미확인)",
+   "url": "https://www.jodaleconomy.com/news/articleView.html?idxno=3294"
+  },
+  {
+   "id": "nia-audit",
+   "fit": "C",
+   "name": "범정부 AI 공통기반 구현(2차) 위탁감리",
+   "agency": "NIA",
+   "scale": "미공개",
+   "scale_eok": null,
+   "stage": "입찰공고",
+   "status": "입찰공고(9/30)",
+   "due": null,
+   "how": "참고(감리법인 대상)",
+   "url": "https://www.nia.or.kr/site/nia_kor/ex/bbs/List.do?cbIdx=78336"
+  },
+  {
+   "id": "nec-net",
+   "fit": "C",
+   "name": "선거전용통신망 구축 및 운영",
+   "agency": "중앙선거관리위원회",
+   "scale": "사업 금액 207억 원",
+   "scale_eok": 207,
+   "stage": "공고 예정",
+   "status": "10월 공고 예정",
+   "due": null,
+   "how": "참고(통신망 사업)",
+   "url": "https://www.jodaleconomy.com/news/articleView.html?idxno=3295"
+  }
+ ]
+}

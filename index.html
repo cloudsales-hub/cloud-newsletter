@@ -1,0 +1,779 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="description" content="공공·금융·민간 클라우드 시장의 뉴스와 입찰·사업 기회를 매일 아침 정리하는 클라우드 뉴스레터">
+<style>html,body{margin:0}img{max-width:100%}[hidden]{display:none!important}:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}</style>
+</head>
+<body>
+<title>클라우드 뉴스레터</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DotGothic16&family=Nanum+Gothic:wght@400;700;800&display=swap">
+<style>
+/* Layout: a pixel-art landscape hero (day sky / night city by theme) over a clean board; pixel font only on numbers and labels, Nanum Gothic for text. */
+:root{
+  --bg:#F4F6F8; --sky:#3592EA; --surface:#FFFFFF; --ink:#0D1726; --muted:#5A6A80; --line:#D8E0EB; --dot:#C3CEDD;
+  --blue:#2350F5; --green:#0E9F61; --amber:#B8730A; --red:#D33A3A; --chip:#E8EEF7; --blue-soft:#E3EAFF; --green-soft:#DDF4E9; --amber-soft:#FBEFD9;
+  --f-body:"Nanum Gothic","NanumGothic","나눔고딕","Apple SD Gothic Neo","Malgun Gothic",sans-serif;
+  --f-pixel:"DotGothic16","Nanum Gothic","Apple SD Gothic Neo",monospace;
+  --r:6px;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#0A111E; --sky:#0C183A; --surface:#111A2B; --ink:#E6EDF8; --muted:#8B9AB2; --line:#1D2940; --dot:#22304C;
+  --blue:#7D98FF; --green:#3BD98B; --amber:#F0B347; --red:#FF6D6D; --chip:#131E35; --blue-soft:#18244A; --green-soft:#0F2A22; --amber-soft:#2E2412; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#0A111E; --sky:#0C183A; --surface:#111A2B; --ink:#E6EDF8; --muted:#8B9AB2; --line:#1D2940; --dot:#22304C;
+  --blue:#7D98FF; --green:#3BD98B; --amber:#F0B347; --red:#FF6D6D; --chip:#131E35; --blue-soft:#18244A; --green-soft:#0F2A22; --amber-soft:#2E2412; color-scheme:dark}
+:root[data-theme="light"]{color-scheme:light}
+
+body{background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:15px;line-height:1.6}
+.wrap{max-width:90rem;margin-inline:auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:20px 56px;display:flex;flex-direction:column;gap:22px}
+a{color:inherit}
+button{font-family:inherit}
+:focus-visible{outline:2px solid var(--blue);outline-offset:2px}
+
+/* top bar */
+.bar{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.brand{display:flex;align-items:center;gap:10px;min-width:0}
+.logo{display:grid;grid-template-columns:repeat(7,4px);grid-auto-rows:4px;gap:2px}
+.logo i{width:4px;height:4px;border-radius:1px;background:var(--blue)}
+.logo i.g{background:var(--green)} .logo i.o{background:transparent}
+.brand-name{font-family:var(--f-pixel);font-size:13px;letter-spacing:.12em;color:var(--muted)}
+.theme{display:inline-flex;border:1px solid var(--line);border-radius:999px;background:var(--surface);padding:3px}
+.theme button{border:0;background:transparent;color:var(--muted);font-size:13px;padding:5px 12px;border-radius:999px;cursor:pointer;display:inline-flex;gap:6px;align-items:center}
+.theme button[aria-pressed="true"]{background:var(--ink);color:var(--bg)}
+.sw{width:8px;height:8px;border-radius:2px;display:inline-block;border:1px solid currentColor}
+.sw.l{background:#fff}.sw.d{background:#0D1526}
+
+/* hero: a hand-built pixel-art scene (day / night follows the theme) */
+.hero{position:relative;border-radius:var(--r);overflow:hidden;min-height:clamp(460px,44vw,600px);background:var(--sky)}
+.hero canvas{position:absolute;inset:0;width:100%;height:100%;display:block;image-rendering:pixelated;image-rendering:crisp-edges}
+.hero-in{position:relative;z-index:1;padding:clamp(22px,4vw,48px) clamp(18px,5vw,64px);max-width:40rem;display:flex;flex-direction:column;gap:12px}
+.eyebrow{font-family:var(--f-pixel);font-size:12px;letter-spacing:.14em;color:#fff;opacity:.9;display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.led{width:6px;height:6px;background:#5CF29A;border-radius:1px;box-shadow:0 0 0 2px rgba(92,242,154,.3)}
+h1{font-size:clamp(28px,4vw,44px);line-height:1.18;font-weight:800;letter-spacing:-.02em;margin:0;color:#fff;text-wrap:balance;text-shadow:0 1px 2px rgba(8,30,70,.45)}
+.oneline{font-size:15px;max-width:58ch;margin:0;color:#fff;opacity:.96;text-shadow:0 1px 2px rgba(8,30,70,.5)}
+.oneline.intro{max-width:30em;word-break:keep-all}
+.hero-cta{display:flex;gap:8px;flex-wrap:wrap;margin-top:6px}
+.cta{border:0;border-radius:6px;padding:9px 14px;font-size:13px;font-weight:700;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;gap:6px}
+.cta.p{background:#fff;color:#0D1726}
+.cta.s{background:rgba(255,255,255,.18);color:#fff;border:1px solid rgba(255,255,255,.35);backdrop-filter:blur(4px)}
+.cta:hover{filter:brightness(1.05)}
+.cta[disabled]{opacity:.6;cursor:progress}
+.meta-line{font-size:12px;color:#fff;opacity:.85;display:flex;gap:10px;flex-wrap:wrap}
+.meta-line a{color:#fff;text-decoration:underline;text-underline-offset:3px}
+.hot{position:absolute;z-index:1;right:clamp(14px,5vw,72px);top:clamp(22px,4vw,48px);width:min(23rem,38%);background:rgba(10,22,44,.66);color:#fff;border:1px solid rgba(255,255,255,.2);backdrop-filter:blur(8px);padding:12px 14px;display:flex;flex-direction:column;gap:8px;box-shadow:3px 0 0 0 rgba(255,255,255,.28),-3px 0 0 0 rgba(255,255,255,.28),0 3px 0 0 rgba(255,255,255,.28),0 -3px 0 0 rgba(255,255,255,.28);margin:3px}
+.hot-h{display:flex;align-items:center;gap:8px}
+.hot-h b{font-family:var(--f-pixel);font-weight:400;font-size:14px;letter-spacing:.16em;color:#FFE27A}
+.hot-h span{margin-left:auto;font-size:11px;color:rgba(255,255,255,.7)}
+.hot-list{list-style:none;margin:0;padding:0;display:flex;flex-direction:column}
+.hot-list li{display:grid;grid-template-columns:auto minmax(0,1fr);gap:2px 10px;padding:8px 0;border-top:1px dashed rgba(255,255,255,.2)}
+.hot-list li:first-child{border-top:0}
+.hot-list .ar{grid-row:span 2;font-family:var(--f-pixel);font-size:11px;padding:2px 6px;align-self:start;color:#0B1630}
+.hot-list .kw{font-weight:800;font-size:14px;line-height:1.35}
+.hot-list .co{font-size:12px;color:rgba(255,255,255,.78);line-height:1.45;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.hot-more{align-self:flex-end;border:0;background:transparent;color:#fff;font-size:12px;font-weight:700;cursor:pointer;padding:2px 0;text-decoration:underline;text-underline-offset:3px}
+@media (prefers-reduced-motion:no-preference){.hot{animation:bob 6s ease-in-out infinite}}
+@keyframes bob{50%{transform:translateY(-3px)}}
+@media (max-width:52rem){.hero{overflow:visible;background:transparent;min-height:0}.hero canvas{bottom:auto;height:440px;border-radius:var(--r)}.hero-in{min-height:440px;box-sizing:border-box}.hot{position:relative;right:auto;top:auto;width:auto;margin:20px 3px 3px;animation:none;background:var(--surface);color:var(--ink);border:0;backdrop-filter:none;box-shadow:3px 0 0 0 var(--frame),-3px 0 0 0 var(--frame),0 3px 0 0 var(--frame),0 -3px 0 0 var(--frame),6px 6px 0 0 var(--pshadow)}.hot-h b{color:var(--amber)}.hot-h span,.hot-list .co{color:var(--muted)}.hot-list li{border-top-color:var(--line)}.hot-more{color:var(--ink)}}
+.kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,12rem),1fr));gap:12px}
+.kpi{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:14px 16px;display:flex;flex-direction:column;gap:2px;min-width:0}
+.kpi .lab{font-size:12px;color:var(--muted)}
+.kpi .num{font-family:var(--f-pixel);font-size:34px;line-height:1.1;font-variant-numeric:tabular-nums}
+.kpi .sub{font-size:11px;color:var(--muted)}
+.kpi.a .num{color:var(--green)} .kpi.b .num{color:var(--amber)} .kpi.d .num{color:var(--blue)}
+
+/* tabs */
+.tabs{display:flex;gap:4px;flex-wrap:wrap;border-bottom:1px solid var(--line)}
+.tab{border:0;background:transparent;color:var(--muted);font-size:14px;font-weight:700;padding:10px 14px;cursor:pointer;position:relative}
+.tab[aria-selected="true"]{color:var(--ink)}
+.tab[aria-selected="true"]::after{content:"";position:absolute;left:14px;right:14px;bottom:-1px;height:4px;
+  background:var(--blue)}
+.page{display:flex;flex-direction:column;gap:16px}
+
+/* cards */
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,27rem),1fr));gap:16px}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:18px;display:flex;flex-direction:column;gap:12px;min-width:0}
+.card-h{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;flex-wrap:wrap}
+.card h2{font-size:17px;font-weight:800;margin:0}
+.note{font-size:12px;color:var(--muted);margin:2px 0 0}
+.dl{display:inline-flex;align-items:center;gap:8px;border:1px solid var(--ink);background:var(--surface);color:var(--ink);font-size:13px;font-weight:700;padding:7px 12px;border-radius:var(--r);cursor:pointer;white-space:nowrap}
+.dl:hover{background:var(--ink);color:var(--bg)}
+.dl[disabled]{opacity:.5;cursor:progress}
+.dl .ico{display:grid;grid-template-columns:repeat(3,3px);grid-auto-rows:3px;gap:1px}
+.dl .ico i{width:3px;height:3px;background:currentColor}
+.dl .ico i.o{background:transparent}
+.tools{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+.chip{border:1px solid var(--line);background:var(--chip);color:var(--ink);border-radius:999px;font-size:12px;padding:5px 12px;cursor:pointer}
+.chip[aria-pressed="true"]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.search{flex:1 1 12rem;max-width:20rem;min-width:0;border:1px solid var(--line);background:var(--surface);color:var(--ink);border-radius:var(--r);padding:6px 10px;font:inherit;font-size:13px}
+.scroll{overflow:auto;max-height:38rem}
+table{width:100%;border-collapse:collapse;font-size:13px;line-height:1.55}
+th{position:sticky;top:0;background:var(--surface);text-align:left;color:var(--muted);font-weight:700;font-size:12px;padding:8px 10px;border-bottom:1px solid var(--line);white-space:nowrap;z-index:1}
+td{padding:10px 12px;border-bottom:1px solid var(--line);vertical-align:top;text-align:left;word-break:keep-all;overflow-wrap:anywhere}
+th{padding-left:12px;padding-right:12px;text-align:center}
+td.mid{min-width:7.5rem}
+td.wide{min-width:9rem}
+tr:last-child td{border-bottom:0}
+td.strong{font-weight:700;min-width:10rem}
+td.nw{white-space:nowrap}
+td a{text-decoration:underline;text-decoration-color:var(--line);text-underline-offset:3px}
+td a:hover{text-decoration-color:currentColor}
+.px{font-family:var(--f-pixel);font-variant-numeric:tabular-nums}
+.fit{display:inline-grid;place-items:center;width:26px;height:26px;border-radius:4px;font-family:var(--f-pixel);font-size:15px}
+.fit.A{background:var(--green-soft);color:var(--green)} .fit.B{background:var(--amber-soft);color:var(--amber)} .fit.C{background:var(--chip);color:var(--muted)}
+.chg{font-family:var(--f-pixel);font-size:12px;letter-spacing:.05em}
+.chg.NEW{color:var(--green)} .chg.UPDATE{color:var(--amber)} .chg.유지{color:var(--muted)}
+.steps{display:flex;gap:3px;margin-top:6px}
+.steps i{width:7px;height:7px;border-radius:1px;background:var(--line)}
+.steps i.on{background:var(--blue)}
+.steps i.now{background:var(--blue);box-shadow:0 0 0 2px var(--blue-soft)}
+.stage{font-size:12px;color:var(--muted)}
+.dday{font-family:var(--f-pixel);font-size:12px;padding:1px 6px;border-radius:3px;background:var(--chip);color:var(--muted);white-space:nowrap}
+.dday.soon{background:var(--blue-soft);color:var(--blue)} .dday.today{background:var(--red);color:#fff}
+tr.past td{color:var(--muted)}
+@media (max-width:40rem){.hide-sm{display:none}}
+
+/* chart */
+.bars{display:flex;flex-direction:column;gap:8px}
+.bar-row{display:grid;grid-template-columns:minmax(0,15rem) minmax(0,1fr);gap:10px;align-items:center;font-size:12px}
+.bar-row .nm{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.bar-track{display:flex;align-items:center;gap:8px;min-width:0}
+.bar-fill{height:12px;border-radius:2px;background:currentColor;min-width:6px}
+.bar-fill.A{color:var(--green)} .bar-fill.B{color:var(--amber)} .bar-fill.C{color:var(--muted)}
+.bar-val{font-family:var(--f-pixel);color:var(--muted);white-space:nowrap}
+@media (max-width:40rem){.bar-row{grid-template-columns:1fr}}
+
+/* library */
+.lib{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,17rem),1fr));gap:12px}
+.doc{border:1px solid var(--line);border-radius:var(--r);padding:16px;display:flex;flex-direction:column;gap:10px;background:var(--surface)}
+.doc .ext{font-family:var(--f-pixel);font-size:12px;color:var(--blue);letter-spacing:.1em}
+.doc h3{margin:0;font-size:15px;font-weight:800}
+.doc p{margin:0;font-size:12px;color:var(--muted);flex:1}
+.toast{position:fixed;left:50%;transform:translateX(-50%);bottom:calc(18px + env(safe-area-inset-bottom,0px));background:var(--ink);color:var(--bg);font-size:13px;padding:9px 14px;border-radius:var(--r);z-index:20;max-width:calc(100vw - 32px)}
+.empty{padding:28px 12px;text-align:center;color:var(--muted);font-size:13px}
+.empty .px{display:block;font-size:22px;color:var(--blue);margin-bottom:6px}
+.legend{display:flex;gap:14px;flex-wrap:wrap;font-size:12px;color:var(--muted)}
+.legend span{display:inline-flex;gap:6px;align-items:center}
+@media (prefers-reduced-motion:no-preference){
+  .page{animation:rise .35s ease-out}
+  @keyframes rise{from{transform:translateY(4px)}to{transform:none}}
+}
+/* ===== pixel UI for the board below the hero ===== */
+:root{--frame:#B7C4D6;--frame-hi:#1B2433;--pshadow:#D5DEEA;--px-k:#1B2433;--px-w:#FFFFFF;--px-s:#C9D3E1;--px-S:#5B6C86;--px-b:#3B8BF0;--px-B:#1F5FC4;--px-g:#3CC46A;--px-G:#25904A;--px-y:#FFD54A;--px-o:#FF9F43;--px-r:#FF6B6B;--px-n:#8B5A2B;--band:#EEF3F9}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--frame:#2B3A57;--frame-hi:#8FA3C6;--pshadow:#050A14;--px-k:#04070D;--px-w:#E3EAF5;--px-s:#7E8EA8;--px-S:#3A4862;--px-b:#5FA4FF;--px-B:#2F6FD0;--px-g:#3FD07A;--px-G:#23894A;--px-y:#F5CB46;--px-o:#F29A45;--px-r:#F26B6B;--px-n:#7A5230;--band:#0F182A}}
+:root[data-theme="dark"]{--frame:#2B3A57;--frame-hi:#8FA3C6;--pshadow:#050A14;--px-k:#04070D;--px-w:#E3EAF5;--px-s:#7E8EA8;--px-S:#3A4862;--px-b:#5FA4FF;--px-B:#2F6FD0;--px-g:#3FD07A;--px-G:#23894A;--px-y:#F5CB46;--px-o:#F29A45;--px-r:#F26B6B;--px-n:#7A5230;--band:#0F182A}
+canvas.spr{image-rendering:pixelated;image-rendering:crisp-edges;flex:none;display:block}
+/* hero meta line: readable pill */
+.meta-line{opacity:1;align-self:flex-start;background:rgba(10,22,44,.72);border:1px solid rgba(255,255,255,.18);border-radius:6px;padding:6px 10px;backdrop-filter:blur(6px)}
+.meta-line:empty{display:none}
+.meta-line a{color:#fff;font-weight:700}
+.hero .cta.s{background:rgba(10,22,44,.62);border-color:rgba(255,255,255,.4)}
+/* pixel frames: notched corners + 1-step drop shadow */
+.card,.kpi,.doc{border:0;border-radius:0;margin:3px;box-shadow:3px 0 0 0 var(--frame),-3px 0 0 0 var(--frame),0 3px 0 0 var(--frame),0 -3px 0 0 var(--frame),6px 6px 0 0 var(--pshadow)}
+.kpis{gap:18px}
+#today .grid{grid-template-columns:1fr}
+@media (min-width:72rem){#today .grid{grid-template-columns:minmax(0,1.1fr) minmax(0,1fr)}}
+@media (max-width:40rem){.kpis{grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}.kpi{flex-direction:column;gap:6px;padding:12px}.kpi .sub{display:none}.kpi .num{font-size:28px}}
+.grid{gap:22px}
+.page{gap:22px}
+.card{padding:0;gap:0;overflow:hidden}
+.card>.card-h{background:var(--band);padding:14px 18px;border-bottom:3px solid var(--frame);align-items:center}
+.card>:not(.card-h){margin:14px 18px}
+.card>.card-h>div:first-child{display:flex;gap:12px;align-items:center;min-width:0}
+.card h2{font-size:16px}
+.card .scroll{margin-top:4px}
+.kpi{flex-direction:row;align-items:flex-start;gap:12px;padding:14px}
+.kpi .kbody{display:flex;flex-direction:column;gap:2px;min-width:0;flex:1}
+.blocks{display:flex;flex-wrap:wrap;gap:2px;margin-top:6px}
+.blocks i{width:8px;height:8px;background:var(--line)}
+.kpi[role=button]{cursor:pointer;transition:transform .12s ease-out}
+.kpi[role=button]:hover{transform:translate(-2px,-2px);box-shadow:3px 0 0 0 var(--frame-hi),-3px 0 0 0 var(--frame-hi),0 3px 0 0 var(--frame-hi),0 -3px 0 0 var(--frame-hi),8px 8px 0 0 var(--pshadow)}
+.kpi[role=button]:focus-visible{outline:3px solid var(--blue);outline-offset:4px}
+@media (prefers-reduced-motion:reduce){.kpi[role=button]{transition:none}.kpi[role=button]:hover{transform:none}}
+.bcap{font-size:11px;color:var(--muted);margin-top:4px;line-height:1.5;word-break:keep-all;white-space:pre-line}
+.kpi.a .blocks i.on{background:var(--green)} .kpi.b .blocks i.on{background:var(--amber)} .kpi.d .blocks i.on{background:var(--blue)} .kpi .blocks i.on{background:var(--ink)}
+/* tabs as pixel buttons */
+.tabs{border-bottom:0;gap:12px;padding:4px 3px 6px}
+.tab{display:inline-flex;gap:8px;align-items:center;background:var(--surface);color:var(--ink);padding:8px 14px 8px 10px;margin:3px;box-shadow:3px 0 0 0 var(--frame),-3px 0 0 0 var(--frame),0 3px 0 0 var(--frame),0 -3px 0 0 var(--frame),4px 4px 0 0 var(--pshadow)}
+.tab[aria-selected="true"]{background:var(--blue);color:#fff;box-shadow:3px 0 0 0 var(--frame-hi),-3px 0 0 0 var(--frame-hi),0 3px 0 0 var(--frame-hi),0 -3px 0 0 var(--frame-hi),4px 4px 0 0 var(--pshadow)}
+.tab[aria-selected="true"]::after{display:none}
+.tab:hover{transform:translateY(-1px)}
+@media (prefers-reduced-motion:reduce){.tab:hover{transform:none}}
+.chip{border:0;border-radius:0;margin:2px;background:var(--surface);box-shadow:2px 0 0 0 var(--frame),-2px 0 0 0 var(--frame),0 2px 0 0 var(--frame),0 -2px 0 0 var(--frame)}
+.chip[aria-pressed="true"]{background:var(--ink);color:var(--bg);box-shadow:2px 0 0 0 var(--ink),-2px 0 0 0 var(--ink),0 2px 0 0 var(--ink),0 -2px 0 0 var(--ink)}
+.search{border-radius:0}
+.dl{border:0;border-radius:0;margin:3px;background:var(--surface);box-shadow:3px 0 0 0 var(--ink),-3px 0 0 0 var(--ink),0 3px 0 0 var(--ink),0 -3px 0 0 var(--ink),4px 4px 0 0 var(--pshadow)}
+.dl:hover{background:var(--green);color:#06210F}
+.dl:active{transform:translate(2px,2px);box-shadow:3px 0 0 0 var(--ink),-3px 0 0 0 var(--ink),0 3px 0 0 var(--ink),0 -3px 0 0 var(--ink)}
+th{background:var(--surface);border-bottom:3px solid var(--frame)}
+tbody tr:hover td{background:var(--band)}
+.fit{border-radius:0;box-shadow:2px 0 0 0 currentColor,-2px 0 0 0 currentColor,0 2px 0 0 currentColor,0 -2px 0 0 currentColor;margin:2px;width:22px;height:22px}
+/* page banners: small pixel scenes */
+.strip{position:relative;height:clamp(130px,16vw,170px);margin:3px;overflow:hidden;box-shadow:3px 0 0 0 var(--frame),-3px 0 0 0 var(--frame),0 3px 0 0 var(--frame),0 -3px 0 0 var(--frame),6px 6px 0 0 var(--pshadow)}
+.strip canvas{position:absolute;inset:0;width:100%;height:100%;image-rendering:pixelated;image-rendering:crisp-edges}
+.strip-in{position:relative;z-index:1;padding:18px clamp(16px,3vw,28px);display:flex;flex-direction:column;gap:4px;max-width:34rem}
+.strip-in .tag{font-family:var(--f-pixel);font-size:12px;letter-spacing:.16em;color:#fff;opacity:.9}
+.strip-in h2{margin:0;font-size:clamp(20px,2.4vw,26px);font-weight:800;color:#fff;text-shadow:0 1px 2px rgba(8,30,70,.5)}
+.strip-in p{margin:0;font-size:13px;color:#fff;align-self:flex-start;background:rgba(10,22,44,.6);padding:3px 8px;border-radius:4px}
+/* empty state mascot */
+.empty canvas.spr{margin:0 auto 8px}
+/* footer */
+.foot{position:relative;height:150px;margin:3px;overflow:hidden;box-shadow:3px 0 0 0 var(--frame),-3px 0 0 0 var(--frame),0 3px 0 0 var(--frame),0 -3px 0 0 var(--frame)}
+.foot canvas{position:absolute;inset:0;width:100%;height:100%;image-rendering:pixelated}
+.foot-in{position:relative;z-index:1;padding:16px 20px;color:#fff;font-size:12px;display:flex;flex-direction:column;gap:4px}
+.foot-in b{font-family:var(--f-pixel);font-weight:400;letter-spacing:.14em;font-size:13px}
+.foot-in span{align-self:flex-start;background:rgba(10,22,44,.6);padding:2px 8px;border-radius:4px}
+</style>
+
+<div class="wrap">
+  <div class="bar">
+    <div class="brand">
+      <div class="logo" aria-hidden="true">
+        <i class="o"></i><i></i><i></i><i class="o"></i><i class="o"></i><i class="o"></i><i class="o"></i>
+        <i></i><i></i><i></i><i></i><i class="o"></i><i class="g"></i><i class="o"></i>
+        <i></i><i></i><i></i><i></i><i></i><i class="g"></i><i class="g"></i>
+        <i class="o"></i><i></i><i></i><i></i><i></i><i class="g"></i><i class="o"></i>
+      </div>
+      <span class="brand-name">CLOUD NEWSLETTER</span>
+    </div>
+    <div class="theme" role="group" aria-label="화면 모드">
+      <button id="th-light" type="button" aria-pressed="false"><span class="sw l"></span>라이트</button>
+      <button id="th-dark" type="button" aria-pressed="false"><span class="sw d"></span>다크</button>
+    </div>
+  </div>
+
+  <section class="hero" aria-label="오늘의 요약">
+    <canvas id="scene" aria-hidden="true"></canvas>
+    <div class="hero-in">
+      <h1>클라우드 뉴스레터</h1>
+      <p class="oneline intro">공공·금융·민간 클라우드 시장의 뉴스와 입찰·사업 기회를 매일 아침 한곳에 정리해 전해 드립니다.</p>
+      <div class="hero-cta">
+        <button class="cta p" type="button" id="go-opps">사업 기회 보기</button>
+        <button class="cta s" type="button" data-doc="full"><span>종합 보고서 Word</span></button>
+      </div>
+      <div class="meta-line"><span id="h-updated"></span><a id="h-link" href="#" hidden target="_blank" rel="noopener">브리핑 원문 열기</a></div>
+    </div>
+    <aside class="hot" id="hot" aria-label="핫 토픽" hidden>
+      <div class="hot-h"><b>HOT TOPIC</b><span id="hot-date"></span></div>
+      <ol class="hot-list" id="hot-list"></ol>
+      <button class="hot-more" type="button" id="hot-more">핫이슈 자세히 보기 →</button>
+    </aside>
+  </section>
+
+  <section class="kpis" aria-label="요약 수치">
+    <div class="kpi a" role="button" tabindex="0" data-go="fitA" aria-label="주관 가능(A) 사업만 보기"><canvas class="spr" data-spr="cloud" data-scale="4"></canvas><div class="kbody"><span class="lab">중소기업 주관형 (A)</span><span class="num" id="k-a">-</span><span class="sub">중소기업 단독 주관 가능</span><div class="blocks" id="b-a"></div><span class="bcap" id="c-a"></span></div></div>
+    <div class="kpi b" role="button" tabindex="0" data-go="fitB" aria-label="컨소시엄·하도급(B) 사업만 보기"><canvas class="spr" data-spr="building" data-scale="4"></canvas><div class="kbody"><span class="lab">컨소시엄·하도급형 (B)</span><span class="num" id="k-b">-</span><span class="sub">SI 사업의 클라우드 구간</span><div class="blocks" id="b-b"></div><span class="bcap" id="c-b"></span></div></div>
+    <div class="kpi d" role="button" tabindex="0" data-go="soon" aria-label="14일 안의 일정만 보기"><canvas class="spr" data-spr="calendar" data-scale="4"></canvas><div class="kbody"><span class="lab">14일 안의 일정</span><span class="num" id="k-soon">-</span><span class="sub">평가·마감·국감 등</span><div class="blocks" id="b-soon"></div><span class="bcap" id="c-soon"></span></div></div>
+    <div class="kpi" role="button" tabindex="0" data-go="news" aria-label="최신 호 뉴스 보기"><canvas class="spr" data-spr="news" data-scale="4"></canvas><div class="kbody"><span class="lab">최신 호 신규 기사</span><span class="num" id="k-news">-</span><span class="sub">누락 보완 포함</span><span class="bcap" id="c-news"></span></div></div>
+  </section>
+
+  <nav class="tabs" role="tablist" aria-label="보기">
+    <button class="tab" role="tab" data-page="today" id="t-today"><canvas class="spr" data-spr="board" data-scale="2"></canvas>오늘</button>
+    <button class="tab" role="tab" data-page="opps" id="t-opps"><canvas class="spr" data-spr="flag" data-scale="2"></canvas>사업 기회</button>
+    <button class="tab" role="tab" data-page="news" id="t-news"><canvas class="spr" data-spr="news" data-scale="2"></canvas>뉴스</button>
+    <button class="tab" role="tab" data-page="schedule" id="t-schedule"><canvas class="spr" data-spr="calendar" data-scale="2"></canvas>일정</button>
+    <button class="tab" role="tab" data-page="library" id="t-library"><canvas class="spr" data-spr="folder" data-scale="2"></canvas>자료실</button>
+    <button class="tab" role="tab" data-page="history" id="t-history"><canvas class="spr" data-spr="book" data-scale="2"></canvas>발행 이력</button>
+  </nav>
+
+  <section class="page" id="today" data-pg="today">
+    <div class="strip"><canvas data-strip="today" aria-hidden="true"></canvas><div class="strip-in"><span class="tag">TODAY</span><h2>오늘의 브리핑</h2><p>최신 호 핫이슈와 다가오는 일정</p></div></div>
+    <div class="grid">
+      <div class="card">
+        <div class="card-h"><div><canvas class="spr" data-spr="bolt" data-scale="3"></canvas><div><h2>핫이슈 키워드</h2><p class="note">최신 호 키워드와 시장 시사점</p></div></div>
+          <button class="dl" data-doc="brief" type="button"><span class="ico"><i></i><i></i><i class="o"></i><i></i><i></i><i></i><i></i><i></i><i></i></span>오늘 요약 Word</button></div>
+        <div class="scroll"><table><thead><tr><th>분야</th><th>키워드</th><th>핵심</th><th>시사점</th></tr></thead><tbody id="tb-keywords"></tbody></table></div>
+      </div>
+      <div class="card">
+        <div class="card-h"><div><canvas class="spr" data-spr="check" data-scale="3"></canvas><div><h2>다가오는 일정</h2><p class="note">오늘부터 14일 안의 입찰 평가·발주, 국감, 정책 일정</p></div></div></div>
+        <div class="scroll"><table><thead><tr><th>남은 날</th><th>시점</th><th>일정</th><th class="hide-sm">체크 포인트</th></tr></thead><tbody id="tb-todos"></tbody></table></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="page" id="opps" data-pg="opps" hidden>
+    <div class="strip"><canvas data-strip="opps" aria-hidden="true"></canvas><div class="strip-in"><span class="tag">OPPORTUNITIES</span><h2>사업 기회</h2><p>중소기업 참여 관점 A·B·C로 본 입찰·사업</p></div></div>
+    <div class="card" id="card-opps">
+      <div class="card-h"><div><canvas class="spr" data-spr="flag" data-scale="3"></canvas><div><h2>사업 기회</h2><p class="note">중소기업 기준 · A 단독 주관 가능 · B SI 컨소시엄·하도급 참여 · C 참고(장비·감리 등). 점은 진행 단계(공고 예정 → 사전규격 → 입찰 → 평가 → 우선협상 → 계약). 사업명을 누르면 출처가 열린다.</p></div></div>
+        <button class="dl" data-doc="opps" type="button"><span class="ico"><i></i><i></i><i class="o"></i><i></i><i></i><i></i><i></i><i></i><i></i></span>사업 기회 Word</button></div>
+      <div class="tools">
+        <button class="chip" data-fit="" aria-pressed="true" type="button">전체</button>
+        <button class="chip" data-fit="A" aria-pressed="false" type="button">A 주관</button>
+        <button class="chip" data-fit="B" aria-pressed="false" type="button">B 컨소시엄</button>
+        <button class="chip" data-fit="C" aria-pressed="false" type="button">C 참고</button>
+        <input class="search" id="q-opps" type="search" placeholder="사업명·기관 검색" aria-label="사업 검색">
+      </div>
+      <div class="scroll"><table><thead><tr><th>적합도</th><th>사업</th><th class="hide-sm">발주·수요기관</th><th>규모</th><th>현황</th><th class="hide-sm">참여 방식</th></tr></thead><tbody id="tb-opps"></tbody></table></div>
+    </div>
+    <div class="card">
+      <div class="card-h"><div><canvas class="spr" data-spr="building" data-scale="3"></canvas><div><h2>규모가 공개된 사업</h2><p class="note">사업 금액·예산 기준(억 원), 큰 순. 사업비 미공개 건은 빠진다.</p></div></div>
+        <div class="legend"><span><i class="fit A">A</i>주관</span><span><i class="fit B">B</i>컨소시엄</span><span><i class="fit C">C</i>참고</span></div></div>
+      <div class="bars" id="bars"></div>
+    </div>
+  </section>
+
+  <section class="page" id="news" data-pg="news" hidden>
+    <div class="strip"><canvas data-strip="news" aria-hidden="true"></canvas><div class="strip-in"><span class="tag">NEWS</span><h2>주요 뉴스</h2><p>민간·공공·금융·입찰 기사와 시사점</p></div></div>
+    <div class="card" id="card-news">
+      <div class="card-h"><div><canvas class="spr" data-spr="news" data-scale="3"></canvas><div><h2>주요 뉴스</h2><p class="note">최근 호에 실린 기사, 최신순. 제목을 누르면 기사가 열린다.</p></div></div>
+        <button class="dl" data-doc="news" type="button"><span class="ico"><i></i><i></i><i class="o"></i><i></i><i></i><i></i><i></i><i></i><i></i></span>뉴스 Word</button></div>
+      <div class="tools">
+        <button class="chip" data-area="" aria-pressed="true" type="button">전체</button>
+        <button class="chip" data-area="민간" aria-pressed="false" type="button">민간</button>
+        <button class="chip" data-area="공공" aria-pressed="false" type="button">공공</button>
+        <button class="chip" data-area="금융" aria-pressed="false" type="button">금융</button>
+        <button class="chip" data-area="입찰" aria-pressed="false" type="button">입찰</button>
+      </div>
+      <div class="scroll"><table><thead><tr><th>일자</th><th>분야</th><th>변동</th><th>기사</th><th>시사점</th><th class="hide-sm">매체</th></tr></thead><tbody id="tb-news"></tbody></table></div>
+    </div>
+  </section>
+
+  <section class="page" id="schedule" data-pg="schedule" hidden>
+    <div class="strip"><canvas data-strip="schedule" aria-hidden="true"></canvas><div class="strip-in"><span class="tag">SCHEDULE</span><h2>향후 일정</h2><p>입찰 평가·발주, 국감, 정책 일정</p></div></div>
+    <div class="card" id="card-schedule">
+      <div class="card-h"><div><canvas class="spr" data-spr="calendar" data-scale="3"></canvas><div><h2>향후 주요 일정</h2><p class="note">입찰 평가·발주, 국감, 정책 일정. 지난 일정은 흐리게, 7일 안은 파랗게 표시한다.</p></div></div>
+        <button class="dl" data-doc="schedule" type="button"><span class="ico"><i></i><i></i><i class="o"></i><i></i><i></i><i></i><i></i><i></i><i></i></span>일정 Word</button></div>
+      <div class="tools"><button class="chip" data-soon="" aria-pressed="true" type="button">전체 일정</button><button class="chip" data-soon="1" aria-pressed="false" type="button">14일 안</button></div>
+      <div class="scroll"><table><thead><tr><th>남은 날</th><th>시점</th><th>분야</th><th>일정</th><th>체크 포인트</th></tr></thead><tbody id="tb-schedule"></tbody></table></div>
+    </div>
+  </section>
+
+  <section class="page" id="library" data-pg="library" hidden>
+    <div class="strip"><canvas data-strip="library" aria-hidden="true"></canvas><div class="strip-in"><span class="tag">LIBRARY</span><h2>자료실</h2><p>최신 데이터로 Word 보고서 만들기</p></div></div>
+    <div class="card">
+      <div class="card-h"><div><canvas class="spr" data-spr="folder" data-scale="3"></canvas><div><h2>자료실</h2><p class="note">보드에 올라 있는 최신 데이터로 Word 파일을 바로 만든다. 버튼을 누르면 저장 확인 창이 뜬다.</p></div></div></div>
+      <div class="lib">
+        <div class="doc"><span class="ext">DOCX · 종합</span><h3>종합 현황 보고서</h3><p>오늘의 한 줄, 핫이슈, 사업 기회(A·B·C), 주요 뉴스, 일정을 한 파일로. 보고·공유용.</p><button class="dl" data-doc="full" type="button"><span class="ico"><i></i><i></i><i class="o"></i><i></i><i></i><i></i><i></i><i></i><i></i></span>Word로 받기</button></div>
+        <div class="doc"><span class="ext">DOCX · 사업</span><h3>클라우드 사업 기회 현황</h3><p>중소기업 기준 적합도별 사업 목록과 참여 방식. A4 가로.</p><button class="dl" data-doc="opps" type="button"><span class="ico"><i></i><i></i><i class="o"></i><i></i><i></i><i></i><i></i><i></i><i></i></span>Word로 받기</button></div>
+        <div class="doc"><span class="ext">DOCX · 오늘</span><h3>오늘의 브리핑 요약</h3><p>최신 호 한 줄, 핫이슈 키워드, 다가오는 일정.</p><button class="dl" data-doc="brief" type="button"><span class="ico"><i></i><i></i><i class="o"></i><i></i><i></i><i></i><i></i><i></i><i></i></span>Word로 받기</button></div>
+        <div class="doc"><span class="ext">DOCX · 뉴스</span><h3>주요 뉴스 모음</h3><p>최근 호 기사 요약과 시사점, 출처 링크.</p><button class="dl" data-doc="news" type="button"><span class="ico"><i></i><i></i><i class="o"></i><i></i><i></i><i></i><i></i><i></i><i></i></span>Word로 받기</button></div>
+        <div class="doc"><span class="ext">DOCX · 일정</span><h3>향후 주요 일정</h3><p>입찰 평가·발주, 국감, 정책 일정과 체크 포인트.</p><button class="dl" data-doc="schedule" type="button"><span class="ico"><i></i><i></i><i class="o"></i><i></i><i></i><i></i><i></i><i></i><i></i></span>Word로 받기</button></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="page" id="history" data-pg="history" hidden>
+    <div class="strip"><canvas data-strip="history" aria-hidden="true"></canvas><div class="strip-in"><span class="tag">ARCHIVE</span><h2>발행 이력</h2><p>지난 브리핑 원문 모음</p></div></div>
+    <div class="card">
+      <div class="card-h"><div><canvas class="spr" data-spr="book" data-scale="3"></canvas><div><h2>발행 이력</h2><p class="note">호 번호를 누르면 브리핑 원문이 열린다(원문은 따로 공유해야 다른 사람이 열 수 있다).</p></div></div></div>
+      <div class="scroll"><table><thead><tr><th>호</th><th>발행일</th><th>오늘의 한 줄</th><th>신규 기사</th><th class="hide-sm">신규 공고</th></tr></thead><tbody id="tb-history"></tbody></table></div>
+    </div>
+  </section>
+  <footer class="foot"><canvas data-strip="footer" aria-hidden="true"></canvas><div class="foot-in"><b>CLOUD NEWSLETTER</b><span id="f-upd">국내 클라우드 시장 뉴스 · 입찰 · 사업 기회</span></div></footer>
+</div>
+<div class="toast" id="toast" hidden></div>
+
+<script>
+(function(){
+  /* ---------- theme ---------- */
+  const rootEl=document.documentElement;
+  const sysDark=()=>window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches;
+  let saved=null; try{saved=localStorage.getItem('n3-theme');}catch(e){}
+  const applyTheme=(t)=>{ if(t){rootEl.setAttribute('data-theme',t);} else rootEl.removeAttribute('data-theme');
+    const eff=t||(sysDark()?'dark':'light');
+    document.getElementById('th-light').setAttribute('aria-pressed',String(eff==='light'));
+    document.getElementById('th-dark').setAttribute('aria-pressed',String(eff==='dark'));
+    if(window.n3Field) window.n3Field.recolor(); };
+  applyTheme(saved);
+  const pick=(t)=>{ try{localStorage.setItem('n3-theme',t);}catch(e){} applyTheme(t); };
+  document.getElementById('th-light').addEventListener('click',()=>pick('light'));
+  document.getElementById('th-dark').addEventListener('click',()=>pick('dark'));
+  if(window.matchMedia) window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change',()=>{ if(!rootEl.getAttribute('data-theme')) applyTheme(null); });
+
+  /* ---------- pixel scene ---------- */
+  const cv=document.getElementById('scene'); const ctx=cv.getContext('2d');
+  const reduce=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const PAL={
+    day:{sky:['#1C74D9','#2783E3','#3592EA','#4AA2EF','#66B4F3','#86C6F6','#A6D6F8'],cloud:'#FFFFFF',cs1:'#E3F1FC',cs2:'#BEDDF5',far:'#93B8DA',farWin:'#DCEDFB',near:'#7097BF',nearWin:'#D2E6F8',dc:'#577596',dcS:'#46617F',led:['#39E27A','#FFC24B'],hill:'#64B84C',hill2:'#53A73F',tree:['#2C7731','#3E9638','#5DB447','#8CCF5E'],trunk:'#6E4C2C',grass:['#58B03B','#4CA233','#6BC24A','#409030'],path:'#D6B87D',path2:'#C2A166',lap:'#A3ACB8',lapD:'#3B4453',lapK:'#717B89',scr:'#4EA4F1',scrB:['#39E27A','#FFFFFF','#FFC24B'],rack:'#2D3646',rackL:'#43506A',flower:['#FF5B5B','#FFFFFF','#FFD84A'],night:false},
+    night:{sky:['#050A1C','#08112B','#0C183A','#122149','#192C5C','#22396F','#2C4882'],cloud:'#3B4F82',cs1:'#31446F',cs2:'#27385E',far:'#1F2F53',farWin:'#FFD46B',near:'#17243F',nearWin:'#FFC857',dc:'#1B2947',dcS:'#14203A',led:['#3CF08A','#FFC24B'],hill:'#1F4B2B',hill2:'#193F23',tree:['#0F331A','#174523','#215A2C','#2B6D35'],trunk:'#3A2A1B',grass:['#1F4C23','#1A411E','#26592A','#16381A'],path:'#5E5339',path2:'#4D442F',lap:'#5E6775',lapD:'#1E242D',lapK:'#3C4450',scr:'#62B9FF',scrB:['#5CF29A','#E6EEF8','#FFC24B'],rack:'#131A26',rackL:'#26314A',flower:['#C44848','#BCC6D6','#C6A63A'],night:true}
+  };
+  const rng=(s)=>()=>{s|=0;s=s+0x6D2B79F5|0;let t=Math.imul(s^s>>>15,1|s);t=t+Math.imul(t^t>>>7,61|t)^t;return((t^t>>>14)>>>0)/4294967296;};
+  let S=null; // scene state
+  const mk=(w,h)=>{const c=document.createElement('canvas'); c.width=w; c.height=h; const x=c.getContext('2d'); x.imageSmoothingEnabled=false; return [c,x];};
+  const isNight=()=>{const t=rootEl.getAttribute('data-theme'); return t?t==='dark':(window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches);};
+  function cloudSprite(r,w,h,pal){
+    const [c,x]=mk(w,h); const puffs=[]; const n=3+Math.floor(r()*3);
+    for(let i=0;i<n;i++){const pw=w*(0.28+r()*0.25); puffs.push([w*0.12+r()*(w*0.76-pw*0.2), h*(0.38+r()*0.3), pw*0.5]);}
+    puffs.push([w*0.5,h*0.72,w*0.42]);
+    for(let yy=0;yy<h;yy++)for(let xx=0;xx<w;xx++){
+      let inside=false; for(const p of puffs){const dx=(xx-p[0])/p[2],dy=(yy-p[1])/(p[2]*0.62); if(dx*dx+dy*dy<=1){inside=true;break;}}
+      if(!inside||yy>h*0.9) continue;
+      x.fillStyle=yy>h*0.74?pal.cs2:(yy>h*0.56?pal.cs1:pal.cloud); x.fillRect(xx,yy,1,1);
+    }
+    return c;
+  }
+  function tree(x,cx,cy,rad,pal,r){
+    x.fillStyle=pal.trunk; x.fillRect(Math.round(cx-1),Math.round(cy),Math.max(2,Math.round(rad/4)),Math.round(rad*0.9));
+    for(let yy=-rad;yy<=rad;yy++)for(let xx=-rad;xx<=rad;xx++){
+      const d=Math.sqrt(xx*xx+yy*yy*1.15)+ (r()-0.5)*1.4; if(d>rad) continue;
+      const shade=(xx*0.6+yy)/rad; x.fillStyle=shade<-0.55?pal.tree[3]:shade<-0.1?pal.tree[2]:shade<0.45?pal.tree[1]:pal.tree[0];
+      x.fillRect(Math.round(cx+xx),Math.round(cy-rad*0.7+yy),1,1);
+    }
+  }
+  function buildScene(){
+    const r=cv.getBoundingClientRect(); const W=Math.max(1,r.width),H=Math.max(1,r.height);
+    const P=W>1100?5:W>700?4:3; const lw=Math.ceil(W/P), lh=Math.ceil(H/P);
+    const pal=isNight()?PAL.night:PAL.day; const rand=rng(20261016);
+    const bg=getComputedStyle(rootEl).getPropertyValue('--bg').trim()||'#F4F6F8';
+    const hy=Math.round(lh*(W<700?0.74:0.70));
+    // sky
+    const [sky,sx]=mk(lw,lh); const bands=pal.sky.length;
+    { const g=sx.createLinearGradient(0,0,0,hy); pal.sky.forEach((c,i)=>g.addColorStop(i/(bands-1),c)); sx.fillStyle=g; sx.fillRect(0,0,lw,hy); }
+    sx.fillStyle=pal.sky[bands-1]; sx.fillRect(0,hy,lw,lh-hy);
+    const stars=[];
+    // keep-out boxes: the hero's text, buttons and the HOT TOPIC panel, in low-res pixels (+2px margin)
+    const cr=cv.getBoundingClientRect(); const boxes=[];
+    const addBox=(b)=>{ if(b&&b.width>0) boxes.push([(b.left-cr.left)/P-2,(b.top-cr.top)/P-2,(b.right-cr.left)/P+2,(b.bottom-cr.top)/P+2]); };
+    document.querySelectorAll('.hero-in h1, .hero-in .oneline').forEach(e=>{ const rg=document.createRange(); rg.selectNodeContents(e); Array.from(rg.getClientRects()).forEach(addBox); });
+    document.querySelectorAll('.hero-in .hero-cta > *, .hero-in .meta-line, #hot').forEach(e=>{ if(e.hidden||e.offsetParent===null) return; addBox(e.getBoundingClientRect()); });
+    const clear=(x0,y0,pad=0)=>!boxes.some(b=>x0>=b[0]-pad&&x0<=b[2]+pad&&y0>=b[1]-pad&&y0<=b[3]+pad);
+    if(pal.night){ for(let i=0;i<lw*0.5;i++){const x0=Math.floor(rand()*lw),y0=Math.floor(rand()*hy*0.85); if(!clear(x0,y0)) continue; stars.push([x0,y0,rand()]); }
+      const mr=Math.max(4,Math.round(lh*0.045));
+      const spots=W<700?[[0.84,0.66],[0.12,0.64],[0.5,0.62]]:[[0.86,0.13],[0.56,0.14],[0.62,0.3],[0.9,0.62],[0.5,0.6]];
+      let mx=Math.round(lw*spots[0][0]),my=Math.round(lh*spots[0][1]);
+      for(const sp of spots){const cx=Math.round(lw*sp[0]),cy=Math.round(lh*sp[1]); if(clear(cx,cy,mr+2)){mx=cx;my=cy;break;}}
+      for(let yy=-mr;yy<=mr;yy++)for(let xx=-mr;xx<=mr;xx++){ if(xx*xx+yy*yy<=mr*mr){ sx.fillStyle=(xx+2)*(xx+2)+(yy-1)*(yy-1)<=mr*mr*0.55?'#FFF6D2':'#F1E3A8'; sx.fillRect(mx+xx,my+yy,1,1);} } }
+    // clouds
+    const clouds=[]; const nc=Math.max(4,Math.round(lw/55));
+    for(let i=0;i<nc;i++){const w=Math.round((W<700?18:26)+rand()*(W<700?26:46)),h=Math.round(w*(0.36+rand()*0.12)); const y0=lh*(W<700?0.44:0.52), y1=Math.max(y0+2,hy-h-3); clouds.push({img:cloudSprite(rand,w,h,pal),x:rand()*(lw+w)-w,y:Math.round(y0+rand()*(y1-y0)),v:0.6+rand()*1.6,w}); }
+    // foreground
+    const [fg,fx]=mk(lw,lh);
+    // far city
+    let x=Math.round(lw*0.03); const cityEnd=Math.round(lw*(W<700?0.97:0.60));
+    while(x<cityEnd){ const bw=4+Math.floor(rand()*8), bh=Math.round(lh*(0.06+rand()*0.14)); fx.fillStyle=pal.far; fx.fillRect(x,hy-bh,bw,bh+2);
+      fx.fillStyle=pal.farWin; for(let wy=hy-bh+2;wy<hy-1;wy+=3) for(let wx=x+1;wx<x+bw-1;wx+=2) if(rand()<(pal.night?0.45:0.6)) fx.fillRect(wx,wy,1,1);
+      x+=bw+1+Math.floor(rand()*2); }
+    // tower
+    const tx=Math.round(lw*0.4), th=Math.round(lh*(W<700?0.16:0.24)); fx.fillStyle=pal.near; fx.fillRect(tx,hy-th,5,th); fx.fillRect(tx+1,hy-th-6,3,6); fx.fillRect(tx+2,hy-th-11,1,5);
+    fx.fillStyle=pal.nearWin; for(let wy=hy-th+2;wy<hy-2;wy+=3){fx.fillRect(tx+1,wy,1,1); fx.fillRect(tx+3,wy,1,1);}
+    // near city
+    x=Math.round(lw*0.08);
+    while(x<Math.round(lw*(W<700?0.92:0.58))){ const bw=5+Math.floor(rand()*7), bh=Math.round(lh*(0.04+rand()*0.08)); if(Math.abs(x-tx)<7){x+=8;continue;} fx.fillStyle=pal.near; fx.fillRect(x,hy-bh+2,bw,bh);
+      fx.fillStyle=pal.nearWin; for(let wy=hy-bh+4;wy<hy;wy+=3) for(let wx=x+1;wx<x+bw-1;wx+=2) if(rand()<0.5) fx.fillRect(wx,wy,1,1);
+      x+=bw+2+Math.floor(rand()*5); }
+    // data center (cloud region) with LEDs
+    const dx0=Math.round(lw*0.5), dw=28, dh=10, leds=[];
+    fx.fillStyle=pal.dc; fx.fillRect(dx0,hy-dh+2,dw,dh); fx.fillStyle=pal.dcS; for(let yy=hy-dh+4;yy<hy+2;yy+=3) fx.fillRect(dx0+1,yy,dw-2,1);
+    for(let i=0;i<9;i++) leds.push([dx0+2+i*3,hy-dh+3+((i%3))*3,rand()]);
+    // hills
+    for(let xx=0;xx<lw;xx++){ const top=hy+Math.round(2+Math.sin(xx*0.035)*2+Math.sin(xx*0.11+1)*1.2); fx.fillStyle=pal.hill; fx.fillRect(xx,top,1,lh-top); fx.fillStyle=pal.hill2; fx.fillRect(xx,top+Math.round(lh*0.05),1,lh); }
+    const gy=hy+Math.round(lh*0.09);
+    // ground with texture
+    for(let yy=gy;yy<lh;yy++)for(let xx=0;xx<lw;xx++){ const v=rand(); fx.fillStyle=v<0.07?pal.grass[3]:v<0.14?pal.grass[2]:(yy%7===0&&v<0.4)?pal.grass[1]:pal.grass[0]; fx.fillRect(xx,yy,1,1); }
+    // path
+    for(let yy=hy+3;yy<lh;yy++){ const k=(yy-hy)/(lh-hy); const cx=Math.round(lw*(0.12+k*0.18)), half=Math.round(1+k*7); for(let xx=cx-half;xx<=cx+half;xx++){ fx.fillStyle=(xx===cx-half||xx===cx+half||rand()<0.12)?pal.path2:pal.path; fx.fillRect(xx,yy,1,1);} }
+    // bushes along the hill line
+    for(let xx=0;xx<lw;xx+=3){ if(rand()<0.35){ const bh=1+Math.floor(rand()*3); fx.fillStyle=rand()<0.5?pal.tree[1]:pal.tree[2]; fx.fillRect(xx,gy-bh,3,bh);} }
+    // trees
+    tree(fx,lw*0.07,gy-2,Math.round(lh*0.07),pal,rand); tree(fx,lw*0.16,gy-1,Math.round(lh*0.05),pal,rand); tree(fx,lw*0.69,gy-1,Math.round(lh*0.06),pal,rand);
+    tree(fx,lw*0.95,gy+2,Math.round(lh*(W<700?0.17:0.12)),pal,rand); tree(fx,lw*0.84,gy,Math.round(lh*0.09),pal,rand);
+    // tufts and flowers
+    for(let i=0;i<lw*0.9;i++){ const xx=Math.floor(rand()*lw), yy=gy+3+Math.floor(rand()*(lh-gy-10)); fx.fillStyle=pal.grass[2]; fx.fillRect(xx,yy,1,2); fx.fillRect(xx+1,yy+1,1,1);
+      if(xx>lw*0.7&&rand()<0.25){fx.fillStyle=pal.flower[Math.floor(rand()*3)]; fx.fillRect(xx,yy-1,1,1);} }
+    // laptop
+    const lx=Math.round(lw*(W<700?0.5:0.6)), ly=Math.round(lh*0.84), sw=Math.round(Math.min(40,lw*0.12)), sh=Math.round(sw*0.66);
+    fx.fillStyle='rgba(0,0,0,.18)'; fx.fillRect(lx-3,ly+5,sw+12,2);
+    fx.fillStyle=pal.lapD; fx.fillRect(lx,ly-sh,sw,sh); fx.fillStyle=pal.scr; fx.fillRect(lx+2,ly-sh+2,sw-4,sh-4);
+    fx.fillStyle=pal.lap; for(let i=0;i<5;i++) fx.fillRect(lx-2-i*0+i, ly+i, sw+4+i*0, 1);
+    fx.fillStyle=pal.lap; fx.fillRect(lx-2,ly,sw+6,5); fx.fillStyle=pal.lapK; for(let yy=ly+1;yy<ly+4;yy++) for(let xx=lx;xx<lx+sw+2;xx+=2) fx.fillRect(xx,yy,1,1);
+    const screen={x:lx+4,y:ly-sh+4,w:sw-8,h:sh-8};
+    // server rack beside the laptop
+    const rx=lx+sw+10, rh=Math.round(sh*1.4), rw=Math.max(8,Math.round(sw*0.32)); const rLeds=[];
+    fx.fillStyle='rgba(0,0,0,.18)'; fx.fillRect(rx-1,ly+5,rw+4,2);
+    fx.fillStyle=pal.rack; fx.fillRect(rx,ly+5-rh,rw,rh); fx.fillStyle=pal.rackL; for(let yy=ly+7-rh;yy<ly+4;yy+=3){ fx.fillRect(rx+1,yy,rw-2,1); rLeds.push([rx+rw-3,yy+1,rand()]); }
+    // bottom: pixels dissolve into the page
+    const D=Math.round(lh*0.08); fx.fillStyle=bg;
+    for(let yy=lh-D;yy<lh;yy++){ const p=(yy-(lh-D))/D; for(let xx=0;xx<lw;xx++) if(rand()<p*p*1.25) fx.fillRect(xx,yy,1,1); }
+    fx.fillRect(0,lh-2,lw,2);
+    const [fr,frx]=mk(lw,lh);
+    cv.width=Math.round(W*Math.min(2,window.devicePixelRatio||1)); cv.height=Math.round(H*Math.min(2,window.devicePixelRatio||1));
+    S={W,H,P,dpr:Math.min(2,window.devicePixelRatio||1),lw,lh,pal,sky,fg,fr,frx,clouds,stars,leds,rLeds,screen};
+    paint(performance.now());
+  }
+  function paint(now){
+    if(!S) return; const t=now/1000, {lw,lh,pal,frx}=S;
+    frx.drawImage(S.sky,0,0);
+    if(S.stars.length){ for(const s of S.stars){ const a=0.35+0.65*Math.abs(Math.sin(t*0.8+s[2]*20)); frx.globalAlpha=reduce?0.8:a; frx.fillStyle='#FFFFFF'; frx.fillRect(s[0],s[1],1,1);} frx.globalAlpha=1; }
+    for(const c of S.clouds){ const span=lw+c.w; const xx=Math.round(((c.x+(reduce?0:t*c.v))%span+span)%span-c.w); frx.drawImage(c.img,xx,c.y); }
+    frx.drawImage(S.fg,0,0);
+    for(const l of S.leds){ const on=reduce?l[2]>0.3:Math.sin(t*3+l[2]*12)>-0.2; frx.fillStyle=on?pal.led[l[2]>0.75?1:0]:pal.dcS; frx.fillRect(l[0],l[1],1,1); }
+    for(const l of S.rLeds){ const on=reduce?true:Math.sin(t*5+l[2]*9)>0; frx.fillStyle=on?pal.led[0]:pal.rackL; frx.fillRect(l[0],l[1],1,1); frx.fillStyle=(Math.sin(t*2.3+l[2]*7)>0.4)?pal.led[1]:pal.rackL; frx.fillRect(l[0]-2,l[1],1,1); }
+    const sc=S.screen; if(sc.w>4&&sc.h>4){ const n=Math.max(3,Math.floor(sc.w/3)); for(let i=0;i<n;i++){ const hgt=Math.max(1,Math.round(sc.h*(0.3+0.6*Math.abs(Math.sin(i*1.7+(reduce?0:t*0.6)))))); frx.fillStyle=pal.scrB[i%3]; frx.fillRect(sc.x+i*3,sc.y+sc.h-hgt,2,hgt);} }
+    ctx.imageSmoothingEnabled=false; ctx.clearRect(0,0,cv.width,cv.height); ctx.drawImage(S.fr,0,0,lw,lh,0,0,Math.round(lw*S.P*S.dpr),Math.round(lh*S.P*S.dpr));
+  }
+  let raf=0,last=0; const loop=(n)=>{ if(n-last>66){last=n; paint(n);} raf=requestAnimationFrame(loop); };
+  window.n3Field={recolor:()=>buildScene()};
+  buildScene(); if(!reduce) raf=requestAnimationFrame(loop);
+  let rt=0; new ResizeObserver(()=>{clearTimeout(rt); rt=setTimeout(buildScene,120);}).observe(cv);
+  document.addEventListener('visibilitychange',()=>{ if(reduce) return; if(document.hidden) cancelAnimationFrame(raf); else raf=requestAnimationFrame(loop); });
+
+  /* ---------- helpers ---------- */
+  const $=(id)=>document.getElementById(id);
+  const el=(tag,cls,text)=>{const e=document.createElement(tag); if(cls) e.className=cls; if(text!=null) e.textContent=String(text); return e;};
+  const safe=(u)=>(typeof u==='string'&&/^https:\/\//.test(u))?u:null;
+  const link=(text,url)=>{const u=safe(url); if(!u) return document.createTextNode(text||''); const a=el('a',null,text); a.href=u; a.target='_blank'; a.rel='noopener'; return a;};
+  const td=(content,cls)=>{const c=el('td',cls); if(content instanceof Node) c.append(content); else c.textContent=content==null?'':String(content); return c;};
+  const todayISO=()=>{const d=new Date(); return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0');};
+  const daysTo=(iso)=>{ if(!iso) return null; const a=new Date(todayISO()+'T00:00:00'), b=new Date(iso+'T00:00:00'); if(isNaN(b)) return null; return Math.round((b-a)/86400000); };
+  const md=(iso)=>{ if(!iso) return ''; const d=new Date(iso+'T00:00:00'); return isNaN(d)?iso:(d.getMonth()+1)+'/'+d.getDate(); };
+  const toast=(msg)=>{const t=$('toast'); t.textContent=msg; t.hidden=false; clearTimeout(toast.h); toast.h=setTimeout(()=>{t.hidden=true;},3200);};
+  const emptyRow=(tb,cols,msg)=>{tb.replaceChildren(); const tr=el('tr'); const c=el('td'); c.colSpan=cols; const d=el('div','empty'); const m=el('canvas','spr'); m.dataset.spr='cloud'; m.dataset.scale='4'; paintIcon(m,pxColors()); d.append(m, document.createTextNode(msg)); c.append(d); tr.append(c); tb.append(tr);};
+  const STAGES=['공고 예정','사전규격','입찰','평가','우선협상','계약'];
+  const stageIdx=(s)=>{ if(!s) return -1; if(s.includes('계약')) return 5; if(s.includes('우선협상')) return 4; if(s.includes('평가')) return 3; if(/입찰|재공고/.test(s)) return 2; if(s.includes('사전규격')) return 1; if(s.includes('공고 예정')) return 0; return -1; };
+
+  /* ---------- pixel sprites, page banners, footer ---------- */
+  const SP={
+    cloud:["...kkk....","..kwwwkk..",".kwwwwwwk.","kwwwwwwwwk","kwwwwwwbwk","kbbwwwbbbk",".kkkkkkkk."],
+    bolt:[".....kkk..","....kyyk..","...kyyk...","..kyyk....",".kyyyyykk.",".kkkyyyyk.","...kyyk...","..kyyk....","..kyk.....","..kk......"],
+    check:["...kkkk...",".kkswwskk.",".kwwwwwwk.",".kgwssswk.",".kwwwwwwk.",".kgwssswk.",".kwwwwwwk.",".kgwssswk.",".kwwwwwwk.",".kkkkkkkk."],
+    building:["....kk....","...kbbk...","..kbbbbk..",".kkkkkkkk.",".kswswswk.",".kswswswk.",".kswswswk.",".kssssssk.",".kswwswsk.","kkkkkkkkkk"],
+    news:["kkkkkkkkk.","kwwwwwwwk.","kwbbwsswkk","kwbbwwwwkk","kwbbwsswkk","kwwwwwwwkk","kwssssswkk","kwwwwwwwkk","kkkkkkkkkk",".kkkkkkkkk"],
+    calendar:["..k...k...","kkkkkkkkkk","krrrrrrrrk","kkkkkkkkkk","kwwwwwwwwk","kwkwkwkwwk","kwwwwwwwwk","kwkwkwbbwk","kwwwwwbbwk","kkkkkkkkkk"],
+    folder:["kkkk......","kyyyk.....","kkkkkkkkkk","kyyyyyyyyk","kyyyyyyyyk","kyywwwwyyk","kyyyyyyyyk","kkkkkkkkkk"],
+    book:["kkkkkkkkk.","kbbbbbbbkk","kbwwwwwbkk","kbbbbbbbkk","kbbbbbbbkk","kbbbbbbbkk","kbbbbbbbkk","kwwwwwwwwk","kkkkkkkkkk"],
+    server:["kkkkkkkkkk","kSSSSSgSSk","kssssssssk","kSSSSSoSSk","kssssssssk","kSSSSSgSSk","kssssssssk","kSSSSSgSSk","kkkkkkkkkk",".k......k."],
+    flag:["kk........","kbbbbbk...","kbbwbbbk..","kbbbbbbbk.","kbbbbbbk..","kbbbbbk...","kk........","kk........","kk........","kkkk......"],
+    board:["kkkkkkkkkk","kwwwwwwwwk","kwbbbwsswk","kwwwwwwrwk","kwwwwgwrwk","kwbwwgwrwk","kkkkkkkkkk","...k..k...","..k....k..",".k......k."],
+    mega:["..........kk","........kkbk","......kkbbbk","kkkkkkbbbbbk","kwwwkbbbbbbk","kwwwkbbbbbbk","kkkkkkbbbbbk","..kk..kkbbbk","..kk....kkbk","..kk......kk"],
+    clock:["..kkkkkk..",".kwwwwwwk.","kwwwkwwwwk","kwwwkwwwwk","kwwwkkkwwk","kwwwwwwwwk","kwwwwwwwwk",".kwwwwwwk.","..kkkkkk.."],
+    mascot:["....kkkk....","..kkwwwwkk..",".kwwwwwwwwk.","kwwkwwwwkwwk","kwwwwwwwwwwk","kwwrwkkwrwwk",".kwwwwwwwwk.","..kkkkkkkk.."]
+  };
+  const pxColors=()=>{const st=getComputedStyle(rootEl); const m={}; 'kwsSbBgGyorn'.split('').forEach(ch=>{m[ch]=st.getPropertyValue('--px-'+ch).trim();}); return m;};
+  function drawSprite(x,name,ox,oy,sc,cols){const rows=SP[name]; if(!rows) return; rows.forEach((row,j)=>{for(let i=0;i<row.length;i++){const ch=row[i]; if(ch==='.') continue; x.fillStyle=cols[ch]||'#000'; x.fillRect(ox+i*sc,oy+j*sc,sc,sc);}});}
+  function paintIcon(c,cols){const name=c.dataset.spr, sc=Number(c.dataset.scale||3), rows=SP[name]; if(!rows) return; const w=rows[0].length, h=rows.length; const d=Math.min(2,window.devicePixelRatio||1);
+    c.width=w*sc*d; c.height=h*sc*d; c.style.width=(w*sc)+'px'; c.style.height=(h*sc)+'px'; const x=c.getContext('2d'); x.imageSmoothingEnabled=false; x.clearRect(0,0,c.width,c.height); drawSprite(x,name,0,0,sc*d,cols);}
+  const STRIP={
+    today:{items:[],workers:true},
+    opps:{city:true,items:[['building',0.6],['flag',0.71],['server',0.82],['building',0.92]]},
+    news:{items:[['news',0.6],['mega',0.74],['news',0.88]]},
+    schedule:{city:true,items:[['calendar',0.62],['clock',0.76],['flag',0.89]]},
+    library:{items:[['folder',0.6],['news',0.73],['folder',0.86]]},
+    history:{items:[['book',0.62],['news',0.73],['book',0.87]]},
+    footer:{city:true,trees:true,items:[['cloud',0.68],['server',0.8],['server',0.86]]}
+  };
+  function paintStrip(c){
+    const r=c.getBoundingClientRect(); if(r.width<2) return; const W=r.width,H=r.height; const P=W>900?4:3; const lw=Math.ceil(W/P), lh=Math.ceil(H/P);
+    const pal=isNight()?PAL.night:PAL.day, cols=pxColors(), rand=rng(String(c.dataset.strip).split('').reduce((a,ch)=>a+ch.charCodeAt(0)*31,7));
+    const [lo,lx]=mk(lw,lh); const gy=Math.round(lh*0.66); const sk=pal.sky.slice(2);
+    { const g=lx.createLinearGradient(0,0,0,gy); sk.forEach((c,i)=>g.addColorStop(i/(sk.length-1),c)); lx.fillStyle=g; lx.fillRect(0,0,lw,gy+2); }
+    if(pal.night){ for(let i=0;i<lw*0.35;i++){lx.fillStyle='#FFFFFF'; lx.globalAlpha=0.4+rand()*0.6; lx.fillRect(Math.floor(rand()*lw),Math.floor(rand()*gy*0.8),1,1);} lx.globalAlpha=1; }
+    for(let i=0;i<Math.max(2,Math.round(lw/90));i++){const w=Math.round(18+rand()*22),h=Math.round(w*0.4); lx.drawImage(cloudSprite(rand,w,h,pal),Math.round(lw*(0.35+rand()*0.6)-w/2),Math.round(2+rand()*Math.max(1,gy*0.45-h)));}
+    const conf=STRIP[c.dataset.strip]||STRIP.today;
+    if(conf.city){ let x=Math.round(lw*0.45); while(x<lw){const bw=4+Math.floor(rand()*6), bh=6+Math.floor(rand()*Math.max(4,lh*0.25)); lx.fillStyle=pal.far; lx.fillRect(x,gy-bh,bw,bh); lx.fillStyle=pal.farWin; for(let wy=gy-bh+2;wy<gy-1;wy+=3) for(let wx=x+1;wx<x+bw-1;wx+=2) if(rand()<0.5) lx.fillRect(wx,wy,1,1); x+=bw+1;} }
+    for(let xx=0;xx<lw;xx++){const top=gy+Math.round(Math.sin(xx*0.06)*1.2); for(let yy=top;yy<lh;yy++){const v=rand(); lx.fillStyle=v<0.08?pal.grass[3]:v<0.16?pal.grass[2]:pal.grass[0]; lx.fillRect(xx,yy,1,1);} if(rand()<0.25){lx.fillStyle=pal.grass[2]; lx.fillRect(xx,top-1,1,1);} }
+    if(conf.trees){ tree(lx,lw*0.08,gy,Math.round(lh*0.18),pal,rand); tree(lx,lw*0.94,gy+2,Math.round(lh*0.26),pal,rand); }
+    const narrow=W<600; const sc=(!narrow&&lh>34)?2:1; const items=(narrow&&conf.items.length)?[[conf.items[0][0],0.76],[conf.items[conf.items.length-1][0],0.91]]:conf.items;
+    for(const [nm,fx] of items){ const rows=SP[nm]; const w=rows[0].length*sc, h=rows.length*sc; const ox=Math.round(lw*fx-w/2), oy=gy-h+Math.round(sc*1.5);
+      lx.fillStyle='rgba(0,0,0,.18)'; lx.fillRect(ox+1,gy+sc,w,sc); drawSprite(lx,nm,ox,oy,sc,cols); }
+    const d=Math.min(2,window.devicePixelRatio||1); c.width=Math.round(W*d); c.height=Math.round(H*d); const x=c.getContext('2d'); x.imageSmoothingEnabled=false; x.drawImage(lo,0,0,lw,lh,0,0,Math.round(lw*P*d),Math.round(lh*P*d));
+    if(conf.workers){ const [fr,frx]=mk(lw,lh); OFFICE.set(c,{lo,fr,frx,x,lw,lh,gy,P,d,narrow,night:pal.night}); paintOffice(c,performance.now()); }
+  }
+  /* animated office workers for the TODAY banner */
+  const OFFICE=new Map();
+  function briefing(g,ox,b,t,night,narrow){
+    const f=(c,x,y,w,h)=>{g.fillStyle=c; g.fillRect(x,y,w,h);};
+    const line=(x0,y0,x1,y1,c)=>{g.fillStyle=c; const dx=Math.abs(x1-x0),dy=-Math.abs(y1-y0),sx=x0<x1?1:-1,sy=y0<y1?1:-1; let err=dx+dy,x=x0,y=y0; for(let i=0;i<64;i++){g.fillRect(x,y,1,1); if(x===x1&&y===y1) break; const e2=2*err; if(e2>=dy){err+=dy;x+=sx;} if(e2<=dx){err+=dx;y+=sy;}}};
+    // whiteboard on an easel
+    const bx=ox, top=b-26, surf=night?'#DCE4F0':'#F6F8FB';
+    f('#3A4352',bx,top,22,16); f(surf,bx+1,top+1,20,14);
+    f('#3A4352',bx+3,top+16,1,b-(top+16)); f('#3A4352',bx+18,top+16,1,b-(top+16)); f('#3A4352',bx+2,top+16,18,1);
+    f('#2350F5',bx+3,top+3,7,1); f('#9AA6B8',bx+11,top+3,5,1);
+    const cols=['#3B8BF0','#2FD27A','#F2B33D','#F06A6A'], hs=[]; const cur=Math.floor(t/1.6)%4;
+    for(let i=0;i<4;i++){ const h=Math.max(2,Math.round(4+3*Math.sin(t*0.8+i*1.4)+i)); hs.push(h); f(cols[i],bx+4+i*4,top+14-h,2,h); }
+    f('#C9D2E0',bx+3,top+14,16,1);
+    // presenter facing the board
+    const px=bx+25, bob=(Math.floor(t*2)%5===0)?-1:0, hy=b-22+bob;
+    f('#2C3545',px+1,b-9,2,8); f('#2C3545',px+3,b-9,2,8); f('#1A1F27',px,b-1,3,1); f('#1A1F27',px+3,b-1,3,1);
+    f('#3B6FD8',px+1,b-17+bob,4,8); f('#2C55AA',px+4,b-17+bob,1,8); f('#D94848',px+1,b-16+bob,1,4);
+    f('#F2C9A0',px,hy,5,5); f('#2B1D14',px,hy,5,1); f('#2B1D14',px+4,hy,1,3); f('#1A1F27',px+1,hy+2,1,1);
+    f('#2C55AA',px+4,b-16+bob,1,4); f('#F2C9A0',px+4,b-12+bob,1,1);
+    // pointing arm + pointer to the highlighted bar
+    const hx=px-2, hyand=b-16+bob; f('#3B6FD8',px-1,b-16+bob,2,1); f('#F2C9A0',hx,hyand,1,1);
+    const tx=bx+4+cur*4+1, ty=top+14-hs[cur]-1; line(hx-1,hyand,tx,ty,'#7A5230'); f('#E0453A',tx,ty,1,1);
+    g.globalAlpha=0.35+0.25*Math.sin(t*6); f('#FFE27A',bx+4+cur*4-1,top+14-hs[cur]-1,4,hs[cur]+1); g.globalAlpha=1;
+    // speech bubble with blinking dots
+    const bub=Math.floor(t*1.2)%3!==2; if(bub){ f('#FFFFFF',px+6,b-27,8,5); f('#FFFFFF',px+6,b-22,2,1); f('#3A4352',px+6,b-27,8,1); const d=Math.floor(t*3)%4; for(let i=0;i<3;i++) if(i<d) f('#3A4352',px+8+i*2,b-25,1,1); }
+    if(narrow) return;
+    // meeting table with two listeners facing the board
+    const ax=px+16; f('#A8774A',ax,b-9,18,2); f('#7A5432',ax+1,b-7,1,7); f('#7A5432',ax+16,b-7,1,7);
+    f('#F4F1E8',ax+2,b-10,4,1); f('#FFFFFF',ax+10,b-10,3,1);
+    const people=[{x:ax+5,shirt:'#2FA36B',shirtD:'#23804F',hair:'#6B4A2B',ph:0.0},{x:ax+13,shirt:'#8A5CD6',shirtD:'#6C45AE',hair:'#1E1E28',ph:1.3}];
+    for(const p of people){ const nod=Math.sin(t*2.2+p.ph)>0.6?1:0, y0=b-19+nod;
+      f('#3A4352',p.x+5,b-15,2,15); f('#3A4352',p.x+1,b-7,6,1);
+      f('#2C3545',p.x-1,b-8,4,2); f('#2C3545',p.x-1,b-6,2,5);
+      f(p.shirt,p.x+1,b-14+nod,4,7); f(p.shirtD,p.x+4,b-14+nod,1,7);
+      f('#F2C9A0',p.x,y0,5,5); f(p.hair,p.x,y0,5,1); f(p.hair,p.x+4,y0,1,3); f('#1A1F27',p.x+1,y0+2,1,1);
+      f(p.shirt,p.x-1,b-11,2,1); }
+    const wr=Math.floor(t*5)%3; f('#F2C9A0',ax+3+wr,b-11,1,1); f('#3A4352',ax+3+wr,b-12,1,1);
+  }
+  function paintOffice(c,now){ const o=OFFICE.get(c); if(!o) return; const t=(reduce?2:now/1000);
+    o.frx.clearRect(0,0,o.lw,o.lh); o.frx.drawImage(o.lo,0,0);
+    { const w=o.narrow?40:72; const ox=Math.round(Math.min(o.lw*(o.narrow?0.6:0.5), o.lw-w-4)); o.frx.fillStyle='rgba(0,0,0,.16)'; o.frx.fillRect(ox,o.gy+1,w-6,1); briefing(o.frx,ox,o.gy+1,t,o.night,o.narrow); }
+    o.x.imageSmoothingEnabled=false; o.x.drawImage(o.fr,0,0,o.lw,o.lh,0,0,Math.round(o.lw*o.P*o.d),Math.round(o.lh*o.P*o.d)); }
+  { let last=0; const tick=(n)=>{ if(n-last>140){ last=n; OFFICE.forEach((o,c)=>{ if(c.offsetParent!==null) paintOffice(c,n); }); } requestAnimationFrame(tick); }; if(!reduce) requestAnimationFrame(tick); }
+  function drawAllPixels(){ const cols=pxColors(); document.querySelectorAll('canvas.spr').forEach(c=>paintIcon(c,cols)); document.querySelectorAll('canvas[data-strip]').forEach(c=>{ if(c.offsetParent!==null) paintStrip(c); }); }
+  window.n3Pix=drawAllPixels;
+  { const base=window.n3Field.recolor; window.n3Field.recolor=()=>{base(); drawAllPixels();}; }
+  let prt=0; new ResizeObserver(()=>{clearTimeout(prt); prt=setTimeout(()=>document.querySelectorAll('canvas[data-strip]').forEach(c=>{if(c.offsetParent!==null) paintStrip(c);}),150);}).observe(document.querySelector('.wrap'));
+  const blocks=(id,n,total,cap)=>{ const cp=document.getElementById(id.replace('b-','c-')); if(cp) cp.textContent=cap||'';const b=document.getElementById(id); if(!b) return; const T=Math.max(1,Math.min(30,total)); const on=Math.min(n,T); b.replaceChildren(...Array.from({length:T},(_,i)=>el('i',i<on?'on':''))); b.setAttribute('aria-label',n+' / '+total);};
+
+  /* ---------- state ---------- */
+  const D={meta:null,opportunities:[],news:[],schedule:[],issues:[],keywords:[],todos:[]};
+  const loaded={}; let dbReady=null;
+  const ui={page:'today',fit:'',q:'',area:'',soon:false};
+
+  /* ---------- tabs ---------- */
+  const PAGES=['today','opps','news','schedule','library','history'];
+  const show=(p)=>{ if(!PAGES.includes(p)) p='today'; ui.page=p;
+    document.querySelectorAll('.tab').forEach(b=>b.setAttribute('aria-selected',String(b.dataset.page===p)));
+    document.querySelectorAll('[data-pg]').forEach(s=>{s.hidden=s.dataset.pg!==p;});
+    if(window.n3Pix) requestAnimationFrame(()=>document.querySelectorAll('[data-pg="'+p+'"] canvas[data-strip]').forEach(paintStrip)); };
+  document.querySelectorAll('.tab').forEach(b=>b.addEventListener('click',()=>show(b.dataset.page)));
+  show(location.hash.slice(1)||'today');
+  // always open at the top: drop any #section from the address and reset scroll
+  try{ if('scrollRestoration' in history) history.scrollRestoration='manual'; if(location.hash) history.replaceState(null,'',location.pathname+location.search); }catch(e){}
+  const toTop=()=>window.scrollTo(0,0); toTop(); requestAnimationFrame(toTop); window.addEventListener('load',toTop); window.addEventListener('pageshow',toTop); setTimeout(toTop,300); setTimeout(toTop,900);
+  $('hot-more').addEventListener('click',()=>{show('today'); document.getElementById('t-today').scrollIntoView({block:'start',behavior:'smooth'});});
+  $('go-opps').addEventListener('click',()=>{show('opps'); document.getElementById('t-opps').scrollIntoView({block:'start',behavior:'smooth'});});
+  const setFit=(f)=>{ui.fit=f; document.querySelectorAll('[data-fit]').forEach(x=>x.setAttribute('aria-pressed',String(x.dataset.fit===f))); renderOpps();};
+  const setArea=(a)=>{ui.area=a; document.querySelectorAll('[data-area]').forEach(x=>x.setAttribute('aria-pressed',String(x.dataset.area===a))); renderNews();};
+  const setSoon=(v)=>{ui.soon=v; document.querySelectorAll('[data-soon]').forEach(x=>x.setAttribute('aria-pressed',String((x.dataset.soon==='1')===v))); renderSchedule();};
+  document.querySelectorAll('[data-soon]').forEach(b=>b.addEventListener('click',()=>setSoon(b.dataset.soon==='1')));
+  const jump=(page,targetId)=>{ show(page); requestAnimationFrame(()=>{ const t=document.getElementById(targetId)||document.getElementById(page); if(t) t.scrollIntoView({block:'start',behavior:window.matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth'}); }); };
+  const GO={fitA:()=>{ui.q=''; $('q-opps').value=''; setFit('A'); jump('opps','card-opps');}, fitB:()=>{ui.q=''; $('q-opps').value=''; setFit('B'); jump('opps','card-opps');}, soon:()=>{setSoon(true); jump('schedule','card-schedule');}, news:()=>{setArea(''); jump('news','card-news');}};
+  document.querySelectorAll('.kpi[data-go]').forEach(k=>{ const go=()=>GO[k.dataset.go]&&GO[k.dataset.go](); k.addEventListener('click',go); k.addEventListener('keydown',e=>{ if(e.key==='Enter'||e.key===' '){ e.preventDefault(); go(); } }); });
+  document.querySelectorAll('[data-fit]').forEach(b=>b.addEventListener('click',()=>{ui.fit=b.dataset.fit; document.querySelectorAll('[data-fit]').forEach(x=>x.setAttribute('aria-pressed',String(x===b))); renderOpps();}));
+  document.querySelectorAll('[data-area]').forEach(b=>b.addEventListener('click',()=>{ui.area=b.dataset.area; document.querySelectorAll('[data-area]').forEach(x=>x.setAttribute('aria-pressed',String(x===b))); renderNews();}));
+  $('q-opps').addEventListener('input',(e)=>{ui.q=e.target.value.trim().toLowerCase(); renderOpps();});
+
+  /* ---------- render ---------- */
+  const latest=()=>[...D.issues].sort((a,b)=>Number(b.no)-Number(a.no))[0]||null;
+  function renderHero(){
+    const L=latest();
+    let note='';
+    if(L){ $('k-news').textContent=L.articles!=null?String(L.articles):'-';
+      const u=safe(L.url); const a=$('h-link'); if(u){a.href=u; a.hidden=false;} else a.hidden=true; }
+    else if(dbReady===false){ note='데이터를 불러오지 못했습니다. 잠시 후 새로고침해 주세요.'; }
+    else if(loaded.issues){ note='첫 소식이 올라오면 여기에 갱신 시각이 나옵니다.'; }
+    const m=D.meta; const ml=document.querySelector('.meta-line'); $('h-updated').textContent=m&&m.updatedAt?('데이터 갱신 '+String(m.updatedAt).replace('T',' ').slice(0,16)):note;
+    if(ml) ml.hidden=!($('h-updated').textContent||!$('h-link').hidden);
+    if(loaded.opportunities){ const na=D.opportunities.filter(r=>r.fit==='A').length, nb=D.opportunities.filter(r=>r.fit==='B').length, nt=D.opportunities.length; $('k-a').textContent=String(na); $('k-b').textContent=String(nb); blocks('b-a',na,nt,'중소기업 단독 주관 가능\n추적 사업 총 '+nt+'건 중 '+na+'건'); blocks('b-b',nb,nt,'중소기업 컨소시엄·하도급 참여 가능\n추적 사업 총 '+nt+'건 중 '+nb+'건'); }
+    if(loaded.schedule){ const ns=D.schedule.filter(r=>{const n=daysTo(r.date); return n!=null&&n>=0&&n<=14;}).length; $('k-soon').textContent=String(ns); blocks('b-soon',ns,D.schedule.length,'오늘부터 14일 안의 일정\n등록 일정 총 '+D.schedule.length+'건 중 '+ns+'건'); }
+    if(L&&L.articles!=null){ const prev=[...D.issues].sort((a,b)=>Number(b.no)-Number(a.no))[1]; const cn=$('c-news'); if(cn) cn.textContent=prev&&prev.articles!=null?('이번 호 '+L.articles+'건\n직전 호 '+prev.articles+'건 대비 '+(Number(L.articles)-Number(prev.articles)>=0?'+':'')+(Number(L.articles)-Number(prev.articles))+'건'):''; }
+    $('f-upd').textContent=(m&&m.updatedAt?('데이터 갱신 '+String(m.updatedAt).replace('T',' ').slice(0,16)+' · '):'')+'국내 클라우드 시장 뉴스 · 입찰 · 사업 기회';
+  }
+  const AREA_C={민간:'#5CF29A',공공:'#7DB8FF',금융:'#FFC24B',입찰:'#FF8A8A'};
+  function renderChips(){
+    const box=$('hot'), list=$('hot-list'); const L=latest();
+    const rows=D.keywords.slice(0,3);
+    if(!rows.length){ box.hidden=true; return; }
+    $('hot-date').textContent=L&&L.date?(md(L.date)+' 기준'):'';
+    list.replaceChildren(...rows.map(r=>{const li=el('li'); const ar=el('span','ar',r.area||''); ar.style.background=AREA_C[r.area]||'#fff'; li.append(ar,el('span','kw',r.keyword),el('span','co',r.core)); return li;}));
+    const was=box.hidden; box.hidden=false; if(was&&isNight()) requestAnimationFrame(()=>buildScene());
+  }
+  function renderToday(){
+    const tk=$('tb-keywords');
+    if(!D.keywords.length) emptyRow(tk,4,loaded.keywords?'오늘의 키워드가 아직 없습니다.':'불러오는 중'); else tk.replaceChildren(...D.keywords.map(r=>{const tr=el('tr'); tr.append(td(r.area,'nw'),td(r.keyword,'strong'),td(r.core,'wide'),td(r.point,'wide')); return tr;}));
+    const tt=$('tb-todos');
+    const up=[...D.schedule].map(r=>({r,n:daysTo(r.date)})).filter(o=>o.n!=null&&o.n>=0&&o.n<=14).sort((a,b)=>a.n-b.n);
+    if(!up.length) emptyRow(tt,4,loaded.schedule?'14일 안의 일정이 없습니다.':'불러오는 중'); else tt.replaceChildren(...up.map(({r,n})=>{const tr=el('tr'); tr.append(td(el('span','dday'+(n===0?' today':(n<=7?' soon':'')),n===0?'D-DAY':'D-'+n),'nw'),td(r.label,'nw'),td(r.item),td(r.check,'mid hide-sm')); return tr;}));
+  }
+  const fitOrder={A:0,B:1,C:2};
+  const oppRows=()=>D.opportunities.filter(r=>(!ui.fit||r.fit===ui.fit)&&(!ui.q||((r.name||'')+' '+(r.agency||'')).toLowerCase().includes(ui.q))).sort((a,b)=>(fitOrder[a.fit]-fitOrder[b.fit])||((b.scale_eok||0)-(a.scale_eok||0)));
+  function stepsNode(stage,status){const wrap=el('div'); wrap.append(el('div',null,status||'')); const i=stageIdx(stage); const s=el('div','stage'); if(i>=0){const st=el('div','steps'); st.setAttribute('aria-label','단계: '+stage); STAGES.forEach((_,k)=>{st.append(el('i',k<i?'on':(k===i?'now':'')));}); wrap.append(st); s.textContent=stage; } else s.textContent=stage||''; wrap.append(s); return wrap;}
+  function renderOpps(){
+    const tb=$('tb-opps'); const rows=oppRows();
+    if(!rows.length) emptyRow(tb,7,loaded.opportunities?(D.opportunities.length?'조건에 맞는 사업이 없습니다.':'아직 등록된 사업 기회가 없습니다.'):'불러오는 중');
+    else tb.replaceChildren(...rows.map(r=>{const tr=el('tr'); tr.append(td(el('span','fit '+r.fit,r.fit)),td(link(r.name,r.url),'strong'),td(r.agency,'hide-sm'),td(r.scale),td(stepsNode(r.stage,r.status)),td(r.how,'hide-sm')); return tr;}));
+    const bars=$('bars'); const br=D.opportunities.filter(r=>typeof r.scale_eok==='number'&&(!ui.fit||r.fit===ui.fit)).sort((a,b)=>b.scale_eok-a.scale_eok);
+    if(!br.length){bars.replaceChildren(el('div','empty','규모가 공개된 사업이 없습니다.')); return;}
+    const max=Math.max(...br.map(r=>r.scale_eok));
+    bars.replaceChildren(...br.map(r=>{const row=el('div','bar-row'); const nm=el('div','nm'); nm.append(el('span','fit '+r.fit,r.fit)); nm.append(document.createTextNode(' '+r.name)); nm.title=r.name; const tr=el('div','bar-track'); const f=el('div','bar-fill '+r.fit); f.style.width=Math.max(1.5,r.scale_eok/max*82)+'%'; tr.append(f,el('span','bar-val',r.scale_eok.toLocaleString('ko-KR')+'억')); row.append(nm,tr); return row;}));
+  }
+  function renderNews(){
+    const tb=$('tb-news'); const rows=D.news.filter(r=>!ui.area||r.area===ui.area).sort((a,b)=>String(b.date).localeCompare(String(a.date)));
+    if(!rows.length) emptyRow(tb,6,loaded.news?'해당 분야 기사가 없습니다.':'불러오는 중');
+    else tb.replaceChildren(...rows.map(r=>{const tr=el('tr'); tr.append(td(el('span','px',md(r.date)),'nw'),td(r.area,'nw'),td(el('span','chg '+r.change,r.change),'nw'),td(link(r.title,r.url),'strong'),td(r.point),td(r.source,'hide-sm')); return tr;}));
+  }
+  function renderSchedule(){
+    const tb=$('tb-schedule'); const rows=[...D.schedule].filter(r=>{ if(!ui.soon) return true; const n=daysTo(r.date); return n!=null&&n>=0&&n<=14; }).sort((a,b)=>String(a.date).localeCompare(String(b.date)));
+    if(!rows.length){emptyRow(tb,5,loaded.schedule?'등록된 일정이 없습니다.':'불러오는 중'); return;}
+    tb.replaceChildren(...rows.map(r=>{const n=daysTo(r.date); const tr=el('tr',n!=null&&n<0?'past':null); const dd=el('span','dday'+(n===0?' today':(n!=null&&n>0&&n<=7?' soon':'')), n==null?'-':(n===0?'D-DAY':(n>0?'D-'+n:'지남'))); tr.append(td(dd,'nw'),td(r.label,'nw'),td(r.area,'nw'),td(r.item,'strong'),td(r.check)); return tr;}));
+  }
+  function renderHistory(){
+    const tb=$('tb-history'); const rows=[...D.issues].sort((a,b)=>Number(b.no)-Number(a.no));
+    if(!rows.length){emptyRow(tb,5,loaded.issues?'발행 이력이 없습니다.':'불러오는 중'); return;}
+    tb.replaceChildren(...rows.map(r=>{const tr=el('tr'); const a=link('#'+String(r.no).padStart(3,'0'),r.url); if(a.classList) a.classList.add('px'); tr.append(td(a,'nw'),td(el('span','px',r.date),'nw'),td(r.oneline),td(el('span','px',r.articles==null?'-':r.articles),'nw'),td(el('span','px',r.bids==null?'-':r.bids),'nw hide-sm')); return tr;}));
+  }
+  function renderAll(){renderHero(); renderChips(); renderToday(); renderOpps(); renderNews(); renderSchedule(); renderHistory();}
+  renderAll();
+  drawAllPixels();
+
+  /* ---------- data ---------- */
+  (async()=>{
+    try{
+      const r=await fetch('data/board.json?v='+Date.now(),{cache:'no-store'}); if(!r.ok) throw new Error('http '+r.status);
+      const j=await r.json(); dbReady=true;
+      ['opportunities','news','schedule','issues','keywords','todos'].forEach(k=>{ D[k]=Array.isArray(j[k])?j[k]:[]; loaded[k]=true; });
+      D.meta=j.meta||null; renderAll();
+    }catch(e){ dbReady=false; ['opportunities','news','schedule','issues','keywords','todos'].forEach(k=>loaded[k]=true); renderAll(); }
+  })();
+
+  /* ---------- Word export ---------- */
+  let docxP=null;
+  const loadDocx=()=>docxP||(docxP=new Promise((res,rej)=>{ if(window.docx) return res(window.docx); const s=document.createElement('script'); s.src='vendor/docx.umd.js'; s.onload=()=>window.docx?res(window.docx):rej(new Error('docx')); s.onerror=()=>{docxP=null; rej(new Error('docx'));}; document.head.append(s); }));
+  const getDl=()=>Promise.resolve({save:async({filename,data})=>{ const u=URL.createObjectURL(data instanceof Blob?data:new Blob([data])); const a=document.createElement('a'); a.href=u; a.download=filename; document.body.append(a); a.click(); a.remove(); setTimeout(()=>URL.revokeObjectURL(u),4000); return {status:'saved'}; }});
+
+  function buildDoc(kind,X){
+    const FONT='나눔고딕', NAVY='1F3A8A';
+    const run=(text,o={})=>new X.TextRun({text:String(text==null?'':text),font:FONT,size:o.size||19,bold:o.bold,color:o.color});
+    const p=(text,o={})=>new X.Paragraph({children:Array.isArray(text)?text:[run(text,o)],spacing:{after:o.after??80,before:o.before||0},heading:o.heading});
+    const h=(text)=>new X.Paragraph({spacing:{before:280,after:120},border:{bottom:{style:X.BorderStyle.SINGLE,size:8,color:NAVY,space:4}},children:[run(text,{size:26,bold:true,color:NAVY})]});
+    const bd={style:X.BorderStyle.SINGLE,size:4,color:'C9D2E0'}; const borders={top:bd,bottom:bd,left:bd,right:bd};
+    const cell=(content,w,o={})=>new X.TableCell({width:{size:w,type:X.WidthType.DXA},borders,margins:{top:60,bottom:60,left:90,right:90},shading:o.fill?{type:X.ShadingType.CLEAR,fill:o.fill,color:'auto'}:undefined,children:[content instanceof X.Paragraph?content:p(content,{bold:o.bold,color:o.color,after:0})]});
+    const linkP=(text,url)=>{const u=safe(url); return u?new X.Paragraph({spacing:{after:0},children:[new X.ExternalHyperlink({link:u,children:[new X.TextRun({text:String(text||''),font:FONT,size:19,color:'2350F5',underline:{}})]})]}):p(text,{after:0});};
+    const table=(widths,head,rows)=>new X.Table({width:{size:widths.reduce((a,b)=>a+b,0),type:X.WidthType.DXA},columnWidths:widths,rows:[new X.TableRow({tableHeader:true,children:head.map((t,i)=>cell(t,widths[i],{fill:NAVY,color:'FFFFFF',bold:true}))}),...rows.map((r,ri)=>new X.TableRow({cantSplit:true,children:r.map((c,i)=>cell(c,widths[i],{fill:ri%2?'F5F7FB':undefined}))}))]});
+    const L=latest(); const W=15250;
+    const fitLabel={A:'A 주관',B:'B 컨소시엄',C:'C 참고'};
+    const secs={
+      head:()=>[p([run('클라우드 뉴스레터',{size:18,color:'5A6A80'})],{after:40}),
+        p([run({full:'클라우드 마켓 종합 현황',opps:'클라우드 사업 기회 현황',brief:'오늘의 브리핑 요약',news:'주요 뉴스 모음',schedule:'향후 주요 일정'}[kind],{size:40,bold:true,color:NAVY})],{after:60}),
+        p([run('기준 '+(L?('브리핑 #'+String(L.no).padStart(3,'0')+' ('+L.date+')'):'최신 데이터')+' · 내려받은 날 '+todayISO(),{size:18,color:'5A6A80'})],{after:200})],
+      oneline:()=>L?[h('오늘의 한 줄'),p(L.oneline||'')]:[],
+      keywords:()=>D.keywords.length?[h('핫이슈 키워드'),table([1500,3200,5600,4950],['분야','키워드','핵심','시사점'],D.keywords.map(r=>[r.area,r.keyword,r.core,r.point]))]:[],
+      opps:()=>{const rows=[...D.opportunities].sort((a,b)=>(fitOrder[a.fit]-fitOrder[b.fit])||((b.scale_eok||0)-(a.scale_eok||0))); if(!rows.length) return [];
+        const a=rows.filter(r=>r.fit==='A').length,b=rows.filter(r=>r.fit==='B').length,c=rows.filter(r=>r.fit==='C').length;
+        return [h('사업 기회'),p('추적 '+rows.length+'건 · A 주관 '+a+'건 · B 컨소시엄·하도급 '+b+'건 · C 참고 '+c+'건'),
+          table([1300,3800,2500,2250,2900,2500],['적합도','사업','발주·수요기관','규모','현황','참여 방식'],rows.map(r=>[fitLabel[r.fit]||r.fit,linkP(r.name,r.url),r.agency,r.scale,(r.stage?r.stage+' · ':'')+(r.status||''),r.how]))];},
+      news:()=>{const rows=[...D.news].sort((a,b)=>String(b.date).localeCompare(String(a.date))); return rows.length?[h('주요 뉴스'),table([1000,1000,1100,5200,4450,2500],['일자','분야','변동','기사','시사점','매체'],rows.map(r=>[md(r.date),r.area,r.change,linkP(r.title,r.url),r.point,r.source]))]:[];},
+      schedule:()=>{const rows=[...D.schedule].sort((a,b)=>String(a.date).localeCompare(String(b.date))); return rows.length?[h('향후 주요 일정'),table([1900,1100,6250,6000],['시점','분야','일정','체크 포인트'],rows.map(r=>[r.label,r.area,r.item,r.check]))]:[];},
+    };
+    const order={full:['head','oneline','keywords','opps','news','schedule'],opps:['head','opps'],brief:['head','oneline','keywords','schedule'],news:['head','news'],schedule:['head','schedule']}[kind];
+    const children=order.flatMap(k=>secs[k]());
+    children.push(p([run('※ 적합도(중소기업 기준)와 시사점은 공개 기사·공고를 바탕으로 정리한 참고 의견이며, 예정 일정은 보도 기준으로 바뀔 수 있다.',{size:16,color:'5A6A80'})],{before:200}));
+    return new X.Document({styles:{default:{document:{run:{font:FONT,size:19}}}},sections:[{properties:{page:{size:{width:11906,height:16838,orientation:X.PageOrientation.LANDSCAPE},margin:{top:794,bottom:794,left:794,right:794}}},
+      footers:{default:new X.Footer({children:[new X.Paragraph({alignment:X.AlignmentType.CENTER,children:[new X.TextRun({children:[X.PageNumber.CURRENT,' / ',X.PageNumber.TOTAL_PAGES],font:FONT,size:15,color:'5A6A80'})]})]})},
+      children}]});
+  }
+  const NAMES={full:'클라우드뉴스레터_종합현황',opps:'클라우드_사업기회',brief:'브리핑_요약',news:'주요뉴스',schedule:'주요일정'};
+  async function exportDoc(kind,btn){
+    if(!D.issues.length&&!D.opportunities.length){toast('아직 내려받을 데이터가 없습니다.'); return;}
+    const dl=await getDl(); if(!dl){toast('이 화면에서는 파일 저장을 쓸 수 없습니다.'); return;}
+    btn.disabled=true; const old=btn.lastChild.textContent; btn.lastChild.textContent='만드는 중…';
+    try{
+      const X=await loadDocx(); const blob=await X.Packer.toBlob(buildDoc(kind,X));
+      const L=latest(); const tag=L?('_'+String(L.no).padStart(3,'0')):''; const fn=NAMES[kind]+tag+'_'+todayISO().replace(/-/g,'')+'.docx';
+      await dl.save({filename:fn,data:blob}); toast('저장했습니다: '+fn);
+    }catch(e){ const c=e&&e.code; if(c==='declined'){} else if(c==='rate_limited') toast('저장 창이 이미 열려 있습니다. 잠시 후 다시 눌러 주세요.'); else if(e&&e.message==='docx') toast('Word 파일 도구를 불러오지 못했습니다. 잠시 후 다시 시도해 주세요.'); else toast('파일을 만들지 못했습니다. 다시 시도해 주세요.'); }
+    finally{ btn.disabled=false; btn.lastChild.textContent=old; }
+  }
+  document.querySelectorAll('[data-doc]').forEach(b=>b.addEventListener('click',()=>exportDoc(b.dataset.doc,b)));
+  getDl().then(dl=>{ if(!dl) document.querySelectorAll('[data-doc]').forEach(b=>{b.title='이 화면에서는 파일 저장을 쓸 수 없습니다.';}); });
+})();
+</script>
+
+</body>
+</html>
