@@ -75,8 +75,8 @@ h1{font-size:clamp(28px,4vw,44px);line-height:1.18;font-weight:800;letter-spacin
 .hot-list .kw{font-weight:800;font-size:14px;line-height:1.35}
 .hot-list .co{font-size:12px;color:rgba(255,255,255,.78);line-height:1.45;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
 .hot-more{align-self:flex-end;border:0;background:transparent;color:#fff;font-size:12px;font-weight:700;cursor:pointer;padding:2px 0;text-decoration:underline;text-underline-offset:3px}
-@media (prefers-reduced-motion:no-preference){.hot{animation:bob 6s ease-in-out infinite}}
-@keyframes bob{50%{transform:translateY(-3px)}}
+.hot-h i{width:8px;height:8px;flex:none;background:#FF5A5A;box-shadow:0 0 0 2px rgba(255,90,90,.28)}
+@media (prefers-reduced-motion:no-preference){.hot-h i{animation:hotblink 1.6s steps(1) infinite}}@keyframes hotblink{50%{opacity:.25}}
 @media (max-width:52rem){.hero{overflow:visible;background:transparent;min-height:0}.hero canvas{bottom:auto;height:440px;border-radius:var(--r)}.hero-in{min-height:440px;box-sizing:border-box}.hot{position:relative;right:auto;top:auto;width:auto;margin:20px 3px 3px;animation:none;background:var(--surface);color:var(--ink);border:0;backdrop-filter:none;box-shadow:3px 0 0 0 var(--frame),-3px 0 0 0 var(--frame),0 3px 0 0 var(--frame),0 -3px 0 0 var(--frame),6px 6px 0 0 var(--pshadow)}.hot-h b{color:var(--amber)}.hot-h span,.hot-list .co{color:var(--muted)}.hot-list li{border-top-color:var(--line)}.hot-more{color:var(--ink)}}
 .kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,12rem),1fr));gap:12px}
 .kpi{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:14px 16px;display:flex;flex-direction:column;gap:2px;min-width:0}
@@ -257,7 +257,7 @@ tbody tr:hover td{background:var(--band)}
       <div class="meta-line"><span id="h-updated"></span><a id="h-link" href="#" hidden target="_blank" rel="noopener">브리핑 원문 열기</a></div>
     </div>
     <aside class="hot" id="hot" aria-label="핫 토픽" hidden>
-      <div class="hot-h"><b>HOT TOPIC</b><span id="hot-date"></span></div>
+      <div class="hot-h"><i aria-hidden="true"></i><b>HOT TOPIC</b><span id="hot-date"></span></div>
       <ol class="hot-list" id="hot-list"></ol>
       <button class="hot-more" type="button" id="hot-more">핫이슈 자세히 보기 →</button>
     </aside>
