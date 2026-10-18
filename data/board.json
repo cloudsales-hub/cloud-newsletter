@@ -11,8 +11,7 @@
    "day": "금",
    "articles": 11,
    "bids": 0,
-   "oneline": "50개 시스템 CSP 회신 마감, 은행권 내년 보안 예산 확대 시작 — 공공은 선택 결과, 금융은 예산 의결 전 제안",
-   "url": "https://claude.ai/code/artifact/c6e0fc66-3e3e-4694-a9f0-8802d2629d7e"
+   "oneline": "50개 시스템 CSP 회신 마감, 은행권 내년 보안 예산 확대 시작 — 공공은 선택 결과, 금융은 예산 의결 전 제안"
   },
   {
    "no": 10,
@@ -20,8 +19,7 @@
    "day": "목",
    "articles": 7,
    "bids": 0,
-   "oneline": "금융권 해킹 16곳·약 10만 건, 555개사 중 130곳 보안 미흡",
-   "url": "https://claude.ai/code/artifact/a8f06d20-2aa3-4467-b2f6-c8646d4896ea"
+   "oneline": "금융권 해킹 16곳·약 10만 건, 555개사 중 130곳 보안 미흡"
   },
   {
    "no": 9,
@@ -29,8 +27,7 @@
    "day": "수",
    "articles": 11,
    "bids": 0,
-   "oneline": "개인정보위 공공·금융권 유출 중점 조사, 2030년 전면 전환 12월 로드맵",
-   "url": "https://claude.ai/code/artifact/08442468-8c6e-4a8b-9494-6fc2bcc6ba31"
+   "oneline": "개인정보위 공공·금융권 유출 중점 조사, 2030년 전면 전환 12월 로드맵"
   },
   {
    "no": 8,
@@ -38,8 +35,7 @@
    "day": "화",
    "articles": 10,
    "bids": 4,
-   "oneline": "CSP 6개사 비교 설명회, HW2 아이티센엔텍 우선협상",
-   "url": "https://claude.ai/code/artifact/0ad56dc6-70bc-415c-9f63-a3e807c21d75"
+   "oneline": "CSP 6개사 비교 설명회, HW2 아이티센엔텍 우선협상"
   },
   {
    "no": 7,
@@ -47,8 +43,7 @@
    "day": "월",
    "articles": 14,
    "bids": 6,
-   "oneline": "입찰·사업 공고 섹션 신설, 주말 이슈 포함",
-   "url": "https://claude.ai/code/artifact/7c9e174b-6070-465f-96d2-4a24bbc6e3e9"
+   "oneline": "입찰·사업 공고 섹션 신설, 주말 이슈 포함"
   },
   {
    "no": 6,
@@ -56,8 +51,7 @@
    "day": "금",
    "articles": 15,
    "bids": null,
-   "oneline": "한글날 발행, 직전 호 누락 보완 4건 포함",
-   "url": "https://claude.ai/code/artifact/c3f573c5-5ec1-4c6d-8463-14da667d1aab"
+   "oneline": "한글날 발행, 직전 호 누락 보완 4건 포함"
   },
   {
    "no": 5,
@@ -65,8 +59,7 @@
    "day": "목",
    "articles": 18,
    "bids": null,
-   "oneline": "10/7 미발행분 포함 이틀 치 묶음",
-   "url": "https://claude.ai/code/artifact/0ef05a8f-9ab2-4758-a62d-a7f6bf77d093"
+   "oneline": "10/7 미발행분 포함 이틀 치 묶음"
   },
   {
    "no": 4,
@@ -74,8 +67,7 @@
    "day": "화",
    "articles": 22,
    "bids": null,
-   "oneline": "9/30~10/5 미발행분 포함 한 주 치 묶음",
-   "url": "https://claude.ai/code/artifact/2537ba60-9c0c-4dae-b70a-2a5649218aa7"
+   "oneline": "9/30~10/5 미발행분 포함 한 주 치 묶음"
   }
  ],
  "schedule": [
@@ -511,6 +503,247 @@
    "due": null,
    "how": "참고(통신망 사업)",
    "url": "https://www.jodaleconomy.com/news/articleView.html?idxno=3295"
+  }
+ ],
+ "ncloud": [
+  {
+   "id": "nc1",
+   "imp": 3,
+   "kind": "종료",
+   "zones": [
+    "공공"
+   ],
+   "also": [],
+   "svc": "SSL VPN (공공)",
+   "noticed": "2026-10-08",
+   "noticed_note": "",
+   "apply": "2027-02-23",
+   "apply_note": "",
+   "alt": "Secure Access (공공 존에 이미 있는 제로트러스트 원격 접속 상품)",
+   "diff": "외부 사용자가 클라우드 자원에 안전하게 붙는다는 목적은 같다. Secure Access는 여기에 단말 점검(OS·패치·IP/MAC), 사용자·기기·시간 조건 정책, SSO·MFA, 세분화 접근 통제가 더해진다. 과금은 SSL VPN(기본료+ID 요금)과 달리 ID 구간 요금+게이트웨이 서버 비용+Object Storage가 필요하다. 11/1 요금 인하가 공지됐지만 인하 금액은 미공개다",
+   "action": "공공 SSL VPN 이용 기관을 뽑아 11/1 인하 요금표가 나오는 대로 전환 견적을 낸다. 단순 대체가 아니라 N2SF·제로트러스트 대응 업그레이드로 제안한다",
+   "basis": "공공 Secure Access 상품 페이지·요금 인하 공지(10/16) 기준"
+  },
+  {
+   "id": "nc2",
+   "imp": 3,
+   "kind": "종료",
+   "zones": [
+    "민간",
+    "금융"
+   ],
+   "also": [],
+   "svc": "SSL VPN (민간·금융)",
+   "noticed": "2026-10-08",
+   "noticed_note": "",
+   "apply": "2027-01-21",
+   "apply_note": "",
+   "alt": "공식 후속 상품 미확인. 10/18 기준 Secure Access는 민간·금융 상품 목록에 없다",
+   "diff": "공공과 달리 같은 기능의 1st-party 대체가 아직 없다. 접속 목적이 서버·DB 관리라면 DB & Server Access Control(9/22 출시, 접근 통제+작업 기록), 사내망과 상시 연결이라면 IPsec VPN이 기능상 가장 가깝다",
+   "action": "①네이버클라우드에 민간·금융 Secure Access 출시 일정을 먼저 확인한다 ②고객별 VPN 사용 목적(운영자 접속/사내망 연결/외부 협력사)을 분류해 DSAC·IPsec VPN·서드파티 VPN 중 맞는 안으로 제안한다. 금융은 접속 기록 보존 요건 때문에 DSAC가 유리하다",
+   "basis": "민간·금융 상품 목록과 DSAC 출시 기사(9/22) 기준"
+  },
+  {
+   "id": "nc3",
+   "imp": 3,
+   "kind": "종료",
+   "zones": [
+    "민간",
+    "금융"
+   ],
+   "also": [
+    "공공"
+   ],
+   "svc": "File Safer · Web Security Checker · System Security Checker · Webshell Behavior Detector",
+   "noticed": "2026-10-07",
+   "noticed_note": "",
+   "apply": "2027-01-21",
+   "apply_note": "공공 27.02.23 (Webshell 제외)",
+   "alt": "1st-party 동일 상품 없음. Security Monitoring(관제)은 유지된다",
+   "diff": "악성 파일 검사·웹 취약점 진단·OS/WAS 설정 점검이 콘솔 버튼 하나로 되던 기능이 사라진다. 관제(Security Monitoring)는 탐지·대응이고 점검·진단이 아니라 같은 기능이 아니다",
+   "action": "점검 상품을 쓰던 고객을 뽑아 외부 취약점 진단 서비스(정기 점검 계약)와 Security Monitoring을 묶어 제안한다. 금융은 정기 취약점 분석·평가 의무가 있어 공백이 생기면 바로 감사 이슈이므로 최우선이다",
+   "basis": "공공·민간 보안 상품 목록 기준(공공은 Webshell만 Deprecated 표시)"
+  },
+  {
+   "id": "nc4",
+   "imp": 3,
+   "kind": "종료",
+   "zones": [
+    "공공"
+   ],
+   "also": [],
+   "svc": "Cloud Desktop (공공 DaaS)",
+   "noticed": "2026-10-07",
+   "noticed_note": "",
+   "apply": "2026-12-17",
+   "apply_note": "",
+   "alt": "공공 존 안의 후속 DaaS 상품 공지 미확인",
+   "diff": "남은 기간이 약 2개월로 가장 짧다. 같은 네이버클라우드 안에서 이어 쓸 길이 확인되지 않아 이용 기관은 타 CSP DaaS나 자체 VDI로 옮겨야 한다",
+   "action": "이용 기관 목록과 사용자 수를 확보하고, 네이버클라우드에 기관 이전 지원 방침을 확인한다. 이전 컨설팅·VDI 구축·데이터 이관을 묶은 패키지로 12월 전에 제안한다",
+   "basis": "공공 공지 제목·기간 기준(본문 미확인)"
+  },
+  {
+   "id": "nc5",
+   "imp": 2,
+   "kind": "종료",
+   "zones": [
+    "민간",
+    "금융"
+   ],
+   "also": [],
+   "svc": "App Safer",
+   "noticed": "2026-10-07",
+   "noticed_note": "",
+   "apply": "2027-01-21",
+   "apply_note": "",
+   "alt": "1st-party 동일 상품 없음",
+   "diff": "모바일 앱 실행 시 위변조·루팅 탐지 기능이 사라진다. 금융 앱은 앱 위변조 방지가 사실상 필수다",
+   "action": "금융·핀테크 앱 고객을 우선 확인하고 서드파티 앱 보안 솔루션으로 교체를 제안한다. 앱 재배포 일정이 필요하므로 연내 착수를 권한다",
+   "basis": "민간 보안 상품 목록 기준"
+  },
+  {
+   "id": "nc6",
+   "imp": 2,
+   "kind": "종료",
+   "zones": [
+    "금융"
+   ],
+   "also": [],
+   "svc": "Live Station · VOD Station",
+   "noticed": "2026-09-23",
+   "noticed_note": "9/23 생성 차단 공지가 최초",
+   "apply": "2027-01-21",
+   "apply_note": "",
+   "alt": "금융 존 안의 대체 상품 미확인. 민간 존 종료 공지는 없음",
+   "diff": "10/13부터 신규 생성이 막혀 있다. 금융 고객은 규제상 민간 존으로 옮기기 어렵다",
+   "action": "금융권 영상·라이브 이용 고객을 확인하고 외부 미디어 솔루션 이전을 제안한다. 민간 존 사용이 가능한 계열사 서비스는 민간 존 이전을 검토한다",
+   "basis": "금융 공지 제목 기준"
+  },
+  {
+   "id": "nc7",
+   "imp": 2,
+   "kind": "종료",
+   "zones": [
+    "민간"
+   ],
+   "also": [],
+   "svc": "Data Forest",
+   "noticed": "2026-09-15",
+   "noticed_note": "",
+   "apply": "2026-11-24",
+   "apply_note": "",
+   "alt": "공식 대체 지정 미확인(상품 목록에 Deprecated 표시)",
+   "diff": "남은 기간이 약 5주다. 기능상 가장 가까운 것은 Cloud Hadoop 등 관리형 빅데이터 상품이다",
+   "action": "이용 고객이 있다면 이번 주 안에 연락한다. Cloud Hadoop 이전 견적과 데이터 이관 작업을 함께 제안한다",
+   "basis": "민간 공지·상품 목록 기준"
+  },
+  {
+   "id": "nc8",
+   "imp": 2,
+   "kind": "변경",
+   "zones": [
+    "공공"
+   ],
+   "also": [],
+   "svc": "Secure Access 요금 인하",
+   "noticed": "2026-10-16",
+   "noticed_note": "",
+   "apply": "2026-11-01",
+   "apply_note": "",
+   "alt": "—",
+   "diff": "인하 폭은 아직 공개되지 않았다",
+   "action": "11/1 새 요금표가 나오면 SSL VPN(공공) 전환 견적에 바로 반영한다",
+   "basis": "공공 공지·상품 페이지 기준"
+  },
+  {
+   "id": "nc9",
+   "imp": 2,
+   "kind": "신규",
+   "zones": [
+    "민간"
+   ],
+   "also": [],
+   "svc": "DB & Server Access Control",
+   "noticed": "2026-09-22",
+   "noticed_note": "",
+   "apply": "2026-09-22",
+   "apply_note": "",
+   "alt": "—",
+   "diff": "서버·DB 접근 권한 관리, 작업 기록, 개인정보 마스킹, 이상 행위 탐지를 SaaS로 제공한다. 외부 접근 통제 솔루션을 따로 설치할 필요가 없다",
+   "action": "개인정보 처리 고객의 접근 기록 보존 요건 대응 상품으로 제안한다. SSL VPN(민간·금융) 종료 고객의 운영자 접속 대안으로도 함께 쓴다",
+   "basis": "출시 기사(9/22)·민간 상품 목록 New 표시 기준"
+  },
+  {
+   "id": "nc10",
+   "imp": 2,
+   "kind": "신규",
+   "zones": [
+    "공공"
+   ],
+   "also": [],
+   "svc": "10월 정기 상품 출시",
+   "noticed": "2026-10-15",
+   "noticed_note": "",
+   "apply": "2026-10-22",
+   "apply_note": "",
+   "alt": "—",
+   "diff": "출시 상품 목록은 공지 본문을 확인하지 못했다(미확인)",
+   "action": "10/22 출시 후 공공 상품 목록을 다시 확인해 기관 제안서에 반영한다",
+   "basis": "공공 공지 제목 기준"
+  },
+  {
+   "id": "nc11",
+   "imp": 1,
+   "kind": "신규",
+   "zones": [
+    "공공"
+   ],
+   "also": [],
+   "svc": "NAVIX 9.8 신규 이미지",
+   "noticed": "2026-10-07",
+   "noticed_note": "",
+   "apply": "2026-10-22",
+   "apply_note": "",
+   "alt": "—",
+   "diff": "국산 OS 이미지가 갱신된다",
+   "action": "국산 OS 요건이 있는 공공 사업 제안 시 지원 버전으로 언급한다",
+   "basis": "공공 공지 제목 기준"
+  },
+  {
+   "id": "nc12",
+   "imp": 1,
+   "kind": "종료",
+   "zones": [
+    "금융"
+   ],
+   "also": [],
+   "svc": "Media Connect Center",
+   "noticed": "2026-09-18",
+   "noticed_note": "",
+   "apply": "2026-11-24",
+   "apply_note": "",
+   "alt": "대체 상품 미확인",
+   "diff": "금융 존 공지 제목 외 세부 내용은 확인하지 못했다",
+   "action": "담당 고객 중 이용 여부만 확인한다",
+   "basis": "금융 공지 제목 기준"
+  },
+  {
+   "id": "nc13",
+   "imp": 1,
+   "kind": "종료",
+   "zones": [
+    "민간"
+   ],
+   "also": [],
+   "svc": "Image Optimizer (JP 리전)",
+   "noticed": null,
+   "noticed_note": "9/21 수정 공지만 확인",
+   "apply": "2026-11-24",
+   "apply_note": "",
+   "alt": "국내 리전 Image Optimizer (종료 공지 없음)",
+   "diff": "종료 공지는 일본 리전만 대상이다",
+   "action": "일본 리전 이미지 처리 고객이 있으면 국내 리전 전환을 안내한다",
+   "basis": "민간 공지 제목 기준"
   }
  ]
 }

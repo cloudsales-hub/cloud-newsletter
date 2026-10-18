@@ -211,6 +211,36 @@ canvas.spr{image-rendering:pixelated;image-rendering:crisp-edges;flex:none;displ
 th{background:var(--surface);border-bottom:3px solid var(--frame)}
 tbody tr:hover td{background:var(--band)}
 .fit{border-radius:0;box-shadow:2px 0 0 0 currentColor,-2px 0 0 0 currentColor,0 2px 0 0 currentColor,0 -2px 0 0 currentColor;margin:2px;width:22px;height:22px}
+/* ===== 공지 레이더 (네이버클라우드 존별 공지) ===== */
+:root{--pv:#00873C;--pv-bg:#E1F7EA;--pv-acc:#03C75A;--fin:#C2500A;--fin-bg:#FFEBD9;--fin-acc:#F27A1A;--pub:#3446B8;--pub-bg:#E4E8FB;--pub-acc:#3F51D6;--nk-new:#7B3FD1;--nk-new-bg:#EFE6FC;--nk-chg:#0B7FA6;--nk-chg-bg:#DDF2F9;--nk-end-bg:#FBE3E3}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--pv:#4BE38A;--pv-bg:#0E2A1A;--pv-acc:#2FD573;--fin:#FF9A4D;--fin-bg:#3A230F;--fin-acc:#FF8A30;--pub:#93A3FF;--pub-bg:#1B2250;--pub-acc:#6E80FF;--nk-new:#C29BFF;--nk-new-bg:#2A1A45;--nk-chg:#5FCDEB;--nk-chg-bg:#0F2A35;--nk-end-bg:#3A1717}}
+:root[data-theme="dark"]{--pv:#4BE38A;--pv-bg:#0E2A1A;--pv-acc:#2FD573;--fin:#FF9A4D;--fin-bg:#3A230F;--fin-acc:#FF8A30;--pub:#93A3FF;--pub-bg:#1B2250;--pub-acc:#6E80FF;--nk-new:#C29BFF;--nk-new-bg:#2A1A45;--nk-chg:#5FCDEB;--nk-chg-bg:#0F2A35;--nk-end-bg:#3A1717}
+.nc-kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(9.5rem,1fr));gap:10px}
+.nc-k{border:1px solid var(--line);border-radius:var(--r);background:var(--surface);color:var(--ink);padding:9px 12px;text-align:left;cursor:pointer;font:inherit}
+.nc-k[aria-pressed="true"]{border-color:var(--ink);box-shadow:inset 0 0 0 1px var(--ink)}
+.nc-k .l{display:block;font-size:12px;color:var(--muted)}.nc-k .n{display:block;font-family:var(--f-pixel);font-size:24px;line-height:1.2}.nc-k .c{font-size:11px;color:var(--muted)}
+.nc-k.end .n{color:var(--red)}.nc-k.soon .n{color:var(--blue)}.nc-k.new .n{color:var(--nk-new)}.nc-k.chg .n{color:var(--nk-chg)}
+.chip[data-nz] i{display:inline-block;width:8px;height:8px;margin-right:6px;vertical-align:0}
+.chip[data-nz="민간"][aria-pressed="true"]{background:var(--pv-acc);color:#06210F;box-shadow:2px 0 0 0 var(--pv-acc),-2px 0 0 0 var(--pv-acc),0 2px 0 0 var(--pv-acc),0 -2px 0 0 var(--pv-acc)}
+.chip[data-nz="공공"][aria-pressed="true"]{background:var(--pub-acc);color:#fff;box-shadow:2px 0 0 0 var(--pub-acc),-2px 0 0 0 var(--pub-acc),0 2px 0 0 var(--pub-acc),0 -2px 0 0 var(--pub-acc)}
+.chip[data-nz="금융"][aria-pressed="true"]{background:var(--fin-acc);color:#2A1203;box-shadow:2px 0 0 0 var(--fin-acc),-2px 0 0 0 var(--fin-acc),0 2px 0 0 var(--fin-acc),0 -2px 0 0 var(--fin-acc)}
+.card .scroll.nc-scroll{max-height:none}
+table.nc-t{table-layout:fixed;min-width:52rem;width:100%}
+.nc-imp{font-family:var(--f-pixel);letter-spacing:1px;color:var(--amber);white-space:nowrap}
+.nc-kind{display:inline-block;font-size:12px;font-weight:800;padding:2px 8px;border-radius:4px;white-space:nowrap}
+.nc-kind.종료{background:var(--nk-end-bg);color:var(--red)}.nc-kind.신규{background:var(--nk-new-bg);color:var(--nk-new)}.nc-kind.변경{background:var(--nk-chg-bg);color:var(--nk-chg)}
+.nc-z{display:inline-block;font-size:11px;font-weight:700;padding:1px 6px;border-radius:4px;margin:0 3px 3px 0;white-space:nowrap;border-left:3px solid}
+.nc-z.민간{background:var(--pv-bg);color:var(--pv);border-color:var(--pv-acc)}.nc-z.공공{background:var(--pub-bg);color:var(--pub);border-color:var(--pub-acc)}.nc-z.금융{background:var(--fin-bg);color:var(--fin);border-color:var(--fin-acc)}
+.nc-sch{white-space:nowrap;font-size:13px;line-height:1.75}
+.nc-lb{display:inline-block;font-size:11px;font-weight:800;padding:0 5px;border-radius:3px;margin-right:6px}
+.nc-lb.n{background:var(--chip);color:var(--ink);border:1px solid var(--line)}.nc-lb.a{background:var(--ink);color:var(--surface)}
+.nc-ago{font-size:11px;color:var(--muted);margin-left:4px}.nc-dd{font-family:var(--f-pixel);font-size:12px;color:var(--muted);margin-left:4px}.nc-dd.nc-hot{color:var(--red)}
+.nc-alt{display:block;font-size:11px;color:var(--muted);padding-left:2.9em;white-space:normal;line-height:1.4}
+.nc-an{font-size:14px;line-height:1.6;margin-bottom:6px}
+.nc-la{display:inline-block;font-size:11px;padding:0 6px;border-radius:3px;margin-right:6px;vertical-align:1px}
+.nc-la.a1{background:var(--blue-soft);color:var(--blue)}.nc-la.a2{background:var(--chip);color:var(--muted);border:1px solid var(--line)}.nc-la.a3{background:var(--nk-end-bg);color:var(--red)}
+.nc-an strong{font-weight:800}.nc-nb{display:block;font-size:11px;color:var(--muted)}
+.nc-src a{display:inline-block;margin-right:6px;color:var(--blue);font-size:13px}
 /* page banners: small pixel scenes */
 .strip{position:relative;height:clamp(130px,16vw,170px);margin:3px;overflow:hidden;box-shadow:3px 0 0 0 var(--frame),-3px 0 0 0 var(--frame),0 3px 0 0 var(--frame),0 -3px 0 0 var(--frame),6px 6px 0 0 var(--pshadow)}
 .strip canvas{position:absolute;inset:0;width:100%;height:100%;image-rendering:pixelated;image-rendering:crisp-edges}
@@ -254,7 +284,7 @@ tbody tr:hover td{background:var(--band)}
         <button class="cta p" type="button" id="go-opps">사업 기회 보기</button>
         <button class="cta s" type="button" data-doc="full"><span>종합 보고서 Word</span></button>
       </div>
-      <div class="meta-line"><span id="h-updated"></span><a id="h-link" href="#" hidden target="_blank" rel="noopener">브리핑 원문 열기</a></div>
+      <div class="meta-line"><span id="h-updated"></span></div>
     </div>
     <aside class="hot" id="hot" aria-label="핫 토픽" hidden>
       <div class="hot-h"><i aria-hidden="true"></i><b>HOT TOPIC</b><span id="hot-date"></span></div>
@@ -274,6 +304,7 @@ tbody tr:hover td{background:var(--band)}
     <button class="tab" role="tab" data-page="today" id="t-today"><canvas class="spr" data-spr="board" data-scale="2"></canvas>오늘</button>
     <button class="tab" role="tab" data-page="opps" id="t-opps"><canvas class="spr" data-spr="flag" data-scale="2"></canvas>사업 기회</button>
     <button class="tab" role="tab" data-page="news" id="t-news"><canvas class="spr" data-spr="news" data-scale="2"></canvas>뉴스</button>
+    <button class="tab" role="tab" data-page="ncloud" id="t-ncloud"><canvas class="spr" data-spr="radar" data-scale="2"></canvas>공지 레이더</button>
     <button class="tab" role="tab" data-page="schedule" id="t-schedule"><canvas class="spr" data-spr="calendar" data-scale="2"></canvas>일정</button>
     <button class="tab" role="tab" data-page="library" id="t-library"><canvas class="spr" data-spr="folder" data-scale="2"></canvas>자료실</button>
     <button class="tab" role="tab" data-page="history" id="t-history"><canvas class="spr" data-spr="book" data-scale="2"></canvas>발행 이력</button>
@@ -331,6 +362,25 @@ tbody tr:hover td{background:var(--band)}
     </div>
   </section>
 
+  <section class="page" id="ncloud" data-pg="ncloud" hidden>
+    <div class="strip"><canvas data-strip="ncloud" aria-hidden="true"></canvas><div class="strip-in"><span class="tag">NCLOUD NOTICE</span><h2>공지 레이더</h2><p>네이버클라우드 민간·공공·금융 존별 공지</p></div></div>
+    <div class="card" id="card-ncloud">
+      <div class="card-h"><div><canvas class="spr" data-spr="radar" data-scale="3"></canvas><div><h2>공지 레이더</h2><p class="note">민간·공공·금융 존별 공지 사항을 항목에 맞게 정리한 페이지.</p></div></div></div>
+      <div class="nc-kpis">
+        <button class="nc-k end" type="button" data-nk="종료" aria-pressed="false"><span class="l">종료 예정 서비스</span><span class="n" id="nk-end">-</span><span class="c">대체 제안 · 이전 수요</span></button>
+        <button class="nc-k soon" type="button" data-nk="soon" aria-pressed="false"><span class="l">60일 안 적용</span><span class="n" id="nk-soon">-</span><span class="c">고객 안내 우선</span></button>
+        <button class="nc-k new" type="button" data-nk="신규" aria-pressed="false"><span class="l">신규 출시</span><span class="n" id="nk-new">-</span><span class="c">제안 소재</span></button>
+        <button class="nc-k chg" type="button" data-nk="변경" aria-pressed="false"><span class="l">요금 · 정책 변경</span><span class="n" id="nk-chg">-</span><span class="c">견적 · 계약 반영</span></button>
+      </div>
+      <div class="tools">
+        <button class="chip" data-nz="" aria-pressed="true" type="button">전체</button>
+        <button class="chip" data-nz="민간" aria-pressed="false" type="button"><i style="background:var(--pv-acc)"></i>민간</button>
+        <button class="chip" data-nz="공공" aria-pressed="false" type="button"><i style="background:var(--pub-acc)"></i>공공</button>
+        <button class="chip" data-nz="금융" aria-pressed="false" type="button"><i style="background:var(--fin-acc)"></i>금융</button>
+      </div>
+      <div class="scroll nc-scroll"><table class="nc-t"><colgroup><col style="width:4.4rem"><col style="width:4.2rem"><col style="width:4.4rem"><col style="width:12rem"><col style="width:10.5rem"><col><col style="width:5.6rem"></colgroup><thead><tr><th>영향도</th><th>구분</th><th>존</th><th>서비스 · 공지</th><th>고지 및 적용 시점</th><th>대응 분석</th><th>원문</th></tr></thead><tbody id="tb-ncloud"></tbody></table></div>
+    </div>
+  </section>
   <section class="page" id="schedule" data-pg="schedule" hidden>
     <div class="strip"><canvas data-strip="schedule" aria-hidden="true"></canvas><div class="strip-in"><span class="tag">SCHEDULE</span><h2>향후 일정</h2><p>입찰 평가·발주, 국감, 정책 일정</p></div></div>
     <div class="card" id="card-schedule">
@@ -356,9 +406,9 @@ tbody tr:hover td{background:var(--band)}
   </section>
 
   <section class="page" id="history" data-pg="history" hidden>
-    <div class="strip"><canvas data-strip="history" aria-hidden="true"></canvas><div class="strip-in"><span class="tag">ARCHIVE</span><h2>발행 이력</h2><p>지난 브리핑 원문 모음</p></div></div>
+    <div class="strip"><canvas data-strip="history" aria-hidden="true"></canvas><div class="strip-in"><span class="tag">ARCHIVE</span><h2>발행 이력</h2><p>지난 브리핑 호별 요약</p></div></div>
     <div class="card">
-      <div class="card-h"><div><canvas class="spr" data-spr="book" data-scale="3"></canvas><div><h2>발행 이력</h2><p class="note">호 번호를 누르면 브리핑 원문이 열린다(원문은 따로 공유해야 다른 사람이 열 수 있다).</p></div></div></div>
+      <div class="card-h"><div><canvas class="spr" data-spr="book" data-scale="3"></canvas><div><h2>발행 이력</h2><p class="note">호별 한 줄 요약과 기사·공고 건수. 원문은 별도 요청 시 제공.</p></div></div></div>
       <div class="scroll"><table><thead><tr><th>호</th><th>발행일</th><th>오늘의 한 줄</th><th>신규 기사</th><th class="hide-sm">신규 공고</th></tr></thead><tbody id="tb-history"></tbody></table></div>
     </div>
   </section>
@@ -539,6 +589,7 @@ tbody tr:hover td{background:var(--band)}
     board:["kkkkkkkkkk","kwwwwwwwwk","kwbbbwsswk","kwwwwwwrwk","kwwwwgwrwk","kwbwwgwrwk","kkkkkkkkkk","...k..k...","..k....k..",".k......k."],
     mega:["..........kk","........kkbk","......kkbbbk","kkkkkkbbbbbk","kwwwkbbbbbbk","kwwwkbbbbbbk","kkkkkkbbbbbk","..kk..kkbbbk","..kk....kkbk","..kk......kk"],
     clock:["..kkkkkk..",".kwwwwwwk.","kwwwkwwwwk","kwwwkwwwwk","kwwwkkkwwk","kwwwwwwwwk","kwwwwwwwwk",".kwwwwwwk.","..kkkkkk.."],
+    radar:["..kkkkkk..",".kGGGGGGk.","kGGGGgGGGk","kGGGgGGGGk","kGggkGGyGk","kGGGGGGGGk","kGGGGGGGGk",".kGGGGGGk.","..kkkkkk.."],
     mascot:["....kkkk....","..kkwwwwkk..",".kwwwwwwwwk.","kwwkwwwwkwwk","kwwwwwwwwwwk","kwwrwkkwrwwk",".kwwwwwwwwk.","..kkkkkkkk.."]
   };
   const pxColors=()=>{const st=getComputedStyle(rootEl); const m={}; 'kwsSbBgGyorn'.split('').forEach(ch=>{m[ch]=st.getPropertyValue('--px-'+ch).trim();}); return m;};
@@ -552,6 +603,7 @@ tbody tr:hover td{background:var(--band)}
     schedule:{city:true,items:[['calendar',0.62],['clock',0.76],['flag',0.89]]},
     library:{items:[['folder',0.6],['news',0.73],['folder',0.86]]},
     history:{items:[['book',0.62],['news',0.73],['book',0.87]]},
+    ncloud:{city:true,items:[['radar',0.62],['server',0.76],['mega',0.89]]},
     footer:{city:true,trees:true,items:[['cloud',0.68],['server',0.8],['server',0.86]]}
   };
   function paintStrip(c){
@@ -623,12 +675,12 @@ tbody tr:hover td{background:var(--band)}
   const blocks=(id,n,total,cap)=>{ const cp=document.getElementById(id.replace('b-','c-')); if(cp) cp.textContent=cap||'';const b=document.getElementById(id); if(!b) return; const T=Math.max(1,Math.min(30,total)); const on=Math.min(n,T); b.replaceChildren(...Array.from({length:T},(_,i)=>el('i',i<on?'on':''))); b.setAttribute('aria-label',n+' / '+total);};
 
   /* ---------- state ---------- */
-  const D={meta:null,opportunities:[],news:[],schedule:[],issues:[],keywords:[],todos:[]};
+  const D={meta:null,opportunities:[],news:[],schedule:[],issues:[],keywords:[],todos:[],ncloud:[]};
   const loaded={}; let dbReady=null;
-  const ui={page:'today',fit:'',q:'',area:'',soon:false};
+  const ui={page:'today',fit:'',q:'',area:'',soon:false,nz:'',nk:''};
 
   /* ---------- tabs ---------- */
-  const PAGES=['today','opps','news','schedule','library','history'];
+  const PAGES=['today','opps','news','ncloud','schedule','library','history'];
   const show=(p)=>{ if(!PAGES.includes(p)) p='today'; ui.page=p;
     document.querySelectorAll('.tab').forEach(b=>b.setAttribute('aria-selected',String(b.dataset.page===p)));
     document.querySelectorAll('[data-pg]').forEach(s=>{s.hidden=s.dataset.pg!==p;});
@@ -657,11 +709,11 @@ tbody tr:hover td{background:var(--band)}
     const L=latest();
     let note='';
     if(L){ $('k-news').textContent=L.articles!=null?String(L.articles):'-';
-      const u=safe(L.url); const a=$('h-link'); if(u){a.href=u; a.hidden=false;} else a.hidden=true; }
+      }
     else if(dbReady===false){ note='데이터를 불러오지 못했습니다. 잠시 후 새로고침해 주세요.'; }
     else if(loaded.issues){ note='첫 소식이 올라오면 여기에 갱신 시각이 나옵니다.'; }
     const m=D.meta; const ml=document.querySelector('.meta-line'); $('h-updated').textContent=m&&m.updatedAt?('데이터 갱신 '+String(m.updatedAt).replace('T',' ').slice(0,16)):note;
-    if(ml) ml.hidden=!($('h-updated').textContent||!$('h-link').hidden);
+    if(ml) ml.hidden=!$('h-updated').textContent;
     if(loaded.opportunities){ const na=D.opportunities.filter(r=>r.fit==='A').length, nb=D.opportunities.filter(r=>r.fit==='B').length, nt=D.opportunities.length; $('k-a').textContent=String(na); $('k-b').textContent=String(nb); blocks('b-a',na,nt,'중소기업 단독 주관 가능\n추적 사업 총 '+nt+'건 중 '+na+'건'); blocks('b-b',nb,nt,'중소기업 컨소시엄·하도급 참여 가능\n추적 사업 총 '+nt+'건 중 '+nb+'건'); }
     if(loaded.schedule){ const ns=D.schedule.filter(r=>{const n=daysTo(r.date); return n!=null&&n>=0&&n<=14;}).length; $('k-soon').textContent=String(ns); blocks('b-soon',ns,D.schedule.length,'오늘부터 14일 안의 일정\n등록 일정 총 '+D.schedule.length+'건 중 '+ns+'건'); }
     if(L&&L.articles!=null){ const prev=[...D.issues].sort((a,b)=>Number(b.no)-Number(a.no))[1]; const cn=$('c-news'); if(cn) cn.textContent=prev&&prev.articles!=null?('이번 호 '+L.articles+'건\n직전 호 '+prev.articles+'건 대비 '+(Number(L.articles)-Number(prev.articles)>=0?'+':'')+(Number(L.articles)-Number(prev.articles))+'건'):''; }
@@ -708,9 +760,44 @@ tbody tr:hover td{background:var(--band)}
   function renderHistory(){
     const tb=$('tb-history'); const rows=[...D.issues].sort((a,b)=>Number(b.no)-Number(a.no));
     if(!rows.length){emptyRow(tb,5,loaded.issues?'발행 이력이 없습니다.':'불러오는 중'); return;}
-    tb.replaceChildren(...rows.map(r=>{const tr=el('tr'); const a=link('#'+String(r.no).padStart(3,'0'),r.url); if(a.classList) a.classList.add('px'); tr.append(td(a,'nw'),td(el('span','px',r.date),'nw'),td(r.oneline),td(el('span','px',r.articles==null?'-':r.articles),'nw'),td(el('span','px',r.bids==null?'-':r.bids),'nw hide-sm')); return tr;}));
+    tb.replaceChildren(...rows.map(r=>{const tr=el('tr'); const a=el('span','px','#'+String(r.no).padStart(3,'0')); tr.append(td(a,'nw'),td(el('span','px',r.date),'nw'),td(r.oneline),td(el('span','px',r.articles==null?'-':r.articles),'nw'),td(el('span','px',r.bids==null?'-':r.bids),'nw hide-sm')); return tr;}));
   }
-  function renderAll(){renderHero(); renderChips(); renderToday(); renderOpps(); renderNews(); renderSchedule(); renderHistory();}
+
+  const NC_SRC={민간:'https://www.ncloud.com/support/notice/all',공공:'https://www.gov-ncloud.com/support/notice/all',금융:'https://www.fin-ncloud.com/support/notice/all'};
+  const ncYmd=s=>String(s||'').slice(2).replace(/-/g,'.');
+  function renderNcloud(){
+    const tb=$('tb-ncloud'); if(!tb) return; const all=D.ncloud||[];
+    const soon=r=>{const n=daysTo(r.apply); return n!=null&&n>=0&&n<=60;};
+    $('nk-end').textContent=loaded.ncloud?String(all.filter(r=>r.kind==='종료').length):'-';
+    $('nk-new').textContent=loaded.ncloud?String(all.filter(r=>r.kind==='신규').length):'-';
+    $('nk-chg').textContent=loaded.ncloud?String(all.filter(r=>r.kind==='변경').length):'-';
+    $('nk-soon').textContent=loaded.ncloud?String(all.filter(soon).length):'-';
+    const zs=r=>[...(r.zones||[]),...(r.also||[])];
+    const rows=all.filter(r=>(!ui.nz||zs(r).includes(ui.nz))&&(!ui.nk||(ui.nk==='soon'?soon(r):r.kind===ui.nk))).sort((a,b)=>(b.imp-a.imp)||String(a.apply).localeCompare(String(b.apply)));
+    if(!rows.length){emptyRow(tb,7,loaded.ncloud?(all.length?'조건에 맞는 공지가 없습니다.':'아직 정리된 공지가 없습니다.'):'불러오는 중'); return;}
+    tb.replaceChildren(...rows.map(r=>{
+      const tr=el('tr');
+      tr.append(td(el('span','nc-imp','■'.repeat(r.imp)+'□'.repeat(Math.max(0,3-r.imp)))));
+      tr.append(td(el('span','nc-kind '+r.kind,r.kind)));
+      const zc=el('div'); zs(r).forEach(z=>zc.append(el('span','nc-z '+z,z))); tr.append(td(zc));
+      tr.append(td(r.svc,'strong'));
+      const sc=el('div');
+      const l1=el('div','nc-sch'); l1.append(el('span','nc-lb n','고지')); if(r.noticed){ l1.append(document.createTextNode(ncYmd(r.noticed))); const ag=daysTo(r.noticed); if(ag!=null) l1.append(el('span','nc-ago',ag<0?(-ag)+'일 전':(ag===0?'오늘':''))); } else l1.append(document.createTextNode('미확인')); if(r.noticed_note) l1.append(el('span','nc-alt',r.noticed_note));
+      const n=daysTo(r.apply); const l2=el('div','nc-sch'); l2.append(el('span','nc-lb a','적용'),document.createTextNode(ncYmd(r.apply)),el('span','nc-dd'+(n!=null&&n>=0&&n<=60?' nc-hot':''),n==null?'':(n>0?'D-'+n:(n===0?'D-DAY':'적용됨')))); if(r.apply_note) l2.append(el('span','nc-alt',r.apply_note));
+      sc.append(l1,l2); tr.append(td(sc));
+      const an=el('div');
+      const line=(cls,lab,txt,strong)=>{const d=el('div','nc-an'); d.append(el('b','nc-la '+cls,lab)); d.append(strong?el('strong',null,txt):document.createTextNode(txt)); return d;};
+      if(r.alt&&r.alt!=='—') an.append(line('a1','대안',r.alt));
+      an.append(line('a2',r.kind==='종료'?'차이':'내용',r.diff||''));
+      if(r.action) an.append(line('a3','영업 액션',r.action,true));
+      if(r.basis) an.append(el('span','nc-nb','근거: '+r.basis));
+      tr.append(td(an));
+      const sr=el('div','nc-src'); zs(r).forEach(z=>sr.append(link(z,NC_SRC[z]))); tr.append(td(sr));
+      return tr;}));
+  }
+  document.querySelectorAll('[data-nz]').forEach(b=>b.addEventListener('click',()=>{ui.nz=b.dataset.nz; document.querySelectorAll('[data-nz]').forEach(x=>x.setAttribute('aria-pressed',String(x===b))); renderNcloud();}));
+  document.querySelectorAll('[data-nk]').forEach(b=>b.addEventListener('click',()=>{ui.nk=ui.nk===b.dataset.nk?'':b.dataset.nk; document.querySelectorAll('[data-nk]').forEach(x=>x.setAttribute('aria-pressed',String(x.dataset.nk===ui.nk))); renderNcloud();}));
+  function renderAll(){renderHero(); renderChips(); renderToday(); renderOpps(); renderNews(); renderSchedule(); renderHistory(); renderNcloud();}
   renderAll();
   drawAllPixels();
 
@@ -719,9 +806,9 @@ tbody tr:hover td{background:var(--band)}
     try{
       const r=await fetch('data/board.json?v='+Date.now(),{cache:'no-store'}); if(!r.ok) throw new Error('http '+r.status);
       const j=await r.json(); dbReady=true;
-      ['opportunities','news','schedule','issues','keywords','todos'].forEach(k=>{ D[k]=Array.isArray(j[k])?j[k]:[]; loaded[k]=true; });
+      ['opportunities','news','schedule','issues','keywords','todos','ncloud'].forEach(k=>{ D[k]=Array.isArray(j[k])?j[k]:[]; loaded[k]=true; });
       D.meta=j.meta||null; renderAll();
-    }catch(e){ dbReady=false; ['opportunities','news','schedule','issues','keywords','todos'].forEach(k=>loaded[k]=true); renderAll(); }
+    }catch(e){ dbReady=false; ['opportunities','news','schedule','issues','keywords','todos','ncloud'].forEach(k=>loaded[k]=true); renderAll(); }
   })();
 
   /* ---------- Word export ---------- */
