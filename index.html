@@ -560,8 +560,8 @@ tbody tr:hover td{background:var(--band)}
     const [lo,lx]=mk(lw,lh); const gy=Math.round(lh*0.66); const sk=pal.sky.slice(2);
     { const g=lx.createLinearGradient(0,0,0,gy); sk.forEach((c,i)=>g.addColorStop(i/(sk.length-1),c)); lx.fillStyle=g; lx.fillRect(0,0,lw,gy+2); }
     if(pal.night){ for(let i=0;i<lw*0.35;i++){lx.fillStyle='#FFFFFF'; lx.globalAlpha=0.4+rand()*0.6; lx.fillRect(Math.floor(rand()*lw),Math.floor(rand()*gy*0.8),1,1);} lx.globalAlpha=1; }
-    for(let i=0;i<Math.max(2,Math.round(lw/90));i++){const w=Math.round(18+rand()*22),h=Math.round(w*0.4); lx.drawImage(cloudSprite(rand,w,h,pal),Math.round(lw*(0.35+rand()*0.6)-w/2),Math.round(2+rand()*Math.max(1,gy*0.45-h)));}
-    const conf=STRIP[c.dataset.strip]||STRIP.today;
+    const conf=STRIP[c.dataset.strip]||STRIP.today; const drift=[];
+    for(let i=0;i<Math.max(2,Math.round(lw/90));i++){const w=Math.round(18+rand()*22),h=Math.round(w*0.4), img=cloudSprite(rand,w,h,pal), cx=Math.round(lw*(0.35+rand()*0.6)-w/2), cy=Math.round(2+rand()*Math.max(1,gy*0.45-h)); if(conf.workers) drift.push({img,w,y:cy,x0:rand(),v:0.35+rand()*0.5}); else lx.drawImage(img,cx,cy);}
     if(conf.city){ let x=Math.round(lw*0.45); while(x<lw){const bw=4+Math.floor(rand()*6), bh=6+Math.floor(rand()*Math.max(4,lh*0.25)); lx.fillStyle=pal.far; lx.fillRect(x,gy-bh,bw,bh); lx.fillStyle=pal.farWin; for(let wy=gy-bh+2;wy<gy-1;wy+=3) for(let wx=x+1;wx<x+bw-1;wx+=2) if(rand()<0.5) lx.fillRect(wx,wy,1,1); x+=bw+1;} }
     for(let xx=0;xx<lw;xx++){const top=gy+Math.round(Math.sin(xx*0.06)*1.2); for(let yy=top;yy<lh;yy++){const v=rand(); lx.fillStyle=v<0.08?pal.grass[3]:v<0.16?pal.grass[2]:pal.grass[0]; lx.fillRect(xx,yy,1,1);} if(rand()<0.25){lx.fillStyle=pal.grass[2]; lx.fillRect(xx,top-1,1,1);} }
     if(conf.trees){ tree(lx,lw*0.08,gy,Math.round(lh*0.18),pal,rand); tree(lx,lw*0.94,gy+2,Math.round(lh*0.26),pal,rand); }
@@ -569,7 +569,7 @@ tbody tr:hover td{background:var(--band)}
     for(const [nm,fx] of items){ const rows=SP[nm]; const w=rows[0].length*sc, h=rows.length*sc; const ox=Math.round(lw*fx-w/2), oy=gy-h+Math.round(sc*1.5);
       lx.fillStyle='rgba(0,0,0,.18)'; lx.fillRect(ox+1,gy+sc,w,sc); drawSprite(lx,nm,ox,oy,sc,cols); }
     const d=Math.min(2,window.devicePixelRatio||1); c.width=Math.round(W*d); c.height=Math.round(H*d); const x=c.getContext('2d'); x.imageSmoothingEnabled=false; x.drawImage(lo,0,0,lw,lh,0,0,Math.round(lw*P*d),Math.round(lh*P*d));
-    if(conf.workers){ const [fr,frx]=mk(lw,lh); OFFICE.set(c,{lo,fr,frx,x,lw,lh,gy,P,d,narrow,night:pal.night}); paintOffice(c,performance.now()); }
+    if(conf.workers){ const [fr,frx]=mk(lw,lh); OFFICE.set(c,{lo,fr,frx,x,lw,lh,gy,P,d,narrow,night:pal.night,drift}); paintOffice(c,performance.now()); }
   }
   /* animated office workers for the TODAY banner */
   const OFFICE=new Map();
@@ -595,7 +595,7 @@ tbody tr:hover td{background:var(--band)}
     const tx=bx+4+cur*4+1, ty=top+14-hs[cur]-1; line(hx-1,hyand,tx,ty,'#7A5230'); f('#E0453A',tx,ty,1,1);
     g.globalAlpha=0.35+0.25*Math.sin(t*6); f('#FFE27A',bx+4+cur*4-1,top+14-hs[cur]-1,4,hs[cur]+1); g.globalAlpha=1;
     // speech bubble with blinking dots
-    const bub=Math.floor(t*1.2)%3!==2; if(bub){ f('#FFFFFF',px+6,b-27,8,5); f('#FFFFFF',px+6,b-22,2,1); f('#3A4352',px+6,b-27,8,1); const d=Math.floor(t*3)%4; for(let i=0;i<3;i++) if(i<d) f('#3A4352',px+8+i*2,b-25,1,1); }
+    const bub=Math.floor(t*1.2)%3!==2; if(bub){ f('#3A4352',px+5,b-28,10,7); f('#FFFFFF',px+6,b-27,8,5); f('#3A4352',px+5,b-21,2,1); f('#3A4352',px+5,b-20,1,1); f('#FFFFFF',px+6,b-22,1,1); const d=Math.floor(t*3)%4; for(let i=0;i<3;i++) if(i<d) f('#3A4352',px+8+i*2,b-25,1,1); }
     if(narrow) return;
     // meeting table with two listeners facing the board
     const ax=px+16; f('#A8774A',ax,b-9,18,2); f('#7A5432',ax+1,b-7,1,7); f('#7A5432',ax+16,b-7,1,7);
@@ -611,6 +611,8 @@ tbody tr:hover td{background:var(--band)}
   }
   function paintOffice(c,now){ const o=OFFICE.get(c); if(!o) return; const t=(reduce?2:now/1000);
     o.frx.clearRect(0,0,o.lw,o.lh); o.frx.drawImage(o.lo,0,0);
+    // clouds drift slowly through the right part of the banner (left side keeps the title clear), fading in/out at the edges
+    { const L=Math.round(o.lw*0.34), span=o.lw-L; for(const cl of o.drift){ const tot=span+cl.w; const p=((cl.x0*tot+t*cl.v)%tot+tot)%tot; const xx=Math.round(L-cl.w+p); const a=Math.max(0,Math.min(1,(xx+cl.w-L)/14,(o.lw-xx)/14)); if(a<=0) continue; o.frx.save(); o.frx.beginPath(); o.frx.rect(L,0,span,o.lh); o.frx.clip(); o.frx.globalAlpha=a; o.frx.drawImage(cl.img,xx,cl.y); o.frx.restore(); } }
     { const w=o.narrow?40:72; const ox=Math.round(Math.min(o.lw*(o.narrow?0.6:0.5), o.lw-w-4)); o.frx.fillStyle='rgba(0,0,0,.16)'; o.frx.fillRect(ox,o.gy+1,w-6,1); briefing(o.frx,ox,o.gy+1,t,o.night,o.narrow); }
     o.x.imageSmoothingEnabled=false; o.x.drawImage(o.fr,0,0,o.lw,o.lh,0,0,Math.round(o.lw*o.P*o.d),Math.round(o.lh*o.P*o.d)); }
   { let last=0; const tick=(n)=>{ if(n-last>140){ last=n; OFFICE.forEach((o,c)=>{ if(c.offsetParent!==null) paintOffice(c,n); }); } requestAnimationFrame(tick); }; if(!reduce) requestAnimationFrame(tick); }
