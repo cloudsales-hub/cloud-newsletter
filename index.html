@@ -326,6 +326,26 @@ dialog.nc-dlg::backdrop{background:rgba(5,10,20,.55)}
 .due .dl2{font-weight:700;font-size:13px}
 .pinfo{display:inline-flex;align-items:center;gap:4px;margin-left:6px;padding:2px 8px;font:inherit;font-size:12px;font-weight:700;color:var(--ink);background:var(--surface);border:0;cursor:pointer;box-shadow:2px 0 0 0 var(--frame),-2px 0 0 0 var(--frame),0 2px 0 0 var(--frame),0 -2px 0 0 var(--frame)}
 .pinfo:hover{background:var(--ink);color:var(--bg)}
+.probbtn{cursor:pointer;padding:3px 6px;margin:-3px -6px;border-radius:2px;transition:background .12s}
+.probbtn:hover,.probbtn:focus-visible{background:var(--blue-soft);outline:none;box-shadow:0 0 0 2px var(--blue)}
+.probbtn:hover b{text-decoration:underline;text-underline-offset:3px}
+#pb-dlg{width:min(36rem,calc(100vw - 32px));max-height:min(84vh,40rem)}
+#pb-dlg .dh{padding:16px 22px;align-items:flex-start}
+.nc-dlg .dx{white-space:nowrap;flex:none}
+.nc-dlg .dh>div{min-width:0}
+#pb-dlg .db{padding:12px 22px 20px}
+.pb-sub{margin:4px 0 0;font-size:12px;color:var(--muted)}
+.pb-t{width:100%;border-collapse:collapse}
+.pb-t th{text-align:center}
+.pb-t td{vertical-align:middle;font-size:14px;padding:10px 12px}
+.pb-t td.pb-k{text-align:left}
+.pb-t td.pb-v{text-align:center;width:6rem}
+.pb-t td.pb-v .sc-v{display:inline-block;min-width:3.4rem}
+.pb-t tr.pb-base td{font-weight:800}
+.pb-tot{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;margin-top:12px;padding:12px 14px;background:var(--band);font-weight:800;font-size:15px}
+.pb-fin{display:inline-flex;align-items:center;gap:8px}
+.pb-fin .prob b{font-size:18px}
+.pb-note{font-size:12px;color:var(--muted);margin:10px 2px 0;line-height:1.6}
 .pd-t th{text-align:center}
 #pd-dlg .pd-t td{vertical-align:middle}
 .pd-t td.pd-k{text-align:center;font-weight:800;line-height:1.45}
@@ -535,6 +555,10 @@ html.dlg-lock,html.dlg-lock body{overflow:hidden}
     </div>
   </section>
   <button class="to-top" id="to-top" type="button" aria-label="맨 위로"><span class="arw" aria-hidden="true"><i class="o"></i><i class="o"></i><i class="o"></i><i></i><i class="o"></i><i class="o"></i><i class="o"></i><i class="o"></i><i class="o"></i><i></i><i></i><i></i><i class="o"></i><i class="o"></i><i class="o"></i><i></i><i></i><i></i><i></i><i></i><i class="o"></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i class="o"></i><i class="o"></i><i></i><i></i><i></i><i class="o"></i><i class="o"></i><i class="o"></i><i class="o"></i><i></i><i></i><i></i><i class="o"></i><i class="o"></i><i class="o"></i><i class="o"></i><i></i><i></i><i></i><i class="o"></i><i class="o"></i></span>TOP</button>
+  <dialog class="nc-dlg" id="pb-dlg" aria-labelledby="pb-t">
+    <div class="dh"><div><b>SCORE</b><h3 id="pb-t">점수 계산 내역</h3><p id="pb-sub" class="pb-sub"></p></div><button class="dx" type="button" id="pb-dlg-x">닫기</button></div>
+    <div class="db" id="pb-body"></div>
+  </dialog>
   <dialog class="nc-dlg" id="pd-dlg" aria-labelledby="pd-dlg-t">
     <div class="dh"><div><b>GUIDE</b><h3 id="pd-dlg-t">수주 가능성(추정) 기준</h3></div><button class="dx" type="button" id="pd-dlg-x">닫기</button></div>
     <div class="db">
@@ -886,7 +910,22 @@ html.dlg-lock,html.dlg-lock body{overflow:hidden}
   function stepsNode(stage,status){const wrap=el('div'); wrap.append(el('div',null,status||'')); const i=stageIdx(stage); const s=el('div','stage'); if(i>=0){const st=el('div','steps'); st.setAttribute('aria-label','단계: '+stage); STAGES.forEach((_,k)=>{st.append(el('i',k<i?'on':(k===i?'now':'')));}); wrap.append(st); s.textContent=stage; } else s.textContent=stage||''; wrap.append(s); return wrap;}
   const P=r=>typeof r.prob==='number'?r.prob:null;
   const probNode=v=>{const w=el('span','prob'); if(v==null){w.append(el('span',null,'-')); return w;} const m=el('span','pm '+(v>=60?'hi':(v>=35?'mid':''))); const i=el('i'); i.style.width=Math.max(4,Math.min(100,v))+'%'; m.append(i); w.append(m,el('b',null,v+'%')); w.title='추정 수주 가능성(우선순위 점수, 실제 확률 아님)'; return w;};
-  const fitProb=r=>{const d=el('div','fitp'); d.append(el('span','fit '+r.fit,r.fit),probNode(P(r))); return d;};
+  const fitProb=r=>{const d=el('div','fitp'); const pn=probNode(P(r)); if(P(r)!=null){ pn.classList.add('probbtn'); pn.setAttribute('role','button'); pn.tabIndex=0; pn.title='눌러서 이 사업의 점수 계산 내역 보기'; const go=(e)=>{e.stopPropagation(); e.preventDefault(); openBreak(r);}; pn.addEventListener('click',go); pn.addEventListener('keydown',e=>{ if(e.key==='Enter'||e.key===' ') go(e); }); } d.append(el('span','fit '+r.fit,r.fit),pn); return d;};
+  const FIT_BASE={A:50,B:30,C:10}, FIT_NM={A:'A 단독 주관',B:'B 컨소시엄·하도급',C:'C 참고'};
+  const parseWhy=s=>String(s||'').split('·').map(x=>x.trim()).filter(Boolean).map(x=>{ const m=x.match(/^(.*?)\s*([+\-−])\s*(\d+)$/); return m?{k:m[1].trim(),v:(m[2]==='+'?1:-1)*Number(m[3])}:{k:x,v:null}; });
+  function openBreak(r){ const dlg=$('pb-dlg'); if(!dlg) return; const body=$('pb-body');
+    const items=parseWhy(r.why); const base=FIT_BASE[r.fit]??0; const sum=base+items.reduce((a,b)=>a+(b.v||0),0);
+    $('pb-t').textContent=r.name||''; const sub=[r.agency,r.kind,r.no].filter(Boolean).join(' · '); $('pb-sub').textContent=sub;
+    const tb=el('tbody'); const row=(k,v,cls)=>{ const tr=el('tr',cls||null); tr.append(el('td','pb-k',k)); const c=el('td','pb-v'); c.append(el('span','sc-v '+(v==null?'zero':(v>0?'pos':(v<0?'neg':'zero'))),v==null?'-':(v>0?'+'+v:(v<0?'−'+Math.abs(v):String(v))))); tr.append(c); return tr; };
+    const b0=el('tr','pb-base'); b0.append(el('td','pb-k','기본 점수 · '+(FIT_NM[r.fit]||r.fit))); const bc=el('td','pb-v'); bc.append(el('span','sc-v zero',String(base))); b0.append(bc); tb.append(b0);
+    if(!items.length) tb.append(row('더하거나 뺀 항목 없음',0));
+    items.forEach(it=>tb.append(row(it.k,it.v)));
+    const t=el('table','pb-t'); const th=el('thead'); const htr=el('tr'); htr.append(el('th',null,'항목'),el('th',null,'점수')); th.append(htr); t.append(th,tb);
+    const tot=el('div','pb-tot'); tot.append(el('span',null,'합계 '+sum+'점'));
+    const fin=el('span','pb-fin'); fin.append(document.createTextNode('추정 수주 가능성 '),probNode(P(r))); tot.append(fin);
+    const note=el('p','pb-note', sum!==P(r)?('합계 '+sum+'점을 5점 단위로 맞추고 5~85% 범위로 정리해 '+P(r)+'%로 표시합니다.'):'항목별 점수를 모두 더한 값입니다. 실제 확률이 아닌 제안 우선순위용 점수입니다.');
+    body.replaceChildren(t,tot,note);
+    document.documentElement.classList.add('dlg-lock'); if(typeof dlg.showModal==='function') dlg.showModal(); else dlg.setAttribute('open',''); }
   const dueAt=s=>{ if(!s) return null; const t=new Date(String(s).replace(' ','T')+(String(s).length<=10?'T23:59':'')+':00+09:00'); return isNaN(t)?null:t; };
   const g2bLive=()=>(D.g2b||[]).filter(r=>{const t=dueAt(r.due); return !t||t>=new Date();});
   const match=r=>(!ui.fit||r.fit===ui.fit)&&(!ui.q||[r.name,r.agency,r.orderer,r.no].join(' ').toLowerCase().includes(ui.q));
@@ -1036,6 +1075,7 @@ html.dlg-lock,html.dlg-lock body{overflow:hidden}
     dlg.addEventListener('touchend',()=>{ ty=null; });
     dlg.addEventListener('close',()=>document.documentElement.classList.remove('dlg-lock')); };
   trapScroll($('pd-dlg')); trapScroll($('nc-dlg'));
+  trapScroll($('pb-dlg')); { const pb=$('pb-dlg'); if(pb){ $('pb-dlg-x').addEventListener('click',()=>pb.close()); pb.addEventListener('click',e=>{ if(e.target===pb) pb.close(); }); } }
   { const pd=$('pd-dlg'); if(pd){ const op=()=>{ document.documentElement.classList.add('dlg-lock'); if(typeof pd.showModal==='function') pd.showModal(); else pd.setAttribute('open',''); }; pd.addEventListener('close',()=>document.documentElement.classList.remove('dlg-lock'));  document.querySelectorAll('[data-pinfo]').forEach(b=>b.addEventListener('click',(e)=>{e.stopPropagation(); op();})); $('pd-dlg-x').addEventListener('click',()=>pd.close()); pd.addEventListener('click',e=>{ if(e.target===pd) pd.close(); }); } }
   { const d=$('nc-dlg'); if(d){ $('nc-dlg-x').addEventListener('click',()=>d.close()); d.addEventListener('click',e=>{ if(e.target===d) d.close(); }); }
     const m=$('hot-r-more'); if(m) m.addEventListener('click',openAlertDlg); }
