@@ -318,6 +318,10 @@ dialog.nc-dlg::backdrop{background:rgba(5,10,20,.55)}
 .sub2{display:block;font-size:11px;color:var(--muted);font-weight:400;margin-top:4px}
 .due{display:flex;flex-direction:column;gap:3px;white-space:nowrap}
 .due small{font-size:11px;color:var(--muted)}
+.go{display:inline-flex;align-items:center;margin-top:6px;padding:3px 9px;font:inherit;font-size:12px;font-weight:700;color:var(--blue);background:var(--blue-soft);border:0;cursor:pointer;box-shadow:2px 0 0 0 var(--blue),-2px 0 0 0 var(--blue),0 2px 0 0 var(--blue),0 -2px 0 0 var(--blue);margin-left:2px}
+.gos{display:flex;flex-wrap:wrap;gap:6px}
+.go:hover{background:var(--blue);color:#fff}
+#tb-g2b tr{cursor:pointer}
 .pane-note{font-size:12px;color:var(--muted);margin:0 2px 8px}
 @media (max-width:40rem){.src-tabs{grid-template-columns:1fr}}
 
@@ -853,6 +857,15 @@ dialog.nc-dlg::backdrop{background:rgba(5,10,20,.55)}
     w.append(el('span','dday'+(n===0?' today':(n!=null&&n<=7?' soon':'')),n===0?'D-DAY':'D-'+n));
     w.append(el('small',null,dueTxt(r))); if(r.note) w.append(el('small',null,r.note)); return w;
   }
+  const G2B_HOME='https://www.g2b.go.kr/';
+  const copyNo=async(no)=>{ try{ await navigator.clipboard.writeText(no); return true; }catch(e){ try{ const t=document.createElement('textarea'); t.value=no; t.style.position='fixed'; t.style.opacity='0'; document.body.append(t); t.select(); const ok=document.execCommand('copy'); t.remove(); return ok; }catch(_){ return false; } } };
+  const g2bOpen=async(r)=>{ const u=safe(r.url); if(u){ window.open(u,'_blank','noopener'); return; } const ok=r.no?await copyNo(r.no):false; window.open(G2B_HOME,'_blank','noopener'); toast(r.no?(ok?'사전규격 번호 '+r.no+'를 복사했습니다. 나라장터 사전규격 검색창에 붙여 넣으세요.':'나라장터 사전규격 검색에서 '+r.no+'를 찾아 주세요.'):'나라장터를 열었습니다.'); };
+  const specUrl=r=>(r.kind==='사전규격'&&/^R\d{2}BD\d+$/.test(r.no||''))?'https://www.g2b.go.kr/pn/pnz/pnza/UntyAtchFile/downloadFile.do?bfSpecRegNo='+r.no+'&fileType=BFDTL&fileSeq=1':null;
+  const g2bGo=(r)=>{ const w=el('div','gos'); const mk=(t,ti,fn)=>{const b=el('button','go',t); b.type='button'; b.title=ti; b.addEventListener('click',(e)=>{e.stopPropagation(); fn();}); return b;};
+    if(safe(r.url)) w.append(mk('나라장터 공고 보기 ↗','나라장터 공고 상세 화면을 새 창으로 엽니다',()=>g2bOpen(r)));
+    else { const su=specUrl(r); if(su) w.append(mk('사전규격서 받기 ↓','나라장터에 올라온 사전규격서(제안요청서 초안) 파일을 내려받습니다',()=>window.open(su,'_blank','noopener')));
+      w.append(mk('나라장터에서 보기 ↗','사전규격 화면은 바로가기 주소가 없어 번호를 복사하고 나라장터를 엽니다',()=>g2bOpen(r))); }
+    return w; };
   function renderOpps(){
     document.querySelectorAll('[data-src]').forEach(b=>b.setAttribute('aria-selected',String(b.dataset.src===ui.src)));
     $('pane-g2b').hidden=ui.src!=='g2b'; $('pane-opps').hidden=ui.src!=='opps';
@@ -860,10 +873,10 @@ dialog.nc-dlg::backdrop{background:rgba(5,10,20,.55)}
     const tg=$('tb-g2b'); const gr=g2bRows(); const NC=6;
     if(!gr.length) emptyRow(tg,NC,loaded.g2b?(g2bLive().length?'조건에 맞는 공고가 없습니다.':'진행 중인 나라장터 공고가 없습니다.'):'불러오는 중');
     else tg.replaceChildren(...gr.map(r=>{const tr=el('tr');
-      const nm=el('div'); nm.append(el('span','kind'+(r.kind==='사전규격'?' pre':(r.kind==='재공고'?' re':'')),r.kind||'공고'),link(r.name,r.url)); nm.append(el('span','sub2',(r.no||'')+(r.method?' · '+r.method:'')+(r.price_eok!=null?' · 추정가격 '+r.price_eok.toLocaleString('ko-KR')+'억':'')));
+      const nm=el('div'); nm.append(el('span','kind'+(r.kind==='사전규격'?' pre':(r.kind==='재공고'?' re':'')),r.kind||'공고'),link(r.name,r.url)); nm.append(g2bGo(r)); nm.append(el('span','sub2',(r.no||'')+(r.method?' · '+r.method:'')+(r.price_eok!=null?' · 추정가격 '+r.price_eok.toLocaleString('ko-KR')+'억':'')));
       const ag=el('div'); ag.append(document.createTextNode(r.agency||'')); if(r.orderer&&r.orderer!==r.agency) ag.append(el('span','sub2','공고 '+r.orderer));
       const hw=el('div'); hw.append(document.createTextNode(r.how||'')); if(r.why) hw.append(el('span','sub2','근거: '+r.why));
-      tr.append(td(fitProb(r)),td(nm,'strong'),td(ag,'hide-sm'),td(r.budget_eok!=null?r.budget_eok.toLocaleString('ko-KR')+'억':'-','nw'),td(dueNode(r)),td(hw,'hide-sm')); return tr;}));
+      tr.append(td(fitProb(r)),td(nm,'strong'),td(ag,'hide-sm'),td(r.budget_eok!=null?r.budget_eok.toLocaleString('ko-KR')+'억':'-','nw'),td(dueNode(r)),td(hw,'hide-sm')); tr.addEventListener('click',(e)=>{ if(e.target.closest('a,button')) return; g2bOpen(r); }); return tr;}));
     const tb=$('tb-opps'); const rows=oppRows();
     if(!rows.length) emptyRow(tb,NC,loaded.opportunities?(D.opportunities.length?'조건에 맞는 사업이 없습니다.':'아직 등록된 사업 기회가 없습니다.'):'불러오는 중');
     else tb.replaceChildren(...rows.map(r=>{const tr=el('tr'); tr.append(td(fitProb(r)),td(link(r.name,r.url),'strong'),td(r.agency,'hide-sm'),td(r.scale),td(stepsNode(r.stage,r.status)),td(r.how,'hide-sm')); return tr;}));
