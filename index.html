@@ -326,6 +326,18 @@ dialog.nc-dlg::backdrop{background:rgba(5,10,20,.55)}
 .due .dl2{font-weight:700;font-size:13px}
 .pinfo{display:inline-flex;align-items:center;gap:4px;margin-left:6px;padding:2px 8px;font:inherit;font-size:12px;font-weight:700;color:var(--ink);background:var(--surface);border:0;cursor:pointer;box-shadow:2px 0 0 0 var(--frame),-2px 0 0 0 var(--frame),0 2px 0 0 var(--frame),0 -2px 0 0 var(--frame)}
 .pinfo:hover{background:var(--ink);color:var(--bg)}
+.pd-t th{text-align:center}
+#pd-dlg .pd-t td{vertical-align:middle}
+.pd-t td.pd-k{text-align:center;font-weight:800;line-height:1.45}
+.pd-t td.pd-s{text-align:center}
+.pd-t td.pd-r{text-align:left;line-height:1.7}
+.sc{display:inline-grid;width:min(100%,19rem);grid-template-columns:1fr 3.4rem;gap:6px 14px;align-items:center}
+.sc-c{text-align:right}
+.sc-c{color:var(--ink)}
+.sc-v{font-family:var(--f-pixel);text-align:center;padding:2px 0;font-size:14px}
+.sc-v.pos{background:var(--green-soft);color:var(--green)}
+.sc-v.neg{background:var(--nk-end-bg);color:var(--red)}
+.sc-v.zero{background:var(--chip);color:var(--muted)}
 .pd-t{width:100%;border-collapse:collapse;margin-top:8px}
 .pd-t td,.pd-t th{font-size:13px}
 .pd-lead{font-size:14px;line-height:1.7;margin:10px 0 4px}
@@ -524,16 +536,16 @@ html.dlg-lock,html.dlg-lock body{overflow:hidden}
     <div class="dh"><div><b>GUIDE</b><h3 id="pd-dlg-t">수주 가능성(추정) 기준</h3></div><button class="dx" type="button" id="pd-dlg-x">닫기</button></div>
     <div class="db">
       <p class="pd-lead">중소기업이 단독 주관하거나 컨소시엄으로 참여하는 것을 기준으로, <b>어떤 사업부터 제안을 준비할지</b> 정하려고 매긴 점수입니다. 실제 낙찰 확률은 아니며, 5점 단위로 5~85% 사이에서 표시합니다.</p>
-      <table class="pd-t"><thead><tr><th>항목</th><th>점수</th><th>이렇게 판단합니다</th></tr></thead><tbody>
-        <tr><td class="strong">기본 점수(적합도)</td><td class="nw">A 50 · B 30 · C 10</td><td>A는 단독 주관이 가능한 사업, B는 SI 컨소시엄·하도급으로 참여하는 사업, C는 장비·감리처럼 참고만 하는 사업입니다.</td></tr>
-        <tr><td class="strong">업무 적합</td><td class="nw">+10</td><td>클라우드 운영·MSP·전환·임차가 사업의 핵심일 때 더합니다.</td></tr>
-        <tr><td class="strong">규모(배정예산)</td><td>1억 미만 −5<br>1~20억 +5<br>20~50억 0<br>50억 초과 −10</td><td>중소기업이 주관하기 알맞은 규모일수록 높게 봅니다.</td></tr>
-        <tr><td class="strong">계약 방법</td><td class="nw">제한경쟁 +5</td><td>중소기업·지역 제한 등으로 대기업 참여가 줄어들 수 있을 때 더합니다.</td></tr>
-        <tr><td class="strong">CSP 상품 연계</td><td class="nw">+10</td><td>GPU·공공 클라우드 서버 임차처럼 보유 상품으로 바로 제안할 수 있을 때 더합니다.</td></tr>
-        <tr><td class="strong">준비 기간</td><td>21일 이상 +5<br>7일 미만 −10</td><td>마감까지 남은 날로 판단하며, 매일 다시 계산합니다.</td></tr>
-        <tr><td class="strong">사전규격 선점</td><td class="nw">+5</td><td>본공고 전에 의견을 내 요건에 반영할 수 있는 단계일 때 더합니다.</td></tr>
-        <tr><td class="strong">재공고</td><td class="nw">+5</td><td>유찰된 뒤 다시 나온 공고로, 경쟁이 약한 편일 때 더합니다.</td></tr>
-        <tr><td class="strong">발주 단계(기사·기관 사업)</td><td>미확정 −5<br>수행사 확정 +5</td><td>공고 전 시장 기회는 빼고, 우선협상 대상이 정해져 협력할 곳이 분명하면 더합니다.</td></tr>
+      <table class="pd-t"><colgroup><col style="width:17%"><col style="width:33%"><col></colgroup><thead><tr><th>항목</th><th>조건별 점수</th><th>산정 근거</th></tr></thead><tbody>
+        <tr><td class="pd-k">기본 점수<br>(적합도)</td><td class="pd-s"><div class="sc"><span class="sc-c">A 단독 주관</span><span class="sc-v zero">50</span><span class="sc-c">B 컨소시엄</span><span class="sc-v zero">30</span><span class="sc-c">C 참고</span><span class="sc-v zero">10</span></div></td><td class="pd-r">직접 제안서를 내고 결과를 이끌 수 있는 단독 주관 사업(A)이 가장 높은 점수에서 출발합니다. 컨소시엄·하도급 사업(B)은 주관사 선정에 따라 결과가 달라지고, 장비·감리 등 참고용 사업(C)은 직접 수주가 어려워 낮게 시작합니다.</td></tr>
+        <tr><td class="pd-k">업무 적합</td><td class="pd-s"><div class="sc"><span class="sc-c">클라우드 운영·MSP·전환·임차가 핵심</span><span class="sc-v pos">+10</span></div></td><td class="pd-r">사업의 중심이 클라우드 운영·전환이면 보유 역량과 수행 실적을 그대로 내세울 수 있어 평가에서 유리하므로 점수를 더합니다.</td></tr>
+        <tr><td class="pd-k">사업 규모<br>(배정예산)</td><td class="pd-s"><div class="sc"><span class="sc-c">1억 원 미만</span><span class="sc-v neg">−5</span><span class="sc-c">1~20억 원</span><span class="sc-v pos">+5</span><span class="sc-c">20~50억 원</span><span class="sc-v zero">0</span><span class="sc-c">50억 원 초과</span><span class="sc-v neg">−10</span></div></td><td class="pd-r">1~20억 원은 중소기업이 주관하기에 알맞고 대기업 참여가 적어 가능성이 높습니다. 50억 원을 넘으면 대형 SI 중심의 경쟁이 되고, 1억 원 미만은 수익성이 낮아 우선순위를 낮춥니다.</td></tr>
+        <tr><td class="pd-k">계약 방법</td><td class="pd-s"><div class="sc"><span class="sc-c">제한경쟁</span><span class="sc-v pos">+5</span></div></td><td class="pd-r">중소기업·지역 업체 등으로 참가 자격이 제한되면 대기업과 맞붙지 않아도 되어 수주할 가능성이 올라갑니다.</td></tr>
+        <tr><td class="pd-k">CSP 상품 연계</td><td class="pd-s"><div class="sc"><span class="sc-c">보유 상품으로 바로 제안 가능</span><span class="sc-v pos">+10</span></div></td><td class="pd-r">GPU·공공 클라우드 서버 임차처럼 CSP 상품으로 바로 제안할 수 있으면 가격과 납기에 빠르게 대응할 수 있어 경쟁력이 높아집니다.</td></tr>
+        <tr><td class="pd-k">준비 기간</td><td class="pd-s"><div class="sc"><span class="sc-c">마감까지 21일 이상</span><span class="sc-v pos">+5</span><span class="sc-c">마감까지 7일 미만</span><span class="sc-v neg">−10</span></div></td><td class="pd-r">시간이 충분하면 제안서 완성도를 높일 수 있어 점수를 더하고, 일주일도 남지 않으면 준비가 부족해질 수 있어 점수를 뺍니다. 남은 날은 매일 다시 계산합니다.</td></tr>
+        <tr><td class="pd-k">사전규격 선점</td><td class="pd-s"><div class="sc"><span class="sc-c">본공고 전 의견등록 가능</span><span class="sc-v pos">+5</span></div></td><td class="pd-r">본공고 전에 의견을 내면 우리에게 맞는 요건이 반영될 수 있고, 경쟁사보다 먼저 준비를 시작할 수 있어 가능성이 올라갑니다.</td></tr>
+        <tr><td class="pd-k">재공고</td><td class="pd-s"><div class="sc"><span class="sc-c">유찰 후 다시 나온 공고</span><span class="sc-v pos">+5</span></div></td><td class="pd-r">유찰된 뒤 다시 나온 공고는 경쟁하는 업체 수가 적은 경우가 많아, 지원하면 수주할 가능성이 올라갑니다.</td></tr>
+        <tr><td class="pd-k">발주 단계<br>(기사·기관 사업)</td><td class="pd-s"><div class="sc"><span class="sc-c">발주 일정 미확정</span><span class="sc-v neg">−5</span><span class="sc-c">우선협상 대상 확정</span><span class="sc-v pos">+5</span></div></td><td class="pd-r">공고 일정이 정해지지 않은 사업은 발주가 미뤄지거나 바뀔 수 있어 점수를 빼고, 우선협상 대상이 정해진 사업은 협력할 주관사가 분명해 참여 기회가 구체적이므로 점수를 더합니다.</td></tr>
       </tbody></table>
       <div class="pd-leg"><span>막대 색:</span><span class="prob"><span class="pm hi"><i style="width:70%"></i></span>60% 이상</span><span class="prob"><span class="pm mid"><i style="width:45%"></i></span>35~59%</span><span class="prob"><span class="pm"><i style="width:20%"></i></span>35% 미만</span></div>
       <p class="pd-lead" style="font-size:13px;color:var(--muted)">각 사업의 ‘근거’ 칸에 어떤 항목으로 더하고 뺐는지 적어 두었습니다.</p>
