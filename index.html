@@ -298,16 +298,18 @@ dialog.nc-dlg::backdrop{background:rgba(5,10,20,.55)}
 .src[aria-selected="true"]{background:var(--blue-soft);box-shadow:2px 0 0 0 var(--blue),-2px 0 0 0 var(--blue),0 2px 0 0 var(--blue),0 -2px 0 0 var(--blue)}
 .src:focus-visible{outline:2px solid var(--blue);outline-offset:4px}
 .src-h{display:flex;justify-content:space-between;align-items:baseline;gap:8px}
-.src-h b{font-size:15px;font-weight:800}
-.src-n{font-family:var(--f-pixel);font-size:22px;white-space:nowrap}
-.src-sub{font-size:12px;color:var(--muted)}
-.src-fit{display:flex;gap:12px;flex-wrap:wrap;font-size:12px;align-items:center}
-.src-fit span{display:inline-flex;align-items:center;gap:4px}
-.src-fit .fit{width:18px;height:18px;font-size:12px}
-.src-prob{display:flex;align-items:center;gap:6px;font-size:12px;color:var(--muted);flex-wrap:wrap}
-.src-prob b{font-family:var(--f-pixel);color:var(--ink);font-weight:400}
+.src-h b{font-size:16px;font-weight:800}
+.src-n{font-family:var(--f-pixel);font-size:26px;white-space:nowrap}
+.src-sub{font-size:13px;color:var(--muted)}
+.src-fit{display:flex;gap:14px;flex-wrap:wrap;font-size:14px;font-weight:700;align-items:center}
+.src-fit>span{display:inline-flex;align-items:center;gap:6px}
+.src-fit .fit{display:inline-grid;place-items:center;width:22px;height:22px;font-size:14px;line-height:1;padding:0}
+.src-prob{display:flex;align-items:center;gap:8px;font-size:13px;color:var(--muted);flex-wrap:wrap}
+.src-prob b{font-family:var(--f-pixel);color:var(--ink);font-weight:400;font-size:16px}
+.src-prob .prob b{font-size:16px}
+.src-prob .pm{width:64px;height:10px}
 .fitp{display:flex;flex-direction:column;align-items:flex-start;gap:2px}
-.prob{display:inline-flex;align-items:center;gap:5px;font-family:var(--f-pixel);font-size:12px;white-space:nowrap}
+.prob{display:inline-flex;align-items:center;gap:6px;font-family:var(--f-pixel);font-size:14px;white-space:nowrap}
 .pm{display:inline-block;width:48px;height:8px;background:var(--chip);position:relative;overflow:hidden}
 .pm i{position:absolute;left:0;top:0;bottom:0;background:var(--muted)}
 .pm.hi i{background:var(--green)} .pm.mid i{background:var(--amber)}
