@@ -346,6 +346,43 @@ dialog.nc-dlg::backdrop{background:rgba(5,10,20,.55)}
 .pb-fin{display:inline-flex;align-items:center;gap:8px}
 .pb-fin .prob b{font-size:18px}
 .pb-note{font-size:12px;color:var(--muted);margin:10px 2px 0;line-height:1.6}
+/* 같은 표는 필터(전체/A/B/C, 분야, 기간)를 바꿔도 칸 너비가 그대로 유지되도록 고정 */
+@media (min-width:40.01rem){
+table:has(#tb-g2b){table-layout:fixed;min-width:72rem}
+table:has(#tb-g2b) th:nth-child(1){width:7%}
+table:has(#tb-g2b) th:nth-child(3){width:11%}
+table:has(#tb-g2b) th:nth-child(4){width:6%}
+table:has(#tb-g2b) th:nth-child(5){width:7%}
+table:has(#tb-g2b) th:nth-child(6){width:11%}
+table:has(#tb-g2b) th:nth-child(7){width:17%}
+table:has(#tb-opps){table-layout:fixed;min-width:68rem}
+table:has(#tb-opps) th:nth-child(1){width:8%}
+table:has(#tb-opps) th:nth-child(3){width:13%}
+table:has(#tb-opps) th:nth-child(4){width:12%}
+table:has(#tb-opps) th:nth-child(5){width:17%}
+table:has(#tb-opps) th:nth-child(6){width:15%}
+table:has(#tb-news){table-layout:fixed;min-width:48rem}
+table:has(#tb-news) th:nth-child(1){width:5rem}
+table:has(#tb-news) th:nth-child(2){width:4.5rem}
+table:has(#tb-news) th:nth-child(3){width:6.5rem}
+table:has(#tb-news) th:nth-child(6){width:8rem}
+table:has(#tb-schedule){table-layout:fixed;min-width:40rem}
+table:has(#tb-schedule) th:nth-child(1){width:6rem}
+table:has(#tb-schedule) th:nth-child(2){width:9.5rem}
+table:has(#tb-schedule) th:nth-child(3){width:5rem}
+table:has(#tb-keywords){table-layout:fixed;min-width:30rem}
+table:has(#tb-keywords) th:nth-child(1){width:4.5rem}
+table:has(#tb-keywords) th:nth-child(2){width:11rem}
+table:has(#tb-todos){table-layout:fixed;min-width:30rem}
+table:has(#tb-todos) th:nth-child(1){width:4rem}
+table:has(#tb-todos) th:nth-child(3){width:9rem}
+table:has(#tb-todos) th:nth-child(4){width:12rem}
+table:has(#tb-history){table-layout:fixed;min-width:36rem}
+table:has(#tb-history) th:nth-child(1){width:5rem}
+table:has(#tb-history) th:nth-child(2){width:7rem}
+table:has(#tb-history) th:nth-child(4){width:6rem}
+table:has(#tb-history) th:nth-child(5){width:6rem}
+}
 .pd-t th{text-align:center}
 #pd-dlg .pd-t td{vertical-align:middle}
 .pd-t td.pd-k{text-align:center;font-weight:800;line-height:1.45}
