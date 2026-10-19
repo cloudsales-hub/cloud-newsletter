@@ -330,6 +330,16 @@ dialog.nc-dlg::backdrop{background:rgba(5,10,20,.55)}
 .pd-t td,.pd-t th{font-size:13px}
 .pd-lead{font-size:14px;line-height:1.7;margin:10px 0 4px}
 .pd-leg{display:flex;gap:14px;flex-wrap:wrap;font-size:13px;margin:12px 0 4px;align-items:center}
+.pane-note{display:flex;flex-wrap:wrap;align-items:center;gap:10px 0}
+.pane-note .pinfo{margin-right:16px}
+.pn-txt{line-height:1.6}
+#pd-dlg{width:min(68rem,calc(100vw - 32px));max-height:min(90vh,56rem);overscroll-behavior:contain}
+#pd-dlg .dh{padding:18px 26px}
+#pd-dlg .db{padding:10px 26px 24px;max-height:calc(min(90vh,56rem) - 80px);overscroll-behavior:contain}
+#pd-dlg .pd-t td,#pd-dlg .pd-t th{font-size:14px;padding:12px 14px}
+#pd-dlg .pd-lead{font-size:15px}
+.nc-dlg .db{overscroll-behavior:contain}
+html.dlg-lock,html.dlg-lock body{overflow:hidden}
 .pane-note{font-size:12px;color:var(--muted);margin:0 2px 8px}
 @media (max-width:40rem){.src-tabs{grid-template-columns:1fr}}
 
@@ -428,11 +438,11 @@ dialog.nc-dlg::backdrop{background:rgba(5,10,20,.55)}
         <input class="search" id="q-opps" type="search" placeholder="사업명·기관 검색" aria-label="사업 검색">
       </div>
       <div id="pane-g2b" role="tabpanel">
-        <p class="pane-note"><a class="go" href="https://www.g2b.go.kr/" target="_blank" rel="noopener" style="text-decoration:none;margin:0 8px 0 2px">나라장터 홈 ↗</a><button class="pinfo" type="button" data-pinfo>수주 가능성 기준 ⓘ</button> 나라장터(조달청 Open API)에서 클라우드·GPU·SaaS·MSP 등 키워드로 매일 조회한 진행 중 공고입니다. 입찰 마감이 지나면 자동으로 빠집니다. 사전규격은 본공고가 나올 때까지 남겨 둡니다.</p>
+        <p class="pane-note"><a class="go" href="https://www.g2b.go.kr/" target="_blank" rel="noopener" style="text-decoration:none;margin:0 8px 0 2px">나라장터 홈 ↗</a><button class="pinfo" type="button" data-pinfo>수주 가능성 기준 ⓘ</button><span class="pn-txt">입찰 마감이 지난 공고는 목록에서 자동으로 빠지고, 사전규격은 본공고가 나올 때까지 계속 남겨 둡니다.</span></p>
         <div class="scroll"><table><thead><tr><th>적합도·가능성</th><th>공고</th><th class="hide-sm">수요·공고기관</th><th>배정예산</th><th>게시일</th><th>마감</th><th class="hide-sm">참여 방식 · 근거</th></tr></thead><tbody id="tb-g2b"></tbody></table></div>
       </div>
       <div id="pane-opps" role="tabpanel" hidden>
-        <p class="pane-note"><button class="pinfo" type="button" data-pinfo style="margin:0 8px 0 2px">수주 가능성 기준 ⓘ</button>기사·기관 발표·예고로 찾은 사업입니다. 점은 진행 단계(공고 예정 → 사전규격 → 입찰 → 평가 → 우선협상 → 계약)를 나타냅니다.</p>
+        <p class="pane-note"><button class="pinfo" type="button" data-pinfo style="margin-left:2px">수주 가능성 기준 ⓘ</button><span class="pn-txt">기사·기관 발표·예고로 찾은 사업입니다. 점은 진행 단계(공고 예정 → 사전규격 → 입찰 → 평가 → 우선협상 → 계약)를 나타냅니다.</span></p>
         <div class="scroll"><table><thead><tr><th>적합도·가능성</th><th>사업</th><th class="hide-sm">발주·수요기관</th><th>규모</th><th>현황</th><th class="hide-sm">참여 방식</th></tr></thead><tbody id="tb-opps"></tbody></table></div>
       </div>
     </div>
@@ -1003,7 +1013,7 @@ dialog.nc-dlg::backdrop{background:rgba(5,10,20,.55)}
       const ac=el('div','nc-an'); ac.append(el('strong',null,r.action||'')); tr.append(td(ac)); return tr; }));
     if(typeof d.showModal==='function') d.showModal(); else d.setAttribute('open','');
   }
-  { const pd=$('pd-dlg'); if(pd){ const op=()=>{ if(typeof pd.showModal==='function') pd.showModal(); else pd.setAttribute('open',''); }; document.querySelectorAll('[data-pinfo]').forEach(b=>b.addEventListener('click',(e)=>{e.stopPropagation(); op();})); $('pd-dlg-x').addEventListener('click',()=>pd.close()); pd.addEventListener('click',e=>{ if(e.target===pd) pd.close(); }); } }
+  { const pd=$('pd-dlg'); if(pd){ const op=()=>{ document.documentElement.classList.add('dlg-lock'); if(typeof pd.showModal==='function') pd.showModal(); else pd.setAttribute('open',''); }; pd.addEventListener('close',()=>document.documentElement.classList.remove('dlg-lock')); pd.addEventListener('wheel',e=>{ const db=pd.querySelector('.db'); if(!db.contains(e.target)){ e.preventDefault(); return; } const up=e.deltaY<0, top=db.scrollTop<=0, bot=Math.ceil(db.scrollTop+db.clientHeight)>=db.scrollHeight; if((up&&top)||(!up&&bot)) e.preventDefault(); },{passive:false}); document.querySelectorAll('[data-pinfo]').forEach(b=>b.addEventListener('click',(e)=>{e.stopPropagation(); op();})); $('pd-dlg-x').addEventListener('click',()=>pd.close()); pd.addEventListener('click',e=>{ if(e.target===pd) pd.close(); }); } }
   { const d=$('nc-dlg'); if(d){ $('nc-dlg-x').addEventListener('click',()=>d.close()); d.addEventListener('click',e=>{ if(e.target===d) d.close(); }); }
     const m=$('hot-r-more'); if(m) m.addEventListener('click',openAlertDlg); }
   function renderAll(){renderHero(); renderChips(); renderToday(); renderOpps(); renderNews(); renderSchedule(); renderHistory(); renderNcloud(); renderAlert();}
