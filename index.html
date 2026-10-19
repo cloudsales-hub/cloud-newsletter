@@ -259,6 +259,24 @@ body[data-mode="radar"] .radar-cta{display:flex}
 .to-top .arw{display:grid;grid-template-columns:repeat(7,3px);grid-auto-rows:3px}
 .to-top .arw i{background:currentColor}.to-top .arw i.o{background:transparent}
 @media (max-width:52rem){.to-top{padding:7px 8px 5px}}
+/* ===== 공지 레이더 D-7 알림 패널 + 전체 보기 팝업 ===== */
+body:not([data-mode="radar"]) #hot-r{display:none!important}
+#hot-r .hot-h b{color:#7CF5A8}
+#hot-r .hot-h i{background:#03C75A;box-shadow:0 0 0 2px rgba(3,199,90,.3)}
+#hot-r .ar.민간{background:#03C75A}#hot-r .ar.공공{background:#8FA0FF}#hot-r .ar.금융{background:#FF9A4D}
+#hot-r .dd7{font-family:var(--f-pixel);font-size:11px;color:#FF8A8A;margin-left:6px;white-space:nowrap}
+#hot-r .empty7{font-size:13px;color:rgba(255,255,255,.8);padding:8px 0}
+@media (max-width:52rem){#hot-r .hot-h b{color:var(--green)}#hot-r .dd7{color:var(--red)}#hot-r .empty7{color:var(--muted)}}
+dialog.nc-dlg{border:0;padding:0;background:var(--surface);color:var(--ink);width:min(56rem,calc(100vw - 32px));max-height:min(80vh,44rem);box-shadow:3px 0 0 0 var(--frame),-3px 0 0 0 var(--frame),0 3px 0 0 var(--frame),0 -3px 0 0 var(--frame),8px 8px 0 0 var(--pshadow)}
+dialog.nc-dlg::backdrop{background:rgba(5,10,20,.55)}
+.nc-dlg .dh{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:14px 18px;background:var(--band);border-bottom:3px solid var(--frame);position:sticky;top:0;z-index:1}
+.nc-dlg .dh b{font-family:var(--f-pixel);font-weight:400;letter-spacing:.14em;color:var(--green)}
+.nc-dlg .dh h3{margin:2px 0 0;font-size:17px}
+.nc-dlg .dx{border:0;background:var(--ink);color:var(--surface);font:inherit;font-weight:800;font-size:13px;padding:6px 12px;cursor:pointer}
+.nc-dlg .db{padding:6px 18px 18px;overflow:auto;max-height:calc(min(80vh,44rem) - 70px)}
+.nc-dlg table{width:100%;border-collapse:collapse}
+.nc-dlg th{position:static}
+.nc-dlg td .nc-an{font-size:13px}
 /* page banners: small pixel scenes */
 .strip{position:relative;height:clamp(130px,16vw,170px);margin:3px;overflow:hidden;box-shadow:3px 0 0 0 var(--frame),-3px 0 0 0 var(--frame),0 3px 0 0 var(--frame),0 -3px 0 0 var(--frame),6px 6px 0 0 var(--pshadow)}
 .strip canvas{position:absolute;inset:0;width:100%;height:100%;image-rendering:pixelated;image-rendering:crisp-edges}
@@ -313,6 +331,11 @@ body[data-mode="radar"] .radar-cta{display:flex}
       <div class="hot-h"><i aria-hidden="true"></i><b>HOT TOPIC</b><span id="hot-date"></span></div>
       <ol class="hot-list" id="hot-list"></ol>
       <button class="hot-more" type="button" id="hot-more">핫이슈 자세히 보기 →</button>
+    </aside>
+    <aside class="hot" id="hot-r" aria-label="적용 임박 공지">
+      <div class="hot-h"><i aria-hidden="true"></i><b>D-7 ALERT</b><span id="hot-r-date">적용 7일 이내</span></div>
+      <ol class="hot-list" id="hot-r-list"></ol>
+      <button class="hot-more" type="button" id="hot-r-more" hidden>전체 보기 →</button>
     </aside>
   </section>
 
@@ -435,6 +458,10 @@ body[data-mode="radar"] .radar-cta{display:flex}
     </div>
   </section>
   <button class="to-top" id="to-top" type="button" aria-label="맨 위로"><span class="arw" aria-hidden="true"><i class="o"></i><i class="o"></i><i class="o"></i><i></i><i class="o"></i><i class="o"></i><i class="o"></i><i class="o"></i><i class="o"></i><i></i><i></i><i></i><i class="o"></i><i class="o"></i><i class="o"></i><i></i><i></i><i></i><i></i><i></i><i class="o"></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i class="o"></i><i class="o"></i><i></i><i></i><i></i><i class="o"></i><i class="o"></i><i class="o"></i><i class="o"></i><i></i><i></i><i></i><i class="o"></i><i class="o"></i><i class="o"></i><i class="o"></i><i></i><i></i><i></i><i class="o"></i><i class="o"></i></span>TOP</button>
+  <dialog class="nc-dlg" id="nc-dlg" aria-labelledby="nc-dlg-t">
+    <div class="dh"><div><b>D-7 ALERT</b><h3 id="nc-dlg-t">적용 7일 이내 공지 전체</h3></div><button class="dx" type="button" id="nc-dlg-x">닫기</button></div>
+    <div class="db"><table><thead><tr><th>남은 날</th><th>존</th><th>구분</th><th>서비스</th><th>적용일</th><th>영업 액션</th></tr></thead><tbody id="nc-dlg-tb"></tbody></table></div>
+  </dialog>
   <footer class="foot"><canvas data-strip="footer" aria-hidden="true"></canvas><div class="foot-in"><b>CLOUD NEWSLETTER</b><span id="f-upd">국내 클라우드 시장 뉴스 · 입찰 · 사업 기회</span></div></footer>
 </div>
 <div class="toast" id="toast" hidden></div>
@@ -501,7 +528,7 @@ body[data-mode="radar"] .radar-cta{display:flex}
     const cr=cv.getBoundingClientRect(); const boxes=[];
     const addBox=(b)=>{ if(b&&b.width>0) boxes.push([(b.left-cr.left)/P-2,(b.top-cr.top)/P-2,(b.right-cr.left)/P+2,(b.bottom-cr.top)/P+2]); };
     document.querySelectorAll('.hero-in h1, .hero-in .oneline').forEach(e=>{ const rg=document.createRange(); rg.selectNodeContents(e); Array.from(rg.getClientRects()).forEach(addBox); });
-    document.querySelectorAll('.hero-in .hero-cta > *, .hero-in .meta-line, .hero-in .modes > *, #hot').forEach(e=>{ if(e.hidden||e.offsetParent===null) return; addBox(e.getBoundingClientRect()); });
+    document.querySelectorAll('.hero-in .hero-cta > *, .hero-in .meta-line, .hero-in .modes > *, #hot, #hot-r').forEach(e=>{ if(e.hidden||e.offsetParent===null) return; addBox(e.getBoundingClientRect()); });
     const clear=(x0,y0,pad=0)=>!boxes.some(b=>x0>=b[0]-pad&&x0<=b[2]+pad&&y0>=b[1]-pad&&y0<=b[3]+pad);
     if(pal.night){ for(let i=0;i<lw*0.5;i++){const x0=Math.floor(rand()*lw),y0=Math.floor(rand()*hy*0.85); if(!clear(x0,y0)) continue; stars.push([x0,y0,rand()]); }
       const mr=Math.max(4,Math.round(lh*0.045));
@@ -835,7 +862,27 @@ body[data-mode="radar"] .radar-cta{display:flex}
   /* ---------- 맨 위로 버튼 ---------- */
   { const tt=$('to-top'); if(tt){ const upd=()=>tt.classList.toggle('show',window.scrollY>400); window.addEventListener('scroll',upd,{passive:true}); upd();
       tt.addEventListener('click',()=>window.scrollTo({top:0,behavior:window.matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth'})); } }
-  function renderAll(){renderHero(); renderChips(); renderToday(); renderOpps(); renderNews(); renderSchedule(); renderHistory(); renderNcloud();}
+
+  /* ---------- 공지 레이더 D-7 알림 ---------- */
+  const imminent=()=>(D.ncloud||[]).map(r=>({r,n:daysTo(r.apply)})).filter(o=>o.n!=null&&o.n>=0&&o.n<=7).sort((a,b)=>(a.n-b.n)||(b.r.imp-a.r.imp));
+  const ddTxt=n=>n===0?'D-DAY':'D-'+n;
+  function renderAlert(){
+    const list=$('hot-r-list'); if(!list) return; const items=imminent();
+    if(!items.length){ list.replaceChildren(el('li','empty7',loaded.ncloud?'7일 안에 적용되는 공지가 없습니다.':'불러오는 중')); $('hot-r-more').hidden=true; return; }
+    list.replaceChildren(...items.slice(0,3).map(({r,n})=>{ const li=el('li'); const z=(r.zones||[])[0]||''; li.append(el('span','ar '+z,z)); const kw=el('span','kw',r.svc); kw.append(el('span','dd7',ddTxt(n))); li.append(kw, el('span','co',r.kind+' · 적용 '+String(r.apply).slice(5).replace('-','/')+(r.action?' · '+r.action:''))); return li; }));
+    const more=$('hot-r-more'); more.hidden=items.length<3; more.textContent='전체 보기 ('+items.length+'건) →';
+  }
+  function openAlertDlg(){
+    const d=$('nc-dlg'), tb=$('nc-dlg-tb'); if(!d) return;
+    tb.replaceChildren(...imminent().map(({r,n})=>{ const tr=el('tr'); tr.append(td(el('span','dday'+(n<=3?' today':' soon'),ddTxt(n)),'nw'));
+      const zc=el('div'); [...(r.zones||[]),...(r.also||[])].forEach(z=>zc.append(el('span','nc-z '+z,z))); tr.append(td(zc));
+      tr.append(td(el('span','nc-kind '+r.kind,r.kind)), td(r.svc,'strong'), td(String(r.apply).replace(/-/g,'.'),'nw'));
+      const ac=el('div','nc-an'); ac.append(el('strong',null,r.action||'')); tr.append(td(ac)); return tr; }));
+    if(typeof d.showModal==='function') d.showModal(); else d.setAttribute('open','');
+  }
+  { const d=$('nc-dlg'); if(d){ $('nc-dlg-x').addEventListener('click',()=>d.close()); d.addEventListener('click',e=>{ if(e.target===d) d.close(); }); }
+    const m=$('hot-r-more'); if(m) m.addEventListener('click',openAlertDlg); }
+  function renderAll(){renderHero(); renderChips(); renderToday(); renderOpps(); renderNews(); renderSchedule(); renderHistory(); renderNcloud(); renderAlert();}
   renderAll();
   drawAllPixels();
 
