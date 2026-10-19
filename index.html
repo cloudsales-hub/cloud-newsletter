@@ -292,6 +292,33 @@ dialog.nc-dlg::backdrop{background:rgba(5,10,20,.55)}
 .foot-in{position:relative;z-index:1;padding:16px 20px;color:#fff;font-size:12px;display:flex;flex-direction:column;gap:4px}
 .foot-in b{font-family:var(--f-pixel);font-weight:400;letter-spacing:.14em;font-size:13px}
 .foot-in span{align-self:flex-start;background:rgba(10,22,44,.6);padding:2px 8px;border-radius:4px}
+/* 사업 기회: 출처 2분할(나라장터 발주 / 기사·기관) + 추정 수주 가능성 */
+.src-tabs{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:6px 2px 14px}
+.src{display:flex;flex-direction:column;gap:6px;text-align:left;padding:12px 14px;margin:2px;background:var(--surface);color:var(--ink);border:0;cursor:pointer;font:inherit;box-shadow:2px 0 0 0 var(--frame),-2px 0 0 0 var(--frame),0 2px 0 0 var(--frame),0 -2px 0 0 var(--frame)}
+.src[aria-selected="true"]{background:var(--blue-soft);box-shadow:2px 0 0 0 var(--blue),-2px 0 0 0 var(--blue),0 2px 0 0 var(--blue),0 -2px 0 0 var(--blue)}
+.src:focus-visible{outline:2px solid var(--blue);outline-offset:4px}
+.src-h{display:flex;justify-content:space-between;align-items:baseline;gap:8px}
+.src-h b{font-size:15px;font-weight:800}
+.src-n{font-family:var(--f-pixel);font-size:22px;white-space:nowrap}
+.src-sub{font-size:12px;color:var(--muted)}
+.src-fit{display:flex;gap:12px;flex-wrap:wrap;font-size:12px;align-items:center}
+.src-fit span{display:inline-flex;align-items:center;gap:4px}
+.src-fit .fit{width:18px;height:18px;font-size:12px}
+.src-prob{display:flex;align-items:center;gap:6px;font-size:12px;color:var(--muted);flex-wrap:wrap}
+.src-prob b{font-family:var(--f-pixel);color:var(--ink);font-weight:400}
+.fitp{display:flex;flex-direction:column;align-items:flex-start;gap:2px}
+.prob{display:inline-flex;align-items:center;gap:5px;font-family:var(--f-pixel);font-size:12px;white-space:nowrap}
+.pm{display:inline-block;width:48px;height:8px;background:var(--chip);position:relative;overflow:hidden}
+.pm i{position:absolute;left:0;top:0;bottom:0;background:var(--muted)}
+.pm.hi i{background:var(--green)} .pm.mid i{background:var(--amber)}
+.kind{display:inline-block;font-size:11px;padding:1px 5px;margin-right:6px;background:var(--chip);color:var(--muted);font-weight:700;vertical-align:1px}
+.kind.pre{background:var(--blue-soft);color:var(--blue)} .kind.re{background:var(--amber-soft);color:var(--amber)}
+.sub2{display:block;font-size:11px;color:var(--muted);font-weight:400;margin-top:4px}
+.due{display:flex;flex-direction:column;gap:3px;white-space:nowrap}
+.due small{font-size:11px;color:var(--muted)}
+.pane-note{font-size:12px;color:var(--muted);margin:0 2px 8px}
+@media (max-width:40rem){.src-tabs{grid-template-columns:1fr}}
+
 </style>
 
 <div class="wrap">
@@ -371,10 +398,14 @@ dialog.nc-dlg::backdrop{background:rgba(5,10,20,.55)}
   </section>
 
   <section class="page" id="opps" data-pg="opps" hidden>
-    <div class="strip"><canvas data-strip="opps" aria-hidden="true"></canvas><div class="strip-in"><span class="tag">OPPORTUNITIES</span><h2>사업 기회</h2><p>중소기업 참여 관점 A·B·C로 본 입찰·사업</p></div></div>
+    <div class="strip"><canvas data-strip="opps" aria-hidden="true"></canvas><div class="strip-in"><span class="tag">OPPORTUNITIES</span><h2>사업 기회</h2><p>중소기업 참여 관점 A·B·C로 본 입찰·사업 — 나라장터 발주 공고와 기사·기관 발굴 사업</p></div></div>
     <div class="card" id="card-opps">
-      <div class="card-h"><div><canvas class="spr" data-spr="flag" data-scale="3"></canvas><div><h2>사업 기회</h2><p class="note">중소기업 기준 · A 단독 주관 가능 · B SI 컨소시엄·하도급 참여 · C 참고(장비·감리 등). 점은 진행 단계(공고 예정 → 사전규격 → 입찰 → 평가 → 우선협상 → 계약). 사업명을 누르면 출처가 열린다.</p></div></div>
+      <div class="card-h"><div><canvas class="spr" data-spr="flag" data-scale="3"></canvas><div><h2>사업 기회</h2><p class="note">중소기업 기준 · A 단독 주관 가능 · B SI 컨소시엄·하도급 참여 · C 참고(장비·감리 등). 막대는 추정 수주 가능성(5~85%) — 적합도·규모·계약방법·준비 기간으로 매긴 우선순위 점수이며 실제 확률이 아니다. 사업명을 누르면 출처가 열린다.</p></div></div>
         <button class="dl" data-doc="opps" type="button"><span class="ico"><i></i><i></i><i class="o"></i><i></i><i></i><i></i><i></i><i></i><i></i></span>사업 기회 Word</button></div>
+      <div class="src-tabs" role="tablist" aria-label="사업 기회 출처">
+        <button class="src" role="tab" type="button" data-src="g2b" aria-selected="true" aria-controls="pane-g2b"><span class="src-h"><b>나라장터 발주 공고</b><span class="src-n" id="sn-g2b">-</span></span><span class="src-sub">조달청 입찰공고·사전규격 · 마감 전까지 계속 표시</span><span class="src-fit" id="sf-g2b"></span><span class="src-prob" id="sp-g2b"></span></button>
+        <button class="src" role="tab" type="button" data-src="opps" aria-selected="false" aria-controls="pane-opps"><span class="src-h"><b>기사·기관 발굴 사업</b><span class="src-n" id="sn-opps">-</span></span><span class="src-sub">기사·기관 발표·공고 예정 사업 · 단계별 추적</span><span class="src-fit" id="sf-opps"></span><span class="src-prob" id="sp-opps"></span></button>
+      </div>
       <div class="tools">
         <button class="chip" data-fit="" aria-pressed="true" type="button">전체</button>
         <button class="chip" data-fit="A" aria-pressed="false" type="button">A 주관</button>
@@ -382,10 +413,17 @@ dialog.nc-dlg::backdrop{background:rgba(5,10,20,.55)}
         <button class="chip" data-fit="C" aria-pressed="false" type="button">C 참고</button>
         <input class="search" id="q-opps" type="search" placeholder="사업명·기관 검색" aria-label="사업 검색">
       </div>
-      <div class="scroll"><table><thead><tr><th>적합도</th><th>사업</th><th class="hide-sm">발주·수요기관</th><th>규모</th><th>현황</th><th class="hide-sm">참여 방식</th></tr></thead><tbody id="tb-opps"></tbody></table></div>
+      <div id="pane-g2b" role="tabpanel">
+        <p class="pane-note">나라장터(조달청 Open API)에서 클라우드·GPU·SaaS·MSP 등 키워드로 매일 조회한 진행 중 공고. 입찰 마감이 지나면 자동으로 빠진다. 사전규격은 본공고가 나올 때까지 남긴다.</p>
+        <div class="scroll"><table><thead><tr><th>적합도·가능성</th><th>공고</th><th class="hide-sm">수요·공고기관</th><th>배정예산</th><th>마감</th><th class="hide-sm">참여 방식 · 근거</th></tr></thead><tbody id="tb-g2b"></tbody></table></div>
+      </div>
+      <div id="pane-opps" role="tabpanel" hidden>
+        <p class="pane-note">기사·기관 발표·예고로 찾은 사업. 점은 진행 단계(공고 예정 → 사전규격 → 입찰 → 평가 → 우선협상 → 계약).</p>
+        <div class="scroll"><table><thead><tr><th>적합도·가능성</th><th>사업</th><th class="hide-sm">발주·수요기관</th><th>규모</th><th>현황</th><th class="hide-sm">참여 방식</th></tr></thead><tbody id="tb-opps"></tbody></table></div>
+      </div>
     </div>
     <div class="card">
-      <div class="card-h"><div><canvas class="spr" data-spr="building" data-scale="3"></canvas><div><h2>규모가 공개된 사업</h2><p class="note">사업 금액·예산 기준(억 원), 큰 순. 사업비 미공개 건은 빠진다.</p></div></div>
+      <div class="card-h"><div><canvas class="spr" data-spr="building" data-scale="3"></canvas><div><h2>규모가 공개된 사업</h2><p class="note">위에서 고른 묶음(나라장터 발주 / 기사·기관) 기준 · 배정예산·사업 금액(억 원), 큰 순. 금액 미공개 건은 빠진다.</p></div></div>
         <div class="legend"><span><i class="fit A">A</i>주관</span><span><i class="fit B">B</i>컨소시엄</span><span><i class="fit C">C</i>참고</span></div></div>
       <div class="bars" id="bars"></div>
     </div>
@@ -725,9 +763,9 @@ dialog.nc-dlg::backdrop{background:rgba(5,10,20,.55)}
   const blocks=(id,n,total,cap)=>{ const cp=document.getElementById(id.replace('b-','c-')); if(cp) cp.textContent=cap||'';const b=document.getElementById(id); if(!b) return; const T=Math.max(1,Math.min(30,total)); const on=Math.min(n,T); b.replaceChildren(...Array.from({length:T},(_,i)=>el('i',i<on?'on':''))); b.setAttribute('aria-label',n+' / '+total);};
 
   /* ---------- state ---------- */
-  const D={meta:null,opportunities:[],news:[],schedule:[],issues:[],keywords:[],todos:[],ncloud:[]};
+  const D={meta:null,g2b:[],opportunities:[],news:[],schedule:[],issues:[],keywords:[],todos:[],ncloud:[]};
   const loaded={}; let dbReady=null;
-  const ui={page:'today',fit:'',q:'',area:'',soon:false,nz:'',nk:'',mode:'news'};
+  const ui={page:'today',src:'g2b',fit:'',q:'',area:'',soon:false,nz:'',nk:'',mode:'news'};
 
   /* ---------- tabs ---------- */
   const PAGES=['today','opps','news','ncloud','schedule','library','history'];
@@ -752,6 +790,7 @@ dialog.nc-dlg::backdrop{background:rgba(5,10,20,.55)}
   document.querySelectorAll('[data-fit]').forEach(b=>b.addEventListener('click',()=>{ui.fit=b.dataset.fit; document.querySelectorAll('[data-fit]').forEach(x=>x.setAttribute('aria-pressed',String(x===b))); renderOpps();}));
   document.querySelectorAll('[data-area]').forEach(b=>b.addEventListener('click',()=>{ui.area=b.dataset.area; document.querySelectorAll('[data-area]').forEach(x=>x.setAttribute('aria-pressed',String(x===b))); renderNews();}));
   $('q-opps').addEventListener('input',(e)=>{ui.q=e.target.value.trim().toLowerCase(); renderOpps();});
+  document.querySelectorAll('[data-src]').forEach(b=>b.addEventListener('click',()=>{ui.src=b.dataset.src; renderOpps(); renderBars();}));
 
   /* ---------- render ---------- */
   const latest=()=>[...D.issues].sort((a,b)=>Number(b.no)-Number(a.no))[0]||null;
@@ -764,7 +803,7 @@ dialog.nc-dlg::backdrop{background:rgba(5,10,20,.55)}
     else if(loaded.issues){ note='첫 소식이 올라오면 여기에 갱신 시각이 나옵니다.'; }
     const m=D.meta; const ml=document.querySelector('.meta-line'); $('h-updated').textContent=m&&m.updatedAt?('데이터 갱신 '+String(m.updatedAt).replace('T',' ').slice(0,16)):note;
     if(ml) ml.hidden=!$('h-updated').textContent;
-    if(loaded.opportunities){ const na=D.opportunities.filter(r=>r.fit==='A').length, nb=D.opportunities.filter(r=>r.fit==='B').length, nt=D.opportunities.length; $('k-a').textContent=String(na); $('k-b').textContent=String(nb); blocks('b-a',na,nt,'중소기업 단독 주관 가능\n추적 사업 총 '+nt+'건 중 '+na+'건'); blocks('b-b',nb,nt,'중소기업 컨소시엄·하도급 참여 가능\n추적 사업 총 '+nt+'건 중 '+nb+'건'); }
+    if(loaded.opportunities||loaded.g2b){ const G=g2bLive(), O=D.opportunities, cnt=(R,f)=>R.filter(r=>r.fit===f).length; const ga=cnt(G,'A'),oa=cnt(O,'A'),gb=cnt(G,'B'),ob=cnt(O,'B'); const na=ga+oa, nb=gb+ob, nt=G.length+O.length; $('k-a').textContent=String(na); $('k-b').textContent=String(nb); blocks('b-a',na,nt,'중소기업 단독 주관 가능\n나라장터 발주 '+ga+'건 + 기사·기관 '+oa+'건'); blocks('b-b',nb,nt,'중소기업 컨소시엄·하도급 참여 가능\n나라장터 발주 '+gb+'건 + 기사·기관 '+ob+'건'); }
     if(loaded.schedule){ const ns=D.schedule.filter(r=>{const n=daysTo(r.date); return n!=null&&n>=0&&n<=14;}).length; $('k-soon').textContent=String(ns); blocks('b-soon',ns,D.schedule.length,'오늘부터 14일 안의 일정\n등록 일정 총 '+D.schedule.length+'건 중 '+ns+'건'); }
     if(L&&L.articles!=null){ const prev=[...D.issues].sort((a,b)=>Number(b.no)-Number(a.no))[1]; const cn=$('c-news'); if(cn) cn.textContent=prev&&prev.articles!=null?('이번 호 '+L.articles+'건\n직전 호 '+prev.articles+'건 대비 '+(Number(L.articles)-Number(prev.articles)>=0?'+':'')+(Number(L.articles)-Number(prev.articles))+'건'):''; }
     $('f-upd').textContent=(m&&m.updatedAt?('데이터 갱신 '+String(m.updatedAt).replace('T',' ').slice(0,16)+' · '):'')+'국내 클라우드 시장 뉴스 · 입찰 · 사업 기회';
@@ -786,16 +825,54 @@ dialog.nc-dlg::backdrop{background:rgba(5,10,20,.55)}
     if(!up.length) emptyRow(tt,4,loaded.schedule?'14일 안의 일정이 없습니다.':'불러오는 중'); else tt.replaceChildren(...up.map(({r,n})=>{const tr=el('tr'); tr.append(td(el('span','dday'+(n===0?' today':(n<=7?' soon':'')),n===0?'D-DAY':'D-'+n),'nw'),td(r.label,'nw'),td(r.item),td(r.check,'mid hide-sm')); return tr;}));
   }
   const fitOrder={A:0,B:1,C:2};
-  const oppRows=()=>D.opportunities.filter(r=>(!ui.fit||r.fit===ui.fit)&&(!ui.q||((r.name||'')+' '+(r.agency||'')).toLowerCase().includes(ui.q))).sort((a,b)=>(fitOrder[a.fit]-fitOrder[b.fit])||((b.scale_eok||0)-(a.scale_eok||0)));
   function stepsNode(stage,status){const wrap=el('div'); wrap.append(el('div',null,status||'')); const i=stageIdx(stage); const s=el('div','stage'); if(i>=0){const st=el('div','steps'); st.setAttribute('aria-label','단계: '+stage); STAGES.forEach((_,k)=>{st.append(el('i',k<i?'on':(k===i?'now':'')));}); wrap.append(st); s.textContent=stage; } else s.textContent=stage||''; wrap.append(s); return wrap;}
+  const P=r=>typeof r.prob==='number'?r.prob:null;
+  const probNode=v=>{const w=el('span','prob'); if(v==null){w.append(el('span',null,'-')); return w;} const m=el('span','pm '+(v>=60?'hi':(v>=35?'mid':''))); const i=el('i'); i.style.width=Math.max(4,Math.min(100,v))+'%'; m.append(i); w.append(m,el('b',null,v+'%')); w.title='추정 수주 가능성(우선순위 점수, 실제 확률 아님)'; return w;};
+  const fitProb=r=>{const d=el('div','fitp'); d.append(el('span','fit '+r.fit,r.fit),probNode(P(r))); return d;};
+  const dueAt=s=>{ if(!s) return null; const t=new Date(String(s).replace(' ','T')+(String(s).length<=10?'T23:59':'')+':00+09:00'); return isNaN(t)?null:t; };
+  const g2bLive=()=>(D.g2b||[]).filter(r=>{const t=dueAt(r.due); return !t||t>=new Date();});
+  const match=r=>(!ui.fit||r.fit===ui.fit)&&(!ui.q||[r.name,r.agency,r.orderer,r.no].join(' ').toLowerCase().includes(ui.q));
+  const g2bSort=(a,b)=>(fitOrder[a.fit]-fitOrder[b.fit])||((P(b)||0)-(P(a)||0))||String(a.due||'9').localeCompare(String(b.due||'9'));
+  const g2bRows=()=>g2bLive().filter(match).sort(g2bSort);
+  const oppSort=(a,b)=>(fitOrder[a.fit]-fitOrder[b.fit])||((P(b)||0)-(P(a)||0))||((b.scale_eok||0)-(a.scale_eok||0));
+  const oppRows=()=>D.opportunities.filter(match).sort(oppSort);
+  const stat=rows=>{const c={A:0,B:0,C:0}; rows.forEach(r=>{if(c[r.fit]!=null) c[r.fit]++;}); const ps=rows.filter(r=>r.fit!=='C').map(P).filter(v=>v!=null); return {n:rows.length,c,avg:ps.length?Math.round(ps.reduce((a,b)=>a+b,0)/ps.length):null,max:ps.length?Math.max(...ps):null};};
+  const dueTxt=r=>r.due?((r.kind==='사전규격'?'의견 마감 ':'마감 ')+String(r.due).slice(5).replace('-','/')):(r.note||'');
+  function srcSummary(key,rows,ready){
+    const s=stat(rows); $('sn-'+key).textContent=ready?s.n+'건':'-';
+    const f=$('sf-'+key); f.replaceChildren(...['A','B','C'].map(k=>{const sp=el('span'); sp.append(el('span','fit '+k,k),document.createTextNode(' '+s.c[k]+'건')); return sp;}));
+    const p=$('sp-'+key); if(s.avg==null){p.replaceChildren(document.createTextNode(ready?'A·B 사업 없음':'불러오는 중')); return;}
+    p.replaceChildren(document.createTextNode('A·B 평균 가능성'),probNode(s.avg),document.createTextNode('· 최고'),el('b',null,s.max+'%'));
+  }
+  function dueNode(r){
+    const w=el('div','due'); const t=dueAt(r.due);
+    if(!t){ w.append(el('span','dday',r.kind==='사전규격'?'본공고 대기':'-')); if(r.note) w.append(el('small',null,r.note)); return w; }
+    const n=daysTo(String(r.due).slice(0,10));
+    w.append(el('span','dday'+(n===0?' today':(n!=null&&n<=7?' soon':'')),n===0?'D-DAY':'D-'+n));
+    w.append(el('small',null,dueTxt(r))); if(r.note) w.append(el('small',null,r.note)); return w;
+  }
   function renderOpps(){
+    document.querySelectorAll('[data-src]').forEach(b=>b.setAttribute('aria-selected',String(b.dataset.src===ui.src)));
+    $('pane-g2b').hidden=ui.src!=='g2b'; $('pane-opps').hidden=ui.src!=='opps';
+    srcSummary('g2b',g2bLive(),!!loaded.g2b); srcSummary('opps',D.opportunities,!!loaded.opportunities);
+    const tg=$('tb-g2b'); const gr=g2bRows(); const NC=6;
+    if(!gr.length) emptyRow(tg,NC,loaded.g2b?(g2bLive().length?'조건에 맞는 공고가 없습니다.':'진행 중인 나라장터 공고가 없습니다.'):'불러오는 중');
+    else tg.replaceChildren(...gr.map(r=>{const tr=el('tr');
+      const nm=el('div'); nm.append(el('span','kind'+(r.kind==='사전규격'?' pre':(r.kind==='재공고'?' re':'')),r.kind||'공고'),link(r.name,r.url)); nm.append(el('span','sub2',(r.no||'')+(r.method?' · '+r.method:'')+(r.price_eok!=null?' · 추정가격 '+r.price_eok.toLocaleString('ko-KR')+'억':'')));
+      const ag=el('div'); ag.append(document.createTextNode(r.agency||'')); if(r.orderer&&r.orderer!==r.agency) ag.append(el('span','sub2','공고 '+r.orderer));
+      const hw=el('div'); hw.append(document.createTextNode(r.how||'')); if(r.why) hw.append(el('span','sub2','근거: '+r.why));
+      tr.append(td(fitProb(r)),td(nm,'strong'),td(ag,'hide-sm'),td(r.budget_eok!=null?r.budget_eok.toLocaleString('ko-KR')+'억':'-','nw'),td(dueNode(r)),td(hw,'hide-sm')); return tr;}));
     const tb=$('tb-opps'); const rows=oppRows();
-    if(!rows.length) emptyRow(tb,7,loaded.opportunities?(D.opportunities.length?'조건에 맞는 사업이 없습니다.':'아직 등록된 사업 기회가 없습니다.'):'불러오는 중');
-    else tb.replaceChildren(...rows.map(r=>{const tr=el('tr'); tr.append(td(el('span','fit '+r.fit,r.fit)),td(link(r.name,r.url),'strong'),td(r.agency,'hide-sm'),td(r.scale),td(stepsNode(r.stage,r.status)),td(r.how,'hide-sm')); return tr;}));
-    const bars=$('bars'); const br=D.opportunities.filter(r=>typeof r.scale_eok==='number'&&(!ui.fit||r.fit===ui.fit)).sort((a,b)=>b.scale_eok-a.scale_eok);
+    if(!rows.length) emptyRow(tb,NC,loaded.opportunities?(D.opportunities.length?'조건에 맞는 사업이 없습니다.':'아직 등록된 사업 기회가 없습니다.'):'불러오는 중');
+    else tb.replaceChildren(...rows.map(r=>{const tr=el('tr'); tr.append(td(fitProb(r)),td(link(r.name,r.url),'strong'),td(r.agency,'hide-sm'),td(r.scale),td(stepsNode(r.stage,r.status)),td(r.how,'hide-sm')); return tr;}));
+    renderBars();
+  }
+  function renderBars(){
+    const bars=$('bars'); const G=ui.src==='g2b'; const sc=r=>G?r.budget_eok:r.scale_eok;
+    const br=(G?g2bLive():D.opportunities).filter(r=>typeof sc(r)==='number'&&(!ui.fit||r.fit===ui.fit)).sort((a,b)=>sc(b)-sc(a));
     if(!br.length){bars.replaceChildren(el('div','empty','규모가 공개된 사업이 없습니다.')); return;}
-    const max=Math.max(...br.map(r=>r.scale_eok));
-    bars.replaceChildren(...br.map(r=>{const row=el('div','bar-row'); const nm=el('div','nm'); nm.append(el('span','fit '+r.fit,r.fit)); nm.append(document.createTextNode(' '+r.name)); nm.title=r.name; const tr=el('div','bar-track'); const f=el('div','bar-fill '+r.fit); f.style.width=Math.max(1.5,r.scale_eok/max*82)+'%'; tr.append(f,el('span','bar-val',r.scale_eok.toLocaleString('ko-KR')+'억')); row.append(nm,tr); return row;}));
+    const max=Math.max(...br.map(sc));
+    bars.replaceChildren(...br.map(r=>{const row=el('div','bar-row'); const nm=el('div','nm'); nm.append(el('span','fit '+r.fit,r.fit)); nm.append(document.createTextNode(' '+r.name)); nm.title=r.name; const tr=el('div','bar-track'); const f=el('div','bar-fill '+r.fit); f.style.width=Math.max(1.5,sc(r)/max*82)+'%'; tr.append(f,el('span','bar-val',sc(r).toLocaleString('ko-KR')+'억'+(P(r)!=null?' · '+P(r)+'%':''))); row.append(nm,tr); return row;}));
   }
   function renderNews(){
     const tb=$('tb-news'); const rows=D.news.filter(r=>!ui.area||r.area===ui.area).sort((a,b)=>String(b.date).localeCompare(String(a.date)));
@@ -891,9 +968,9 @@ dialog.nc-dlg::backdrop{background:rgba(5,10,20,.55)}
     try{
       const r=await fetch('data/board.json?v='+Date.now(),{cache:'no-store'}); if(!r.ok) throw new Error('http '+r.status);
       const j=await r.json(); dbReady=true;
-      ['opportunities','news','schedule','issues','keywords','todos','ncloud'].forEach(k=>{ D[k]=Array.isArray(j[k])?j[k]:[]; loaded[k]=true; });
+      ['g2b','opportunities','news','schedule','issues','keywords','todos','ncloud'].forEach(k=>{ D[k]=Array.isArray(j[k])?j[k]:[]; loaded[k]=true; });
       D.meta=j.meta||null; renderAll();
-    }catch(e){ dbReady=false; ['opportunities','news','schedule','issues','keywords','todos','ncloud'].forEach(k=>loaded[k]=true); renderAll(); }
+    }catch(e){ dbReady=false; ['g2b','opportunities','news','schedule','issues','keywords','todos','ncloud'].forEach(k=>loaded[k]=true); renderAll(); }
   })();
 
   /* ---------- Word export ---------- */
@@ -918,23 +995,26 @@ dialog.nc-dlg::backdrop{background:rgba(5,10,20,.55)}
         p([run('기준 '+(L?('브리핑 #'+String(L.no).padStart(3,'0')+' ('+L.date+')'):'최신 데이터')+' · 내려받은 날 '+todayISO(),{size:18,color:'5A6A80'})],{after:200})],
       oneline:()=>L?[h('오늘의 한 줄'),p(L.oneline||'')]:[],
       keywords:()=>D.keywords.length?[h('핫이슈 키워드'),table([1500,3200,5600,4950],['분야','키워드','핵심','시사점'],D.keywords.map(r=>[r.area,r.keyword,r.core,r.point]))]:[],
-      opps:()=>{const rows=[...D.opportunities].sort((a,b)=>(fitOrder[a.fit]-fitOrder[b.fit])||((b.scale_eok||0)-(a.scale_eok||0))); if(!rows.length) return [];
+      g2b:()=>{const rows=[...g2bLive()].sort(g2bSort); if(!rows.length) return []; const s=stat(rows);
+        return [h('나라장터 발주 공고(진행 중)'),p('진행 중 '+rows.length+'건 · A 주관 '+s.c.A+'건 · B 컨소시엄·하도급 '+s.c.B+'건 · C 참고 '+s.c.C+'건'+(s.avg!=null?' · A·B 평균 추정 가능성 '+s.avg+'% · 최고 '+s.max+'%':'')),
+          table([1600,4300,2600,1300,2000,3450],['적합도·가능성','공고','수요·공고기관','배정예산','마감','참여 방식'],rows.map(r=>[(fitLabel[r.fit]||r.fit)+(P(r)!=null?' · '+P(r)+'%':''),linkP('['+(r.kind||'공고')+'] '+r.name+(r.no?' ('+r.no+')':''),r.url),(r.agency||'')+(r.orderer&&r.orderer!==r.agency?' / 공고 '+r.orderer:''),r.budget_eok!=null?r.budget_eok+'억':'-',dueTxt(r),(r.how||'')+(r.why?' — 근거: '+r.why:'')]))];},
+      opps:()=>{const rows=[...D.opportunities].sort(oppSort); if(!rows.length) return [];
         const a=rows.filter(r=>r.fit==='A').length,b=rows.filter(r=>r.fit==='B').length,c=rows.filter(r=>r.fit==='C').length;
-        return [h('사업 기회'),p('추적 '+rows.length+'건 · A 주관 '+a+'건 · B 컨소시엄·하도급 '+b+'건 · C 참고 '+c+'건'),
-          table([1300,3800,2500,2250,2900,2500],['적합도','사업','발주·수요기관','규모','현황','참여 방식'],rows.map(r=>[fitLabel[r.fit]||r.fit,linkP(r.name,r.url),r.agency,r.scale,(r.stage?r.stage+' · ':'')+(r.status||''),r.how]))];},
+        return [h('기사·기관 발굴 사업'),p('추적 '+rows.length+'건 · A 주관 '+a+'건 · B 컨소시엄·하도급 '+b+'건 · C 참고 '+c+'건'),
+          table([1300,3800,2500,2250,2900,2500],['적합도·가능성','사업','발주·수요기관','규모','현황','참여 방식'],rows.map(r=>[(fitLabel[r.fit]||r.fit)+(P(r)!=null?' · '+P(r)+'%':''),linkP(r.name,r.url),r.agency,r.scale,(r.stage?r.stage+' · ':'')+(r.status||''),r.how]))];},
       news:()=>{const rows=[...D.news].sort((a,b)=>String(b.date).localeCompare(String(a.date))); return rows.length?[h('주요 뉴스'),table([1000,1000,1100,5200,4450,2500],['일자','분야','변동','기사','시사점','매체'],rows.map(r=>[md(r.date),r.area,r.change,linkP(r.title,r.url),r.point,r.source]))]:[];},
       schedule:()=>{const rows=[...D.schedule].sort((a,b)=>String(a.date).localeCompare(String(b.date))); return rows.length?[h('향후 주요 일정'),table([1900,1100,6250,6000],['시점','분야','일정','체크 포인트'],rows.map(r=>[r.label,r.area,r.item,r.check]))]:[];},
     };
-    const order={full:['head','oneline','keywords','opps','news','schedule'],opps:['head','opps'],brief:['head','oneline','keywords','schedule'],news:['head','news'],schedule:['head','schedule']}[kind];
+    const order={full:['head','oneline','keywords','g2b','opps','news','schedule'],opps:['head','g2b','opps'],brief:['head','oneline','keywords','schedule'],news:['head','news'],schedule:['head','schedule']}[kind];
     const children=order.flatMap(k=>secs[k]());
-    children.push(p([run('※ 적합도(중소기업 기준)와 시사점은 공개 기사·공고를 바탕으로 정리한 참고 의견이며, 예정 일정은 보도 기준으로 바뀔 수 있다.',{size:16,color:'5A6A80'})],{before:200}));
+    children.push(p([run('※ 적합도·추정 수주 가능성(중소기업 기준)과 시사점은 공개 기사·공고를 바탕으로 정리한 참고 의견이며(가능성은 우선순위 점수로 실제 확률이 아니다), 예정 일정은 보도 기준으로 바뀔 수 있다.',{size:16,color:'5A6A80'})],{before:200}));
     return new X.Document({styles:{default:{document:{run:{font:FONT,size:19}}}},sections:[{properties:{page:{size:{width:11906,height:16838,orientation:X.PageOrientation.LANDSCAPE},margin:{top:794,bottom:794,left:794,right:794}}},
       footers:{default:new X.Footer({children:[new X.Paragraph({alignment:X.AlignmentType.CENTER,children:[new X.TextRun({children:[X.PageNumber.CURRENT,' / ',X.PageNumber.TOTAL_PAGES],font:FONT,size:15,color:'5A6A80'})]})]})},
       children}]});
   }
   const NAMES={full:'클라우드뉴스레터_종합현황',opps:'클라우드_사업기회',brief:'브리핑_요약',news:'주요뉴스',schedule:'주요일정'};
   async function exportDoc(kind,btn){
-    if(!D.issues.length&&!D.opportunities.length){toast('아직 내려받을 데이터가 없습니다.'); return;}
+    if(!D.issues.length&&!D.opportunities.length&&!(D.g2b||[]).length){toast('아직 내려받을 데이터가 없습니다.'); return;}
     const dl=await getDl(); if(!dl){toast('이 화면에서는 파일 저장을 쓸 수 없습니다.'); return;}
     btn.disabled=true; const old=btn.lastChild.textContent; btn.lastChild.textContent='만드는 중…';
     try{
