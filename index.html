@@ -352,9 +352,9 @@ table:has(#tb-g2b){table-layout:fixed;min-width:72rem}
 table:has(#tb-g2b) th:nth-child(1){width:7%}
 table:has(#tb-g2b) th:nth-child(3){width:11%}
 table:has(#tb-g2b) th:nth-child(4){width:6%}
-table:has(#tb-g2b) th:nth-child(5){width:7%}
-table:has(#tb-g2b) th:nth-child(6){width:11%}
-table:has(#tb-g2b) th:nth-child(7){width:17%}
+table:has(#tb-g2b) th:nth-child(5){width:12%}
+table:has(#tb-g2b) th:nth-child(6){width:9%}
+table:has(#tb-g2b) th:nth-child(7){width:15%}
 table:has(#tb-opps){table-layout:fixed;min-width:68rem}
 table:has(#tb-opps) th:nth-child(1){width:8%}
 table:has(#tb-opps) th:nth-child(3){width:13%}
@@ -383,6 +383,22 @@ table:has(#tb-history) th:nth-child(2){width:7rem}
 table:has(#tb-history) th:nth-child(4){width:6rem}
 table:has(#tb-history) th:nth-child(5){width:6rem}
 }
+.fitp{align-items:center}
+.fitrow{display:flex;align-items:center;gap:6px}
+.newb{display:inline-block;font-family:var(--f-pixel);font-size:11px;line-height:1;padding:3px 5px;background:var(--red);color:#fff;letter-spacing:.04em}
+#tb-g2b td,#tb-opps td{vertical-align:middle}
+#tb-g2b td:nth-child(1),#tb-g2b td:nth-child(3),#tb-g2b td:nth-child(4),#tb-g2b td:nth-child(5),#tb-g2b td:nth-child(6){text-align:center}
+#tb-opps td:nth-child(1),#tb-opps td:nth-child(3),#tb-opps td:nth-child(4){text-align:center}
+#tb-g2b .fitp,#tb-opps .fitp{display:inline-flex}
+#tb-g2b .due{align-items:center;text-align:center}
+#tb-g2b .due small{white-space:normal;line-height:1.4}
+#tb-g2b .due .dday{align-self:center;display:inline-block;min-width:4.2rem;text-align:center;padding:2px 8px}
+.pd2{display:inline-flex;flex-direction:column;gap:4px;text-align:left}
+.pd2-l{display:flex;gap:8px;align-items:baseline;white-space:nowrap}
+.pd2-k{font-size:11px;color:var(--muted);min-width:3.6rem;text-align:right}
+.pd2-v{font-weight:700;font-size:13px}
+.pd2-l.end .pd2-v{color:var(--red)}
+#tb-g2b td:nth-child(3) .sub2{margin-top:4px}
 .pd-t th{text-align:center}
 #pd-dlg .pd-t td{vertical-align:middle}
 .pd-t td.pd-k{text-align:center;font-weight:800;line-height:1.45}
@@ -511,7 +527,7 @@ html.dlg-lock,html.dlg-lock body{overflow:hidden}
       </div>
       <div id="pane-g2b" role="tabpanel">
         <p class="pane-note"><a class="go" href="https://www.g2b.go.kr/" target="_blank" rel="noopener" style="text-decoration:none;margin:0 8px 0 2px">나라장터 홈 ↗</a><button class="pinfo" type="button" data-pinfo>수주 가능성 기준 ⓘ</button><span class="pn-txt">입찰 마감이 지난 공고는 목록에서 자동으로 빠지고, 사전규격은 본공고가 나올 때까지 계속 남겨 둡니다.</span></p>
-        <div class="scroll"><table><thead><tr><th>적합도·가능성</th><th>공고</th><th class="hide-sm">수요·공고기관</th><th>배정예산</th><th>게시일</th><th>마감</th><th class="hide-sm">참여 방식 · 근거</th></tr></thead><tbody id="tb-g2b"></tbody></table></div>
+        <div class="scroll"><table><thead><tr><th>적합도·가능성</th><th>공고</th><th class="hide-sm">수요·공고기관</th><th>배정예산</th><th>게시일 · 마감일</th><th>남은 기간</th><th class="hide-sm">참여 방식 · 근거</th></tr></thead><tbody id="tb-g2b"></tbody></table></div>
       </div>
       <div id="pane-opps" role="tabpanel" hidden>
         <p class="pane-note"><button class="pinfo" type="button" data-pinfo style="margin-left:2px">수주 가능성 기준 ⓘ</button><span class="pn-txt">기사·기관 발표·예고로 찾은 사업입니다. 점은 진행 단계(공고 예정 → 사전규격 → 입찰 → 평가 → 우선협상 → 계약)를 나타냅니다.</span></p>
@@ -947,7 +963,8 @@ html.dlg-lock,html.dlg-lock body{overflow:hidden}
   function stepsNode(stage,status){const wrap=el('div'); wrap.append(el('div',null,status||'')); const i=stageIdx(stage); const s=el('div','stage'); if(i>=0){const st=el('div','steps'); st.setAttribute('aria-label','단계: '+stage); STAGES.forEach((_,k)=>{st.append(el('i',k<i?'on':(k===i?'now':'')));}); wrap.append(st); s.textContent=stage; } else s.textContent=stage||''; wrap.append(s); return wrap;}
   const P=r=>typeof r.prob==='number'?r.prob:null;
   const probNode=v=>{const w=el('span','prob'); if(v==null){w.append(el('span',null,'-')); return w;} const m=el('span','pm '+(v>=60?'hi':(v>=35?'mid':''))); const i=el('i'); i.style.width=Math.max(4,Math.min(100,v))+'%'; m.append(i); w.append(m,el('b',null,v+'%')); w.title='추정 수주 가능성(우선순위 점수, 실제 확률 아님)'; return w;};
-  const fitProb=r=>{const d=el('div','fitp'); const pn=probNode(P(r)); if(P(r)!=null){ pn.classList.add('probbtn'); pn.setAttribute('role','button'); pn.tabIndex=0; pn.title='눌러서 이 사업의 점수 계산 내역 보기'; const go=(e)=>{e.stopPropagation(); e.preventDefault(); openBreak(r);}; pn.addEventListener('click',go); pn.addEventListener('keydown',e=>{ if(e.key==='Enter'||e.key===' ') go(e); }); } d.append(el('span','fit '+r.fit,r.fit),pn); return d;};
+  const isNew=r=>{ const now=Date.now(); let t=null; if(r.added){ t=new Date(r.added).getTime(); } else if(r.posted){ t=new Date(String(r.posted).slice(0,10)+'T23:59:59+09:00').getTime(); } return t!=null&&!isNaN(t)&&now-t<86400000&&now-t>-86400000; };
+  const fitProb=r=>{const d=el('div','fitp'); const pn=probNode(P(r)); if(P(r)!=null){ pn.classList.add('probbtn'); pn.setAttribute('role','button'); pn.tabIndex=0; pn.title='눌러서 이 사업의 점수 계산 내역 보기'; const go=(e)=>{e.stopPropagation(); e.preventDefault(); openBreak(r);}; pn.addEventListener('click',go); pn.addEventListener('keydown',e=>{ if(e.key==='Enter'||e.key===' ') go(e); }); } const top=el('div','fitrow'); top.append(el('span','fit '+r.fit,r.fit)); if(isNew(r)){ const nb=el('span','newb','NEW'); nb.title=r.added?'보드에 새로 올라온 지 24시간이 지나지 않은 사업':'나라장터 게시 후 24시간 이내 공고'; top.append(nb); } d.append(top,pn); return d;};
   const FIT_BASE={A:50,B:30,C:10}, FIT_NM={A:'A 단독 주관',B:'B 컨소시엄·하도급',C:'C 참고'};
   const parseWhy=s=>String(s||'').split('·').map(x=>x.trim()).filter(Boolean).map(x=>{ const m=x.match(/^(.*?)\s*([+\-−])\s*(\d+)$/); return m?{k:m[1].trim(),v:(m[2]==='+'?1:-1)*Number(m[3])}:{k:x,v:null}; });
   function openBreak(r){ const dlg=$('pb-dlg'); if(!dlg) return; const body=$('pb-body');
@@ -974,20 +991,23 @@ html.dlg-lock,html.dlg-lock body{overflow:hidden}
   const dueTxt=r=>r.due?((r.kind==='사전규격'?'의견등록 마감 ':'입찰(제안) 마감 ')+String(r.due).slice(5,10).replace('-','/')+(String(r.due).match(/\d{2}:\d{2}/)?' '+String(r.due).match(/\d{2}:\d{2}/)[0]:'')):(r.note||'');
   function srcSummary(key,rows,ready){
     const s=stat(rows); $('sn-'+key).textContent=ready?s.n+'건':'-';
-    const f=$('sf-'+key); f.replaceChildren(...['A','B','C'].map(k=>{const sp=el('span'); sp.append(el('span','fit '+k,k),document.createTextNode(' '+s.c[k]+'건')); return sp;}));
+    const f=$('sf-'+key); f.replaceChildren(...['A','B','C'].map(k=>{const sp=el('span'); sp.append(el('span','fit '+k,k),document.createTextNode(' '+s.c[k]+'건')); return sp;})); const nn=rows.filter(isNew).length; if(nn){ const sp=el('span'); sp.append(el('span','newb','NEW'),document.createTextNode(' '+nn+'건')); f.append(sp); }
     const p=$('sp-'+key); if(s.avg==null){p.replaceChildren(document.createTextNode(ready?'A·B 사업 없음':'불러오는 중')); return;}
     p.replaceChildren(document.createTextNode('A·B 평균 가능성'),probNode(s.avg),document.createTextNode('· 최고'),el('b',null,s.max+'%'));
   }
   const WD=['일','월','화','수','목','금','토'];
   const mdw=s=>{ if(!s) return ''; const d=new Date(String(s).slice(0,10)+'T00:00:00'); if(isNaN(d)) return String(s); return (d.getMonth()+1)+'/'+d.getDate()+'('+WD[d.getDay()]+')'; };
   const hm=s=>{ const m=String(s||'').match(/\d{2}:\d{2}/); return m?' '+m[0]:''; };
-  function postNode(r){ const w=el('div','due'); if(!r.posted){ w.append(el('span',null,'-')); return w; } w.append(el('span','pdate',mdw(r.posted))); const n=daysTo(String(r.posted).slice(0,10)); if(n!=null&&n<=0) w.append(el('small',null,n===0?'오늘 게시':(-n)+'일 전 게시')); return w; }
+  function postNode(r){ const w=el('div','pd2'); const ln=(lab,val,cls)=>{ const d=el('div','pd2-l'+(cls?' '+cls:'')); d.append(el('span','pd2-k',lab),el('span','pd2-v',val)); return d; };
+    w.append(ln('게시',r.posted?mdw(r.posted):'-'));
+    if(r.due) w.append(ln(r.kind==='사전규격'?'의견 마감':'입찰 마감',mdw(r.due)+hm(r.due),'end')); else w.append(ln('마감',r.kind==='사전규격'?'본공고 대기':'미확인','end'));
+    return w; }
   function dueNode(r){
     const w=el('div','due'); const t=dueAt(r.due);
     if(!t){ w.append(el('span','dday',r.kind==='사전규격'?'본공고 대기':'-')); if(r.note) w.append(el('small',null,r.note)); return w; }
     const n=daysTo(String(r.due).slice(0,10));
     w.append(el('span','dday'+(n===0?' today':(n!=null&&n<=7?' soon':'')),n===0?'D-DAY':'D-'+n));
-    w.append(el('small',null,dueTxt(r))); if(r.note) w.append(el('small',null,r.note)); return w;
+    if(r.open) w.append(el('small',null,'개찰 '+mdw(r.open)+hm(r.open))); else if(r.kind==='사전규격') w.append(el('small',null,'의견등록 마감까지')); if(r.note) w.append(el('small',null,r.note)); return w;
   }
   const G2B_HOME='https://www.g2b.go.kr/';
   const copyNo=async(no)=>{ try{ await navigator.clipboard.writeText(no); return true; }catch(e){ try{ const t=document.createElement('textarea'); t.value=no; t.style.position='fixed'; t.style.opacity='0'; document.body.append(t); t.select(); const ok=document.execCommand('copy'); t.remove(); return ok; }catch(_){ return false; } } };
