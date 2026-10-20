@@ -420,6 +420,12 @@ table:has(#tb-history) th:nth-child(5){width:6rem}
 .chip[data-area="공고"][aria-pressed="true"]{background:var(--blue);color:#fff;box-shadow:2px 0 0 0 var(--blue),-2px 0 0 0 var(--blue),0 2px 0 0 var(--blue),0 -2px 0 0 var(--blue)}
 .area.조달{background:var(--nk-end-bg);color:var(--red);border-color:var(--red)}
 .area.공고{background:var(--blue);color:#fff;border-color:var(--blue)}
+.pager{display:flex;justify-content:center;align-items:center;flex-wrap:wrap;gap:6px;padding:14px 0 4px}
+.pager[hidden]{display:none}
+.pager .pg{font:inherit;font-size:13px;font-weight:800;min-width:2.4rem;padding:6px 10px;border:0;margin:2px;cursor:pointer;background:var(--surface);color:var(--ink);box-shadow:2px 0 0 0 var(--frame),-2px 0 0 0 var(--frame),0 2px 0 0 var(--frame),0 -2px 0 0 var(--frame)}
+.pager .pg[aria-current="page"]{background:var(--ink);color:var(--bg);box-shadow:2px 0 0 0 var(--ink),-2px 0 0 0 var(--ink),0 2px 0 0 var(--ink),0 -2px 0 0 var(--ink)}
+.pager .pg:disabled{opacity:.35;cursor:default}
+.pager .pg-info{width:100%;text-align:center;font-size:12px;color:var(--muted)}
 .packbtn{font:inherit;font-weight:800;text-align:left;background:none;border:0;padding:0;color:inherit;cursor:pointer;display:flex;flex-direction:column;gap:3px}
 .packbtn:hover .pk-t{text-decoration:underline}
 .pk-go{font-size:12px;font-weight:700;color:var(--blue)}
@@ -849,7 +855,21 @@ html.dlg-lock,html.dlg-lock body{overflow:hidden}
   const daysTo=(iso)=>{ if(!iso) return null; const a=new Date(todayISO()+'T00:00:00'), b=new Date(iso+'T00:00:00'); if(isNaN(b)) return null; return Math.round((b-a)/86400000); };
   const md=(iso)=>{ if(!iso) return ''; const d=new Date(iso+'T00:00:00'); return isNaN(d)?iso:(d.getMonth()+1)+'/'+d.getDate(); };
   const toast=(msg)=>{const t=$('toast'); t.textContent=msg; t.hidden=false; clearTimeout(toast.h); toast.h=setTimeout(()=>{t.hidden=true;},3200);};
-  const emptyRow=(tb,cols,msg)=>{tb.replaceChildren(); const tr=el('tr'); const c=el('td'); c.colSpan=cols; const d=el('div','empty'); const m=el('canvas','spr'); m.dataset.spr='cloud'; m.dataset.scale='4'; paintIcon(m,pxColors()); d.append(m, document.createTextNode(msg)); c.append(d); tr.append(c); tb.append(tr);};
+  const PG=15; const PGS={};
+  const PG_RENDER={'tb-g2b':()=>renderOpps(),'tb-opps':()=>renderOpps(),'tb-news':()=>renderNews(),'tb-schedule':()=>renderSchedule(),'tb-history':()=>renderHistory(),'tb-ncloud':()=>renderNcloud()};
+  function pagerFor(id){ const tb=document.getElementById(id); if(!tb) return null; const host=tb.closest('.scroll')||tb.closest('table'); let p=host.nextElementSibling; if(!(p&&p.classList.contains('pager')&&p.dataset.for===id)){ p=el('nav','pager'); p.dataset.for=id; p.setAttribute('aria-label','페이지 이동'); host.after(p); } return p; }
+  function hidePager(id){ const p=pagerFor(id); if(p){ p.hidden=true; p.replaceChildren(); } }
+  function pageRows(id,rows){ const key=rows.length+'|'+rows.map(r=>r.id||r.no||r.title||r.name||'').join('|');
+    let st=PGS[id]; if(!st||st.key!==key) st=PGS[id]={key,p:1};
+    const n=Math.max(1,Math.ceil(rows.length/PG)); if(st.p>n) st.p=n;
+    const p=pagerFor(id); if(p){ if(n<=1){ p.hidden=true; p.replaceChildren(); } else { p.hidden=false;
+      const go=k=>{ if(k<1||k>n||k===st.p) return; st.p=k; (PG_RENDER[id]||(()=>{}))(); const c=document.getElementById(id).closest('.card')||document.getElementById(id); const t=c.getBoundingClientRect().top; if(t<0||t>window.innerHeight*0.6) c.scrollIntoView({block:'start'}); };
+      const b=(txt,k,dis,cur)=>{ const x=el('button','pg',txt); x.type='button'; if(dis) x.disabled=true; if(cur) x.setAttribute('aria-current','page'); else x.addEventListener('click',()=>go(k)); return x; };
+      const kids=[b('‹ 이전',st.p-1,st.p===1)]; for(let k=1;k<=n;k++) kids.push(b(String(k),k,false,k===st.p)); kids.push(b('다음 ›',st.p+1,st.p===n));
+      const from=(st.p-1)*PG+1, to=Math.min(rows.length,st.p*PG); kids.push(el('div','pg-info','전체 '+rows.length+'건 중 '+from+'–'+to+'번째를 보고 있습니다.'));
+      p.replaceChildren(...kids); } }
+    return rows.slice((st.p-1)*PG, st.p*PG); }
+  const emptyRow=(tb,cols,msg)=>{tb.replaceChildren(); hidePager(tb.id); const tr=el('tr'); const c=el('td'); c.colSpan=cols; const d=el('div','empty'); const m=el('canvas','spr'); m.dataset.spr='cloud'; m.dataset.scale='4'; paintIcon(m,pxColors()); d.append(m, document.createTextNode(msg)); c.append(d); tr.append(c); tb.append(tr);};
   const STAGES=['공고 예정','사전규격','입찰','평가','우선협상','계약'];
   const stageIdx=(s)=>{ if(!s) return -1; if(s.includes('계약')) return 5; if(s.includes('우선협상')) return 4; if(s.includes('평가')) return 3; if(/입찰|재공고/.test(s)) return 2; if(s.includes('사전규격')) return 1; if(s.includes('공고 예정')) return 0; return -1; };
 
@@ -1080,14 +1100,14 @@ html.dlg-lock,html.dlg-lock body{overflow:hidden}
     srcSummary('g2b',g2bLive(),!!loaded.g2b); srcSummary('opps',D.opportunities,!!loaded.opportunities);
     const tg=$('tb-g2b'); const gr=g2bRows(); const NC=7;
     if(!gr.length) emptyRow(tg,NC,loaded.g2b?(g2bLive().length?'조건에 맞는 공고가 없습니다.':'진행 중인 나라장터 공고가 없습니다.'):'불러오는 중');
-    else tg.replaceChildren(...gr.map(r=>{const tr=el('tr');
+    else tg.replaceChildren(...pageRows('tb-g2b',gr).map(r=>{const tr=el('tr');
       const nm=el('div'); nm.append(el('span','kind'+(r.kind==='사전규격'?' pre':(r.kind==='재공고'?' re':'')),r.kind||'공고'),link(r.name,r.url)); nm.append(g2bGo(r)); nm.append(el('span','sub2',(r.no||'')+(r.method?' · '+r.method:'')+(r.price_eok!=null?' · 추정가격 '+r.price_eok.toLocaleString('ko-KR')+'억':'')));
       const ag=el('div'); ag.append(document.createTextNode(r.agency||'')); if(r.orderer&&r.orderer!==r.agency) ag.append(el('span','sub2','공고 '+r.orderer));
       const hw=el('div'); hw.append(document.createTextNode(r.how||'')); if(r.why) hw.append(el('span','sub2','근거: '+r.why));
       tr.append(td(fitProb(r)),td(nm,'strong'),td(ag,'hide-sm'),td(r.budget_eok!=null?r.budget_eok.toLocaleString('ko-KR')+'억':'-','nw'),td(postNode(r),'nw'),td(dueNode(r)),td(hw,'hide-sm')); tr.addEventListener('click',(e)=>{ if(e.target.closest('a,button')) return; g2bOpen(r); }); return tr;}));
     const tb=$('tb-opps'); const rows=oppRows();
     if(!rows.length) emptyRow(tb,NC,loaded.opportunities?(D.opportunities.length?'조건에 맞는 사업이 없습니다.':'아직 등록된 사업 기회가 없습니다.'):'불러오는 중');
-    else tb.replaceChildren(...rows.map(r=>{const tr=el('tr'); tr.append(td(fitProb(r)),td(link(r.name,r.url),'strong'),td(r.agency,'hide-sm'),td(r.scale),td(stepsNode(r.stage,r.status)),td(r.how,'hide-sm')); return tr;}));
+    else tb.replaceChildren(...pageRows('tb-opps',rows).map(r=>{const tr=el('tr'); tr.append(td(fitProb(r)),td(link(r.name,r.url),'strong'),td(r.agency,'hide-sm'),td(r.scale),td(stepsNode(r.stage,r.status)),td(r.how,'hide-sm')); return tr;}));
     renderBars();
   }
   function renderBars(){
@@ -1110,19 +1130,19 @@ html.dlg-lock,html.dlg-lock body{overflow:hidden}
   function renderNews(){
     const tb=$('tb-news'); const rows=D.news.filter(r=>!ui.area||areaKey(r)===ui.area).sort((a,b)=>String(b.date).localeCompare(String(a.date)));
     if(!rows.length) emptyRow(tb,6,loaded.news?'해당 분야 기사가 없습니다.':'불러오는 중');
-    else tb.replaceChildren(...rows.map(r=>{const tr=el('tr'); tr.append(td(el('span','px',md(r.date)),'nw'),td(areaBadge(r),'nw'),td(el('span','chg '+r.change,r.change),'nw'),td(newsTitle(r),'strong'),td(r.point),td(r.source,'hide-sm')); return tr;}));
+    else tb.replaceChildren(...pageRows('tb-news',rows).map(r=>{const tr=el('tr'); tr.append(td(el('span','px',md(r.date)),'nw'),td(areaBadge(r),'nw'),td(el('span','chg '+r.change,r.change),'nw'),td(newsTitle(r),'strong'),td(r.point),td(r.source,'hide-sm')); return tr;}));
   }
   function renderSchedule(){
     const tb=$('tb-schedule'); const rows=[...D.schedule].filter(r=>{ if(!ui.soon) return true; const n=daysTo(r.date); return n!=null&&n>=0&&n<=14; }).sort((a,b)=>String(a.date).localeCompare(String(b.date)));
     if(!rows.length){emptyRow(tb,5,loaded.schedule?'등록된 일정이 없습니다.':'불러오는 중'); return;}
-    tb.replaceChildren(...rows.map(r=>{const n=daysTo(r.date); const tr=el('tr',n!=null&&n<0?'past':null); const dd=el('span','dday'+(n===0?' today':(n!=null&&n>0&&n<=7?' soon':'')), n==null?'-':(n===0?'D-DAY':(n>0?'D-'+n:'지남'))); tr.append(td(dd,'nw'),td(r.label,'nw'),td(el('span','area '+(r.area||''),r.area||''),'nw'),td(r.item,'strong'),td(r.check)); return tr;}));
+    tb.replaceChildren(...pageRows('tb-schedule',rows).map(r=>{const n=daysTo(r.date); const tr=el('tr',n!=null&&n<0?'past':null); const dd=el('span','dday'+(n===0?' today':(n!=null&&n>0&&n<=7?' soon':'')), n==null?'-':(n===0?'D-DAY':(n>0?'D-'+n:'지남'))); tr.append(td(dd,'nw'),td(r.label,'nw'),td(el('span','area '+(r.area||''),r.area||''),'nw'),td(r.item,'strong'),td(r.check)); return tr;}));
   }
   function renderHistory(){
     const tb=$('tb-history'); const rows=[...D.issues].sort((a,b)=>Number(b.no)-Number(a.no));
     if(!rows.length){emptyRow(tb,5,loaded.issues?'발행 이력이 없습니다.':'불러오는 중'); return;}
     const cnt=(r,k)=>{ const L=k==='news'?r.news_items:r.bid_items; const n=Array.isArray(L)?L.length:(k==='news'?r.articles:r.bids); return n==null?'-':n; };
     const cbtn=(r,k)=>{ const n=cnt(r,k); const has=(k==='news'?r.news_items:r.bid_items); if(!Array.isArray(has)) return el('span','px',n); const b=el('button','hcnt'+(n?'':' zero'),String(n)+'건'); b.type='button'; b.title=(k==='news'?'신규 기사':'신규 공고')+' 목록 보기'; b.addEventListener('click',e=>{e.stopPropagation(); openHist(r,k);}); return b; };
-    tb.replaceChildren(...rows.map(r=>{const tr=el('tr'); const a=el('span','px','#'+String(r.no).padStart(3,'0')); tr.append(td(a,'nw'),td(el('span','px',r.date),'nw'),td(r.oneline),td(cbtn(r,'news'),'nw'),td(cbtn(r,'bids'),'nw hide-sm'));
+    tb.replaceChildren(...pageRows('tb-history',rows).map(r=>{const tr=el('tr'); const a=el('span','px','#'+String(r.no).padStart(3,'0')); tr.append(td(a,'nw'),td(el('span','px',r.date),'nw'),td(r.oneline),td(cbtn(r,'news'),'nw'),td(cbtn(r,'bids'),'nw hide-sm'));
       return tr;}));
   }
   const WD2=['일','월','화','수','목','금','토'];
@@ -1158,7 +1178,7 @@ html.dlg-lock,html.dlg-lock body{overflow:hidden}
     const zs=r=>[...(r.zones||[]),...(r.also||[])];
     const rows=all.filter(r=>(!ui.nz||zs(r).includes(ui.nz))&&(!ui.nk||(ui.nk==='soon'?soon(r):r.kind===ui.nk))).sort((a,b)=>(b.imp-a.imp)||String(a.apply).localeCompare(String(b.apply)));
     if(!rows.length){emptyRow(tb,7,loaded.ncloud?(all.length?'조건에 맞는 공지가 없습니다.':'최근 30일 안에 고지된 공지가 없습니다.'):'불러오는 중'); return;}
-    tb.replaceChildren(...rows.map(r=>{
+    tb.replaceChildren(...pageRows('tb-ncloud',rows).map(r=>{
       const tr=el('tr');
       tr.append(td(el('span','nc-imp','■'.repeat(r.imp)+'□'.repeat(Math.max(0,3-r.imp)))));
       tr.append(td(el('span','nc-kind '+r.kind,r.kind)));
