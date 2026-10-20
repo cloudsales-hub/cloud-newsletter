@@ -10,7 +10,7 @@
    "date": "2026-10-20",
    "day": "화",
    "articles": 5,
-   "bids": 2,
+   "bids": 1,
    "oneline": "밤사이 정책 변화 없이 신한은행장 배상 책임 논의 — 사전규격 의견 마감 4건(안전한-TV·조세심판원 등)과 10/26 마감 3건 대응 주간",
    "news_items": [
     {
@@ -51,28 +51,19 @@
    ],
    "bid_items": [
     {
-     "name": "예금보험공사 시스템 네이버클라우드 이전·운영",
-     "agency": "예금보험공사",
-     "kind": "시장 기회",
-     "scale": "미공개",
+     "name": "AI 맞춤형 교수학습 플랫폼 고도화 사업 위탁감리",
+     "agency": "NIA",
+     "kind": "사전규격",
+     "scale": "미확인",
      "no": "",
-     "url": "https://www.newscj.com/news/articleView.html?idxno=3440920",
-     "grp": "기사·기관"
-    },
-    {
-     "name": "공공 Cloud Desktop 이용 기관 이전 지원",
-     "agency": "네이버클라우드 공공 DaaS 이용 기관",
-     "kind": "시장 기회",
-     "scale": "기관별 소규모(미공개)",
-     "no": "",
-     "url": "https://www.gov-ncloud.com/support/notice/all",
-     "grp": "기사·기관"
+     "url": "https://www.nia.or.kr/site/nia_kor/ex/bbs/List.do?cbIdx=78336",
+     "src": "NIA"
     }
    ]
   },
   {
    "articles": 13,
-   "bids": 19,
+   "bids": 18,
    "date": "2026-10-19",
    "day": "월",
    "no": 13,
@@ -177,8 +168,8 @@
      "kind": "사전규격",
      "scale": "배정예산 1.56억 원",
      "no": "R26BD00286981",
-     "url": null,
-     "grp": "기사·기관"
+     "url": "https://www.g2b.go.kr/pn/pnz/pnza/UntyAtchFile/downloadFile.do?bfSpecRegNo=R26BD00286981&fileType=BFDTL&fileSeq=1",
+     "src": "나라장터"
     },
     {
      "name": "(긴급) 교육·연구용 GPU 클라우드 서비스 도입 사업",
@@ -187,7 +178,7 @@
      "scale": "배정예산 3.9억 원(추정가격 3.55억 원)",
      "no": "R26BK01776059",
      "url": "https://www.g2b.go.kr/link/PNPE027_01/single/?bidPbancNo=R26BK01776059&bidPbancOrd=000",
-     "grp": "기사·기관"
+     "src": "나라장터"
     },
     {
      "name": "지능형 포렌식센터 프라이빗 클라우드 도입 및 구축",
@@ -196,7 +187,7 @@
      "scale": "배정예산 30.18억 원(추정가격 27.27억 원)",
      "no": "R26BK01773319",
      "url": "https://www.g2b.go.kr/link/PNPE027_01/single/?bidPbancNo=R26BK01773319&bidPbancOrd=000",
-     "grp": "기사·기관"
+     "src": "나라장터"
     },
     {
      "name": "2027년 조세심판 AI 서비스 민관협력형 클라우드 임차 및 운영관리",
@@ -204,8 +195,8 @@
      "kind": "사전규격",
      "scale": "배정예산 10.5억 원",
      "no": "R26BD00286217",
-     "url": null,
-     "grp": "기사·기관"
+     "url": "https://www.g2b.go.kr/pn/pnz/pnza/UntyAtchFile/downloadFile.do?bfSpecRegNo=R26BD00286217&fileType=BFDTL&fileSeq=1",
+     "src": "나라장터"
     },
     {
      "name": "2027년도 안전한-TV 민간 클라우드 서버 임차(2개년)",
@@ -213,8 +204,8 @@
      "kind": "사전규격",
      "scale": "배정예산 1.62억 원",
      "no": "R26BD00285551",
-     "url": null,
-     "grp": "기사·기관"
+     "url": "https://www.g2b.go.kr/pn/pnz/pnza/UntyAtchFile/downloadFile.do?bfSpecRegNo=R26BD00285551&fileType=BFDTL&fileSeq=1",
+     "src": "나라장터"
     },
     {
      "name": "명지녹산 AX실증산단 에코마린 소부장 특화 클라우드 인프라 구축 및 운영·유지관리",
@@ -223,7 +214,7 @@
      "scale": "배정예산 9억 원(추정가격 8.18억 원)",
      "no": "R26BK01772829",
      "url": "https://www.g2b.go.kr/link/PNPE027_01/single/?bidPbancNo=R26BK01772829&bidPbancOrd=000",
-     "grp": "기사·기관"
+     "src": "나라장터"
     },
     {
      "name": "2027~2028년 지오프라 등 클라우드 네이티브 운영관리",
@@ -232,7 +223,7 @@
      "scale": "배정예산 45.2억 원(추정가격 41.09억 원)",
      "no": "R26BK01773255",
      "url": "https://www.g2b.go.kr/link/PNPE027_01/single/?bidPbancNo=R26BK01773255&bidPbancOrd=000",
-     "grp": "기사·기관"
+     "src": "나라장터"
     },
     {
      "name": "2027~2028년 국토정보플랫폼 클라우드 네이티브 운영관리",
@@ -241,7 +232,7 @@
      "scale": "배정예산 28.04억 원(추정가격 25.49억 원)",
      "no": "R26BK01773238",
      "url": "https://www.g2b.go.kr/link/PNPE027_01/single/?bidPbancNo=R26BK01773238&bidPbancOrd=000",
-     "grp": "기사·기관"
+     "src": "나라장터"
     },
     {
      "name": "(재공고)「물류기기공동이용 신통합관리시스템」클라우드 인프라 구축·운영(MSP) 용역",
@@ -250,7 +241,7 @@
      "scale": "배정예산 1.41억 원(추정가격 1.28억 원)",
      "no": "R26BK01774025",
      "url": "https://www.g2b.go.kr/link/PNPE027_01/single/?bidPbancNo=R26BK01774025&bidPbancOrd=000",
-     "grp": "기사·기관"
+     "src": "나라장터"
     },
     {
      "name": "2027년 슈퍼컴퓨터 GPU 임차 용역",
@@ -258,8 +249,8 @@
      "kind": "사전규격",
      "scale": "배정예산 3.86억 원",
      "no": "R26BD00284721",
-     "url": null,
-     "grp": "기사·기관"
+     "url": "https://www.g2b.go.kr/pn/pnz/pnza/UntyAtchFile/downloadFile.do?bfSpecRegNo=R26BD00284721&fileType=BFDTL&fileSeq=1",
+     "src": "나라장터"
     },
     {
      "name": "2027년 학회정보화시스템 유지보수 및 클라우드 운영",
@@ -267,8 +258,8 @@
      "kind": "사전규격",
      "scale": "배정예산 2.4억 원",
      "no": "R26BD00284481",
-     "url": null,
-     "grp": "기사·기관"
+     "url": "https://www.g2b.go.kr/pn/pnz/pnza/UntyAtchFile/downloadFile.do?bfSpecRegNo=R26BD00284481&fileType=BFDTL&fileSeq=1",
+     "src": "나라장터"
     },
     {
      "name": "2027년 클라우드 서비스 보안인증 평가 지원",
@@ -276,17 +267,8 @@
      "kind": "사전규격",
      "scale": "배정예산 3.03억 원",
      "no": "R26BD00284475",
-     "url": null,
-     "grp": "기사·기관"
-    },
-    {
-     "name": "2027년 클라우드 서비스 및 행정업무시스템 통합 유지관리 사업",
-     "agency": "조달청 서울지방조달청 / 한국학중앙연구원",
-     "kind": "입찰공고",
-     "scale": "배정예산 3.67억 원(추정가격 3.31억 원)",
-     "no": "R26BK01763976",
-     "url": "https://www.g2b.go.kr/link/PNPE027_01/single/?bidPbancNo=R26BK01763976&bidPbancOrd=000",
-     "grp": "기사·기관"
+     "url": "https://www.g2b.go.kr/pn/pnz/pnza/UntyAtchFile/downloadFile.do?bfSpecRegNo=R26BD00284475&fileType=BFDTL&fileSeq=1",
+     "src": "나라장터"
     },
     {
      "name": "사이버공격 통합탐지·대응체계 운영환경 제공",
@@ -295,7 +277,7 @@
      "scale": "배정예산 18.63억 원(추정가격 16.82억 원)",
      "no": "R26BK01769416",
      "url": "https://www.g2b.go.kr/link/PNPE027_01/single/?bidPbancNo=R26BK01769416&bidPbancOrd=000",
-     "grp": "기사·기관"
+     "src": "나라장터"
     },
     {
      "name": "4단계 BK21 종합정보관리시스템 클라우드 전환 감리사업",
@@ -304,7 +286,7 @@
      "scale": "배정예산 0.5억 원",
      "no": "R26BK01770210",
      "url": "https://www.g2b.go.kr/link/PNPE027_01/single/?bidPbancNo=R26BK01770210&bidPbancOrd=000",
-     "grp": "기사·기관"
+     "src": "나라장터"
     },
     {
      "name": "출자정보지원 재해복구시스템 구축",
@@ -313,7 +295,7 @@
      "scale": "배정예산 4억 원(추정가격 3.64억 원)",
      "no": "R26BK01767992",
      "url": "https://www.g2b.go.kr/link/PNPE027_01/single/?bidPbancNo=R26BK01767992&bidPbancOrd=000",
-     "grp": "기사·기관"
+     "src": "나라장터"
     },
     {
      "name": "2026년 AI 청년창업기업 동반성장 바우처 사업 클라우드형 GPU서비스 임차",
@@ -322,7 +304,7 @@
      "scale": "배정예산 1.49억 원(추정가격 1.35억 원)",
      "no": "R26BK01768184",
      "url": "https://www.g2b.go.kr/link/PNPE027_01/single/?bidPbancNo=R26BK01768184&bidPbancOrd=000",
-     "grp": "기사·기관"
+     "src": "나라장터"
     },
     {
      "name": "2026년도 첨단분야 혁신융합대학 COSS/HUSS허브(허브LMS) 교육 플랫폼 및 클라우드 유지보수 및 운영지원 사업 연구용역",
@@ -331,7 +313,7 @@
      "scale": "배정예산 3.85억 원(추정가격 3.5억 원)",
      "no": "R26BK01764360",
      "url": "https://www.g2b.go.kr/link/PNPE027_01/single/?bidPbancNo=R26BK01764360&bidPbancOrd=000",
-     "grp": "기사·기관"
+     "src": "나라장터"
     },
     {
      "name": "2027년 클라우드 및 정보시스템 운영·유지보수 용역",
@@ -339,14 +321,14 @@
      "kind": "사전규격",
      "scale": "배정예산 5.78억 원",
      "no": "R26BD00282516",
-     "url": null,
-     "grp": "기사·기관"
+     "url": "https://www.g2b.go.kr/pn/pnz/pnza/UntyAtchFile/downloadFile.do?bfSpecRegNo=R26BD00282516&fileType=BFDTL&fileSeq=1",
+     "src": "나라장터"
     }
    ]
   },
   {
    "articles": 15,
-   "bids": 10,
+   "bids": 1,
    "date": "2026-10-19",
    "day": "월",
    "no": 12,
@@ -460,94 +442,13 @@
    ],
    "bid_items": [
     {
-     "name": "차세대 지방행정공통시스템(시도새올) 구축",
-     "agency": "행안부",
-     "kind": "공고 예정",
-     "scale": "사업 금액 2,857억 원(총 구축비, 상용 SW 800억 원대 추정)",
-     "no": "",
-     "url": "https://www.etnews.com/20261016000259",
-     "grp": "기사·기관"
-    },
-    {
-     "name": "2026년 AI 사이버공격 대응 플랫폼 구축(3단계)",
-     "agency": "조달청 / KERIS",
-     "kind": "입찰공고",
-     "scale": "사업 금액 61.41억 원(입찰동향 기사 56억 원)",
-     "no": "",
-     "url": "https://www.jodaleconomy.com/news/articleView.html?idxno=3397",
-     "grp": "기사·기관"
-    },
-    {
-     "name": "AI 맞춤형 교수학습 플랫폼 고도화",
-     "agency": "NIA",
-     "kind": "입찰공고",
-     "scale": "65억 원(입찰동향 기사, 구분 미확인)",
-     "no": "",
-     "url": "https://www.jodaleconomy.com/news/articleView.html?idxno=3397",
-     "grp": "기사·기관"
-    },
-    {
-     "name": "차세대시스템 2단계 PMO",
-     "agency": "한국예탁결제원",
-     "kind": "입찰공고",
-     "scale": "112억 원(입찰동향 기사)",
-     "no": "",
-     "url": "https://www.jodaleconomy.com/news/articleView.html?idxno=3397",
-     "grp": "기사·기관"
-    },
-    {
-     "name": "용역 입찰동향(10/19~10/30)",
-     "agency": "조달청",
-     "kind": "시장 분석",
-     "scale": "196건·2,086억 원",
-     "no": "",
-     "url": "https://www.jodaleconomy.com/news/articleView.html?idxno=3397",
-     "grp": "기사·기관"
-    },
-    {
      "name": "2027년 ISP검토지원시스템 운영 및 유지관리",
      "agency": "NIA",
      "kind": "사전규격",
      "scale": "미확인",
      "no": "",
      "url": "https://www.nia.or.kr/site/nia_kor/ex/bbs/List.do?cbIdx=78336",
-     "grp": "기사·기관"
-    },
-    {
-     "name": "1차 50개 시스템 민간 클라우드 전환 CSP 선택",
-     "agency": "행안부·NIA / 22개 기관",
-     "kind": "지원사업",
-     "scale": "사업비 미공개(2027년 예산안 민간 클라우드 이전 548억 원)",
-     "no": "",
-     "url": "https://www.ddaily.co.kr/page/view/2026101216392869273",
-     "grp": "기사·기관"
-    },
-    {
-     "name": "평가위원 통합관리 규정 개정",
-     "agency": "조달청",
-     "kind": "시장 분석",
-     "scale": "—",
-     "no": "",
-     "url": "https://www.jodaleconomy.com/news/articleView.html?idxno=3365",
-     "grp": "기사·기관"
-    },
-    {
-     "name": "나라장터 클라우드 계약 시장",
-     "agency": "조달청",
-     "kind": "시장 분석",
-     "scale": "2026년 10월 5일까지 907건·2,144.9억 원",
-     "no": "",
-     "url": "https://www.jodaleconomy.com/news/articleView.html?idxno=3331",
-     "grp": "기사·기관"
-    },
-    {
-     "name": "10월 대형 정보화 사업 제안서 평가 일정",
-     "agency": "조달청",
-     "kind": "시장 분석",
-     "scale": "—",
-     "no": "",
-     "url": "https://www.jodaleconomy.com/news/articleView.html?idxno=3294",
-     "grp": "기사·기관"
+     "src": "NIA"
     }
    ]
   },
@@ -648,7 +549,7 @@
   },
   {
    "articles": 7,
-   "bids": 1,
+   "bids": 0,
    "date": "2026-10-15",
    "day": "목",
    "no": 10,
@@ -704,17 +605,7 @@
      "url": "https://www.jodaleconomy.com/news/articleView.html?idxno=3294"
     }
    ],
-   "bid_items": [
-    {
-     "name": "2026년 제2차 정보자원 통합구축 HW2",
-     "agency": "조달청 / 행안부 국가정보자원관리원",
-     "kind": "우선협상",
-     "scale": "사업 금액 약 247억 원(배정예산 248억3,172만 원)",
-     "no": "",
-     "url": "https://www.jodaleconomy.com/news/articleView.html?idxno=3352",
-     "grp": "기사·기관"
-    }
-   ]
+   "bid_items": []
   },
   {
    "articles": 13,
@@ -820,7 +711,7 @@
   },
   {
    "articles": 11,
-   "bids": 4,
+   "bids": 0,
    "date": "2026-10-13",
    "day": "화",
    "no": 8,
@@ -904,48 +795,11 @@
      "url": "https://www.ghnews.net/news/article.html?no=244758"
     }
    ],
-   "bid_items": [
-    {
-     "name": "행정·공공 정보시스템 민간 클라우드 전환(1차 50개) CSP 선택",
-     "agency": "행안부·NIA / 22개 기관",
-     "kind": "지원사업",
-     "scale": "올해 사업비 미공개(2027년 예산안 민간 클라우드 이전 548억 원)",
-     "no": "",
-     "url": "https://www.ddaily.co.kr/page/view/2026101216392869273",
-     "grp": "기사·기관"
-    },
-    {
-     "name": "2026년 2차 정보자원 통합구축 HW2",
-     "agency": "행안부 국가정보자원관리원",
-     "kind": "우선협상",
-     "scale": "사업 금액 약 247억 원",
-     "no": "",
-     "url": "https://zdnet.co.kr/view/?no=20261012100230",
-     "grp": "기사·기관"
-    },
-    {
-     "name": "신협 차세대 전산시스템 구축 컨설팅",
-     "agency": "신협중앙회",
-     "kind": "공고 예정",
-     "scale": "전체 투입액 약 3,500억 원",
-     "no": "",
-     "url": "https://www.fnnews.com/news/202610121819227584",
-     "grp": "기사·기관"
-    },
-    {
-     "name": "13개 핵심 정보시스템 재해복구 체계 구축",
-     "agency": "행안부",
-     "kind": "공고 예정",
-     "scale": "배정 2,120억 원(2026년 DR 예산 2,523억 원 중)",
-     "no": "",
-     "url": "https://www.ghnews.net/news/article.html?no=244758",
-     "grp": "기사·기관"
-    }
-   ]
+   "bid_items": []
   },
   {
    "articles": 17,
-   "bids": 7,
+   "bids": 3,
    "date": "2026-10-12",
    "day": "월",
    "no": 7,
@@ -1073,40 +927,13 @@
    ],
    "bid_items": [
     {
-     "name": "공공 클라우드 계약 11년 분석",
-     "agency": "조달청 나라장터",
-     "kind": "시장 분석",
-     "scale": "2026년 907건·2,144.9억 원",
-     "no": "",
-     "url": "https://www.jodaleconomy.com/news/articleView.html?idxno=3331",
-     "grp": "기사·기관"
-    },
-    {
-     "name": "K-에듀파인 운영환경 고도화 및 재해복구 체계 구축",
-     "agency": "한국교육학술정보원(KERIS)",
-     "kind": "우선협상",
-     "scale": "2,173억 원(당초 2,967억 원)",
-     "no": "",
-     "url": "https://www.ddaily.co.kr/page/view/2026100116483807277",
-     "grp": "기사·기관"
-    },
-    {
      "name": "2027년 국가데이터통합플랫폼 운영 및 유지관리",
      "agency": "한국지능정보사회진흥원(NIA)",
      "kind": "사전규격",
      "scale": "미공개",
      "no": "",
      "url": "https://www.nia.or.kr/site/nia_kor/ex/bbs/List.do?cbIdx=78336&pageIndex=2",
-     "grp": "기사·기관"
-    },
-    {
-     "name": "선거전용통신망 구축 및 운영",
-     "agency": "중앙선거관리위원회",
-     "kind": "공고 예정",
-     "scale": "207억 원",
-     "no": "",
-     "url": "https://www.jodaleconomy.com/news/articleView.html?idxno=3295",
-     "grp": "기사·기관"
+     "src": "NIA"
     },
     {
      "name": "NPU 기반 범정부 AI 서비스 구현",
@@ -1114,8 +941,8 @@
      "kind": "재공고",
      "scale": "배정예산 134억 원(추정가격 121억 원)",
      "no": "",
-     "url": "https://todayjiwon.co.kr/procurement/9e16a98d-1662-4d8c-87b6-ea0dc2490165",
-     "grp": "기사·기관"
+     "url": "https://www.nia.or.kr/site/nia_kor/ex/bbs/List.do?cbIdx=78336&pageIndex=2",
+     "src": "NIA"
     },
     {
      "name": "범정부 AI 공통기반 구현(2차) 사업 위탁감리",
@@ -1124,16 +951,7 @@
      "scale": "미공개",
      "no": "",
      "url": "https://www.nia.or.kr/site/nia_kor/ex/bbs/List.do?cbIdx=78336&pageIndex=2",
-     "grp": "기사·기관"
-    },
-    {
-     "name": "「클라우드 서비스 이용」 2차 GPU 자원 임대",
-     "agency": "충북지방조달청",
-     "kind": "계약",
-     "scale": "10.3억 원",
-     "no": "",
-     "url": "https://todayjiwon.co.kr/procurement/contracts/3f5682c6-aa12-47e4-9e7c-1f742fd88101",
-     "grp": "기사·기관"
+     "src": "NIA"
     }
    ]
   },

@@ -425,6 +425,7 @@ table:has(#tb-history) th:nth-child(5){width:6rem}
 #hi-dlg .dh{padding:16px 24px;align-items:flex-start}
 #hi-dlg .db{padding:6px 24px 22px}
 .hi-tabs{flex:none;display:flex;align-items:center;gap:10px;flex-wrap:wrap;padding:14px 24px 6px}
+.hi-kind{font-size:15px;font-weight:800}
 .hi-tab{font:inherit;font-size:14px;font-weight:800;padding:7px 16px;border:0;cursor:pointer;background:var(--surface);color:var(--ink);margin:2px;box-shadow:2px 0 0 0 var(--frame),-2px 0 0 0 var(--frame),0 2px 0 0 var(--frame),0 -2px 0 0 var(--frame)}
 .hi-tab[aria-selected="true"]{background:var(--ink);color:var(--bg);box-shadow:2px 0 0 0 var(--ink),-2px 0 0 0 var(--ink),0 2px 0 0 var(--ink),0 -2px 0 0 var(--ink)}
 .hi-hint{margin-left:auto;font-size:12px;color:var(--muted)}
@@ -646,7 +647,7 @@ html.dlg-lock,html.dlg-lock body{overflow:hidden}
   <section class="page" id="history" data-pg="history" hidden>
     <div class="strip"><canvas data-strip="history" aria-hidden="true"></canvas><div class="strip-in"><span class="tag">ARCHIVE</span><h2>발행 이력</h2><p>지난 브리핑 호별 요약</p></div></div>
     <div class="card">
-      <div class="card-h"><div><canvas class="spr" data-spr="book" data-scale="3"></canvas><div><h2>발행 이력</h2><p class="note">호별 한 줄 요약과 신규 기사·공고 건수입니다. 줄이나 건수를 누르면 그 호에 실린 기사·공고 목록이 열리고, 목록에서 항목을 누르면 원문이 새 창으로 열립니다.</p></div></div></div>
+      <div class="card-h"><div><canvas class="spr" data-spr="book" data-scale="3"></canvas><div><h2>발행 이력</h2><p class="note">호별 한 줄 요약과 신규 기사·공고 건수입니다. 건수를 누르면 그 호에 새로 실린 기사 또는 공고 목록이 열리고, 목록에서 항목을 누르면 기사 원문이나 공고 화면이 새 창으로 열립니다.</p></div></div></div>
       <div class="scroll"><table><thead><tr><th>호</th><th>발행일</th><th>오늘의 한 줄</th><th>신규 기사</th><th class="hide-sm">신규 공고</th></tr></thead><tbody id="tb-history"></tbody></table></div>
     </div>
   </section>
@@ -657,7 +658,7 @@ html.dlg-lock,html.dlg-lock body{overflow:hidden}
   </dialog>
   <dialog class="nc-dlg" id="hi-dlg" aria-labelledby="hi-t">
     <div class="dh"><div><b>ARCHIVE</b><h3 id="hi-t">발행 이력</h3><p id="hi-sub" class="pb-sub"></p></div><button class="dx" type="button" id="hi-dlg-x">닫기</button></div>
-    <div class="hi-tabs" role="tablist"><button class="hi-tab" role="tab" type="button" id="hi-news" aria-selected="true">신규 기사</button><button class="hi-tab" role="tab" type="button" id="hi-bids" aria-selected="false">신규 공고</button><span class="hi-hint">항목을 누르면 원문이 새 창으로 열립니다.</span></div>
+    <div class="hi-tabs"><b class="hi-kind" id="hi-kind"></b><span class="hi-hint" id="hi-hint">항목을 누르면 원문이 새 창으로 열립니다.</span></div>
     <div class="db" id="hi-list"></div>
   </dialog>
   <dialog class="nc-dlg" id="pd-dlg" aria-labelledby="pd-dlg-t">
@@ -1105,7 +1106,6 @@ html.dlg-lock,html.dlg-lock body{overflow:hidden}
     const cnt=(r,k)=>{ const L=k==='news'?r.news_items:r.bid_items; const n=Array.isArray(L)?L.length:(k==='news'?r.articles:r.bids); return n==null?'-':n; };
     const cbtn=(r,k)=>{ const n=cnt(r,k); const has=(k==='news'?r.news_items:r.bid_items); if(!Array.isArray(has)) return el('span','px',n); const b=el('button','hcnt'+(n?'':' zero'),String(n)+'건'); b.type='button'; b.title=(k==='news'?'신규 기사':'신규 공고')+' 목록 보기'; b.addEventListener('click',e=>{e.stopPropagation(); openHist(r,k);}); return b; };
     tb.replaceChildren(...rows.map(r=>{const tr=el('tr'); const a=el('span','px','#'+String(r.no).padStart(3,'0')); tr.append(td(a,'nw'),td(el('span','px',r.date),'nw'),td(r.oneline),td(cbtn(r,'news'),'nw'),td(cbtn(r,'bids'),'nw hide-sm'));
-      if(Array.isArray(r.news_items)||Array.isArray(r.bid_items)){ tr.classList.add('hclk'); tr.title='눌러서 이 호의 신규 기사·공고 목록 보기'; tr.addEventListener('click',()=>openHist(r,'news')); }
       return tr;}));
   }
   const WD2=['일','월','화','수','목','금','토'];
@@ -1114,9 +1114,8 @@ html.dlg-lock,html.dlg-lock body{overflow:hidden}
   function openHist(r,k){ const dlg=$('hi-dlg'); if(!dlg) return; HIST=r;
     $('hi-t').textContent='#'+String(r.no).padStart(3,'0')+' · '+(r.date||'')+(r.day?'('+r.day+')':'');
     $('hi-sub').textContent=r.oneline||'';
-    $('hi-news').textContent='신규 기사 '+((r.news_items||[]).length)+'건'; $('hi-bids').textContent='신규 공고 '+((r.bid_items||[]).length)+'건';
     showHist(k); document.documentElement.classList.add('dlg-lock'); if(typeof dlg.showModal==='function'){ if(!dlg.open) dlg.showModal(); } else dlg.setAttribute('open',''); }
-  function showHist(k){ const r=HIST; if(!r) return; ['news','bids'].forEach(x=>$('hi-'+x).setAttribute('aria-selected',String(x===k)));
+  function showHist(k){ const r=HIST; if(!r) return; $('hi-kind').textContent=k==='news'?'신규 기사 '+((r.news_items||[]).length)+'건':'신규 공고 '+((r.bid_items||[]).length)+'건'; $('hi-hint').textContent=k==='news'?'기사를 누르면 원문이 새 창으로 열립니다.':'공고를 누르면 나라장터·NIPA·NIA 등 공고 화면이 새 창으로 열립니다.';
     const body=$('hi-list'); const go=u=>{ const s=safe(u); if(s) window.open(s,'_blank','noopener'); };
     if(k==='news'){ const L=r.news_items||[]; if(!L.length){ body.replaceChildren(el('div','empty','이 호에 새로 실린 기사가 없습니다.')); return; }
       const t=el('table','hi-t'); const th=el('thead'); const hr=el('tr'); ['분야','기사','매체','일자'].forEach(x=>hr.append(el('th',null,x))); th.append(hr); const tb=el('tbody');
@@ -1125,7 +1124,7 @@ html.dlg-lock,html.dlg-lock body{overflow:hidden}
       t.append(th,tb); body.replaceChildren(t); }
     else { const L=r.bid_items||[]; if(!L.length){ body.replaceChildren(el('div','empty','이 호에 새로 실린 입찰·사업 공고가 없습니다.')); return; }
       const t=el('table','hi-t'); const th=el('thead'); const hr=el('tr'); ['단계','사업명','발주·수요기관','규모'].forEach(x=>hr.append(el('th',null,x))); th.append(hr); const tb=el('tbody');
-      L.forEach(b=>{ const tr=el('tr','hrow'); const ti=el('div','hi-ti'); ti.append(el('span',null,b.name||'')); const meta=[b.no,b.grp==='나라장터'?'나라장터 공고':''].filter(Boolean).join(' · '); if(meta) ti.append(el('span','sub2',meta)); if(safe(b.url)) ti.append(el('span','hi-go',(String(b.url).includes('g2b.go.kr')?'나라장터 공고 보기':'관련 기사 보기')+' ↗'));
+      L.forEach(b=>{ const tr=el('tr','hrow'); const ti=el('div','hi-ti'); ti.append(el('span',null,b.name||'')); const meta=[b.src,b.no].filter(Boolean).join(' · '); if(meta) ti.append(el('span','sub2',meta)); const u=String(b.url||''); if(safe(b.url)) ti.append(el('span','hi-go',(u.includes('downloadFile')?'사전규격서 받기 ↓':(u.includes('g2b.go.kr')?'나라장터 공고 보기 ↗':(b.src||'기관')+' 공고 보기 ↗'))));
         tr.append(td(el('span','kind',b.kind||'-'),'c'),td(ti),td(b.agency||'','c'),td(b.scale||'','c')); if(safe(b.url)){ tr.title='눌러서 공고·관련 기사 보기'; tr.addEventListener('click',()=>go(b.url)); } tb.append(tr); });
       t.append(th,tb); body.replaceChildren(t); }
     body.scrollTop=0; }
@@ -1205,7 +1204,7 @@ html.dlg-lock,html.dlg-lock body{overflow:hidden}
     dlg.addEventListener('touchend',()=>{ ty=null; });
     dlg.addEventListener('close',()=>document.documentElement.classList.remove('dlg-lock')); };
   trapScroll($('pd-dlg')); trapScroll($('nc-dlg'));
-  trapScroll($('hi-dlg')); { const hd=$('hi-dlg'); if(hd){ $('hi-dlg-x').addEventListener('click',()=>hd.close()); hd.addEventListener('click',e=>{ if(e.target===hd) hd.close(); }); $('hi-news').addEventListener('click',()=>showHist('news')); $('hi-bids').addEventListener('click',()=>showHist('bids')); } }
+  trapScroll($('hi-dlg')); { const hd=$('hi-dlg'); if(hd){ $('hi-dlg-x').addEventListener('click',()=>hd.close()); hd.addEventListener('click',e=>{ if(e.target===hd) hd.close(); }); } }
   trapScroll($('pb-dlg')); { const pb=$('pb-dlg'); if(pb){ $('pb-dlg-x').addEventListener('click',()=>pb.close()); pb.addEventListener('click',e=>{ if(e.target===pb) pb.close(); }); } }
   { const pd=$('pd-dlg'); if(pd){ const op=()=>{ document.documentElement.classList.add('dlg-lock'); if(typeof pd.showModal==='function') pd.showModal(); else pd.setAttribute('open',''); }; pd.addEventListener('close',()=>document.documentElement.classList.remove('dlg-lock'));  document.querySelectorAll('[data-pinfo]').forEach(b=>b.addEventListener('click',(e)=>{e.stopPropagation(); op();})); $('pd-dlg-x').addEventListener('click',()=>pd.close()); pd.addEventListener('click',e=>{ if(e.target===pd) pd.close(); }); } }
   { const d=$('nc-dlg'); if(d){ $('nc-dlg-x').addEventListener('click',()=>d.close()); d.addEventListener('click',e=>{ if(e.target===d) d.close(); }); }
