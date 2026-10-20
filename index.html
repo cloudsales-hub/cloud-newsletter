@@ -399,6 +399,28 @@ table:has(#tb-history) th:nth-child(5){width:6rem}
 .pd2-v{font-weight:700;font-size:13px}
 .pd2-l.end .pd2-v{color:var(--red)}
 #tb-g2b td:nth-child(3) .sub2{margin-top:4px}
+/* 적합도·가능성 칸: 1행 [A | NEW], 2행 [막대 | %] — NEW는 % 바로 위 가운데 */
+.fitp{display:grid!important;grid-template-columns:48px 3.2rem;column-gap:6px;row-gap:6px;justify-items:center;align-items:center;margin:0 auto}
+.fitp>.fit{margin:2px 0}
+.fitp>.prob{grid-column:1 / span 2;display:grid;grid-template-columns:48px 3.2rem;column-gap:6px;align-items:center;justify-items:center;margin:0;padding:3px 0}
+.fitp>.prob .pm{width:48px}
+.fitp>.prob b{text-align:center}
+.newb-ph{display:block;height:1px}
+/* 분야 색 구분(뉴스·핫이슈·일정) */
+.area{display:inline-block;font-size:12px;font-weight:800;padding:2px 8px;border-radius:4px;white-space:nowrap;border-left:3px solid}
+.area.민간{background:var(--pv-bg);color:var(--pv);border-color:var(--pv-acc)}
+.area.공공{background:var(--pub-bg);color:var(--pub);border-color:var(--pub-acc)}
+.area.금융{background:var(--fin-bg);color:var(--fin);border-color:var(--fin-acc)}
+.area.입찰{background:var(--nk-end-bg);color:var(--red);border-color:var(--red)}
+.chip[data-area] i{display:inline-block;width:8px;height:8px;margin-right:6px;vertical-align:0}
+.chip[data-area="민간"][aria-pressed="true"]{background:var(--pv-acc);color:#06210F;box-shadow:2px 0 0 0 var(--pv-acc),-2px 0 0 0 var(--pv-acc),0 2px 0 0 var(--pv-acc),0 -2px 0 0 var(--pv-acc)}
+.chip[data-area="공공"][aria-pressed="true"]{background:var(--pub-acc);color:#fff;box-shadow:2px 0 0 0 var(--pub-acc),-2px 0 0 0 var(--pub-acc),0 2px 0 0 var(--pub-acc),0 -2px 0 0 var(--pub-acc)}
+.chip[data-area="금융"][aria-pressed="true"]{background:var(--fin-acc);color:#2A1203;box-shadow:2px 0 0 0 var(--fin-acc),-2px 0 0 0 var(--fin-acc),0 2px 0 0 var(--fin-acc),0 -2px 0 0 var(--fin-acc)}
+.chip[data-area="입찰"][aria-pressed="true"]{background:var(--red);color:#fff;box-shadow:2px 0 0 0 var(--red),-2px 0 0 0 var(--red),0 2px 0 0 var(--red),0 -2px 0 0 var(--red)}
+#tb-news td:nth-child(2),#tb-keywords td:nth-child(1),#tb-schedule td:nth-child(3){text-align:center;vertical-align:middle}
+/* 모든 표: 칸 영역 안에서 세로 가운데, 짧은 값 칸은 가로도 가운데 */
+#tb-news td,#tb-schedule td,#tb-keywords td,#tb-todos td,#tb-history td{vertical-align:middle}
+#tb-news td:nth-child(1),#tb-news td:nth-child(3),#tb-news td:nth-child(6),#tb-schedule td:nth-child(1),#tb-schedule td:nth-child(2),#tb-todos td:nth-child(1),#tb-todos td:nth-child(3),#tb-history td:nth-child(1),#tb-history td:nth-child(2),#tb-history td:nth-child(4),#tb-history td:nth-child(5){text-align:center}
 .pd-t th{text-align:center}
 #pd-dlg .pd-t td{vertical-align:middle}
 .pd-t td.pd-k{text-align:center;font-weight:800;line-height:1.45}
@@ -548,10 +570,10 @@ html.dlg-lock,html.dlg-lock body{overflow:hidden}
         <button class="dl" data-doc="news" type="button"><span class="ico"><i></i><i></i><i class="o"></i><i></i><i></i><i></i><i></i><i></i><i></i></span>뉴스 Word</button></div>
       <div class="tools">
         <button class="chip" data-area="" aria-pressed="true" type="button">전체</button>
-        <button class="chip" data-area="민간" aria-pressed="false" type="button">민간</button>
-        <button class="chip" data-area="공공" aria-pressed="false" type="button">공공</button>
-        <button class="chip" data-area="금융" aria-pressed="false" type="button">금융</button>
-        <button class="chip" data-area="입찰" aria-pressed="false" type="button">입찰</button>
+        <button class="chip" data-area="민간" aria-pressed="false" type="button"><i style="background:var(--pv-acc)"></i>민간</button>
+        <button class="chip" data-area="공공" aria-pressed="false" type="button"><i style="background:var(--pub-acc)"></i>공공</button>
+        <button class="chip" data-area="금융" aria-pressed="false" type="button"><i style="background:var(--fin-acc)"></i>금융</button>
+        <button class="chip" data-area="입찰" aria-pressed="false" type="button"><i style="background:var(--red)"></i>입찰</button>
       </div>
       <div class="scroll"><table><thead><tr><th>일자</th><th>분야</th><th>변동</th><th>기사</th><th>시사점</th><th class="hide-sm">매체</th></tr></thead><tbody id="tb-news"></tbody></table></div>
     </div>
@@ -954,7 +976,7 @@ html.dlg-lock,html.dlg-lock body{overflow:hidden}
   }
   function renderToday(){
     const tk=$('tb-keywords');
-    if(!D.keywords.length) emptyRow(tk,4,loaded.keywords?'오늘의 키워드가 아직 없습니다.':'불러오는 중'); else tk.replaceChildren(...D.keywords.map(r=>{const tr=el('tr'); tr.append(td(r.area,'nw'),td(r.keyword,'strong'),td(r.core,'wide'),td(r.point,'wide')); return tr;}));
+    if(!D.keywords.length) emptyRow(tk,4,loaded.keywords?'오늘의 키워드가 아직 없습니다.':'불러오는 중'); else tk.replaceChildren(...D.keywords.map(r=>{const tr=el('tr'); tr.append(td(el('span','area '+(r.area||''),r.area||''),'nw'),td(r.keyword,'strong'),td(r.core,'wide'),td(r.point,'wide')); return tr;}));
     const tt=$('tb-todos');
     const up=[...D.schedule].map(r=>({r,n:daysTo(r.date)})).filter(o=>o.n!=null&&o.n>=0&&o.n<=14).sort((a,b)=>a.n-b.n);
     if(!up.length) emptyRow(tt,4,loaded.schedule?'14일 안의 일정이 없습니다.':'불러오는 중'); else tt.replaceChildren(...up.map(({r,n})=>{const tr=el('tr'); tr.append(td(el('span','dday'+(n===0?' today':(n<=7?' soon':'')),n===0?'D-DAY':'D-'+n),'nw'),td(r.label,'nw'),td(r.item),td(r.check,'mid hide-sm')); return tr;}));
@@ -964,7 +986,7 @@ html.dlg-lock,html.dlg-lock body{overflow:hidden}
   const P=r=>typeof r.prob==='number'?r.prob:null;
   const probNode=v=>{const w=el('span','prob'); if(v==null){w.append(el('span',null,'-')); return w;} const m=el('span','pm '+(v>=60?'hi':(v>=35?'mid':''))); const i=el('i'); i.style.width=Math.max(4,Math.min(100,v))+'%'; m.append(i); w.append(m,el('b',null,v+'%')); w.title='추정 수주 가능성(우선순위 점수, 실제 확률 아님)'; return w;};
   const isNew=r=>{ const now=Date.now(); let t=null; if(r.added){ t=new Date(r.added).getTime(); } else if(r.posted){ t=new Date(String(r.posted).slice(0,10)+'T23:59:59+09:00').getTime(); } return t!=null&&!isNaN(t)&&now-t<86400000&&now-t>-86400000; };
-  const fitProb=r=>{const d=el('div','fitp'); const pn=probNode(P(r)); if(P(r)!=null){ pn.classList.add('probbtn'); pn.setAttribute('role','button'); pn.tabIndex=0; pn.title='눌러서 이 사업의 점수 계산 내역 보기'; const go=(e)=>{e.stopPropagation(); e.preventDefault(); openBreak(r);}; pn.addEventListener('click',go); pn.addEventListener('keydown',e=>{ if(e.key==='Enter'||e.key===' ') go(e); }); } const top=el('div','fitrow'); top.append(el('span','fit '+r.fit,r.fit)); if(isNew(r)){ const nb=el('span','newb','NEW'); nb.title=r.added?'보드에 새로 올라온 지 24시간이 지나지 않은 사업':'나라장터 게시 후 24시간 이내 공고'; top.append(nb); } d.append(top,pn); return d;};
+  const fitProb=r=>{const d=el('div','fitp'); const pn=probNode(P(r)); if(P(r)!=null){ pn.classList.add('probbtn'); pn.setAttribute('role','button'); pn.tabIndex=0; pn.title='눌러서 이 사업의 점수 계산 내역 보기'; const go=(e)=>{e.stopPropagation(); e.preventDefault(); openBreak(r);}; pn.addEventListener('click',go); pn.addEventListener('keydown',e=>{ if(e.key==='Enter'||e.key===' ') go(e); }); } d.append(el('span','fit '+r.fit,r.fit)); if(isNew(r)){ const nb=el('span','newb','NEW'); nb.title=r.added?'보드에 새로 올라온 지 24시간이 지나지 않은 사업':'나라장터 게시 후 24시간 이내 공고'; d.append(nb); } else d.append(el('span','newb-ph')); d.append(pn); return d;};
   const FIT_BASE={A:50,B:30,C:10}, FIT_NM={A:'A 단독 주관',B:'B 컨소시엄·하도급',C:'C 참고'};
   const parseWhy=s=>String(s||'').split('·').map(x=>x.trim()).filter(Boolean).map(x=>{ const m=x.match(/^(.*?)\s*([+\-−])\s*(\d+)$/); return m?{k:m[1].trim(),v:(m[2]==='+'?1:-1)*Number(m[3])}:{k:x,v:null}; });
   function openBreak(r){ const dlg=$('pb-dlg'); if(!dlg) return; const body=$('pb-body');
@@ -1044,12 +1066,12 @@ html.dlg-lock,html.dlg-lock body{overflow:hidden}
   function renderNews(){
     const tb=$('tb-news'); const rows=D.news.filter(r=>!ui.area||r.area===ui.area).sort((a,b)=>String(b.date).localeCompare(String(a.date)));
     if(!rows.length) emptyRow(tb,6,loaded.news?'해당 분야 기사가 없습니다.':'불러오는 중');
-    else tb.replaceChildren(...rows.map(r=>{const tr=el('tr'); tr.append(td(el('span','px',md(r.date)),'nw'),td(r.area,'nw'),td(el('span','chg '+r.change,r.change),'nw'),td(link(r.title,r.url),'strong'),td(r.point),td(r.source,'hide-sm')); return tr;}));
+    else tb.replaceChildren(...rows.map(r=>{const tr=el('tr'); tr.append(td(el('span','px',md(r.date)),'nw'),td(el('span','area '+(r.area||''),r.area||''),'nw'),td(el('span','chg '+r.change,r.change),'nw'),td(link(r.title,r.url),'strong'),td(r.point),td(r.source,'hide-sm')); return tr;}));
   }
   function renderSchedule(){
     const tb=$('tb-schedule'); const rows=[...D.schedule].filter(r=>{ if(!ui.soon) return true; const n=daysTo(r.date); return n!=null&&n>=0&&n<=14; }).sort((a,b)=>String(a.date).localeCompare(String(b.date)));
     if(!rows.length){emptyRow(tb,5,loaded.schedule?'등록된 일정이 없습니다.':'불러오는 중'); return;}
-    tb.replaceChildren(...rows.map(r=>{const n=daysTo(r.date); const tr=el('tr',n!=null&&n<0?'past':null); const dd=el('span','dday'+(n===0?' today':(n!=null&&n>0&&n<=7?' soon':'')), n==null?'-':(n===0?'D-DAY':(n>0?'D-'+n:'지남'))); tr.append(td(dd,'nw'),td(r.label,'nw'),td(r.area,'nw'),td(r.item,'strong'),td(r.check)); return tr;}));
+    tb.replaceChildren(...rows.map(r=>{const n=daysTo(r.date); const tr=el('tr',n!=null&&n<0?'past':null); const dd=el('span','dday'+(n===0?' today':(n!=null&&n>0&&n<=7?' soon':'')), n==null?'-':(n===0?'D-DAY':(n>0?'D-'+n:'지남'))); tr.append(td(dd,'nw'),td(r.label,'nw'),td(el('span','area '+(r.area||''),r.area||''),'nw'),td(r.item,'strong'),td(r.check)); return tr;}));
   }
   function renderHistory(){
     const tb=$('tb-history'); const rows=[...D.issues].sort((a,b)=>Number(b.no)-Number(a.no));
