@@ -1137,13 +1137,20 @@ html.dlg-lock,html.dlg-lock body{overflow:hidden}
     const live=g2bLive(); const dueDay=r=>r.due?daysTo(String(r.due).slice(0,10)):null; const hm=r=>{ const m=String(r.due||'').match(/\d{2}:\d{2}/); return m?m[0]:'마감'; };
     const du=live.filter(r=>dueDay(r)===0).map(r=>L(hm(r),'d',r.name+(r.kind==='사전규격'?' · 의견 마감':' · 입찰 마감'),r.url,r.agency));
     const tm=live.filter(r=>dueDay(r)===1);
-    const col=(key,cls,title,items,empty,extra)=>{ const c=el('div','t3c t3-'+cls); c.append(el('h3',null,title),el('div','t3n',String(items.length))); const ul=el('ul'); const open=!!T3_OPEN[key]; const shown=open?items:items.slice(0,3);
+    const col=(key,cls,title,items,empty,extra)=>{ const c=el('div','t3c t3-'+cls); c.append(el('h3',null,title),el('div','t3n',String(items.length))); const ul=el('ul'); const shown=items.slice(0,3);
       if(!items.length) ul.append(el('li','t3e',empty));
       shown.forEach(it=>{ const li=el('li'); li.append(el('span','t3x '+it.cls,it.t)); const u=safe(it.url); if(u){ const a=el('a',null,it.text); a.href=u; a.target='_blank'; a.rel='noopener'; li.append(a); } else li.append(el('span','t3t',it.text)); if(it.sub) li.append(el('span','sub2',it.sub)); ul.append(li); });
       if(extra) ul.append(el('li','t3s',extra)); c.append(ul);
-      if(items.length>3){ const b=el('button','t3more',open?'접기 ▴':'나머지 '+(items.length-3)+'건 보기 ▾'); b.type='button'; b.addEventListener('click',()=>{ T3_OPEN[key]=!open; renderT3(); }); c.append(b); }
+      if(items.length>3){ const b=el('button','t3more','전체 '+items.length+'건 보기 ›'); b.type='button'; b.addEventListener('click',()=>openT3(title,items)); c.append(b); }
       return c; };
     box.replaceChildren(col('new','new','오늘 새로 생긴 것',nw,'새로 생긴 항목이 없습니다.'),col('chg','chg','오늘 바뀐 것',ch,'바뀐 항목이 없습니다.'),col('due','due','오늘 마감되는 것',du,'오늘 마감되는 공고가 없습니다.',tm.length?('내일 마감 '+tm.length+'건 · '+tm.slice(0,2).map(r=>r.name.length>30?r.name.slice(0,30)+'…':r.name).join(', ')+(tm.length>2?' 외':'')):'')); }
+  function openT3(title,items){ const dlg=$('hi-dlg'); if(!dlg) return; dlg.querySelector('.dh b').textContent='TODAY';
+    $('hi-t').textContent=title; $('hi-sub').textContent='오늘 한눈에 보기 · '+items.length+'건'; $('hi-kind').textContent='전체 '+items.length+'건'; $('hi-hint').textContent='항목을 누르면 공고·기사가 새 창으로 열립니다.';
+    const t=el('table','hi-t'); const th=el('thead'); const hr=el('tr'); ['구분','항목','기관·매체'].forEach(x=>hr.append(el('th',null,x))); th.append(hr); const tb=el('tbody');
+    items.forEach(it=>{ const u=safe(it.url); const tr=el('tr',u?'hrow':null); const ti=el('div','hi-ti'); ti.append(el('span',null,it.text)); if(u) ti.append(el('span','hi-go','열기 ↗'));
+      tr.append(td(el('span','t3x '+it.cls,it.t),'c'),td(ti),td(it.sub||'','c')); if(u){ tr.title='눌러서 열기'; tr.addEventListener('click',()=>window.open(u,'_blank','noopener')); } tb.append(tr); });
+    t.append(th,tb); $('hi-list').replaceChildren(t);
+    document.documentElement.classList.add('dlg-lock'); if(typeof dlg.showModal==='function'){ if(!dlg.open) dlg.showModal(); } else dlg.setAttribute('open',''); }
   function renderToday(){ renderT3();
     const tk=$('tb-keywords');
     if(!D.keywords.length) emptyRow(tk,4,loaded.keywords?'오늘의 키워드가 아직 없습니다.':'불러오는 중'); else tk.replaceChildren(...D.keywords.map(r=>{const tr=el('tr'); tr.append(td(el('span','area '+(r.area||''),r.area||''),'nw'),td(r.keyword,'strong'),td(r.core,'wide'),td(r.point,'wide')); return tr;}));
