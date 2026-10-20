@@ -416,7 +416,13 @@ table:has(#tb-history) th:nth-child(5){width:6rem}
 .chip[data-area="민간"][aria-pressed="true"]{background:var(--pv-acc);color:#06210F;box-shadow:2px 0 0 0 var(--pv-acc),-2px 0 0 0 var(--pv-acc),0 2px 0 0 var(--pv-acc),0 -2px 0 0 var(--pv-acc)}
 .chip[data-area="공공"][aria-pressed="true"]{background:var(--pub-acc);color:#fff;box-shadow:2px 0 0 0 var(--pub-acc),-2px 0 0 0 var(--pub-acc),0 2px 0 0 var(--pub-acc),0 -2px 0 0 var(--pub-acc)}
 .chip[data-area="금융"][aria-pressed="true"]{background:var(--fin-acc);color:#2A1203;box-shadow:2px 0 0 0 var(--fin-acc),-2px 0 0 0 var(--fin-acc),0 2px 0 0 var(--fin-acc),0 -2px 0 0 var(--fin-acc)}
-.chip[data-area="입찰"][aria-pressed="true"]{background:var(--red);color:#fff;box-shadow:2px 0 0 0 var(--red),-2px 0 0 0 var(--red),0 2px 0 0 var(--red),0 -2px 0 0 var(--red)}
+.chip[data-area="조달"][aria-pressed="true"]{background:var(--red);color:#fff;box-shadow:2px 0 0 0 var(--red),-2px 0 0 0 var(--red),0 2px 0 0 var(--red),0 -2px 0 0 var(--red)}
+.chip[data-area="공고"][aria-pressed="true"]{background:var(--blue);color:#fff;box-shadow:2px 0 0 0 var(--blue),-2px 0 0 0 var(--blue),0 2px 0 0 var(--blue),0 -2px 0 0 var(--blue)}
+.area.조달{background:var(--nk-end-bg);color:var(--red);border-color:var(--red)}
+.area.공고{background:var(--blue);color:#fff;border-color:var(--blue)}
+.packbtn{font:inherit;font-weight:800;text-align:left;background:none;border:0;padding:0;color:inherit;cursor:pointer;display:flex;flex-direction:column;gap:3px}
+.packbtn:hover .pk-t{text-decoration:underline}
+.pk-go{font-size:12px;font-weight:700;color:var(--blue)}
 #tb-news td:nth-child(2),#tb-keywords td:nth-child(1),#tb-schedule td:nth-child(3){text-align:center;vertical-align:middle}
 /* 모든 표: 칸 영역 안에서 세로 가운데, 짧은 값 칸은 가로도 가운데 */
 #tb-news td,#tb-schedule td,#tb-keywords td,#tb-todos td,#tb-history td{vertical-align:middle}
@@ -586,7 +592,7 @@ html.dlg-lock,html.dlg-lock body{overflow:hidden}
   </section>
 
   <section class="page" id="news" data-pg="news" hidden>
-    <div class="strip"><canvas data-strip="news" aria-hidden="true"></canvas><div class="strip-in"><span class="tag">NEWS</span><h2>주요 뉴스</h2><p>민간·공공·금융·입찰 기사와 시사점</p></div></div>
+    <div class="strip"><canvas data-strip="news" aria-hidden="true"></canvas><div class="strip-in"><span class="tag">NEWS</span><h2>주요 뉴스</h2><p>민간·공공·금융·조달 동향 기사와 시사점</p></div></div>
     <div class="card" id="card-news">
       <div class="card-h"><div><canvas class="spr" data-spr="news" data-scale="3"></canvas><div><h2>주요 뉴스</h2><p class="note">최근 호에 실린 기사, 최신순. 제목을 누르면 기사가 열립니다.</p></div></div>
         <button class="dl" data-doc="news" type="button"><span class="ico"><i></i><i></i><i class="o"></i><i></i><i></i><i></i><i></i><i></i><i></i></span>뉴스 Word</button></div>
@@ -595,7 +601,8 @@ html.dlg-lock,html.dlg-lock body{overflow:hidden}
         <button class="chip" data-area="민간" aria-pressed="false" type="button"><i style="background:var(--pv-acc)"></i>민간</button>
         <button class="chip" data-area="공공" aria-pressed="false" type="button"><i style="background:var(--pub-acc)"></i>공공</button>
         <button class="chip" data-area="금융" aria-pressed="false" type="button"><i style="background:var(--fin-acc)"></i>금융</button>
-        <button class="chip" data-area="입찰" aria-pressed="false" type="button"><i style="background:var(--red)"></i>입찰</button>
+        <button class="chip" data-area="조달" aria-pressed="false" type="button"><i style="background:var(--red)"></i>조달 동향</button>
+        <button class="chip" data-area="공고" aria-pressed="false" type="button"><i style="background:var(--blue)"></i>공식 공고</button>
       </div>
       <div class="scroll"><table><thead><tr><th>일자</th><th>분야</th><th>변동</th><th>기사</th><th>시사점</th><th class="hide-sm">매체</th></tr></thead><tbody id="tb-news"></tbody></table></div>
     </div>
@@ -1090,10 +1097,20 @@ html.dlg-lock,html.dlg-lock body{overflow:hidden}
     const max=Math.max(...br.map(sc));
     bars.replaceChildren(...br.map(r=>{const row=el('div','bar-row'); const nm=el('div','nm'); nm.append(el('span','fit '+r.fit,r.fit)); nm.append(document.createTextNode(' '+r.name)); nm.title=r.name; const tr=el('div','bar-track'); const f=el('div','bar-fill '+r.fit); f.style.width=Math.max(1.5,sc(r)/max*82)+'%'; tr.append(f,el('span','bar-val',sc(r).toLocaleString('ko-KR')+'억'+(P(r)!=null?' · '+P(r)+'%':''))); row.append(nm,tr); return row;}));
   }
+  const isPack=r=>Array.isArray(r.items)&&r.items.length>0;
+  const isOfficial=r=>isPack(r)||/^(나라장터|NIPA|NIA)$/.test(String(r.source||''));
+  const areaKey=r=>isOfficial(r)?'공고':(r.area==='입찰'?'조달':(r.area||''));
+  const areaLabel=r=>{const k=areaKey(r); return k==='공고'?(String(r.source||'나라장터')+' 공고'):(k==='조달'?'조달 동향':k);};
+  const areaBadge=r=>{const b=el('span','area '+areaKey(r),areaLabel(r)); if(areaKey(r)==='조달') b.title='조달·입찰 관련 기사입니다(공고 자체가 아닙니다).'; else if(areaKey(r)==='공고') b.title='나라장터·NIPA 등에서 확인한 공식 공고입니다.'; return b;};
+  function openPack(r){ const dlg=$('hi-dlg'); if(!dlg) return; HIST={bid_items:r.items}; dlg.querySelector('.dh b').textContent='NOTICES';
+    $('hi-t').textContent=r.title||'공고 모음'; $('hi-sub').textContent=(r.source||'나라장터')+' · '+mdw2(r.date)+' 기준'+(r.point?' · '+r.point:'');
+    showHist('bids'); $('hi-kind').textContent='공고 '+r.items.length+'건'; $('hi-hint').textContent='공고를 누르면 해당 공고 화면이 새 창으로 열립니다.';
+    document.documentElement.classList.add('dlg-lock'); if(typeof dlg.showModal==='function'){ if(!dlg.open) dlg.showModal(); } else dlg.setAttribute('open',''); }
+  function newsTitle(r){ if(!isPack(r)) return link(r.title,r.url); const b=el('button','packbtn'); b.type='button'; b.title='공고 '+r.items.length+'건을 하나씩 보기'; b.append(el('span','pk-t',r.title||''),el('span','pk-go','공고 '+r.items.length+'건 목록 보기 ▸')); b.addEventListener('click',()=>openPack(r)); return b; }
   function renderNews(){
-    const tb=$('tb-news'); const rows=D.news.filter(r=>!ui.area||r.area===ui.area).sort((a,b)=>String(b.date).localeCompare(String(a.date)));
+    const tb=$('tb-news'); const rows=D.news.filter(r=>!ui.area||areaKey(r)===ui.area).sort((a,b)=>String(b.date).localeCompare(String(a.date)));
     if(!rows.length) emptyRow(tb,6,loaded.news?'해당 분야 기사가 없습니다.':'불러오는 중');
-    else tb.replaceChildren(...rows.map(r=>{const tr=el('tr'); tr.append(td(el('span','px',md(r.date)),'nw'),td(el('span','area '+(r.area||''),r.area||''),'nw'),td(el('span','chg '+r.change,r.change),'nw'),td(link(r.title,r.url),'strong'),td(r.point),td(r.source,'hide-sm')); return tr;}));
+    else tb.replaceChildren(...rows.map(r=>{const tr=el('tr'); tr.append(td(el('span','px',md(r.date)),'nw'),td(areaBadge(r),'nw'),td(el('span','chg '+r.change,r.change),'nw'),td(newsTitle(r),'strong'),td(r.point),td(r.source,'hide-sm')); return tr;}));
   }
   function renderSchedule(){
     const tb=$('tb-schedule'); const rows=[...D.schedule].filter(r=>{ if(!ui.soon) return true; const n=daysTo(r.date); return n!=null&&n>=0&&n<=14; }).sort((a,b)=>String(a.date).localeCompare(String(b.date)));
@@ -1111,7 +1128,7 @@ html.dlg-lock,html.dlg-lock body{overflow:hidden}
   const WD2=['일','월','화','수','목','금','토'];
   const mdw2=s=>{ if(!s) return ''; const d=new Date(String(s).slice(0,10)+'T00:00:00'); return isNaN(d)?String(s):(d.getMonth()+1)+'/'+d.getDate()+'('+WD2[d.getDay()]+')'; };
   let HIST=null;
-  function openHist(r,k){ const dlg=$('hi-dlg'); if(!dlg) return; HIST=r;
+  function openHist(r,k){ const dlg=$('hi-dlg'); if(!dlg) return; HIST=r; dlg.querySelector('.dh b').textContent='ARCHIVE';
     $('hi-t').textContent='#'+String(r.no).padStart(3,'0')+' · '+(r.date||'')+(r.day?'('+r.day+')':'');
     $('hi-sub').textContent=r.oneline||'';
     showHist(k); document.documentElement.classList.add('dlg-lock'); if(typeof dlg.showModal==='function'){ if(!dlg.open) dlg.showModal(); } else dlg.setAttribute('open',''); }
@@ -1119,12 +1136,12 @@ html.dlg-lock,html.dlg-lock body{overflow:hidden}
     const body=$('hi-list'); const go=u=>{ const s=safe(u); if(s) window.open(s,'_blank','noopener'); };
     if(k==='news'){ const L=r.news_items||[]; if(!L.length){ body.replaceChildren(el('div','empty','이 호에 새로 실린 기사가 없습니다.')); return; }
       const t=el('table','hi-t'); const th=el('thead'); const hr=el('tr'); ['분야','기사','매체','일자'].forEach(x=>hr.append(el('th',null,x))); th.append(hr); const tb=el('tbody');
-      L.forEach(a=>{ const tr=el('tr','hrow'); const ar=el('span','area '+(a.area||''),a.area||'기타'); const ti=el('div','hi-ti'); ti.append(el('span',null,a.title||'')); if(safe(a.url)) ti.append(el('span','hi-go','기사 보기 ↗'));
+      L.forEach(a=>{ const tr=el('tr','hrow'); const ar=a.area?areaBadge(a):el('span','area','기타'); const ti=el('div','hi-ti'); ti.append(el('span',null,a.title||'')); if(safe(a.url)) ti.append(el('span','hi-go','기사 보기 ↗'));
         tr.append(td(ar,'c'),td(ti),td(a.source||'','c'),td(mdw2(a.date),'c nw')); if(safe(a.url)){ tr.title='눌러서 기사 원문 보기'; tr.addEventListener('click',()=>go(a.url)); } tb.append(tr); });
       t.append(th,tb); body.replaceChildren(t); }
     else { const L=r.bid_items||[]; if(!L.length){ body.replaceChildren(el('div','empty','이 호에 새로 실린 입찰·사업 공고가 없습니다.')); return; }
       const t=el('table','hi-t'); const th=el('thead'); const hr=el('tr'); ['단계','사업명','발주·수요기관','규모'].forEach(x=>hr.append(el('th',null,x))); th.append(hr); const tb=el('tbody');
-      L.forEach(b=>{ const tr=el('tr','hrow'); const ti=el('div','hi-ti'); ti.append(el('span',null,b.name||'')); const meta=[b.src,b.no].filter(Boolean).join(' · '); if(meta) ti.append(el('span','sub2',meta)); const u=String(b.url||''); if(safe(b.url)) ti.append(el('span','hi-go',(u.includes('downloadFile')?'사전규격서 받기 ↓':(u.includes('g2b.go.kr')?'나라장터 공고 보기 ↗':(b.src||'기관')+' 공고 보기 ↗'))));
+      L.forEach(b=>{ const tr=el('tr','hrow'); const ti=el('div','hi-ti'); ti.append(el('span',null,b.name||'')); const meta=[b.src,b.no,b.due||''].filter(Boolean).join(' · '); if(meta) ti.append(el('span','sub2',meta)); const u=String(b.url||''); if(safe(b.url)) ti.append(el('span','hi-go',(u.includes('downloadFile')?'사전규격서 받기 ↓':(u.includes('g2b.go.kr')?'나라장터 공고 보기 ↗':(b.src||'기관')+' 공고 보기 ↗'))));
         tr.append(td(el('span','kind',b.kind||'-'),'c'),td(ti),td(b.agency||'','c'),td(b.scale||'','c')); if(safe(b.url)){ tr.title='눌러서 공고·관련 기사 보기'; tr.addEventListener('click',()=>go(b.url)); } tb.append(tr); });
       t.append(th,tb); body.replaceChildren(t); }
     body.scrollTop=0; }
@@ -1252,7 +1269,7 @@ html.dlg-lock,html.dlg-lock body{overflow:hidden}
         const a=rows.filter(r=>r.fit==='A').length,b=rows.filter(r=>r.fit==='B').length,c=rows.filter(r=>r.fit==='C').length;
         return [h('기사·기관 발굴 사업'),p('추적 '+rows.length+'건 · A 주관 '+a+'건 · B 컨소시엄·하도급 '+b+'건 · C 참고 '+c+'건'),
           table([1300,3800,2500,2250,2900,2500],['적합도·가능성','사업','발주·수요기관','규모','현황','참여 방식'],rows.map(r=>[(fitLabel[r.fit]||r.fit)+(P(r)!=null?' · '+P(r)+'%':''),linkP(r.name,r.url),r.agency,r.scale,(r.stage?r.stage+' · ':'')+(r.status||''),r.how]))];},
-      news:()=>{const rows=[...D.news].sort((a,b)=>String(b.date).localeCompare(String(a.date))); return rows.length?[h('주요 뉴스'),table([1000,1000,1100,5200,4450,2500],['일자','분야','변동','기사','시사점','매체'],rows.map(r=>[md(r.date),r.area,r.change,linkP(r.title,r.url),r.point,r.source]))]:[];},
+      news:()=>{const rows=[...D.news].sort((a,b)=>String(b.date).localeCompare(String(a.date))); return rows.length?[h('주요 뉴스'),table([1000,1000,1100,5200,4450,2500],['일자','분야','변동','기사','시사점','매체'],rows.map(r=>[md(r.date),areaLabel(r),r.change,linkP(r.title,r.url),r.point,r.source]))]:[];},
       schedule:()=>{const rows=[...D.schedule].sort((a,b)=>String(a.date).localeCompare(String(b.date))); return rows.length?[h('향후 주요 일정'),table([1900,1100,6250,6000],['시점','분야','일정','체크 포인트'],rows.map(r=>[r.label,r.area,r.item,r.check]))]:[];},
     };
     const order={full:['head','oneline','keywords','g2b','opps','news','schedule'],opps:['head','g2b','opps'],brief:['head','oneline','keywords','schedule'],news:['head','news'],schedule:['head','schedule']}[kind];
