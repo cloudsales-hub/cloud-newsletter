@@ -349,14 +349,14 @@ dialog.nc-dlg::backdrop{background:rgba(5,10,20,.55)}
 /* 같은 표는 필터(전체/A/B/C, 분야, 기간)를 바꿔도 칸 너비가 그대로 유지되도록 고정 */
 @media (min-width:40.01rem){
 table:has(#tb-g2b){table-layout:fixed;min-width:72rem}
-table:has(#tb-g2b) th:nth-child(1){width:7%}
+table:has(#tb-g2b) th:nth-child(1){width:11%}
 table:has(#tb-g2b) th:nth-child(3){width:11%}
-table:has(#tb-g2b) th:nth-child(4){width:6%}
+table:has(#tb-g2b) th:nth-child(4){width:8.5%}
 table:has(#tb-g2b) th:nth-child(5){width:12%}
 table:has(#tb-g2b) th:nth-child(6){width:9%}
 table:has(#tb-g2b) th:nth-child(7){width:15%}
 table:has(#tb-opps){table-layout:fixed;min-width:68rem}
-table:has(#tb-opps) th:nth-child(1){width:8%}
+table:has(#tb-opps) th:nth-child(1){width:11%}
 table:has(#tb-opps) th:nth-child(3){width:13%}
 table:has(#tb-opps) th:nth-child(4){width:12%}
 table:has(#tb-opps) th:nth-child(5){width:17%}
@@ -380,8 +380,8 @@ table:has(#tb-todos) th:nth-child(4){width:12rem}
 table:has(#tb-history){table-layout:fixed;min-width:36rem}
 table:has(#tb-history) th:nth-child(1){width:5rem}
 table:has(#tb-history) th:nth-child(2){width:7rem}
-table:has(#tb-history) th:nth-child(4){width:6rem}
-table:has(#tb-history) th:nth-child(5){width:6rem}
+table:has(#tb-history) th:nth-child(4){width:8rem}
+table:has(#tb-history) th:nth-child(5){width:8rem}
 }
 .fitp{align-items:center}
 .fitrow{display:flex;align-items:center;gap:6px}
@@ -439,11 +439,14 @@ table:has(#tb-history) th:nth-child(5){width:6rem}
 .thw{display:inline-flex;align-items:center;justify-content:center;gap:5px;vertical-align:middle;line-height:1.2}
 .thw .tipw,.thw .sort-ind{margin:0;position:static;vertical-align:baseline;flex:none}
 th .tip-i{width:16px;height:16px;font-size:10px;line-height:1;padding:0}
-.thw .sort-ind{font-size:10px;line-height:1}
+.thw .sort-ind{margin-left:6px}
+.sort-ind{display:inline-flex;align-items:center;justify-content:center;width:20px;height:20px;font-size:13px;font-weight:700;line-height:1;color:var(--muted);opacity:.7;box-shadow:inset 0 0 0 1px var(--line)}
+th.sortable{transition:background-color .12s}
+th.sortable:hover:not(:has(.tipw:hover)),th.sortable:focus-visible{background:var(--blue-soft);color:var(--ink);box-shadow:inset 0 0 0 2px var(--blue);outline:none}
+th.sortable:hover:not(:has(.tipw:hover)) .sort-ind,th.sortable:focus-visible .sort-ind{opacity:1;background:var(--blue);color:#fff;box-shadow:none}
+th[aria-sort] .sort-ind{opacity:1;background:var(--blue);color:#fff;box-shadow:none}
+th[aria-sort]{color:var(--ink)}
 th.sortable{cursor:pointer;user-select:none}
-th.sortable:hover{color:var(--ink)}
-.sort-ind{display:inline-block;margin-left:4px;font-size:10px;opacity:.45}
-th[aria-sort] .sort-ind{opacity:1;color:var(--blue)}
 .due-alert{display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:10px 14px;margin:4px 2px 14px;padding:12px 16px;background:var(--nk-end-bg);text-align:center;box-shadow:2px 0 0 0 var(--red),-2px 0 0 0 var(--red),0 2px 0 0 var(--red),0 -2px 0 0 var(--red)}
 .due-alert[hidden]{display:none}
 .due-alert .da-h{font-weight:900;color:var(--red);font-size:14px}
@@ -723,7 +726,7 @@ html.dlg-lock,html.dlg-lock body{overflow:hidden}
         <button class="chip" data-nz="금융" aria-pressed="false" type="button"><i style="background:var(--fin-acc)"></i>금융</button>
         <button class="chip" data-npast aria-pressed="false" type="button">지난 공지 <b id="nk-past">0</b>건</button>
       </div>
-      <div class="scroll nc-scroll"><table class="nc-t"><colgroup><col style="width:4.4rem"><col style="width:4.2rem"><col style="width:4.4rem"><col style="width:12rem"><col style="width:10.5rem"><col><col style="width:5.6rem"></colgroup><thead><tr><th>영향도<span class="tipw" tabindex="0" aria-describedby="tip-imp"><b class="tip-i" aria-hidden="true">?</b><span class="tip-box" role="tooltip" id="tip-imp"><strong>고객 영향이 얼마나 큰지 나타냅니다.</strong><span class="tip-r"><em class="tip-lb">■■■</em>영향이 큽니다. 이용 고객이 많거나 대체가 어려운 공지입니다.</span><span class="tip-r"><em class="tip-lb">■■□</em>영향이 보통입니다. 일부 고객 안내가 필요합니다.</span><span class="tip-r"><em class="tip-lb">■□□</em>영향이 작습니다. 참고로 알아 두시면 됩니다.</span></span></span></th><th>구분<span class="tipw" tabindex="0" aria-describedby="tip-nkind"><b class="tip-i" aria-hidden="true">?</b><span class="tip-box" role="tooltip" id="tip-nkind"><strong>공지 종류입니다.</strong><span class="tip-r"><em class="nc-kind 종료">종료</em>서비스가 종료될 예정입니다. 대체 상품 안내가 필요합니다.</span><span class="tip-r"><em class="nc-kind 신규">신규</em>새 상품·기능이 출시됩니다. 제안 소재로 쓸 수 있습니다.</span><span class="tip-r"><em class="nc-kind 변경">변경</em>요금·정책이 바뀝니다. 견적·계약에 반영해야 합니다.</span></span></span></th><th>존</th><th>서비스 · 공지</th><th>고지 및 적용 시점</th><th>대응 분석</th><th>원문</th></tr></thead><tbody id="tb-ncloud"></tbody></table></div>
+      <div class="scroll nc-scroll"><table class="nc-t"><colgroup><col style="width:7.8rem"><col style="width:6.2rem"><col style="width:4.8rem"><col style="width:12rem"><col style="width:10.5rem"><col><col style="width:5.6rem"></colgroup><thead><tr><th>영향도<span class="tipw" tabindex="0" aria-describedby="tip-imp"><b class="tip-i" aria-hidden="true">?</b><span class="tip-box" role="tooltip" id="tip-imp"><strong>고객 영향이 얼마나 큰지 나타냅니다.</strong><span class="tip-r"><em class="tip-lb">■■■</em>영향이 큽니다. 이용 고객이 많거나 대체가 어려운 공지입니다.</span><span class="tip-r"><em class="tip-lb">■■□</em>영향이 보통입니다. 일부 고객 안내가 필요합니다.</span><span class="tip-r"><em class="tip-lb">■□□</em>영향이 작습니다. 참고로 알아 두시면 됩니다.</span></span></span></th><th>구분<span class="tipw" tabindex="0" aria-describedby="tip-nkind"><b class="tip-i" aria-hidden="true">?</b><span class="tip-box" role="tooltip" id="tip-nkind"><strong>공지 종류입니다.</strong><span class="tip-r"><em class="nc-kind 종료">종료</em>서비스가 종료될 예정입니다. 대체 상품 안내가 필요합니다.</span><span class="tip-r"><em class="nc-kind 신규">신규</em>새 상품·기능이 출시됩니다. 제안 소재로 쓸 수 있습니다.</span><span class="tip-r"><em class="nc-kind 변경">변경</em>요금·정책이 바뀝니다. 견적·계약에 반영해야 합니다.</span></span></span></th><th>존</th><th>서비스 · 공지</th><th>고지 및 적용 시점</th><th>대응 분석</th><th>원문</th></tr></thead><tbody id="tb-ncloud"></tbody></table></div>
     </div>
   </section>
   <section class="page" id="schedule" data-pg="schedule" hidden>
@@ -1401,9 +1404,9 @@ html.dlg-lock,html.dlg-lock body{overflow:hidden}
     return [...rows].sort((a,b)=>{ const x=f(a), y=f(b); const xn=(x==null||x===''), yn=(y==null||y===''); if(xn&&yn) return 0; if(xn) return 1; if(yn) return -1;
       if(typeof x==='number'&&typeof y==='number') return (x-y)*dir; return String(x).localeCompare(String(y),'ko',{numeric:true})*dir; }); }
   function paintSortHeads(id){ const tb=document.getElementById(id); if(!tb) return; const ths=tb.closest('table').querySelectorAll('thead th'); const s=SORT[id];
-    ths.forEach((th,i)=>{ const ind=th.querySelector('.sort-ind'); if(!ind) return; if(s&&s.i===i){ th.setAttribute('aria-sort',s.d==='desc'?'descending':'ascending'); ind.textContent=s.d==='desc'?'▼':'▲'; } else { th.removeAttribute('aria-sort'); ind.textContent='↕'; } }); }
+    ths.forEach((th,i)=>{ const ind=th.querySelector('.sort-ind'); if(!ind) return; if(s&&s.i===i){ th.setAttribute('aria-sort',s.d==='desc'?'descending':'ascending'); ind.textContent=s.d==='desc'?'▼':'▲'; } else { th.removeAttribute('aria-sort'); ind.textContent='⇅'; } }); }
   function initSort(){ Object.keys(SORT_KEYS).forEach(id=>{ const tb=document.getElementById(id); if(!tb) return; const ths=tb.closest('table').querySelectorAll('thead th');
-      ths.forEach((th,i)=>{ if(!SORT_KEYS[id][i]||th.classList.contains('sortable')) return; th.classList.add('sortable'); th.tabIndex=0; th.title='눌러서 정렬 (오름차순 → 내림차순 → 기본 순서)'; th.append(el('span','sort-ind','↕'));
+      ths.forEach((th,i)=>{ if(!SORT_KEYS[id][i]||th.classList.contains('sortable')) return; th.classList.add('sortable'); th.tabIndex=0; th.title='눌러서 정렬합니다 (오름차순 ▲ → 내림차순 ▼ → 기본 순서)'; th.append(el('span','sort-ind','⇅'));
         const go=()=>{ const s=SORT[id]; if(!s||s.i!==i) SORT[id]={i,d:'asc'}; else if(s.d==='asc') SORT[id]={i,d:'desc'}; else delete SORT[id]; saveSort(); paintSortHeads(id); (PG_RENDER[id]||(()=>{}))(); };
         th.addEventListener('click',e=>{ if(e.target.closest('.tipw')) return; go(); }); th.addEventListener('keydown',e=>{ if(e.target!==th) return; if(e.key==='Enter'||e.key===' '){ e.preventDefault(); go(); } }); });
       paintSortHeads(id); }); }
