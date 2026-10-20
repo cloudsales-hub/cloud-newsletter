@@ -426,6 +426,14 @@ table:has(#tb-history) th:nth-child(5){width:6rem}
 .pager .pg[aria-current="page"]{background:var(--ink);color:var(--bg);box-shadow:2px 0 0 0 var(--ink),-2px 0 0 0 var(--ink),0 2px 0 0 var(--ink),0 -2px 0 0 var(--ink)}
 .pager .pg:disabled{opacity:.35;cursor:default}
 .pager .pg-info{width:100%;text-align:center;font-size:12px;color:var(--muted)}
+.th-tip{overflow:visible}
+.tipw{position:relative;display:inline-flex;align-items:center;gap:5px;cursor:help;outline:none}
+.tip-i{display:inline-flex;align-items:center;justify-content:center;width:16px;height:16px;font-size:11px;font-weight:900;background:var(--surface);color:var(--ink);box-shadow:1px 0 0 0 var(--frame),-1px 0 0 0 var(--frame),0 1px 0 0 var(--frame),0 -1px 0 0 var(--frame)}
+.tip-box{display:none}
+.tip-float{position:fixed;z-index:60;display:flex;flex-direction:column;gap:8px;width:22rem;max-width:80vw;padding:14px 16px;background:var(--bg);color:var(--ink);text-align:left;font-size:13px;font-weight:500;line-height:1.55;white-space:normal;box-shadow:2px 0 0 0 var(--frame),-2px 0 0 0 var(--frame),0 2px 0 0 var(--frame),0 -2px 0 0 var(--frame),0 8px 24px rgba(0,0,0,.35)}
+.tip-float strong{font-size:13px;font-weight:800;text-align:center}
+.tip-r{display:grid;grid-template-columns:4.8rem 1fr;align-items:center;gap:8px}
+.tip-r em{font-style:normal;text-align:center}
 .packbtn{font:inherit;font-weight:800;text-align:left;background:none;border:0;padding:0;color:inherit;cursor:pointer;display:flex;flex-direction:column;gap:3px}
 .packbtn:hover .pk-t{text-decoration:underline}
 .pk-go{font-size:12px;font-weight:700;color:var(--blue)}
@@ -610,7 +618,7 @@ html.dlg-lock,html.dlg-lock body{overflow:hidden}
         <button class="chip" data-area="조달" aria-pressed="false" type="button"><i style="background:var(--red)"></i>조달 동향</button>
         <button class="chip" data-area="공고" aria-pressed="false" type="button"><i style="background:var(--blue)"></i>공식 공고</button>
       </div>
-      <div class="scroll"><table><thead><tr><th>일자</th><th>분야</th><th>변동</th><th>기사</th><th>시사점</th><th class="hide-sm">매체</th></tr></thead><tbody id="tb-news"></tbody></table></div>
+      <div class="scroll"><table><thead><tr><th>일자</th><th>분야</th><th class="th-tip"><span class="tipw" tabindex="0" aria-describedby="chg-tip">변동 <b class="tip-i" aria-hidden="true">?</b><span class="tip-box" role="tooltip" id="chg-tip"><strong>변동은 직전 브리핑과 비교한 상태입니다.</strong><span class="tip-r"><em class="chg NEW">NEW</em>이번 호에서 처음 다룬 소식입니다.</span><span class="tip-r"><em class="chg UPDATE">UPDATE</em>이미 다룬 소식에 새 사실이 더해졌습니다.</span><span class="tip-r"><em class="chg 유지">유지</em>바뀐 내용은 없지만 진행 중이거나 참고할 만해 남겨 둔 소식입니다.</span></span></span></th><th>기사</th><th>시사점</th><th class="hide-sm">매체</th></tr></thead><tbody id="tb-news"></tbody></table></div>
     </div>
   </section>
 
@@ -1127,10 +1135,17 @@ html.dlg-lock,html.dlg-lock body{overflow:hidden}
     showHist('bids'); $('hi-kind').textContent='공고 '+r.items.length+'건'; $('hi-hint').textContent='공고를 누르면 해당 공고 화면이 새 창으로 열립니다.';
     document.documentElement.classList.add('dlg-lock'); if(typeof dlg.showModal==='function'){ if(!dlg.open) dlg.showModal(); } else dlg.setAttribute('open',''); }
   function newsTitle(r){ if(!isPack(r)) return link(r.title,r.url); const b=el('button','packbtn'); b.type='button'; b.title='공고 '+r.items.length+'건을 하나씩 보기'; b.append(el('span','pk-t',r.title||''),el('span','pk-go','공고 '+r.items.length+'건 목록 보기 ▸')); b.addEventListener('click',()=>openPack(r)); return b; }
+  (function(){ let fl=null; const show=w=>{ hide(); const src=w.querySelector('.tip-box'); if(!src) return; fl=document.createElement('div'); fl.className='tip-float'; fl.setAttribute('role','tooltip'); fl.innerHTML=src.innerHTML; document.body.append(fl);
+      const r=w.getBoundingClientRect(); const fw=fl.offsetWidth; let x=r.left+r.width/2-fw/2; x=Math.max(12,Math.min(x,window.innerWidth-fw-12)); fl.style.left=x+'px'; fl.style.top=(r.bottom+10)+'px'; };
+    const hide=()=>{ if(fl){ fl.remove(); fl=null; } };
+    document.querySelectorAll('.tipw').forEach(w=>{ w.addEventListener('mouseenter',()=>show(w)); w.addEventListener('mouseleave',hide); w.addEventListener('focus',()=>show(w)); w.addEventListener('blur',hide); w.addEventListener('click',e=>{ e.stopPropagation(); fl?hide():show(w); }); });
+    window.addEventListener('scroll',hide,true); })();
+  const CHG_T={NEW:'이번 호에서 처음 다룬 소식입니다.',UPDATE:'이미 다룬 소식에 새 사실이 더해졌습니다.','유지':'바뀐 내용은 없지만 진행 중이거나 참고할 만해 남겨 둔 소식입니다.'};
+  const chgBadge=c=>{const b=el('span','chg '+c,c); if(CHG_T[c]) b.title=CHG_T[c]; return b;};
   function renderNews(){
     const tb=$('tb-news'); const rows=D.news.filter(r=>!ui.area||areaKey(r)===ui.area).sort((a,b)=>String(b.date).localeCompare(String(a.date)));
     if(!rows.length) emptyRow(tb,6,loaded.news?'해당 분야 기사가 없습니다.':'불러오는 중');
-    else tb.replaceChildren(...pageRows('tb-news',rows).map(r=>{const tr=el('tr'); tr.append(td(el('span','px',md(r.date)),'nw'),td(areaBadge(r),'nw'),td(el('span','chg '+r.change,r.change),'nw'),td(newsTitle(r),'strong'),td(r.point),td(r.source,'hide-sm')); return tr;}));
+    else tb.replaceChildren(...pageRows('tb-news',rows).map(r=>{const tr=el('tr'); tr.append(td(el('span','px',md(r.date)),'nw'),td(areaBadge(r),'nw'),td(chgBadge(r.change),'nw'),td(newsTitle(r),'strong'),td(r.point),td(r.source,'hide-sm')); return tr;}));
   }
   function renderSchedule(){
     const tb=$('tb-schedule'); const rows=[...D.schedule].filter(r=>{ if(!ui.soon) return true; const n=daysTo(r.date); return n!=null&&n>=0&&n<=14; }).sort((a,b)=>String(a.date).localeCompare(String(b.date)));
