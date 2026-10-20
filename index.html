@@ -957,7 +957,9 @@ html.dlg-lock,html.dlg-lock body{overflow:hidden}
   const PG_RENDER={'tb-g2b':()=>renderOpps(),'tb-opps':()=>renderOpps(),'tb-news':()=>renderNews(),'tb-schedule':()=>renderSchedule(),'tb-history':()=>renderHistory(),'tb-ncloud':()=>renderNcloud(),'tb-res':()=>renderOpps()};
   function pagerFor(id){ const tb=document.getElementById(id); if(!tb) return null; const host=tb.closest('.scroll')||tb.closest('table'); let p=host.nextElementSibling; if(!(p&&p.classList.contains('pager')&&p.dataset.for===id)){ p=el('nav','pager'); p.dataset.for=id; p.setAttribute('aria-label','페이지 이동'); host.after(p); } return p; }
   function hidePager(id){ const p=pagerFor(id); if(p){ p.hidden=true; p.replaceChildren(); } }
-  function pageRows(id,rows){ rows=applySort(id,rows); const key=rows.length+'|'+rows.map(r=>r.id||r.no||r.title||r.name||'').join('|');
+  const NEW_FIRST={'tb-g2b':r=>isNew(r),'tb-opps':r=>isNew(r),'tb-ncloud':r=>ncNew(r)};
+  function newFirst(id,rows){ const f=NEW_FIRST[id]; if(!f||SORT[id]) return rows; const a=[],b=[]; rows.forEach(r=>(f(r)?a:b).push(r)); return a.concat(b); }
+  function pageRows(id,rows){ rows=newFirst(id,applySort(id,rows)); const key=rows.length+'|'+rows.map(r=>r.id||r.no||r.title||r.name||'').join('|');
     let st=PGS[id]; if(!st||st.key!==key) st=PGS[id]={key,p:1};
     const n=Math.max(1,Math.ceil(rows.length/PG)); if(st.p>n) st.p=n;
     const p=pagerFor(id); if(p){ if(n<=1){ p.hidden=true; p.replaceChildren(); } else { p.hidden=false;
