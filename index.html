@@ -436,7 +436,9 @@ table:has(#tb-history) th:nth-child(5){width:6rem}
 .tip-r em{font-style:normal;text-align:center}
 .tip-lb{display:inline-block;font-size:12px;font-weight:800;padding:2px 6px;background:var(--surface);color:var(--ink);white-space:nowrap}
 .tip-r em{justify-self:center}
-th .tipw{margin-left:4px;vertical-align:-2px}
+th .tipw{margin-left:5px;vertical-align:middle;position:relative;top:-1px}
+th .tip-i{width:15px;height:15px;font-size:10px;line-height:1}
+th .sort-ind{vertical-align:middle}
 th.sortable{cursor:pointer;user-select:none}
 th.sortable:hover{color:var(--ink)}
 .sort-ind{display:inline-block;margin-left:4px;font-size:10px;opacity:.45}
@@ -482,6 +484,12 @@ table:has(#tb-res) th:nth-child(1){width:9%}table:has(#tb-res) th:nth-child(3){w
   table.mob .fitp{justify-content:start}
   .scroll{max-height:none}
 }
+.starb{font:inherit;background:none;border:0;cursor:pointer;font-size:19px;line-height:1;color:var(--muted);opacity:.55;padding:0 6px 0 0;vertical-align:-2px}
+.starb:hover{opacity:1;color:var(--amber)}
+.starb.on{color:var(--amber);opacity:1}
+.oppname{display:flex;align-items:flex-start;gap:2px}
+.chip[data-star][aria-pressed="true"]{background:var(--amber);color:#2a1a00;box-shadow:2px 0 0 0 var(--amber),-2px 0 0 0 var(--amber),0 2px 0 0 var(--amber),0 -2px 0 0 var(--amber)}
+.tools.nofit [data-star]{display:none}
 .packbtn{font:inherit;font-weight:800;text-align:left;background:none;border:0;padding:0;color:inherit;cursor:pointer;display:flex;flex-direction:column;gap:3px}
 .packbtn:hover .pk-t{text-decoration:underline}
 .pk-go{font-size:12px;font-weight:700;color:var(--blue)}
@@ -637,6 +645,7 @@ html.dlg-lock,html.dlg-lock body{overflow:hidden}
         <button class="chip" data-fit="A" aria-pressed="false" type="button">A 주관</button>
         <button class="chip" data-fit="B" aria-pressed="false" type="button">B 컨소시엄</button>
         <button class="chip" data-fit="C" aria-pressed="false" type="button">C 참고</button>
+        <button class="chip" data-star aria-pressed="false" type="button" title="☆를 눌러 표시한 공고만 보기">★ 관심 공고 <b id="star-n">0</b>건</button>
         <input class="search" id="q-opps" type="search" placeholder="사업명·기관 검색" aria-label="사업 검색">
       </div>
       <div id="pane-g2b" role="tabpanel">
@@ -1041,7 +1050,7 @@ html.dlg-lock,html.dlg-lock body{overflow:hidden}
   /* ---------- state ---------- */
   const D={meta:null,g2b:[],opportunities:[],news:[],schedule:[],issues:[],keywords:[],todos:[],ncloud:[],results:[]};
   const loaded={}; let dbReady=null;
-  const ui={page:'today',src:'g2b',fit:'',q:'',area:'',soon:false,nz:'',nk:'',mode:'news',dueOnly:false,npast:false};
+  const ui={page:'today',src:'g2b',fit:'',q:'',area:'',soon:false,nz:'',nk:'',mode:'news',dueOnly:false,npast:false,star:false};
 
   /* ---------- tabs ---------- */
   const PAGES=['today','opps','news','ncloud','schedule','library','history'];
@@ -1066,6 +1075,7 @@ html.dlg-lock,html.dlg-lock body{overflow:hidden}
   document.querySelectorAll('[data-fit]').forEach(b=>b.addEventListener('click',()=>{ui.fit=b.dataset.fit; document.querySelectorAll('[data-fit]').forEach(x=>x.setAttribute('aria-pressed',String(x===b))); renderOpps();}));
   document.querySelectorAll('[data-area]').forEach(b=>b.addEventListener('click',()=>{ui.area=b.dataset.area; document.querySelectorAll('[data-area]').forEach(x=>x.setAttribute('aria-pressed',String(x===b))); renderNews();}));
   $('q-opps').addEventListener('input',(e)=>{ui.q=e.target.value.trim().toLowerCase(); renderOpps();});
+  document.querySelectorAll('[data-star]').forEach(b=>b.addEventListener('click',()=>{ ui.star=!ui.star; b.setAttribute('aria-pressed',String(ui.star)); renderOpps(); renderBars(); }));
   document.querySelectorAll('[data-src]').forEach(b=>b.addEventListener('click',()=>{ui.src=b.dataset.src; renderOpps(); renderBars();}));
 
   /* ---------- render ---------- */
@@ -1123,7 +1133,7 @@ html.dlg-lock,html.dlg-lock body{overflow:hidden}
     document.documentElement.classList.add('dlg-lock'); if(typeof dlg.showModal==='function') dlg.showModal(); else dlg.setAttribute('open',''); }
   const dueAt=s=>{ if(!s) return null; const t=new Date(String(s).replace(' ','T')+(String(s).length<=10?'T23:59':'')+':00+09:00'); return isNaN(t)?null:t; };
   const g2bLive=()=>(D.g2b||[]).filter(r=>{const t=dueAt(r.due); return !t||t>=new Date();});
-  const match=r=>(!ui.fit||r.fit===ui.fit)&&(!ui.q||[r.name,r.agency,r.orderer,r.no].join(' ').toLowerCase().includes(ui.q));
+  const match=r=>(!ui.star||STARS.has(starKey(r)))&&(!ui.fit||r.fit===ui.fit)&&(!ui.q||[r.name,r.agency,r.orderer,r.no].join(' ').toLowerCase().includes(ui.q));
   const g2bSort=(a,b)=>(fitOrder[a.fit]-fitOrder[b.fit])||((P(b)||0)-(P(a)||0))||String(a.due||'9').localeCompare(String(b.due||'9'));
   const g2bRows=()=>g2bLive().filter(r=>match(r)&&(!ui.dueOnly||DUE_SET.has(r.id||r.no))).sort(g2bSort);
   const oppSort=(a,b)=>(fitOrder[a.fit]-fitOrder[b.fit])||((P(b)||0)-(P(a)||0))||((b.scale_eok||0)-(a.scale_eok||0));
@@ -1159,20 +1169,27 @@ html.dlg-lock,html.dlg-lock body{overflow:hidden}
     else { const su=specUrl(r); if(su) w.append(mk('사전규격서 받기 ↓','나라장터에 올라온 사전규격서(제안요청서 초안) 파일을 내려받습니다',()=>window.open(su,'_blank','noopener')));
       w.append(mk('나라장터에서 보기 ↗','사전규격 화면은 바로가기 주소가 없어 번호를 복사하고 나라장터를 엽니다',()=>g2bOpen(r))); }
     return w; };
+  /* ---------- 관심 공고(☆) — 이 브라우저에 저장 ---------- */
+  const starKey=r=>String(r.no||r.id||r.name||'');
+  let STARS=new Set(); try{ const a=JSON.parse(localStorage.getItem('cb-stars')||'[]'); if(Array.isArray(a)) STARS=new Set(a.map(String)); }catch(e){}
+  const saveStars=()=>{ try{ localStorage.setItem('cb-stars',JSON.stringify([...STARS])); }catch(e){} };
+  function starBtn(r){ const k=starKey(r); const on=STARS.has(k); const b=el('button','starb'+(on?' on':''),on?'★':'☆'); b.type='button'; b.setAttribute('aria-pressed',String(on)); b.title=on?'관심 공고에서 빼기':'관심 공고로 표시';
+    b.addEventListener('click',e=>{ e.stopPropagation(); e.preventDefault(); if(STARS.has(k)) STARS.delete(k); else STARS.add(k); saveStars(); renderOpps(); }); return b; }
+  function oppName(r){ const d=el('div','oppname'); d.append(starBtn(r),link(r.name,r.url)); return d; }
   function renderOpps(){
     document.querySelectorAll('[data-src]').forEach(b=>b.setAttribute('aria-selected',String(b.dataset.src===ui.src)));
-    $('pane-g2b').hidden=ui.src!=='g2b'; $('pane-opps').hidden=ui.src!=='opps'; if($('pane-res')) $('pane-res').hidden=ui.src!=='res'; const tl=document.querySelector('#card-opps .tools'); if(tl) tl.classList.toggle('nofit',ui.src==='res'); renderDueAlert(); renderRes();
+    const sn=$('star-n'); if(sn){ const ks=new Set([...g2bLive(),...D.opportunities].map(starKey)); sn.textContent=String([...STARS].filter(k=>ks.has(k)).length); } $('pane-g2b').hidden=ui.src!=='g2b'; $('pane-opps').hidden=ui.src!=='opps'; if($('pane-res')) $('pane-res').hidden=ui.src!=='res'; const tl=document.querySelector('#card-opps .tools'); if(tl) tl.classList.toggle('nofit',ui.src==='res'); renderDueAlert(); renderRes();
     srcSummary('g2b',g2bLive(),!!loaded.g2b); srcSummary('opps',D.opportunities,!!loaded.opportunities);
     const tg=$('tb-g2b'); const gr=g2bRows(); const NC=7;
     if(!gr.length) emptyRow(tg,NC,loaded.g2b?(g2bLive().length?'조건에 맞는 공고가 없습니다.':'진행 중인 나라장터 공고가 없습니다.'):'불러오는 중');
     else tg.replaceChildren(...pageRows('tb-g2b',gr).map(r=>{const tr=el('tr');
-      const nm=el('div'); nm.append(el('span','kind'+(r.kind==='사전규격'?' pre':(r.kind==='재공고'?' re':'')),r.kind||'공고'),link(r.name,r.url)); nm.append(g2bGo(r)); nm.append(el('span','sub2',(r.no||'')+(r.method?' · '+r.method:'')+(r.price_eok!=null?' · 추정가격 '+r.price_eok.toLocaleString('ko-KR')+'억':'')));
+      const nm=el('div'); nm.append(starBtn(r),el('span','kind'+(r.kind==='사전규격'?' pre':(r.kind==='재공고'?' re':'')),r.kind||'공고'),link(r.name,r.url)); nm.append(g2bGo(r)); nm.append(el('span','sub2',(r.no||'')+(r.method?' · '+r.method:'')+(r.price_eok!=null?' · 추정가격 '+r.price_eok.toLocaleString('ko-KR')+'억':'')));
       const ag=el('div'); ag.append(document.createTextNode(r.agency||'')); if(r.orderer&&r.orderer!==r.agency) ag.append(el('span','sub2','공고 '+r.orderer));
       const hw=el('div'); hw.append(document.createTextNode(r.how||'')); if(r.why) hw.append(el('span','sub2','근거: '+r.why));
       tr.append(td(fitProb(r)),td(nm,'strong'),td(ag,'hide-sm'),td(r.budget_eok!=null?r.budget_eok.toLocaleString('ko-KR')+'억':'-','nw'),td(postNode(r),'nw'),td(dueNode(r)),td(hw,'hide-sm')); tr.addEventListener('click',(e)=>{ if(e.target.closest('a,button')) return; g2bOpen(r); }); return tr;}));
     const tb=$('tb-opps'); const rows=oppRows();
     if(!rows.length) emptyRow(tb,NC,loaded.opportunities?(D.opportunities.length?'조건에 맞는 사업이 없습니다.':'아직 등록된 사업 기회가 없습니다.'):'불러오는 중');
-    else tb.replaceChildren(...pageRows('tb-opps',rows).map(r=>{const tr=el('tr'); tr.append(td(fitProb(r)),td(link(r.name,r.url),'strong'),td(r.agency,'hide-sm'),td(r.scale),td(stepsNode(r.stage,r.status)),td(r.how,'hide-sm')); return tr;}));
+    else tb.replaceChildren(...pageRows('tb-opps',rows).map(r=>{const tr=el('tr'); tr.append(td(fitProb(r)),td(oppName(r),'strong'),td(r.agency,'hide-sm'),td(r.scale),td(stepsNode(r.stage,r.status)),td(r.how,'hide-sm')); return tr;}));
     renderBars();
   }
   function renderBars(){
