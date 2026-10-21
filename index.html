@@ -517,6 +517,10 @@ tr.pricey-row td{background:rgba(245,180,83,.08)}
 tr.pricey-row td:first-child{box-shadow:inset 4px 0 0 var(--amber)}
 .evl{color:var(--muted)}
 .srcb{display:inline-block;font-size:11px;font-weight:800;padding:1px 6px;margin-right:6px;background:var(--blue-soft);color:var(--blue);vertical-align:1px}
+.flagb{display:inline-flex;align-items:center;gap:5px;font-size:12px;font-weight:800;padding:2px 8px;margin:0 6px 5px 0;background:#8b6cff;color:#fff;cursor:help}
+tr.flag-row td:first-child{box-shadow:inset 4px 0 0 #8b6cff}
+tr.flag-row td{background:rgba(139,108,255,.07)}
+tr.pricey-row.flag-row td:first-child{box-shadow:inset 4px 0 0 var(--amber),inset 8px 0 0 #8b6cff}
 .packbtn{font:inherit;font-weight:800;text-align:left;background:none;border:0;padding:0;color:inherit;cursor:pointer;display:flex;flex-direction:column;gap:3px}
 .packbtn:hover .pk-t{text-decoration:underline}
 .pk-go{font-size:12px;font-weight:700;color:var(--blue)}
@@ -1248,10 +1252,10 @@ html.dlg-lock,html.dlg-lock body{overflow:hidden}
     const tg=$('tb-g2b'); const gr=g2bRows(); const NC=7;
     if(!gr.length) emptyRow(tg,NC,loaded.g2b?(g2bLive().length?'조건에 맞는 공고가 없습니다.':'진행 중인 나라장터 공고가 없습니다.'):'불러오는 중');
     else tg.replaceChildren(...pageRows('tb-g2b',gr).map(r=>{const tr=el('tr');
-      const nm=el('div'); if(isPricey(r)){ const pb=el('div','pricey','가격 비중 높음 · 기술 '+r.eval_tech+' : 가격 '+r.eval_price); pb.title='가격평가 비중이 '+r.eval_price+'%로, 일반적인 SW사업(기술 90 : 가격 10)보다 높습니다. 제안 가격이 결과에 크게 작용하므로 원가·투찰가 전략을 먼저 세워야 합니다.'; nm.append(pb,el('br')); } nm.append(starBtn(r),el('span','kind'+(r.kind==='사전규격'?' pre':(r.kind==='재공고'?' re':'')),r.kind||'공고'),link(r.name,r.url)); nm.append(g2bGo(r)); nm.append(el('span','sub2',[r.src&&r.src!=='나라장터'?r.src+' 공고':'',r.no||'',r.method||'',r.price_eok!=null?'추정가격 '+r.price_eok.toLocaleString('ko-KR')+'억':'',r.eval_tech!=null?'평가 기술 '+r.eval_tech+' : 가격 '+r.eval_price:''].filter(Boolean).join(' · ')));
+      const nm=el('div'); const FL={credit:['신용등급 추가 배점','평가 항목에 기업 신용평가등급 배점이 있습니다. 신용등급이 높을수록 점수를 더 받으므로, 제출 전 신용평가등급 확인서 유효기간과 등급을 확인하세요.']}; const fls=(Array.isArray(r.flags)?r.flags:[]).map(k=>FL[k]?FL[k]:[String(k),String(k)]); if(fls.length){ const fw=el('div'); fls.forEach(([t,ti])=>{ const b=el('span','flagb',t); b.title=ti; fw.append(b); }); nm.append(fw); } if(isPricey(r)){ const pb=el('div','pricey','가격 비중 높음 · 기술 '+r.eval_tech+' : 가격 '+r.eval_price); pb.title='가격평가 비중이 '+r.eval_price+'%로, 일반적인 SW사업(기술 90 : 가격 10)보다 높습니다. 제안 가격이 결과에 크게 작용하므로 원가·투찰가 전략을 먼저 세워야 합니다.'; nm.append(pb,el('br')); } nm.append(starBtn(r),el('span','kind'+(r.kind==='사전규격'?' pre':(r.kind==='재공고'?' re':'')),r.kind||'공고'),link(r.name,r.url)); nm.append(g2bGo(r)); nm.append(el('span','sub2',[r.src&&r.src!=='나라장터'?r.src+' 공고':'',r.no||'',r.method||'',r.price_eok!=null?'추정가격 '+r.price_eok.toLocaleString('ko-KR')+'억':'',r.eval_tech!=null?'평가 기술 '+r.eval_tech+' : 가격 '+r.eval_price:''].filter(Boolean).join(' · ')));
       const ag=el('div'); ag.append(document.createTextNode(r.agency||'')); if(r.orderer&&r.orderer!==r.agency) ag.append(el('span','sub2','공고 '+r.orderer));
       const hw=el('div'); hw.append(document.createTextNode(r.how||'')); if(r.why) hw.append(el('span','sub2','근거: '+r.why));
-      tr.append(td(fitProb(r)),td(nm,'strong'),td(ag,'hide-sm'),td(r.budget_eok!=null?r.budget_eok.toLocaleString('ko-KR')+'억':'-','nw'),td(postNode(r),'nw'),td(dueNode(r)),td(hw,'hide-sm')); if(isPricey(r)) tr.classList.add('pricey-row'); tr.addEventListener('click',(e)=>{ if(e.target.closest('a,button')) return; g2bOpen(r); }); return tr;}));
+      tr.append(td(fitProb(r)),td(nm,'strong'),td(ag,'hide-sm'),td(r.budget_eok!=null?r.budget_eok.toLocaleString('ko-KR')+'억':'-','nw'),td(postNode(r),'nw'),td(dueNode(r)),td(hw,'hide-sm')); if(isPricey(r)) tr.classList.add('pricey-row'); if(Array.isArray(r.flags)&&r.flags.length) tr.classList.add('flag-row'); tr.addEventListener('click',(e)=>{ if(e.target.closest('a,button')) return; g2bOpen(r); }); return tr;}));
     const tb=$('tb-opps'); const rows=oppRows();
     if(!rows.length) emptyRow(tb,NC,loaded.opportunities?(D.opportunities.length?'조건에 맞는 사업이 없습니다.':'아직 등록된 사업 기회가 없습니다.'):'불러오는 중');
     else tb.replaceChildren(...pageRows('tb-opps',rows).map(r=>{const tr=el('tr'); tr.append(td(fitProb(r)),td(oppName(r),'strong'),td(r.agency,'hide-sm'),td(r.scale),td(stepsNode(r.stage,r.status)),td(r.how,'hide-sm')); return tr;}));
