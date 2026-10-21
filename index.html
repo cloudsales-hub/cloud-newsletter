@@ -953,7 +953,8 @@ html.dlg-lock,html.dlg-lock body{overflow:hidden}
   /* ---------- helpers ---------- */
   const $=(id)=>document.getElementById(id);
   const el=(tag,cls,text)=>{const e=document.createElement(tag); if(cls) e.className=cls; if(text!=null) e.textContent=String(text); return e;};
-  const safe=(u)=>(typeof u==='string'&&/^https:\/\//.test(u))?u:null;
+  const SPEC_LINK=no=>'https://www.g2b.go.kr/link/PRVA004_02/single/?bfSpecRegNo='+no;
+  const safe=(u)=>{ if(!(typeof u==='string'&&/^https:\/\//.test(u))) return null; const m=u.match(/g2b\.go\.kr\/pn\/pnz\/pnza\/UntyAtchFile\/downloadFile\.do\?bfSpecRegNo=(R\d{2}BD\d+)/); return m?SPEC_LINK(m[1]):u; };
   const link=(text,url)=>{const u=safe(url); if(!u) return document.createTextNode(text||''); const a=el('a',null,text); a.href=u; a.target='_blank'; a.rel='noopener'; return a;};
   const td=(content,cls)=>{const c=el('td',cls); if(content instanceof Node) c.append(content); else c.textContent=content==null?'':String(content); return c;};
   const todayISO=()=>{const d=new Date(); return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0');};
@@ -1222,11 +1223,12 @@ html.dlg-lock,html.dlg-lock body{overflow:hidden}
   }
   const G2B_HOME='https://www.g2b.go.kr/';
   const copyNo=async(no)=>{ try{ await navigator.clipboard.writeText(no); return true; }catch(e){ try{ const t=document.createElement('textarea'); t.value=no; t.style.position='fixed'; t.style.opacity='0'; document.body.append(t); t.select(); const ok=document.execCommand('copy'); t.remove(); return ok; }catch(_){ return false; } } };
-  const g2bOpen=async(r)=>{ const u=safe(r.url); if(u){ window.open(u,'_blank','noopener'); return; } const ok=r.no?await copyNo(r.no):false; window.open(G2B_HOME,'_blank','noopener'); toast(r.no?(ok?'사전규격 번호 '+r.no+'를 복사했습니다. 나라장터 사전규격 검색창에 붙여 넣으세요.':'나라장터 사전규격 검색에서 '+r.no+'를 찾아 주세요.'):'나라장터를 열었습니다.'); };
-  const specUrl=r=>(r.kind==='사전규격'&&/^R\d{2}BD\d+$/.test(r.no||''))?'https://www.g2b.go.kr/pn/pnz/pnza/UntyAtchFile/downloadFile.do?bfSpecRegNo='+r.no+'&fileType=BFDTL&fileSeq=1':null;
+  const g2bOpen=async(r)=>{ const u=specUrl(r)||safe(r.url); if(u){ window.open(u,'_blank','noopener'); return; } const ok=r.no?await copyNo(r.no):false; window.open(G2B_HOME,'_blank','noopener'); toast(r.no?(ok?'사전규격 번호 '+r.no+'를 복사했습니다. 나라장터 사전규격 검색창에 붙여 넣으세요.':'나라장터 사전규격 검색에서 '+r.no+'를 찾아 주세요.'):'나라장터를 열었습니다.'); };
+  const specUrl=r=>(r.kind==='사전규격'&&/^R\d{2}BD\d+$/.test(r.no||''))?SPEC_LINK(r.no):null;
   const isPricey=r=>typeof r.eval_price==='number'&&r.eval_price>=20;
   const g2bGo=(r)=>{ const w=el('div','gos'); const mk=(t,ti,fn)=>{const b=el('button','go',t); b.type='button'; b.title=ti; b.addEventListener('click',(e)=>{e.stopPropagation(); fn();}); return b;};
     if(r.src&&r.src!=='나라장터'){ if(safe(r.url)) w.append(mk(r.src+' 공고 보기 ↗',r.src+' 게시판의 공고를 새 창으로 엽니다',()=>window.open(r.url,'_blank','noopener'))); return w; }
+    const sp=specUrl(r); if(sp){ w.append(mk('나라장터 사전규격 보기 ↗','나라장터 사전규격 상세 화면(규격서 파일 포함)을 새 창으로 엽니다',()=>window.open(sp,'_blank','noopener')), mk('나라장터 홈 ↗','나라장터 첫 화면을 새 탭으로 엽니다',()=>window.open(G2B_HOME,'_blank','noopener'))); return w; }
     if(safe(r.url)) w.append(mk('나라장터 공고 보기 ↗','나라장터 공고 상세 화면을 새 창으로 엽니다',()=>g2bOpen(r)), mk('나라장터 홈 ↗','나라장터 첫 화면을 새 탭으로 엽니다(공고 창에서 새로고침하면 화면이 깨지므로 이 버튼을 쓰세요)',()=>window.open(G2B_HOME,'_blank','noopener')));
     else { const su=specUrl(r); if(su) w.append(mk('사전규격서 받기 ↓','나라장터에 올라온 사전규격서(제안요청서 초안) 파일을 내려받습니다',()=>window.open(su,'_blank','noopener')));
       w.append(mk('나라장터에서 보기 ↗','사전규격 화면은 바로가기 주소가 없어 번호를 복사하고 나라장터를 엽니다',()=>g2bOpen(r))); }
@@ -1312,7 +1314,7 @@ html.dlg-lock,html.dlg-lock body{overflow:hidden}
       t.append(th,tb); body.replaceChildren(t); }
     else { const L=r.bid_items||[]; if(!L.length){ body.replaceChildren(el('div','empty','이 호에 새로 실린 입찰·사업 공고가 없습니다.')); return; }
       const t=el('table','hi-t'); const th=el('thead'); const hr=el('tr'); ['단계','사업명','발주·수요기관','규모'].forEach(x=>hr.append(el('th',null,x))); th.append(hr); const tb=el('tbody');
-      L.forEach(b=>{ const tr=el('tr','hrow'); const ti=el('div','hi-ti'); ti.append(el('span',null,b.name||'')); const meta=[b.src,b.no,b.due||''].filter(Boolean).join(' · '); if(meta) ti.append(el('span','sub2',meta)); const u=String(b.url||''); if(safe(b.url)) ti.append(el('span','hi-go',(u.includes('downloadFile')?'사전규격서 받기 ↓':(u.includes('g2b.go.kr')?'나라장터 공고 보기 ↗':(b.src||'기관')+' 공고 보기 ↗'))));
+      L.forEach(b=>{ const tr=el('tr','hrow'); const ti=el('div','hi-ti'); ti.append(el('span',null,b.name||'')); const meta=[b.src,b.no,b.due||''].filter(Boolean).join(' · '); if(meta) ti.append(el('span','sub2',meta)); const u=String(b.url||''); if(safe(b.url)) ti.append(el('span','hi-go',((u.includes('downloadFile')||u.includes('PRVA004'))?'나라장터 사전규격 보기 ↗':(u.includes('g2b.go.kr')?'나라장터 공고 보기 ↗':(b.src||'기관')+' 공고 보기 ↗'))));
         tr.append(td(el('span','kind',b.kind||'-'),'c'),td(ti),td(b.agency||'','c'),td(b.scale||'','c')); if(safe(b.url)){ tr.title='눌러서 공고·관련 기사 보기'; tr.addEventListener('click',()=>go(b.url)); } tb.append(tr); });
       t.append(th,tb); body.replaceChildren(t); }
     body.scrollTop=0; }
