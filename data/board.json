@@ -2978,7 +2978,8 @@
    "due": "2026-10-25 23:59",
    "fit": "A",
    "flags": [
-    "credit"
+    "credit",
+    "sme"
    ],
    "how": "단독 주관(공공 CSP 임차 + MSP)",
    "id": "R26BD00287933",
@@ -2988,10 +2989,10 @@
    "note": "10/21 다시 공개(이전 1.62억 → 0.79억)",
    "orderer": "행정안전부",
    "posted": "2026-10-21",
-   "prob": 70,
+   "prob": 50,
    "src": "나라장터",
    "url": "https://www.g2b.go.kr/link/PRVA004_02/single/?bfSpecRegNo=R26BD00287933",
-   "why": "업무 적합 +10 · 규모 −5 · CSP 상품 연계 +10 · 사전규격 선점 +5"
+   "why": "업무 적합 +10 · 규모 −5 · CSP 상품 연계 +10 · 사전규격 선점 +5 · 중소기업 제한 가능성 −20"
   },
   {
    "agency": "(주)하마랩(바우처 수요)",
@@ -3316,9 +3317,9 @@
    "note": "사전규격 R26BD00284481의 본공고(10/21 10:16 게시). 배정예산 API 기준 0.24억 원(사전규격 2.4억 원)",
    "orderer": "한국과학기술단체총연합회",
    "posted": "2026-10-21",
-   "prob": 30,
+   "prob": 10,
    "src": "나라장터",
-   "why": "규모 −5 · 계약방법 +5",
+   "why": "규모 −5 · 계약방법 +5 · 중소기업 제한 가능성 −20",
    "ord": "000",
    "price_eok": 0.2182,
    "open": "2026-11-03 17:00",
@@ -3326,7 +3327,10 @@
    "eval_tech": 90,
    "eval_price": 10,
    "sucsfbid": "협상에 의한 계약(SW사업)",
-   "url": "https://www.g2b.go.kr/link/PNPE027_01/single/?bidPbancNo=R26BK01782583&bidPbancOrd=000"
+   "url": "https://www.g2b.go.kr/link/PNPE027_01/single/?bidPbancNo=R26BK01782583&bidPbancOrd=000",
+   "flags": [
+    "sme"
+   ]
   },
   {
    "id": "R26BD00288052",
@@ -3340,12 +3344,15 @@
    "posted": "2026-10-21",
    "due": "2026-10-24 23:59",
    "fit": "B",
-   "prob": 30,
+   "prob": 10,
    "src": "나라장터",
    "url": "https://www.g2b.go.kr/link/PRVA004_02/single/?bfSpecRegNo=R26BD00288052",
-   "why": "규모 −5 · 사전규격 선점 +5",
+   "why": "규모 −5 · 사전규격 선점 +5 · 중소기업 제한 가능성 −20",
    "how": "수강신청 솔루션사와 공동수급(클라우드 인프라 구간)",
-   "added": "2026-10-22T09:20:00+09:00"
+   "added": "2026-10-22T09:20:00+09:00",
+   "flags": [
+    "sme"
+   ]
   },
   {
    "id": "R26BD00288063",
@@ -3359,12 +3366,15 @@
    "posted": "2026-10-21",
    "due": "2026-10-24 23:59",
    "fit": "B",
-   "prob": 30,
+   "prob": 10,
    "src": "나라장터",
    "url": "https://www.g2b.go.kr/link/PRVA004_02/single/?bfSpecRegNo=R26BD00288063",
-   "why": "규모 −5 · 사전규격 선점 +5",
+   "why": "규모 −5 · 사전규격 선점 +5 · 중소기업 제한 가능성 −20",
    "how": "포털 솔루션사와 공동수급(클라우드 인프라 구간)",
-   "added": "2026-10-22T09:20:00+09:00"
+   "added": "2026-10-22T09:20:00+09:00",
+   "flags": [
+    "sme"
+   ]
   },
   {
    "agency": "한국인터넷진흥원",
@@ -3408,13 +3418,16 @@
    "eval_price": 10,
    "sucsfbid": "협상에 의한 계약(SW사업)",
    "fit": "C",
-   "prob": 25,
+   "prob": 5,
    "src": "나라장터",
    "url": "https://www.g2b.go.kr/link/PNPE027_01/single/?bidPbancNo=R26BK01782912&bidPbancOrd=000",
-   "why": "규모 +5 · 계약방법 +5 · 준비 기간 +5",
+   "why": "규모 +5 · 계약방법 +5 · 준비 기간 +5 · 중소기업 제한 가능성 −20",
    "how": "참고(SW 개발·정책 연구) — GPU 공동활용 정책은 GPU 임차 후속 수요 신호",
    "note": "업종 제한 있음(API indstrytyLmtYn=Y)",
-   "added": "2026-10-22T09:20:00+09:00"
+   "added": "2026-10-22T09:20:00+09:00",
+   "flags": [
+    "sme"
+   ]
   },
   {
    "added": "2026-10-21T09:20:00+09:00",
@@ -3519,10 +3532,13 @@
    "orderer": "한국연구재단",
    "posted": "2026-10-20",
    "price_eok": null,
-   "prob": 10,
+   "prob": 5,
    "src": "나라장터",
    "url": "https://www.g2b.go.kr/link/PRVA004_02/single/?bfSpecRegNo=R26BD00287265",
-   "why": "규모 −5 · 사전규격 선점 +5"
+   "why": "규모 −5 · 사전규격 선점 +5 · 중소기업 제한 가능성 −20",
+   "flags": [
+    "sme"
+   ]
   },
   {
    "added": "2026-10-16T09:30:00+09:00",
@@ -3616,7 +3632,10 @@
    "src": "나라장터",
    "sucsfbid": "협상에 의한 계약(SW사업)",
    "url": "https://www.g2b.go.kr/link/PNPE027_01/single/?bidPbancNo=R26BK01770210&bidPbancOrd=000",
-   "why": "규모 −5 · 준비 기간 −10(하한 5)"
+   "why": "규모 −5 · 준비 기간 −10(하한 5) · 중소기업 제한 가능성 −20",
+   "flags": [
+    "sme"
+   ]
   },
   {
    "added": "2026-10-16T09:30:00+09:00",
