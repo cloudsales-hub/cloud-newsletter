@@ -522,6 +522,32 @@ tr.pricey-row td:first-child{box-shadow:inset 4px 0 0 var(--amber)}
 tr.flag-row td:first-child{box-shadow:inset 4px 0 0 #8b6cff}
 tr.flag-row td{background:rgba(139,108,255,.07)}
 tr.pricey-row.flag-row td:first-child{box-shadow:inset 4px 0 0 var(--amber),inset 8px 0 0 #8b6cff}
+.cl-sum{display:grid;grid-template-columns:1.4fr repeat(4,minmax(0,1fr));gap:12px;padding:18px}
+.cl-sum>div{background:var(--bg);padding:14px;text-align:center;box-shadow:2px 0 0 0 var(--frame),-2px 0 0 0 var(--frame),0 2px 0 0 var(--frame),0 -2px 0 0 var(--frame)}
+.cl-sum small{display:block;color:var(--muted);font-size:12px}.cl-sum b{display:block;font-size:26px;font-family:var(--f-pixel);margin-top:4px}
+.cl-sum .now b{color:var(--pv-acc)}
+.cl-tools{padding:0 18px}
+.cl-list{padding:6px 18px 18px;position:relative}
+.cl-list:before{content:"";position:absolute;left:22px;top:10px;bottom:30px;width:2px;background:var(--line)}
+.cl-v{position:relative;margin:0 0 14px 22px;background:var(--bg);padding:14px 16px;box-shadow:2px 0 0 0 var(--frame),-2px 0 0 0 var(--frame),0 2px 0 0 var(--frame),0 -2px 0 0 var(--frame)}
+.cl-v:before{content:"";position:absolute;left:-22px;top:20px;width:10px;height:10px;background:var(--frame)}
+.cl-v.cur:before{background:var(--pv-acc)}
+.cl-h{display:flex;align-items:center;gap:10px;flex-wrap:wrap;cursor:pointer;user-select:none}
+.cl-v:not(.fold) .cl-h{margin-bottom:8px}
+.cl-ver{font-family:var(--f-pixel);font-size:15px;font-weight:900;padding:2px 8px;background:var(--surface)}
+.cl-v.cur .cl-ver{background:var(--pv-acc);color:#06210F}
+.cl-d{color:var(--muted);font-size:12px}.cl-ti{font-size:15px}.cl-n{margin-left:auto;color:var(--muted);font-size:12px}
+.cl-now{font-size:11px;font-weight:800;padding:2px 7px;background:var(--pv-acc);color:#06210F}
+.cl-v ul{list-style:none;margin:0;padding:0}
+.cl-v.fold ul{display:none}
+.cl-v li{display:grid;grid-template-columns:3.6rem 6.2rem minmax(0,1fr);gap:10px;align-items:center;padding:7px 0;border-top:1px solid var(--line);font-size:13px}
+.cl-t{font-size:11px;font-weight:800;text-align:center;padding:2px 0}
+.cl-t.신규{background:rgba(61,220,132,.15);color:var(--pv-acc)}.cl-t.개선{background:var(--blue-soft);color:var(--blue)}.cl-t.수정{background:var(--amber-soft);color:var(--amber)}.cl-t.삭제{background:var(--nk-end-bg);color:var(--red)}
+.cl-a{font-size:12px;color:var(--muted);text-align:center}
+.cl-more{display:block;margin:6px auto 0;font:inherit;font-size:13px;font-weight:700;color:var(--blue);background:none;border:0;cursor:pointer}
+.cl-more[hidden]{display:none}
+@media (max-width:40rem){.cl-sum{grid-template-columns:repeat(2,minmax(0,1fr))}.cl-sum .now{grid-column:1/-1}.cl-v li{grid-template-columns:3.4rem minmax(0,1fr)}.cl-a{display:none}}
+.cl-gap{width:14px;display:inline-block}
 .packbtn{font:inherit;font-weight:800;text-align:left;background:none;border:0;padding:0;color:inherit;cursor:pointer;display:flex;flex-direction:column;gap:3px}
 .packbtn:hover .pk-t{text-decoration:underline}
 .pk-go{font-size:12px;font-weight:700;color:var(--blue)}
@@ -643,7 +669,7 @@ html.dlg-lock,html.dlg-lock body{overflow:hidden}
     <button class="tab" role="tab" data-page="news" id="t-news"><canvas class="spr" data-spr="news" data-scale="2"></canvas>뉴스</button>
     <button class="tab" role="tab" data-page="schedule" id="t-schedule"><canvas class="spr" data-spr="calendar" data-scale="2"></canvas>일정</button>
     <button class="tab" role="tab" data-page="library" id="t-library"><canvas class="spr" data-spr="folder" data-scale="2"></canvas>자료실</button>
-    <button class="tab" role="tab" data-page="history" id="t-history"><canvas class="spr" data-spr="book" data-scale="2"></canvas>발행 이력</button>
+    <button class="tab" role="tab" data-page="history" id="t-history"><canvas class="spr" data-spr="book" data-scale="2"></canvas>발행 이력</button><button class="tab" role="tab" data-page="changelog" id="t-changelog"><canvas class="spr" data-spr="check" data-scale="2"></canvas>업데이트 내역</button>
   </nav>
 
   <section class="page" id="today" data-pg="today">
@@ -765,6 +791,15 @@ html.dlg-lock,html.dlg-lock body{overflow:hidden}
     </div>
   </section>
 
+  <section class="page" id="changelog" data-pg="changelog" hidden>
+    <div class="strip"><canvas data-strip="history" aria-hidden="true"></canvas><div class="strip-in"><span class="tag">CHANGELOG</span><h2>업데이트 내역</h2><p>사이트 기능이 추가·개선·수정·삭제된 기록</p></div></div>
+    <div class="card" id="card-changelog">
+      <div class="card-h"><div><canvas class="spr" data-spr="book" data-scale="3"></canvas><div><h2>업데이트 내역</h2><p class="note">앱의 버전 기록처럼, 사이트 기능이 바뀔 때마다 버전과 바뀐 내용을 남깁니다. 기사·공고 같은 데이터 갱신은 '발행 이력'에 있습니다.</p></div></div></div>
+      <div class="cl-sum" id="cl-sum"></div>
+      <div class="tools cl-tools" id="cl-tools"></div>
+      <div class="cl-list" id="cl-list"></div>
+    </div>
+  </section>
   <section class="page" id="history" data-pg="history" hidden>
     <div class="strip"><canvas data-strip="history" aria-hidden="true"></canvas><div class="strip-in"><span class="tag">ARCHIVE</span><h2>발행 이력</h2><p>지난 브리핑 호별 요약</p></div></div>
     <div class="card">
@@ -1094,7 +1129,7 @@ html.dlg-lock,html.dlg-lock body{overflow:hidden}
   const ui={page:'today',src:'g2b',fit:'',q:'',area:'',soon:false,nz:'',nk:'',mode:'news',dueOnly:false,npast:false,star:false};
 
   /* ---------- tabs ---------- */
-  const PAGES=['today','opps','news','ncloud','schedule','library','history'];
+  const PAGES=['today','opps','news','ncloud','schedule','library','history','changelog'];
   const show=(p)=>{ if(!PAGES.includes(p)) p='today'; ui.page=p;
     document.querySelectorAll('.tab').forEach(b=>b.setAttribute('aria-selected',String(b.dataset.page===p)));
     document.querySelectorAll('[data-pg]').forEach(s=>{s.hidden=s.dataset.pg!==p;});
@@ -1465,8 +1500,32 @@ html.dlg-lock,html.dlg-lock body{overflow:hidden}
     const cls=s=>/정상/.test(s)?'ok':(/불가|실패|오류/.test(s)?'bad':'warn');
     box.replaceChildren(el('span','ss-h','데이터 확인 상태 · 각 출처를 마지막으로 조회한 결과입니다'),...L.map(s=>{ const sp=el('span','ss '+cls(s.st||'')); sp.append(el('i'),document.createTextNode((s.name||'')+' '+(s.st||'')+(s.at?' · '+String(s.at).slice(5,16).replace('-','/').replace('T',' '):'')+(s.note?' · '+s.note:''))); return sp; }));
     box.hidden=false; }
+
+  /* ---------- 업데이트 내역 ---------- */
+  const CHANGELOG=[{"v": "v3.1", "d": "2026-10-22", "t": "업데이트 내역 탭", "i": [["신규", "공통", "'업데이트 내역' 탭 — 사이트 기능이 바뀐 기록을 버전별로 보기", 0]]}, {"v": "v3.0", "d": "2026-10-22", "t": "RFP 분석과 참여 제한 판별", "i": [["신규", "사업 기회", "RFP 분석하기 — 공고문(PDF·HWP·HWPX)을 올리면 우리 기준으로 점수·참여 가능 여부·의견을 팝업으로 보여 줌", 1], ["신규", "사업 기회", "내 분석 기록 — 내가 분석한 RFP만 보이는 개인 기록", 1], ["신규", "사업 기회", "보드에 추가 — 분석한 사업을 사업 공고 목록에 '직접 등록'으로 올림", 1], ["신규", "사업 기회", "'중소기업 제한 가능성' 빨간 띠와 점수 −20(공공기관·추정가격 2.3억 원 미만·일반경쟁 아님)", 0]]}, {"v": "v2.5", "d": "2026-10-21", "t": "공고 정확도 보정", "i": [["수정", "사업 기회", "사전규격 버튼이 파일 다운로드 대신 나라장터 사전규격 상세 화면을 엶", 0], ["삭제", "사업 기회", "열리지 않던 '사전규격서 받기' 버튼 삭제", 0], ["신규", "사업 기회", "'신용등급 추가 배점' 보라색 띠", 0], ["개선", "브리핑", "MSP 무관 사업(정보교실·장비 유지보수 등)은 가져오지 않고 '업무 부적합 −10' 기준 추가", 0]]}, {"v": "v2.4", "d": "2026-10-21", "t": "사업 공고 탭 개편", "i": [["개선", "사업 기회", "탭 이름 '나라장터 발주 공고' → '사업 공고'(조달청·NIPA·NIA, 출처가 늘면 안내 문구 자동 추가)", 0], ["신규", "사업 기회", "'가격 비중 높음' 노란 띠 — 가격평가 20% 이상 공고", 0], ["신규", "사업 기회", "관심 공고 ★ 표시와 '관심 공고만 보기'", 0], ["신규", "오늘", "'오늘 한눈에 보기' 3칸(새로 생긴 것·바뀐 것·마감되는 것), 전체 목록은 팝업", 0], ["개선", "공통", "NEW 항목은 기본 순서에서 맨 위", 0], ["개선", "공통", "정렬 버튼 — 마우스를 올리면 제목 칸이 파란 상자로 표시", 0], ["수정", "공통", "한글 글꼴을 기기 기본 글꼴로 통일(글자 높낮이 어긋남)", 0], ["수정", "공통", "표 제목 옆 ? 위치 정렬", 0], ["개선", "사업 기회", "탭을 바꾸면 1페이지 맨 위로", 0]]}, {"v": "v2.3", "d": "2026-10-20", "t": "영업 판단 기능", "i": [["신규", "사업 기회", "마감 임박 알림 띠(7일 이내 입찰·3일 이내 의견 마감·오늘 마감)", 0], ["신규", "사업 기회", "개찰·낙찰 결과 탭과 과거 결과 점수 보정", 0], ["신규", "공통", "표 제목을 눌러 오름차순·내림차순 정렬", 0], ["신규", "공통", "표 제목 ? 설명 상자", 0], ["개선", "공지 레이더", "NEW 표시와 '지난 공지' 따로 보기", 0], ["신규", "공통", "휴대폰에서 표를 카드형으로", 0], ["신규", "공통", "맨 아래 '데이터 확인 상태'", 0]]}, {"v": "v2.2", "d": "2026-10-20", "t": "보기 편의", "i": [["신규", "사업 기회", "NEW 표시(24시간), 게시일·입찰 마감일", 0], ["개선", "뉴스", "분야 색 구분, '조달 동향'·'공식 공고' 구분, 공고 모음 팝업", 0], ["신규", "발행 이력", "호별 신규 기사·공고 목록 팝업", 0], ["신규", "공통", "목록 15건 단위 페이지 나누기", 0], ["신규", "뉴스", "'변동'(NEW·UPDATE·유지) 설명", 0]]}, {"v": "v2.1", "d": "2026-10-19", "t": "나라장터 연동과 수주 가능성", "i": [["신규", "브리핑", "조달청 나라장터 Open API로 입찰공고·사전규격 매일 조회", 0], ["신규", "사업 기회", "사업 기회를 나라장터 발주 공고 / 기사·기관 발굴 사업으로 분리", 0], ["신규", "사업 기회", "추정 수주 가능성(%)과 기준 팝업, 사업별 점수 계산 내역", 0], ["개선", "공통", "필터를 바꿔도 표 칸 너비 고정", 0], ["개선", "브리핑", "이름 변경: '국내 클라우드 시장 브리핑'", 0]]}, {"v": "v2.0", "d": "2026-10-18", "t": "마켓 보드 개편 · 공개 사이트 개설", "i": [["신규", "공통", "픽셀아트 보드 개편(오늘·사업 기회·뉴스·일정·자료실·발행 이력)", 0], ["신규", "공지 레이더", "네이버클라우드 민간·공공·금융 공지 레이더", 0], ["신규", "자료실", "Word 보고서 내려받기 5종", 0], ["신규", "공통", "공개 사이트(GitHub Pages) 개설 — 내부 정보 제외판", 0], ["삭제", "공통", "공개 사이트에서 브리핑 원문 링크 제외", 0]]}, {"v": "v1.2", "d": "2026-10-12", "t": "입찰·사업 공고", "i": [["신규", "브리핑", "입찰·사업 공고 섹션 신설", 0], ["신규", "브리핑", "적합도 A(주관)·B(컨소시엄)·C(참고) 판정(10/16)", 0]]}, {"v": "v1.1", "d": "2026-09-29", "t": "브리핑 형식 정리", "i": [["개선", "브리핑", "섹션 번호 연속, 표 왼쪽 정렬, 코멘트를 표로", 0]]}, {"v": "v1.0", "d": "2026-09-27", "t": "첫 발행", "i": [["신규", "브리핑", "국내 클라우드 마켓 브리핑 첫 호 · 평일 아침 자동 발행", 0]]}];
+  const CL_PUBLIC=true;
+  const CLU={type:'',area:'',all:false};
+  function renderChangelog(){ const sum=$('cl-sum'); if(!sum) return;
+    const V=CHANGELOG.map(v=>({...v,i:v.i.filter(x=>!(CL_PUBLIC&&x[3]))})).filter(v=>v.i.length);
+    const cnt={신규:0,개선:0,수정:0,삭제:0}; V.forEach(v=>v.i.forEach(x=>{ if(cnt[x[0]]!=null) cnt[x[0]]++; }));
+    const cur=V[0]; const c=(k,n,col)=>{ const d=el('div'); d.append(el('small',null,k)); const b=el('b',null,String(n)); b.style.color=col; d.append(b); return d; };
+    const now=el('div','now'); now.append(el('small',null,'현재 버전'),el('b',null,cur.v),el('small',null,cur.d+' · '+cur.t));
+    sum.replaceChildren(now,c('신규',cnt.신규,'var(--pv-acc)'),c('개선',cnt.개선,'var(--blue)'),c('수정',cnt.수정,'var(--amber)'),c('삭제',cnt.삭제,'var(--red)'));
+    const tools=$('cl-tools'); const areas=[...new Set(V.flatMap(v=>v.i.map(x=>x[1])))];
+    const chip=(lab,on,fn)=>{ const b=el('button','chip',lab); b.type='button'; b.setAttribute('aria-pressed',String(on)); b.addEventListener('click',fn); return b; };
+    tools.replaceChildren(chip('전체',!CLU.type&&!CLU.area,()=>{ CLU.type=''; CLU.area=''; renderChangelog(); }),...['신규','개선','수정','삭제'].map(t=>chip(t,CLU.type===t,()=>{ CLU.type=CLU.type===t?'':t; renderChangelog(); })),el('span','cl-gap'),...areas.map(a=>chip(a,CLU.area===a,()=>{ CLU.area=CLU.area===a?'':a; renderChangelog(); })));
+    const filt=x=>(!CLU.type||x[0]===CLU.type)&&(!CLU.area||x[1]===CLU.area); const filtering=!!(CLU.type||CLU.area);
+    const list=$('cl-list'); const kids=[]; let shownFold=0;
+    V.forEach((v,ix)=>{ const items=v.i.filter(filt); if(!items.length) return; const fold=!filtering&&!CLU.all&&ix>=4; if(fold) shownFold++;
+      const box=el('div','cl-v'+(ix===0?' cur':'')+(fold?' fold':'')); const h=el('div','cl-h'); h.append(el('span','cl-ver',v.v),el('span','cl-d',v.d),el('b','cl-ti',v.t),el('span','cl-n',items.length+'건')); if(ix===0) h.append(el('span','cl-now','현재 버전'));
+      h.addEventListener('click',()=>box.classList.toggle('fold'));
+      const ul=el('ul'); items.forEach(x=>{ const li=el('li'); li.append(el('span','cl-t '+x[0],x[0]),el('span','cl-a',x[1]),el('span','cl-x',x[2])); ul.append(li); });
+      box.append(h,ul); kids.push(box); });
+    if(!kids.length) kids.push(el('div','empty','조건에 맞는 기록이 없습니다.'));
+    const more=el('button','cl-more',CLU.all?'이전 버전 접기 ▴':'이전 버전 '+shownFold+'개 펼치기 ▾'); more.type='button'; more.hidden=filtering||(!CLU.all&&!shownFold); more.addEventListener('click',()=>{ CLU.all=!CLU.all; renderChangelog(); }); kids.push(more);
+    list.replaceChildren(...kids); }
   function renderAll(){renderSrcStatus(); renderHero(); renderChips(); renderToday(); renderOpps(); renderNews(); renderSchedule(); renderHistory(); renderNcloud(); renderAlert();}
-  initSort(); wrapTh(); initMobile(); renderAll();
+  initSort(); wrapTh(); initMobile(); renderAll(); renderChangelog();
   drawAllPixels();
 
   /* ---------- data ---------- */
