@@ -3158,35 +3158,6 @@
    "why": "업무 적합 +10 · 규모 +5 · CSP 상품 연계 +10 · 준비 기간 +5"
   },
   {
-   "id": "R26BD00288992",
-   "no": "R26BD00288992",
-   "ord": "",
-   "kind": "사전규격",
-   "name": "2027년 국립박물관단지 통합운영지원센터 클라우드 서비스 이용 및 운영",
-   "orderer": "조달청",
-   "agency": "행정중심복합도시 국립박물관단지 통합운영지원센터",
-   "budget_eok": 5.9301,
-   "price_eok": null,
-   "posted": "2026-10-22",
-   "due": "2026-10-27 23:59",
-   "open": null,
-   "method": "사전규격",
-   "fit": "A",
-   "prob": 80,
-   "why": "업무 적합 +10 · 규모 +5 · CSP 상품 연계 +10 · 사전규격 선점 +5",
-   "how": "단독 주관(공공 CSP 이용 + 운영)",
-   "url": "https://www.g2b.go.kr/link/PRVA004_02/single/?bfSpecRegNo=R26BD00288992",
-   "note": "같은 기관 정보시스템 통합 유지관리(R26BD00288991, 5.56억 원) 사전규격과 같은 날 공개 · 평가에 신용등급 배점 있음",
-   "added": "2026-10-23T09:30:00+09:00",
-   "src": "나라장터",
-   "eval_tech": null,
-   "eval_price": null,
-   "sucsfbid": null,
-   "flags": [
-    "credit"
-   ]
-  },
-  {
    "agency": "국무총리실 조세심판원",
    "budget_eok": 10.5,
    "due": null,
