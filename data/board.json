@@ -47,8 +47,8 @@
    "date": "2026-10-23",
    "day": "금",
    "articles": 9,
-   "bids": 4,
-   "oneline": "국립박물관단지 클라우드 서비스 이용·운영(5.93억 원) 사전규격 등 신규 공고 4건, PHP 경보 '주의' 상향 — 10/27 의견 마감과 10/26 마감 3건 투찰 준비",
+   "bids": 3,
+   "oneline": "슈퍼컴퓨터 GPU 임차(배정예산 3.86억 원) 등 RFP로 참여 가능 확인된 입찰공고 3건, PHP 경보 '주의' 상향 — 10/26 마감 2건(AI 청년창업 바우처 GPU·명지녹산 AX실증산단) 투찰 준비",
    "news_items": [
     {
      "title": "\"AI 팩토리·슈퍼앱, 수출 산업으로\"…네이버가 본 '디지털 적자' 해법은",
@@ -109,40 +109,34 @@
    ],
    "bid_items": [
     {
-     "kind": "사전규격",
-     "name": "2027년 국립박물관단지 통합운영지원센터 클라우드 서비스 이용 및 운영",
-     "agency": "행정중심복합도시 국립박물관단지 통합운영지원센터",
-     "scale": "배정예산 5.93억 원",
-     "no": "R26BD00288992",
-     "url": "https://www.g2b.go.kr/link/PRVA004_02/single/?bfSpecRegNo=R26BD00288992",
-     "src": "나라장터"
+     "kind": "입찰공고",
+     "name": "2027년 슈퍼컴퓨터 GPU 임차 용역",
+     "agency": "경찰청",
+     "scale": "배정예산 3.86억 원",
+     "no": "R26BK01783564",
+     "url": "https://www.g2b.go.kr/link/PNPE027_01/single/?bidPbancNo=R26BK01783564&bidPbancOrd=000",
+     "src": "나라장터",
+     "due": "마감 12/1 10:00"
     },
     {
-     "kind": "사전규격",
-     "name": "해양 기후변화(해양물리) 감시예측 슈퍼컴퓨터 전용노드 임차(Ⅲ)",
-     "agency": "해양수산부 국립해양조사원",
-     "scale": "배정예산 1.66억 원",
-     "no": "R26BD00288657",
-     "url": "https://www.g2b.go.kr/link/PRVA004_02/single/?bfSpecRegNo=R26BD00288657",
-     "src": "나라장터"
+     "kind": "입찰공고",
+     "name": "2026년 AI 청년창업기업 동반성장 바우처 사업 클라우드형 GPU서비스 임차",
+     "agency": "(주)하마랩(바우처 수요)",
+     "scale": "배정예산 1.49억 원",
+     "no": "R26BK01768184",
+     "url": "https://www.g2b.go.kr/link/PNPE027_01/single/?bidPbancNo=R26BK01768184&bidPbancOrd=000",
+     "src": "나라장터",
+     "due": "마감 10/26 10:00"
     },
     {
-     "kind": "재공고",
-     "name": "정보시스템 이중화 및 노후장비 교체사업",
-     "agency": "기후에너지환경부 영산강홍수통제소",
-     "scale": "배정예산 7.31억 원",
-     "no": "R26BK01785371",
-     "url": "https://www.g2b.go.kr/link/PNPE027_01/single/?bidPbancNo=R26BK01785371&bidPbancOrd=000",
-     "src": "나라장터"
-    },
-    {
-     "kind": "사전규격",
-     "name": "Google Cloud 기반 AI·클라우드 인프라 구축 및 교육 통합 사업 운영 용역",
-     "agency": "전남광주통합특별시교육청 동일미래과학고등학교",
-     "scale": "배정예산 1.5억 원",
-     "no": "R26BD00288967",
-     "url": "https://www.g2b.go.kr/link/PRVA004_02/single/?bfSpecRegNo=R26BD00288967",
-     "src": "나라장터"
+     "kind": "입찰공고",
+     "name": "명지녹산 AX실증산단 에코마린 소부장 특화 클라우드 인프라 구축 및 운영·유지관리",
+     "agency": "부산테크노파크",
+     "scale": "배정예산 9억 원",
+     "no": "R26BK01772829",
+     "url": "https://www.g2b.go.kr/link/PNPE027_01/single/?bidPbancNo=R26BK01772829&bidPbancOrd=000",
+     "src": "나라장터",
+     "due": "마감 10/26 16:00"
     }
    ]
   },
@@ -2016,49 +2010,39 @@
    "change": "NEW",
    "date": "2026-10-22",
    "source": "나라장터",
-   "title": "클라우드 관련 사전규격·재공고 4건(국립박물관단지 클라우드 이용·운영 5.93억 원 등)",
-   "url": "https://www.g2b.go.kr/link/PRVA004_02/single/?bfSpecRegNo=R26BD00288992",
-   "point": "공공기관이 클라우드 이용·운영을 정보시스템 유지관리와 분리 발주하는 사례 증가, 중소 MSP 단독 응찰 여지",
+   "title": "참여 가능 입찰공고 3건(슈퍼컴퓨터 GPU 임차 3.86억 원 등)",
+   "url": "https://www.g2b.go.kr/link/PNPE027_01/single/?bidPbancNo=R26BK01783564&bidPbancOrd=000",
+   "point": "GPU 임차·클라우드형 GPU 서비스·AX실증산단 인프라 발주가 이어지고, 3건 모두 RFP 확인 결과 중소 MSP 참여 가능",
    "items": [
     {
-     "kind": "사전규격",
-     "name": "2027년 국립박물관단지 통합운영지원센터 클라우드 서비스 이용 및 운영",
-     "agency": "행정중심복합도시 국립박물관단지 통합운영지원센터",
-     "scale": "배정예산 5.93억 원",
-     "no": "R26BD00288992",
-     "url": "https://www.g2b.go.kr/link/PRVA004_02/single/?bfSpecRegNo=R26BD00288992",
+     "kind": "입찰공고",
+     "name": "2027년 슈퍼컴퓨터 GPU 임차 용역",
+     "agency": "경찰청",
+     "scale": "배정예산 3.86억 원",
+     "no": "R26BK01783564",
+     "url": "https://www.g2b.go.kr/link/PNPE027_01/single/?bidPbancNo=R26BK01783564&bidPbancOrd=000",
      "src": "나라장터",
-     "due": "의견 마감 10/27"
+     "due": "마감 12/1 10:00"
     },
     {
-     "kind": "사전규격",
-     "name": "해양 기후변화(해양물리) 감시예측 슈퍼컴퓨터 전용노드 임차(Ⅲ)",
-     "agency": "해양수산부 국립해양조사원",
-     "scale": "배정예산 1.66억 원",
-     "no": "R26BD00288657",
-     "url": "https://www.g2b.go.kr/link/PRVA004_02/single/?bfSpecRegNo=R26BD00288657",
+     "kind": "입찰공고",
+     "name": "2026년 AI 청년창업기업 동반성장 바우처 사업 클라우드형 GPU서비스 임차",
+     "agency": "(주)하마랩(바우처 수요)",
+     "scale": "배정예산 1.49억 원",
+     "no": "R26BK01768184",
+     "url": "https://www.g2b.go.kr/link/PNPE027_01/single/?bidPbancNo=R26BK01768184&bidPbancOrd=000",
      "src": "나라장터",
-     "due": "의견 마감 10/27"
+     "due": "마감 10/26 10:00"
     },
     {
-     "kind": "재공고",
-     "name": "정보시스템 이중화 및 노후장비 교체사업",
-     "agency": "기후에너지환경부 영산강홍수통제소",
-     "scale": "배정예산 7.31억 원",
-     "no": "R26BK01785371",
-     "url": "https://www.g2b.go.kr/link/PNPE027_01/single/?bidPbancNo=R26BK01785371&bidPbancOrd=000",
+     "kind": "입찰공고",
+     "name": "명지녹산 AX실증산단 에코마린 소부장 특화 클라우드 인프라 구축 및 운영·유지관리",
+     "agency": "부산테크노파크",
+     "scale": "배정예산 9억 원",
+     "no": "R26BK01772829",
+     "url": "https://www.g2b.go.kr/link/PNPE027_01/single/?bidPbancNo=R26BK01772829&bidPbancOrd=000",
      "src": "나라장터",
-     "due": "마감 11/3 10:00"
-    },
-    {
-     "kind": "사전규격",
-     "name": "Google Cloud 기반 AI·클라우드 인프라 구축 및 교육 통합 사업 운영 용역",
-     "agency": "전남광주통합특별시교육청 동일미래과학고등학교",
-     "scale": "배정예산 1.5억 원",
-     "no": "R26BD00288967",
-     "url": "https://www.g2b.go.kr/link/PRVA004_02/single/?bfSpecRegNo=R26BD00288967",
-     "src": "나라장터",
-     "due": "의견 마감 10/27"
+     "due": "마감 10/26 16:00"
     }
    ]
   },
@@ -3102,9 +3086,9 @@
  "keywords": [
   {
    "area": "입찰",
-   "keyword": "박물관단지 클라우드 운영",
-   "core": "국립박물관단지 통합운영지원센터 클라우드 서비스 이용·운영 5.93억 원 사전규격, 의견 10/27 마감",
-   "point": "클라우드 이용·운영을 유지관리와 분리 발주, 중소 MSP 단독 응찰 가능 구조"
+   "keyword": "슈퍼컴퓨터 GPU 임차",
+   "core": "조달청 슈퍼컴퓨터 GPU 임차 용역 배정예산 3.86억 원, 입찰 12/1 10:00 마감, 평가 기술 90 : 가격 10",
+   "point": "중소기업 확인서·직접생산 요구가 없는 일반 요건(RFP 확인), CSP GPU 임차 제안 가능"
   },
   {
    "area": "민간",
