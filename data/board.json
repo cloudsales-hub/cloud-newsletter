@@ -39,7 +39,7 @@
     "note": "신규 공지 없음"
    }
   ],
-  "updatedAt": "2026-10-23T09:40:00+09:00"
+  "updatedAt": "2026-10-24T22:51:44+09:00"
  },
  "issues": [
   {
@@ -3155,54 +3155,12 @@
    "src": "나라장터",
    "sucsfbid": "협상에 의한 계약",
    "url": "https://www.g2b.go.kr/link/PNPE027_01/single/?bidPbancNo=R26BK01783564&bidPbancOrd=000",
-   "why": "업무 적합 +10 · 규모 +5 · CSP 상품 연계 +10 · 준비 기간 +5"
-  },
-  {
-   "agency": "국무총리실 조세심판원",
-   "budget_eok": 10.5,
-   "due": null,
-   "fit": "A",
-   "how": "단독 주관(공공 클라우드 임차 + 운영)",
-   "id": "R26BD00286217",
-   "kind": "사전규격",
-   "name": "2027년 조세심판 AI 서비스 민관협력형 클라우드 임차 및 운영관리",
-   "no": "R26BD00286217",
-   "note": "의견등록 10/21 마감, 본공고 대기(10/22 09시 기준 본공고 없음)",
-   "orderer": "조달청",
-   "posted": "2026-10-16",
-   "prob": 75,
-   "src": "나라장터",
-   "url": "https://www.g2b.go.kr/link/PRVA004_02/single/?bfSpecRegNo=R26BD00286217",
-   "why": "업무 적합 +10 · 규모 +5 · CSP 상품 연계 +10",
-   "eval_tech": null,
-   "eval_price": null,
-   "sucsfbid": null,
-   "price_eok": null,
-   "open": null
-  },
-  {
-   "agency": "충북대학교",
-   "budget_eok": 3.9,
-   "due": "2026-10-30 10:00",
-   "eval_price": 10,
-   "eval_tech": 90,
-   "fit": "A",
-   "how": "단독 주관(CSP GPU 서버 기반 제안)",
-   "id": "R26BK01776059",
-   "kind": "입찰공고",
-   "method": "일반경쟁",
-   "name": "(긴급) 교육·연구용 GPU 클라우드 서비스 도입 사업",
-   "no": "R26BK01776059",
-   "open": "2026-10-30 11:00",
-   "ord": "000",
-   "orderer": "충북대학교",
-   "posted": "2026-10-19",
-   "price_eok": 3.55,
-   "prob": 75,
-   "src": "나라장터",
-   "sucsfbid": "협상에 의한 계약(SW사업)",
-   "url": "https://www.g2b.go.kr/link/PNPE027_01/single/?bidPbancNo=R26BK01776059&bidPbancOrd=000",
-   "why": "업무 적합 +10 · 규모 +5 · CSP 상품 연계 +10"
+   "why": "업무 적합 +10 · 규모 +5 · CSP 상품 연계 +10 · 준비 기간 +5",
+   "verified": {
+    "elig": "가능",
+    "at": "2026-10-24T22:55:00+09:00",
+    "src": "RFP 자동 확인"
+   }
   },
   {
    "agency": "(주)하마랩(바우처 수요)",
@@ -3226,88 +3184,12 @@
    "src": "나라장터",
    "sucsfbid": "협상에 의한 계약(SW사업)",
    "url": "https://www.g2b.go.kr/link/PNPE027_01/single/?bidPbancNo=R26BK01768184&bidPbancOrd=000",
-   "why": "업무 적합 +10 · 규모 +5 · CSP 상품 연계 +10 · 준비 기간 −10"
-  },
-  {
-   "agency": "(주)농협물류",
-   "budget_eok": 1.41,
-   "due": "2026-10-26 15:00",
-   "eval_price": 10,
-   "eval_tech": 90,
-   "fit": "A",
-   "how": "단독 주관(MSP)",
-   "id": "R26BK01774025",
-   "kind": "재공고",
-   "method": "제한경쟁",
-   "name": "(재공고) 물류기기공동이용 신통합관리시스템 클라우드 인프라 구축·운영(MSP) 용역",
-   "no": "R26BK01774025",
-   "note": "입찰 마감 미표시(개찰 시각 기준)",
-   "open": "2026-10-26 15:00",
-   "ord": "000",
-   "orderer": "(주)농협물류",
-   "posted": "2026-10-15",
-   "price_eok": 1.28,
-   "prob": 65,
-   "src": "나라장터",
-   "sucsfbid": "협상에 의한 계약(SW사업)",
-   "url": "https://www.g2b.go.kr/link/PNPE027_01/single/?bidPbancNo=R26BK01774025&bidPbancOrd=000",
-   "why": "업무 적합 +10 · 규모 +5 · 계약방법 +5 · 재공고 +5 · 준비 기간 −10"
-  },
-  {
-   "agency": "한국학중앙연구원",
-   "budget_eok": 3.67,
-   "due": "2026-11-24 10:00",
-   "eval_price": 10,
-   "eval_tech": 90,
-   "fit": "A",
-   "how": "단독 주관(클라우드 운영 + 행정시스템 유지관리, SM 파트너 필요 시 공동수급)",
-   "id": "R26BK01763976",
-   "kind": "입찰공고",
-   "method": "제한경쟁",
-   "name": "2027년 클라우드 서비스 및 행정업무시스템 통합 유지관리 사업",
-   "no": "R26BK01763976",
-   "open": "2026-11-24 11:00",
-   "ord": "000",
-   "orderer": "서울지방조달청",
-   "posted": "2026-10-14",
-   "price_eok": 3.31,
-   "prob": 65,
-   "src": "나라장터",
-   "sucsfbid": "협상에 의한 계약(SW사업)",
-   "url": "https://www.g2b.go.kr/link/PNPE027_01/single/?bidPbancNo=R26BK01763976&bidPbancOrd=000",
-   "why": "규모 +5 · 계약방법 +5 · 준비 기간 +5 · 중소기업 제한 가능성 −20",
-   "flags": [
-    "sme"
-   ],
-   "note": "품목 추정: 정보시스템 유지관리 성격의 제한경쟁(SW사업) — 직접생산확인·중소기업 확인서 요구 가능성, RFP 참가자격 확인 필요"
-  },
-  {
-   "agency": "한국지능정보사회진흥원",
-   "budget_eok": 9.57,
-   "due": "2026-11-10 10:00",
-   "eval_price": 10,
-   "eval_tech": 90,
-   "fit": "A",
-   "how": "단독 주관(플랫폼 운영·유지관리)",
-   "id": "R26BK01776862",
-   "kind": "입찰공고",
-   "method": "제한경쟁",
-   "name": "2027년 국가데이터통합플랫폼 운영 및 유지관리",
-   "no": "R26BK01776862",
-   "open": "2026-11-10 11:00",
-   "ord": "000",
-   "orderer": "대구지방조달청",
-   "posted": "2026-10-19",
-   "price_eok": 8.63,
-   "prob": 60,
-   "src": "나라장터",
-   "sucsfbid": "협상에 의한 계약(SW사업)",
-   "url": "https://www.g2b.go.kr/link/PNPE027_01/single/?bidPbancNo=R26BK01776862&bidPbancOrd=000",
-   "why": "업무 적합 +10 · 계약방법 +5 · 중소기업 제한 가능성 −20",
-   "flags": [
-    "sme"
-   ],
-   "note": "품목 추정: 정보시스템 유지관리 성격의 제한경쟁(SW사업) — 직접생산확인·중소기업 확인서 요구 가능성, RFP 참가자격 확인 필요"
+   "why": "업무 적합 +10 · 규모 +5 · CSP 상품 연계 +10 · 준비 기간 −10",
+   "verified": {
+    "elig": "가능",
+    "at": "2026-10-24T22:55:00+09:00",
+    "src": "RFP 자동 확인"
+   }
   },
   {
    "agency": "부산테크노파크",
@@ -3331,60 +3213,15 @@
    "src": "나라장터",
    "sucsfbid": "협상에 의한 계약(SW사업)",
    "url": "https://www.g2b.go.kr/link/PNPE027_01/single/?bidPbancNo=R26BK01772829&bidPbancOrd=000",
-   "why": "업무 적합 +10 · 규모 +5 · 준비 기간 −10"
-  },
-  {
-   "agency": "경기도평생교육진흥원",
-   "budget_eok": 5.777,
-   "due": "2026-11-11 10:00",
-   "eval_price": 10,
-   "eval_tech": 90,
-   "fit": "A",
-   "how": "단독 주관(클라우드 운영 + 시스템 유지보수)",
-   "id": "R26BK01779371",
-   "kind": "입찰공고",
-   "method": "일반경쟁",
-   "name": "2027년 클라우드 및 정보시스템 운영·유지보수 용역",
-   "no": "R26BK01779371",
-   "note": "사전규격 R26BD00282516의 본공고(10/21 09:29 게시)",
-   "open": "2026-11-11 11:00",
-   "ord": "000",
-   "orderer": "재단법인 경기도평생교육진흥원",
-   "posted": "2026-10-21",
-   "price_eok": 5.2518,
-   "prob": 55,
-   "src": "나라장터",
-   "sucsfbid": "협상에 의한 계약",
-   "url": "https://www.g2b.go.kr/link/PNPE027_01/single/?bidPbancNo=R26BK01779371&bidPbancOrd=000",
-   "why": "규모 +5 (마감까지 20일, 준비 기간 가감 없음)"
-  },
-  {
-   "added": "2026-10-21T22:05:00+09:00",
-   "agency": "행정안전부",
-   "budget_eok": 0.79,
-   "due": "2026-10-25 23:59",
-   "fit": "A",
+   "why": "업무 적합 +10 · 규모 +5 · 준비 기간 −10",
+   "verified": {
+    "elig": "가능",
+    "at": "2026-10-24T22:55:00+09:00",
+    "src": "RFP 자동 확인"
+   },
    "flags": [
-    "credit",
-    "sme"
-   ],
-   "how": "단독 주관(공공 CSP 임차 + MSP)",
-   "id": "R26BD00287933",
-   "kind": "사전규격",
-   "name": "2027년도 안전한-TV 민간 클라우드 서버 임차(2개년)",
-   "no": "R26BD00287933",
-   "note": "10/21 다시 공개(이전 1.62억 → 0.79억)",
-   "orderer": "행정안전부",
-   "posted": "2026-10-21",
-   "prob": 50,
-   "src": "나라장터",
-   "url": "https://www.g2b.go.kr/link/PRVA004_02/single/?bfSpecRegNo=R26BD00287933",
-   "why": "업무 적합 +10 · 규모 −5 · CSP 상품 연계 +10 · 사전규격 선점 +5 · 중소기업 제한 가능성 −20",
-   "eval_tech": null,
-   "eval_price": null,
-   "sucsfbid": null,
-   "price_eok": null,
-   "open": null
+    "credit"
+   ]
   },
   {
    "added": "2026-10-21T09:20:00+09:00",
