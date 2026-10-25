@@ -481,6 +481,8 @@ th.sortable{cursor:pointer;user-select:none}
 .due-alert .da-btn{font:inherit;font-size:13px;font-weight:800;padding:6px 14px;border:0;cursor:pointer;background:var(--red);color:#fff;margin:2px}
 .due-alert .da-btn[aria-pressed="true"]{background:var(--surface);color:var(--red);box-shadow:2px 0 0 0 var(--red),-2px 0 0 0 var(--red),0 2px 0 0 var(--red),0 -2px 0 0 var(--red)}
 .src-tabs.three{grid-template-columns:1fr 1fr 1fr}
+.src-tabs.four{grid-template-columns:repeat(4,1fr)}
+@media (max-width:64rem){.src-tabs.four{grid-template-columns:1fr 1fr}}
 .tools.nofit [data-fit]{display:none}
 table:has(#tb-res){table-layout:fixed}
 table:has(#tb-res) th:nth-child(1){width:9%}table:has(#tb-res) th:nth-child(3){width:14%}table:has(#tb-res) th:nth-child(4){width:15%}table:has(#tb-res) th:nth-child(5){width:9%}table:has(#tb-res) th:nth-child(6){width:9%}table:has(#tb-res) th:nth-child(7){width:9%}
@@ -499,7 +501,7 @@ table:has(#tb-res) th:nth-child(1){width:9%}table:has(#tb-res) th:nth-child(3){w
 .src-status .ss.ok i{background:var(--pv-acc)}.src-status .ss.warn i{background:var(--amber)}.src-status .ss.bad i{background:var(--red)}
 .src-status .ss.bad{color:var(--red);font-weight:700}
 @media (max-width:40rem){
-  .src-tabs.three{grid-template-columns:1fr}
+  .src-tabs.three,.src-tabs.four{grid-template-columns:1fr}
   table.mob{min-width:0!important;table-layout:auto!important;width:100%}
   table.mob colgroup,table.mob thead{display:none}
   table.mob,table.mob tbody,table.mob tr{display:block;width:100%}
@@ -859,8 +861,9 @@ html.dlg-lock,html.dlg-lock body{overflow:hidden}
       <div class="card-h"><div><canvas class="spr" data-spr="flag" data-scale="3"></canvas><div><h2>사업 기회</h2><p class="note">중소기업 기준 투입 평가입니다(제안 우선순위용 점수, 실제 확률 아님). 참여 제한은 중소기업 확인서 등이 필요한 사업이며, 사업명을 누르면 출처가 열립니다.</p></div></div>
         <button class="dl" data-doc="opps" type="button"><span class="ico"><i></i><i></i><i class="o"></i><i></i><i></i><i></i><i></i><i></i><i></i></span>사업 기회 Word</button></div>
       <div class="due-alert" id="due-alert" role="status" hidden></div>
-      <div class="src-tabs three" role="tablist" aria-label="사업 기회 출처">
+      <div class="src-tabs four" role="tablist" aria-label="사업 기회 출처">
         <button class="src" role="tab" type="button" data-src="g2b" aria-selected="true" aria-controls="pane-g2b"><span class="src-h"><b>사업 공고</b><span class="src-n" id="sn-g2b">-</span></span><span class="src-sub" id="ss-g2b">조달청(나라장터)·NIPA·NIA 사업 공고 · 마감 전까지 계속 표시</span><span class="src-fit" id="sf-g2b"></span><span class="src-prob" id="sp-g2b"></span></button>
+        <button class="src" role="tab" type="button" data-src="plan" aria-selected="false" aria-controls="pane-plan"><span class="src-h"><b>발주계획</b><span class="src-n" id="sn-plan">-</span></span><span class="src-sub">조달청 발주계획 · 공고 전에 미리 보는 사업</span><span class="src-fit" id="sf-plan"></span><span class="src-prob" id="sp-plan"></span></button>
         <button class="src" role="tab" type="button" data-src="opps" aria-selected="false" aria-controls="pane-opps"><span class="src-h"><b>기사·기관 발굴 사업</b><span class="src-n" id="sn-opps">-</span></span><span class="src-sub">기사·기관 발표·공고 예정 사업 · 단계별 추적</span><span class="src-fit" id="sf-opps"></span><span class="src-prob" id="sp-opps"></span></button>
         <button class="src" role="tab" type="button" data-src="res" aria-selected="false" aria-controls="pane-res"><span class="src-h"><b>개찰·낙찰 결과</b><span class="src-n" id="sn-res">-</span></span><span class="src-sub">마감 지난 공고의 수주 업체·금액 기록</span><span class="src-fit" id="sf-res"></span><span class="src-prob" id="sp-res"></span></button>
       </div>
@@ -877,6 +880,10 @@ html.dlg-lock,html.dlg-lock body{overflow:hidden}
       <div id="pane-opps" role="tabpanel" hidden>
         <p class="pane-note"><button class="pinfo" type="button" data-pinfo style="margin-left:2px">수주 가능성 기준 ⓘ</button><span class="pn-txt">기사·기관 발표·예고로 찾은 사업입니다. 점은 진행 단계(공고 예정 → 사전규격 → 입찰 → 평가 → 우선협상 → 계약)를 나타냅니다.</span></p>
         <div class="scroll"><table><thead><tr><th>투입 평가</th><th>사업</th><th class="hide-sm">발주·수요기관</th><th>규모</th><th>현황<span class="tipw" tabindex="0" aria-describedby="tip-stage"><b class="tip-i" aria-hidden="true">?</b><span class="tip-box" role="tooltip" id="tip-stage"><strong>사업 진행 단계입니다.</strong><span class="tip-r"><em class="tip-lb">● ● ○</em>공고 예정 → 사전규격 → 입찰 → 평가 → 우선협상 → 계약 순서이며, 채워진 점까지 진행된 상태입니다.</span></span></span></th><th class="hide-sm">참여 방식</th></tr></thead><tbody id="tb-opps"></tbody></table></div>
+      </div>
+      <div id="pane-plan" role="tabpanel" hidden>
+        <p class="pane-note"><span class="pn-txt">조달청이 공개한 발주계획입니다. 본공고가 나오기 전에 어떤 사업이 언제쯤 나올지 미리 볼 수 있습니다. 사업명을 누르면 나라장터 발주계획이 열립니다.</span></p>
+        <div class="scroll"><table><thead><tr><th>등록일</th><th>사업명</th><th class="hide-sm">발주기관</th><th>예산</th><th>발주 예정</th><th class="hide-sm">계약방법</th><th>상태</th></tr></thead><tbody id="tb-plan"></tbody></table></div>
       </div>
       <div id="pane-res" role="tabpanel" hidden>
         <p class="pane-note"><span class="pn-txt">마감이 지난 클라우드 관련 공고의 개찰·낙찰 결과입니다. 누가 얼마에 수주했는지 쌓아 두고, 수주 가능성 점수를 보정하는 근거로 씁니다. 사업명을 누르면 나라장터 공고가 열립니다.</span></p>
@@ -1171,7 +1178,7 @@ html.dlg-lock,html.dlg-lock body{overflow:hidden}
   const md=(iso)=>{ if(!iso) return ''; const d=new Date(iso+'T00:00:00'); return isNaN(d)?iso:(d.getMonth()+1)+'/'+d.getDate(); };
   const toast=(msg)=>{const t=$('toast'); t.textContent=msg; t.hidden=false; clearTimeout(toast.h); toast.h=setTimeout(()=>{t.hidden=true;},3200);};
   const PG=15; const PGS={};
-  const PG_RENDER={'tb-g2b':()=>renderOpps(),'tb-opps':()=>renderOpps(),'tb-news':()=>renderNews(),'tb-schedule':()=>renderSchedule(),'tb-history':()=>renderHistory(),'tb-ncloud':()=>renderNcloud(),'tb-res':()=>renderOpps()};
+  const PG_RENDER={'tb-g2b':()=>renderOpps(),'tb-opps':()=>renderOpps(),'tb-news':()=>renderNews(),'tb-schedule':()=>renderSchedule(),'tb-history':()=>renderHistory(),'tb-ncloud':()=>renderNcloud(),'tb-res':()=>renderOpps(),'tb-plan':()=>renderOpps()};
   function pagerFor(id){ const tb=document.getElementById(id); if(!tb) return null; const host=tb.closest('.scroll')||tb.closest('table'); let p=host.nextElementSibling; if(!(p&&p.classList.contains('pager')&&p.dataset.for===id)){ p=el('nav','pager'); p.dataset.for=id; p.setAttribute('aria-label','페이지 이동'); host.after(p); } return p; }
   function hidePager(id){ const p=pagerFor(id); if(p){ p.hidden=true; p.replaceChildren(); } }
   const NEW_FIRST={'tb-g2b':r=>isNew(r),'tb-opps':r=>isNew(r),'tb-ncloud':r=>ncNew(r)};
@@ -1294,7 +1301,7 @@ html.dlg-lock,html.dlg-lock body{overflow:hidden}
   const blocks=(id,n,total,cap)=>{ const cp=document.getElementById(id.replace('b-','c-')); if(cp) cp.textContent=cap||'';const b=document.getElementById(id); if(!b) return; const T=Math.max(1,Math.min(30,total)); const on=Math.min(n,T); b.replaceChildren(...Array.from({length:T},(_,i)=>el('i',i<on?'on':''))); b.setAttribute('aria-label',n+' / '+total);};
 
   /* ---------- state ---------- */
-  const D={meta:null,g2b:[],opportunities:[],news:[],schedule:[],issues:[],keywords:[],todos:[],ncloud:[],results:[]};
+  const D={meta:null,g2b:[],opportunities:[],news:[],schedule:[],issues:[],keywords:[],todos:[],ncloud:[],results:[],plan:[]};
   const loaded={}; let dbReady=null;
   const ui={page:'today',src:'g2b',fit:'',grade:'',q:'',area:'',soon:false,nz:'',nk:'',mode:'news',dueOnly:false,npast:false,star:false,sp:false};
 
@@ -1327,7 +1334,7 @@ html.dlg-lock,html.dlg-lock body{overflow:hidden}
   document.querySelectorAll('[data-sp]').forEach(b=>b.addEventListener('click',()=>{ setSp(!ui.sp); delete PGS['tb-g2b']; delete PGS['tb-opps']; renderOpps(); renderBars(); }));
   document.querySelectorAll('[data-star]').forEach(b=>b.addEventListener('click',()=>{ ui.star=!ui.star; b.setAttribute('aria-pressed',String(ui.star)); renderOpps(); renderBars(); }));
   document.querySelectorAll('[data-grade]').forEach(b=>b.addEventListener('click',()=>{ ui.grade=(ui.grade===b.dataset.grade)?'':b.dataset.grade; document.querySelectorAll('[data-grade]').forEach(x=>x.setAttribute('aria-pressed',String(x.dataset.grade===ui.grade))); delete PGS['tb-g2b']; delete PGS['tb-opps']; renderOpps(); }));
-  document.querySelectorAll('[data-src]').forEach(b=>b.addEventListener('click',()=>{ui.src=b.dataset.src; ['tb-g2b','tb-opps','tb-res'].forEach(id=>{ delete PGS[id]; const t=document.getElementById(id); const sc=t&&t.closest('.scroll'); if(sc) sc.scrollTop=0; }); renderOpps(); renderBars();}));
+  document.querySelectorAll('[data-src]').forEach(b=>b.addEventListener('click',()=>{ui.src=b.dataset.src; ['tb-g2b','tb-opps','tb-res','tb-plan'].forEach(id=>{ delete PGS[id]; const t=document.getElementById(id); const sc=t&&t.closest('.scroll'); if(sc) sc.scrollTop=0; }); renderOpps(); renderBars();}));
 
   /* ---------- render ---------- */
   const latest=()=>[...D.issues].sort((a,b)=>Number(b.no)-Number(a.no))[0]||null;
@@ -1548,7 +1555,7 @@ html.dlg-lock,html.dlg-lock body{overflow:hidden}
 
   function renderOpps(){
     document.querySelectorAll('[data-src]').forEach(b=>b.setAttribute('aria-selected',String(b.dataset.src===ui.src)));
-    const ssg=$('ss-g2b'); if(ssg){ const base=['나라장터','NIPA','NIA']; const nm={'나라장터':'조달청(나라장터)'}; const ex=[...new Set((D.g2b||[]).map(r=>r.src).filter(x=>x&&!base.includes(x)))]; ssg.textContent=[...base,...ex].map(x=>nm[x]||x).join('·')+' 사업 공고 · 마감 전까지 계속 표시'; } const sn=$('star-n'); if(sn){ const ks=new Set([...g2bLive(),...D.opportunities].map(starKey)); sn.textContent=String([...STARS].filter(k=>ks.has(k)).length); } $('pane-g2b').hidden=ui.src!=='g2b'; $('pane-opps').hidden=ui.src!=='opps'; if($('pane-res')) $('pane-res').hidden=ui.src!=='res'; const tl=document.querySelector('#card-opps .tools'); if(tl){ tl.classList.toggle('nofit',ui.src==='res'); tl.classList.toggle('g2bmode',ui.src==='g2b'); } renderDueAlert(); renderRes();
+    const ssg=$('ss-g2b'); if(ssg){ const base=['나라장터','NIPA','NIA']; const nm={'나라장터':'조달청(나라장터)'}; const ex=[...new Set((D.g2b||[]).map(r=>r.src).filter(x=>x&&!base.includes(x)))]; ssg.textContent=[...base,...ex].map(x=>nm[x]||x).join('·')+' 사업 공고 · 마감 전까지 계속 표시'; } const sn=$('star-n'); if(sn){ const ks=new Set([...g2bLive(),...D.opportunities].map(starKey)); sn.textContent=String([...STARS].filter(k=>ks.has(k)).length); } $('pane-g2b').hidden=ui.src!=='g2b'; $('pane-opps').hidden=ui.src!=='opps'; if($('pane-res')) $('pane-res').hidden=ui.src!=='res'; if($('pane-plan')) $('pane-plan').hidden=ui.src!=='plan'; const tl=document.querySelector('#card-opps .tools'); if(tl){ tl.classList.toggle('nofit',ui.src==='res'||ui.src==='plan'); tl.classList.toggle('g2bmode',ui.src==='g2b'); } renderDueAlert(); renderRes(); renderPlan();
     srcSummary('g2b',g2bLive(),!!loaded.g2b); srcSummary('opps',D.opportunities,!!loaded.opportunities);
     const tg=$('tb-g2b'); const gr=g2bRows(); const NC=7;
     { const gc={S:0,A:0,B:0,C:0,X:0}; (ui.src==='opps'?D.opportunities:g2bLive()).forEach(r=>gc[grade(r)]++); gc.SA=gc.S+gc.A; { const spn=document.getElementById('sp-n'); if(spn) spn.textContent=String((ui.src==='opps'?D.opportunities:g2bLive()).filter(isSpecial).length); } document.querySelectorAll('[data-gn]').forEach(e=>e.textContent=String(gc[e.dataset.gn]||0)); const xc=document.querySelector('.chip[data-grade="X"]'); if(xc) xc.style.display=(ui.src==='opps')?'none':''; if(ui.src==='opps'&&ui.grade==='X'){ ui.grade=''; document.querySelectorAll('[data-grade]').forEach(x=>x.setAttribute('aria-pressed',String(x.dataset.grade===''))); } }
@@ -1715,6 +1722,7 @@ html.dlg-lock,html.dlg-lock body{overflow:hidden}
   const SORT_KEYS={
     'tb-g2b':[r=>GORD[grade(r)]*1000-(P(r)||0),r=>r.name,r=>r.agency,r=>isSme(r)?1:0,r=>{const t=dueAt(r.due); return t?t.getTime():null;}],
     'tb-opps':[r=>P(r),r=>r.name,r=>r.agency,r=>r.scale_eok,r=>stageIdx(r.stage),null,null],
+    'tb-plan':[r=>r.posted,r=>r.name,r=>r.agency,r=>r.budget_eok,r=>(r.year||0)*100+(r.month||0),r=>r.method,r=>r.bid?1:0],
     'tb-res':[r=>r.opened,r=>r.name,r=>r.agency,r=>r.winner,r=>r.amt_eok,r=>r.rate,r=>r.bidders],
     'tb-news':[r=>r.date,r=>areaKey(r),r=>({NEW:0,UPDATE:1,'유지':2})[r.change],r=>r.title,null,r=>r.source],
     'tb-schedule':[r=>r.date,r=>r.date,r=>r.area,r=>r.item,null],
@@ -1734,7 +1742,7 @@ html.dlg-lock,html.dlg-lock body{overflow:hidden}
       paintSortHeads(id); }); }
   /* ---------- 휴대폰 카드형 ---------- */
   function wrapTh(){ document.querySelectorAll('thead th').forEach(th=>{ if(th.querySelector(':scope > .thw')||!th.querySelector('.tipw,.sort-ind')) return; const w=el('span','thw'); const tips=[]; const sorts=[]; const lab=[]; while(th.firstChild){ const n=th.firstChild; if(n.nodeType===3){ const t=n.textContent.trim(); n.remove(); if(t) lab.push(el('span','thl',t)); } else { n.remove(); if(n.classList&&n.classList.contains('tipw')) tips.push(n); else if(n.classList&&n.classList.contains('sort-ind')) sorts.push(n); else lab.push(n); } } if(sorts.length){ const g=el('span','ths'); g.append(...lab,...sorts); w.append(g,...tips); } else w.append(...lab,...tips); th.append(w); }); }
-  function initMobile(){ ['tb-keywords','tb-todos','tb-g2b','tb-opps','tb-res','tb-news','tb-schedule','tb-history','tb-ncloud'].forEach(id=>{ const tb=document.getElementById(id); if(!tb) return; const t=tb.closest('table'); t.classList.add('mob');
+  function initMobile(){ ['tb-keywords','tb-todos','tb-g2b','tb-opps','tb-res','tb-plan','tb-news','tb-schedule','tb-history','tb-ncloud'].forEach(id=>{ const tb=document.getElementById(id); if(!tb) return; const t=tb.closest('table'); t.classList.add('mob');
       const heads=()=>[...t.querySelectorAll('thead th')].map(th=>{ const c=th.cloneNode(true); c.querySelectorAll('.tipw,.sort-ind').forEach(x=>x.remove()); return c.textContent.trim(); });
       const label=()=>{ const h=heads(); tb.querySelectorAll('tr').forEach(tr=>[...tr.children].forEach((td,i)=>{ if(!td.hasAttribute('colspan')) td.dataset.label=h[i]||''; })); };
       label(); new MutationObserver(label).observe(tb,{childList:true}); }); }
@@ -1761,6 +1769,17 @@ html.dlg-lock,html.dlg-lock body{overflow:hidden}
       const nm=el('div'); nm.append(link(r.name,resUrl(r))); if(r.tracked) nm.append(el('span','res-trk','추적 공고')); nm.append(el('span','sub2',[r.no,r.note].filter(Boolean).join(' · ')));
       const bd=r.bidders===1?el('span','res-solo','1개사'):el('span','px',r.bidders!=null?r.bidders+'개사':'-');
       tr.append(td(od),td(nm,'strong'),td(r.agency||'','hide-sm'),td(r.winner||'-','strong'),td(r.amt_eok!=null?r.amt_eok.toLocaleString('ko-KR')+'억':'-','nw'),td(r.rate!=null?r.rate+'%':'-','nw'),td(bd));
+      return tr; })); }
+  function renderPlan(){ const tb=$('tb-plan'); if(!tb) return; const all=D.plan||[];
+    $('sn-plan').textContent=loaded.plan?all.length+'건':'-';
+    const pend=all.filter(r=>!r.bid).length;
+    $('sf-plan').replaceChildren(el('span',null,'공고 전 '+pend+'건'),el('span',null,'본공고 연결 '+(all.length-pend)+'건'));
+    $('sp-plan').textContent=all.length?('가장 이른 발주 '+(all.map(r=>(r.year||0)*100+(r.month||0)).filter(Boolean).sort()[0]||'-').toString().replace(/^(\d{4})(\d{2})$/,'$1.$2')):(loaded.plan?'등록된 발주계획이 없습니다':'불러오는 중');
+    const q=ui.q; const rows=all.filter(r=>!q||[r.name,r.agency,r.top,r.no].join(' ').toLowerCase().includes(q)).sort((a,b)=>String(b.posted||'').localeCompare(String(a.posted||'')));
+    if(!rows.length){ emptyRow(tb,7,loaded.plan?'아직 잡힌 클라우드 관련 발주계획이 없습니다. 새로 나온 계획이 여기에 쌓입니다.':'불러오는 중'); return; }
+    tb.replaceChildren(...pageRows('tb-plan',rows).map(r=>{ const tr=el('tr'); const nm=el('div'); nm.append(link(r.name,r.url||'https://www.g2b.go.kr/')); nm.append(el('span','sub2',[r.no,r.method].filter(Boolean).join(' · ')));
+      const mo=r.year?(r.year+'년 '+(r.month?r.month+'월':'')):'-'; const st=r.bid?el('span','px','본공고 있음'):el('span','pastb','공고 전');
+      tr.append(td(String(r.posted||'').slice(5,10).replace('-','/'),'nw'),td(nm,'strong'),td(r.agency||'','hide-sm'),td(r.budget_eok!=null?r.budget_eok.toLocaleString('ko-KR')+'억':'-','nw'),td(mo,'nw'),td(r.method||'-','hide-sm'),td(st));
       return tr; })); }
   /* ---------- 데이터 확인 상태 ---------- */
   function renderSrcStatus(){ const box=$('src-status'); if(!box) return; const L=D.meta&&Array.isArray(D.meta.sources)?D.meta.sources:[]; if(!L.length){ box.hidden=true; return; }
@@ -1836,9 +1855,9 @@ html.dlg-lock,html.dlg-lock body{overflow:hidden}
     try{
       const r=await fetch('data/board.json?v='+Date.now(),{cache:'no-store'}); if(!r.ok) throw new Error('http '+r.status);
       const j=await r.json(); dbReady=true;
-      ['g2b','opportunities','news','schedule','issues','keywords','todos','ncloud','results'].forEach(k=>{ D[k]=Array.isArray(j[k])?j[k]:[]; loaded[k]=true; }); D.perf=j.perf&&typeof j.perf==='object'?j.perf:null;
+      ['g2b','opportunities','news','schedule','issues','keywords','todos','ncloud','results','plan'].forEach(k=>{ D[k]=Array.isArray(j[k])?j[k]:[]; loaded[k]=true; }); D.perf=j.perf&&typeof j.perf==='object'?j.perf:null;
       D.meta=j.meta||null; renderAll();
-    }catch(e){ dbReady=false; ['g2b','opportunities','news','schedule','issues','keywords','todos','ncloud','results'].forEach(k=>loaded[k]=true); renderAll(); }
+    }catch(e){ dbReady=false; ['g2b','opportunities','news','schedule','issues','keywords','todos','ncloud','results','plan'].forEach(k=>loaded[k]=true); renderAll(); }
   })();
 
   /* ---------- Word export ---------- */
