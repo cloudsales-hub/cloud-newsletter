@@ -3540,12 +3540,15 @@
    "why": "업무 적합 +10 · 규모 +5 · 사전규격 선점 +5",
    "how": "단독 주관 또는 기존 유지보수사와 공동수급",
    "url": "https://www.g2b.go.kr/link/PRVA004_02/single/?bfSpecRegNo=R26BD00289928",
-   "note": "10/24(토) 공개 · 지자체 통합유지보수는 직접생산확인 요구 사례가 많음",
+   "note": "10/24(토) 공개 · 규격서에 클라우드 수행 인력의 상주 명시",
    "src": "나라장터",
    "added": "2026-10-26T09:30:00+09:00",
    "eval_tech": null,
    "eval_price": null,
-   "sucsfbid": null
+   "sucsfbid": null,
+   "flags": [
+    "onsite"
+   ]
   },
   {
    "agency": "(주)하마랩(바우처 수요)",

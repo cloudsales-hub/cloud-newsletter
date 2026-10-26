@@ -1467,7 +1467,7 @@ html.dlg-lock,html.dlg-lock body{overflow:hidden}
   const copyNo=async(no)=>{ try{ await navigator.clipboard.writeText(no); return true; }catch(e){ try{ const t=document.createElement('textarea'); t.value=no; t.style.position='fixed'; t.style.opacity='0'; document.body.append(t); t.select(); const ok=document.execCommand('copy'); t.remove(); return ok; }catch(_){ return false; } } };
   const g2bOpen=async(r)=>{ const u=specUrl(r)||safe(r.url); if(u){ window.open(u,'_blank','noopener'); return; } const ok=r.no?await copyNo(r.no):false; window.open(G2B_HOME,'_blank','noopener'); toast(r.no?(ok?'사전규격 번호 '+r.no+'를 복사했습니다. 나라장터 사전규격 검색창에 붙여 넣으세요.':'나라장터 사전규격 검색에서 '+r.no+'를 찾아 주세요.'):'나라장터를 열었습니다.'); };
   const specUrl=r=>(r.kind==='사전규격'&&/^R\d{2}BD\d+$/.test(r.no||''))?SPEC_LINK(r.no):null;
-  const isSpecial=r=>hasCredit(r)||isPricey(r);
+  const isSpecial=r=>hasCredit(r)||isPricey(r)||hasOnsite(r);
   const isPricey=r=>{ const v=(typeof verOf==='function')?verOf(r):null; const p=(v&&typeof v.eval_price==='number')?v.eval_price:r.eval_price; return typeof p==='number'&&p>=20; };
   const g2bGo=(r)=>{ const w=el('div','gos'); const mk=(t,ti,fn)=>{const b=el('button','go',t); b.type='button'; b.title=ti; b.addEventListener('click',(e)=>{e.stopPropagation(); fn();}); return b;};
     if(r.src&&r.src!=='나라장터'){ if(safe(r.url)) w.append(mk(r.src+' 공고 보기 ↗',r.src+' 게시판의 공고를 새 창으로 엽니다',()=>window.open(r.url,'_blank','noopener'))); return w; }
@@ -1495,6 +1495,7 @@ html.dlg-lock,html.dlg-lock body{overflow:hidden}
   function verOf(r){ const v=(r.no&&VER[verKey(r.no)])||VER['n:'+nameKey(r.name)]||null; return v||(r.verified&&typeof r.verified==='object'?r.verified:null); }
   const isSme=r=>{ const v=verOf(r); if(v&&v.elig==='가능') return false; if(v&&v.elig==='불가') return true; return Array.isArray(r.flags)&&r.flags.includes('sme'); };
   const isNo=r=>{ const v=verOf(r); return !!(v&&v.elig==='불가'); };
+  const hasOnsite=r=>Array.isArray(r.flags)&&r.flags.includes('onsite');
   const hasCredit=r=>{ const v=verOf(r); return (Array.isArray(r.flags)&&r.flags.includes('credit'))||!!(v&&v.credit); };
   function grade(r){ if(isSme(r)) return 'X'; const p=P(r)??0; let g=p>=70?'S':p>=50?'A':p>=30?'B':'C'; if(r.fit==='C') g='C'; return g; }
   const gradePct=r=>{ const g=grade(r); if(g==='X') return 0; return Math.max(8,Math.min(95,Math.round((P(r)??10)*1.1))); };
@@ -1504,6 +1505,7 @@ html.dlg-lock,html.dlg-lock body{overflow:hidden}
     return t||String(r.how||'').replace(/\(.*?\)/g,'').trim().slice(0,22)||'-'; }
   function gradeTags(r){ const t=[]; if(hasCredit(r)) t.push(['pos','＋ 신용등급 가점','평가 항목에 기업 신용평가등급 배점이 있습니다. 신용등급이 좋을수록 점수를 더 받습니다.']);
     if(isPricey(r)) t.push(['pos','＋ 가격 비중 '+r.eval_price+'%','가격평가 비중이 '+r.eval_price+'%로 높아, 기술 점수 차이가 작게 작용하고 가격 경쟁력이 있는 우리에게 유리할 수 있습니다.']);
+    if(hasOnsite(r)) t.push(['neg','상주 인력 필요','규격서에 클라우드 수행 인력을 상주로 두도록 명시돼 있습니다. 비상주 위주로 운영하는 사업자는 참여 전 인력 운영 방안부터 검토해야 합니다.']);
     if(/긴급/.test(r.name||'')) t.push(['neg','긴급 공고','공고 기간이 짧아 제안 준비 시간이 부족합니다.']);
     if(grade(r)==='X') t.forEach(x=>x[0]='off'); return t; }
   const lvOf=r=>{ if(grade(r)==='X') return null; const p=P(r)??0; return p>=70?['h','상',3]:p>=40?['m','중',2]:['l','하',1]; };
