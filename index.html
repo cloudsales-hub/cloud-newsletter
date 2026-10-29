@@ -484,6 +484,10 @@ th.sortable{cursor:pointer;user-select:none}
 .due-alert .da-btn[aria-pressed="true"]{background:var(--surface);color:var(--red);box-shadow:2px 0 0 0 var(--red),-2px 0 0 0 var(--red),0 2px 0 0 var(--red),0 -2px 0 0 var(--red)}
 .src-tabs.three{grid-template-columns:1fr 1fr 1fr}
 .src-tabs.four{grid-template-columns:repeat(4,1fr)}
+#tb-plan td{text-align:center;vertical-align:middle}#tb-plan td .sub2{display:block}
+#tb-plan .plst{display:inline-flex;flex-direction:column;align-items:center;justify-content:center;gap:4px}
+#tb-plan .plsp{display:inline-flex;align-items:center;justify-content:center;font-size:12px;font-weight:800;padding:2px 8px;color:var(--blue);background:color-mix(in srgb,var(--blue) 18%,transparent)}
+#tb-plan .plst a{font-size:12px;white-space:nowrap}
 @media (max-width:64rem){.src-tabs.four{grid-template-columns:1fr 1fr}}
 .tools.nofit [data-fit]{display:none}
 table:has(#tb-res){table-layout:fixed}
@@ -1727,7 +1731,7 @@ html.dlg-lock,html.dlg-lock body{overflow:hidden}
   const SORT_KEYS={
     'tb-g2b':[r=>GORD[grade(r)]*1000-(P(r)||0),r=>r.name,r=>r.agency,r=>isSme(r)?1:0,r=>{const t=dueAt(r.due); return t?t.getTime():null;}],
     'tb-opps':[r=>P(r),r=>r.name,r=>r.agency,r=>r.scale_eok,r=>stageIdx(r.stage),null,null],
-    'tb-plan':[r=>r.posted,r=>r.name,r=>r.agency,r=>r.budget_eok,r=>(r.year||0)*100+(r.month||0),r=>r.method,r=>r.bid?1:0],
+    'tb-plan':[r=>r.posted,r=>r.name,r=>r.agency,r=>r.budget_eok,r=>(r.year||0)*100+(r.month||0),r=>r.method,r=>r.bid?2:((r.spec||r.stage==='사전규격')?1:0)],
     'tb-res':[r=>r.opened,r=>r.name,r=>r.agency,r=>r.winner,r=>r.amt_eok,r=>r.rate,r=>r.bidders],
     'tb-news':[r=>r.date,r=>areaKey(r),r=>({NEW:0,UPDATE:1,'유지':2})[r.change],r=>r.title,null,r=>r.source],
     'tb-schedule':[r=>r.date,r=>r.date,r=>r.area,r=>r.item,null],
@@ -1777,13 +1781,13 @@ html.dlg-lock,html.dlg-lock body{overflow:hidden}
       return tr; })); }
   function renderPlan(){ const tb=$('tb-plan'); if(!tb) return; const all=D.plan||[];
     $('sn-plan').textContent=loaded.plan?all.length+'건':'-';
-    const pend=all.filter(r=>!r.bid).length;
-    $('sf-plan').replaceChildren(el('span',null,'공고 전 '+pend+'건'),el('span',null,'본공고 연결 '+(all.length-pend)+'건'));
+    const stgOf=r=>r.bid?2:((r.spec||r.stage==='사전규격')?1:0); const cnt=[0,0,0]; all.forEach(r=>cnt[stgOf(r)]++);
+    $('sf-plan').replaceChildren(el('span',null,'공고 전 '+cnt[0]+'건'),el('span',null,'사전규격 공개 '+cnt[1]+'건'),el('span',null,'본공고 연결 '+cnt[2]+'건'));
     $('sp-plan').textContent=all.length?('가장 이른 발주 '+(all.map(r=>(r.year||0)*100+(r.month||0)).filter(Boolean).sort()[0]||'-').toString().replace(/^(\d{4})(\d{2})$/,'$1.$2')):(loaded.plan?'등록된 발주계획이 없습니다':'불러오는 중');
     const q=ui.q; const rows=all.filter(r=>!q||[r.name,r.agency,r.top,r.no].join(' ').toLowerCase().includes(q)).sort((a,b)=>String(b.posted||'').localeCompare(String(a.posted||'')));
     if(!rows.length){ emptyRow(tb,7,loaded.plan?'아직 잡힌 클라우드 관련 발주계획이 없습니다. 새로 나온 계획이 여기에 쌓입니다.':'불러오는 중'); return; }
     tb.replaceChildren(...pageRows('tb-plan',rows).map(r=>{ const tr=el('tr'); const nm=el('div'); nm.append(link(r.name,r.url||'https://www.g2b.go.kr/')); nm.append(el('span','sub2',[r.no,r.method].filter(Boolean).join(' · ')));
-      const mo=r.year?(r.year+'년 '+(r.month?r.month+'월':'')):'-'; const st=r.bid?el('span','px','본공고 있음'):el('span','pastb','공고 전');
+      const mo=r.year?(r.year+'년 '+(r.month?r.month+'월':'')):'-'; const sg=stgOf(r); const st=el('div','plst'); if(sg===2) st.append(el('span','px','본공고 있음')); else if(sg===1){ st.append(el('span','plsp','사전규격 공개')); if(r.spec&&/^R\d{2}BD/.test(r.spec)) st.append(link('사전규격 보기 ↗','https://www.g2b.go.kr/link/PRVA004_02/single/?bfSpecRegNo='+r.spec)); else st.append(el('span','sub2','번호 확인 중')); } else st.append(el('span','pastb','공고 전'));
       tr.append(td(String(r.posted||'').slice(5,10).replace('-','/'),'nw'),td(nm,'strong'),td(r.agency||'','hide-sm'),td(r.budget_eok!=null?r.budget_eok.toLocaleString('ko-KR')+'억':'-','nw'),td(mo,'nw'),td(r.method||'-','hide-sm'),td(st));
       return tr; })); }
   /* ---------- 데이터 확인 상태 ---------- */

@@ -5855,7 +5855,8 @@
    "posted": "2026-10-28",
    "bid": "",
    "url": "https://www.g2b.go.kr/link/PRPA015_01/single/?oderPlanNo=R26DD20910928",
-   "added": "2026-10-29"
+   "added": "2026-10-29",
+   "stage": "사전규격"
   },
   {
    "id": "R26DD20910139",
@@ -5870,7 +5871,9 @@
    "posted": "2026-10-28",
    "bid": "",
    "url": "https://www.g2b.go.kr/link/PRPA015_01/single/?oderPlanNo=R26DD20910139",
-   "added": "2026-10-29"
+   "added": "2026-10-29",
+   "spec": "R26BD00291578",
+   "stage": "사전규격"
   }
  ],
  "perf": {
