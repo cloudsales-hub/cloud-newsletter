@@ -5341,33 +5341,6 @@
     "at": "2026-10-30T07:45:00+09:00",
     "src": "RFP 자동 확인"
    }
-  },
-  {
-   "id": "R26BD00292369",
-   "no": "R26BD00292369",
-   "ord": null,
-   "kind": "사전규격",
-   "name": "2026년 소상공인 지식배움터 클라우드 전환 및 고도화 용역",
-   "orderer": "조달청",
-   "agency": "소상공인시장진흥공단",
-   "budget_eok": 3.694,
-   "price_eok": null,
-   "posted": "2026-10-29",
-   "due": "2026-11-03 23:59",
-   "open": null,
-   "method": "사전규격(발주계획상 제한경쟁)",
-   "fit": "A",
-   "prob": 70,
-   "why": "업무 적합 +10 · 규모 +5 · 사전규격 선점 +5",
-   "how": "단독 주관(클라우드 전환·고도화, 공공 CSP 제안)",
-   "url": "https://www.g2b.go.kr/link/PRVA004_02/single/?bfSpecRegNo=R26BD00292369",
-   "note": "발주계획 R26DD20910928(2026년 10월, 제한경쟁, 3.66억 원)에서 이어진 사전규격. 세부품명 정보시스템개발서비스(8111159901), SW사업 대상 Y",
-   "item": "정보시스템개발서비스(8111159901)",
-   "flags": [],
-   "added": "2026-10-30T09:20:00+09:00",
-   "src": "나라장터",
-   "eval_tech": null,
-   "eval_price": null
   }
  ],
  "opportunities": [
@@ -6100,7 +6073,8 @@
    "stage": "사전규격",
    "top": null,
    "url": "https://www.g2b.go.kr/link/PRPA015_01/single/?oderPlanNo=R26DD20910928",
-   "year": 2026
+   "year": 2026,
+   "spec": "R26BD00292369"
   },
   {
    "added": "2026-10-29",
