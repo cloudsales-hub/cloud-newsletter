@@ -1,167 +1,258 @@
 {
  "meta": {
   "basis": "공개판",
-  "latestNo": 21,
+  "latestNo": 22,
   "sources": [
    {
     "k": "g2b",
     "name": "나라장터 입찰공고·사전규격",
     "st": "정상",
-    "at": "2026-10-29T09:10:00+09:00",
-    "note": "진행 중 35건, 신규 4건(재공고 2·사전규격 1·본공고 전환 1). 일부 호출 서버 오류 후 재시도 성공"
+    "at": "2026-10-30T09:10:00+09:00",
+    "note": "진행 중 35건, 신규 1건(소상공인 지식배움터 사전규격). 일부 호출 서버 오류 후 재시도 성공"
    },
    {
     "k": "award",
     "name": "나라장터 개찰·낙찰",
     "st": "정상",
-    "at": "2026-10-29T09:15:00+09:00",
-    "note": "새 결과 없음(누적 6건), 명지녹산 원공고 유찰 확인"
+    "at": "2026-10-30T09:15:00+09:00",
+    "note": "새 결과 1건(누적 7건), 추적 종료 건 결과 아직 없음"
    },
    {
     "k": "nipa",
     "name": "NIPA 입찰·사업공고",
     "st": "정상",
-    "at": "2026-10-29T09:05:00+09:00",
+    "at": "2026-10-30T09:05:00+09:00",
     "note": "클라우드 신규 없음"
    },
    {
     "k": "nia",
     "name": "NIA 입찰공고",
     "st": "정상",
-    "at": "2026-10-29T09:05:00+09:00",
+    "at": "2026-10-30T09:05:00+09:00",
     "note": "클라우드 신규 없음"
    },
    {
     "k": "ncloud",
     "name": "네이버클라우드 공지(민간·공공·금융)",
     "st": "정상",
-    "at": "2026-10-29T09:06:00+09:00",
-    "note": "신규 공지 없음(13행 유지)"
+    "at": "2026-10-30T09:06:00+09:00",
+    "note": "신규 공지 3건(NAS 이벤트 관리 통합 2건, 공공 SENS·Mailer 통합)"
    }
   ],
-  "updatedAt": "2026-10-29T09:50:00+09:00"
+  "updatedAt": "2026-10-30T09:50:00+09:00"
  },
  "issues": [
   {
-   "no": 21,
-   "date": "2026-10-29",
-   "day": "목",
-   "articles": 13,
-   "bids": 2,
-   "oneline": "유찰된 명지녹산 클라우드 인프라(9억 원)와 한국거래소 클라우드 서비스(5.82억 원, 가격 20%) 재공고로 단독 주관 기회가 늘었고, 금융권은 대신증권·빗썸·미래에셋자산운용 연쇄 침해로 국가안보실이 긴급회의를 열었다",
+   "no": 22,
+   "date": "2026-10-30",
+   "day": "금",
+   "articles": 10,
+   "bids": 1,
+   "oneline": "한국거래소 클라우드 서비스 재공고(5.82억 원)가 RFP로 네이버클라우드 명시·참여 가능이 확인돼 최우선 제안 대상이 됐고, 소상공인 지식배움터 클라우드 전환 사전규격(3.69억 원)이 새로 공개됐다",
    "news_items": [
     {
-     "title": "MS 7~9월 매출 19%↑, 애저 48% 성장·설비투자 452억 달러",
+     "title": "아마존 AWS 연환산 매출 1,840억 달러·영업이익률 38.7%, 트레이니엄 외부 판매 2027년 말",
      "source": "디지털데일리",
-     "date": "2026-10-29",
+     "date": "2026-10-30",
      "area": "민간",
-     "url": "https://www.ddaily.co.kr/page/view/2026102906443413783"
+     "url": "https://www.ddaily.co.kr/page/view/2026103007535340654"
     },
     {
-     "title": "구글 클라우드 3분기 매출 103% 급증, 영업이익률 36%",
-     "source": "디지털데일리",
-     "date": "2026-10-29",
-     "area": "민간",
-     "url": "https://www.ddaily.co.kr/page/view/2026102906581869700"
-    },
-    {
-     "title": "금융권 AI·클라우드 컨택센터 규제 대응 전략 공유(망분리 SaaS 예외)",
-     "source": "디지털데일리",
-     "date": "2026-10-29",
-     "area": "금융",
-     "url": "https://www.ddaily.co.kr/page/view/2026102908435300037"
-    },
-    {
-     "title": "대신·빗썸·미래에셋 연쇄 침해에 국가안보실 긴급회의",
+     "title": "네이버, AI 모델 전략 다변화…네이버클라우드 국방·보안·제조 특화 모델 상용화",
      "source": "ZDNet",
-     "date": "2026-10-28",
-     "area": "금융",
-     "url": "https://zdnet.co.kr/view/?no=20261028180832"
-    },
-    {
-     "title": "맥쿼리, 가비아 지분 69.35% 4,933억 원에 인수·상장폐지 재추진",
-     "source": "ZDNet",
-     "date": "2026-10-28",
+     "date": "2026-10-30",
      "area": "민간",
-     "url": "https://zdnet.co.kr/view/?no=20261028172210"
+     "url": "https://zdnet.co.kr/view/?no=20261024201154"
     },
     {
-     "title": "삼성SDS·LG CNS·현대오토에버 3분기 전망, GPUaaS·MSP 성장",
+     "title": "부경대 학생 5,106명 정보 유출…대학 침해 2025년 8만 310건(32.0%↑)",
      "source": "ZDNet",
-     "date": "2026-10-28",
-     "area": "민간",
-     "url": "https://zdnet.co.kr/view/?no=20261028171616"
+     "date": "2026-10-29",
+     "area": "공공",
+     "url": "https://zdnet.co.kr/view/?no=20261029185947"
     },
     {
-     "title": "PHP2셸 영향 국내 워드프레스·그누보드 사이트 약 46만 개, 공유 호스팅 집중",
+     "title": "PHP2셸 패치 적용률 국내 서버 전체 약 5.5%, 대상 서버 72.7% 미적용",
      "source": "보안뉴스",
-     "date": "2026-10-28",
-     "area": "민간",
-     "url": "https://www.boannews.com/news/articleView.html?idxno=146844"
+     "date": "2026-10-29",
+     "area": "공공",
+     "url": "https://www.boannews.com/news/articleView.html?idxno=146873"
     },
     {
-     "title": "LG전자 AIDC 냉각 수주 누적 3조 원 돌파",
+     "title": "금융위, 연기된 2차 망분리 완화(15곳) 11월 재개 검토…전면 해제는 신중",
+     "source": "뉴스핌",
+     "date": "2026-10-29",
+     "area": "금융",
+     "url": "https://www.newspim.com/news/view/20261029001188"
+    },
+    {
+     "title": "삼성SDS 3분기 클라우드 매출 7,961억 원(18%↑), CSP 15%·MSP 25% 성장",
      "source": "디지털데일리",
-     "date": "2026-10-28",
+     "date": "2026-10-29",
      "area": "민간",
-     "url": "https://www.ddaily.co.kr/page/view/2026102818112931125"
+     "url": "https://www.ddaily.co.kr/page/view/2026102916240484428"
     },
     {
-     "title": "과기정통부 AI 3강 전략, AIDC 국내외 투자 약 550조 원",
+     "title": "삼성SDS 브리티웍스 중앙부처 14곳·18만 명, 2027년 공공 매출 2배 목표",
+     "source": "ZDNet",
+     "date": "2026-10-29",
+     "area": "공공",
+     "url": "https://zdnet.co.kr/view/?no=20261029152638"
+    },
+    {
+     "title": "보험업계 제3자 IT리스크 가이드라인 초안…클라우드 사업자 포함, 2027년 1월 2일 시행 예정",
      "source": "전자신문",
-     "date": "2026-10-28",
-     "area": "공공",
-     "url": "https://www.etnews.com/20261028000031"
-    },
-    {
-     "title": "지방 대학 5곳 홈페이지 PHP2셸 노출 의심",
-     "source": "보안뉴스",
-     "date": "2026-10-28",
-     "area": "공공",
-     "url": "https://www.boannews.com/news/articleView.html?idxno=146837"
-    },
-    {
-     "title": "미래에셋자산운용·빗썸 침해사고(그룹웨어 공급망 공격 추정)",
-     "source": "보안뉴스",
-     "date": "2026-10-28",
+     "date": "2026-10-29",
      "area": "금융",
-     "url": "https://www.boannews.com/news/articleView.html?idxno=146818"
+     "url": "https://www.etnews.com/20261029000280"
     },
     {
-     "title": "하나증권 \"네이버, 브룩필드 투자로 DC 불확실성 해소\" 2028년 네오클라우드 매출 3.3조 원 전망",
-     "source": "뉴스1",
-     "date": "2026-10-28",
-     "area": "민간",
-     "url": "https://www.news1.kr/finance/general-stock/6334166"
-    },
-    {
-     "title": "대신증권 개인정보 3만 8,490명 유출(비대면 계좌개설 연계서버)",
+     "title": "금융보안원 \"금융권 해킹, 북한 소행 단정 어려워\"",
      "source": "보안뉴스",
-     "date": "2026-10-28",
+     "date": "2026-10-29",
      "area": "금융",
-     "url": "https://www.boannews.com/news/articleView.html?idxno=146806"
+     "url": "https://www.boannews.com/news/articleView.html?idxno=146867"
+    },
+    {
+     "title": "이상중 KISA 원장 해임, 류재철 비상임이사 직무대행",
+     "source": "ZDNet",
+     "date": "2026-10-29",
+     "area": "공공",
+     "url": "https://zdnet.co.kr/view/?no=20261029102950"
     }
    ],
    "bid_items": [
     {
-     "kind": "재공고",
-     "name": "명지녹산 AX실증산단 에코마린 소부장 특화 클라우드 인프라 구축 및 운영·유지관리",
-     "agency": "재단법인부산테크노파크",
-     "scale": "배정예산 9억 원",
-     "no": "R26BK01796910",
-     "url": "https://www.g2b.go.kr/link/PNPE027_01/single/?bidPbancNo=R26BK01796910&bidPbancOrd=000",
-     "src": "나라장터"
-    },
-    {
-     "kind": "재공고",
-     "name": "히스토리컬 대용량 데이터 판매를 위한 클라우드 서비스 이용 계약(재공고)",
-     "agency": "(주)한국거래소",
-     "scale": "배정예산 5.82억 원",
-     "no": "R26BK01796099",
-     "url": "https://www.g2b.go.kr/link/PNPE027_01/single/?bidPbancNo=R26BK01796099&bidPbancOrd=000",
+     "name": "2026년 소상공인 지식배움터 클라우드 전환 및 고도화 용역",
+     "agency": "소상공인시장진흥공단",
+     "kind": "사전규격",
+     "scale": "배정예산 3.69억 원",
+     "no": "R26BD00292369",
+     "url": "https://www.g2b.go.kr/link/PRVA004_02/single/?bfSpecRegNo=R26BD00292369",
      "src": "나라장터"
     }
    ]
+  },
+  {
+   "articles": 13,
+   "bid_items": [
+    {
+     "agency": "재단법인부산테크노파크",
+     "kind": "재공고",
+     "name": "명지녹산 AX실증산단 에코마린 소부장 특화 클라우드 인프라 구축 및 운영·유지관리",
+     "no": "R26BK01796910",
+     "scale": "배정예산 9억 원",
+     "src": "나라장터",
+     "url": "https://www.g2b.go.kr/link/PNPE027_01/single/?bidPbancNo=R26BK01796910&bidPbancOrd=000"
+    },
+    {
+     "agency": "(주)한국거래소",
+     "kind": "재공고",
+     "name": "히스토리컬 대용량 데이터 판매를 위한 클라우드 서비스 이용 계약(재공고)",
+     "no": "R26BK01796099",
+     "scale": "배정예산 5.82억 원",
+     "src": "나라장터",
+     "url": "https://www.g2b.go.kr/link/PNPE027_01/single/?bidPbancNo=R26BK01796099&bidPbancOrd=000"
+    }
+   ],
+   "bids": 2,
+   "date": "2026-10-29",
+   "day": "목",
+   "news_items": [
+    {
+     "area": "민간",
+     "date": "2026-10-29",
+     "source": "디지털데일리",
+     "title": "MS 7~9월 매출 19%↑, 애저 48% 성장·설비투자 452억 달러",
+     "url": "https://www.ddaily.co.kr/page/view/2026102906443413783"
+    },
+    {
+     "area": "민간",
+     "date": "2026-10-29",
+     "source": "디지털데일리",
+     "title": "구글 클라우드 3분기 매출 103% 급증, 영업이익률 36%",
+     "url": "https://www.ddaily.co.kr/page/view/2026102906581869700"
+    },
+    {
+     "area": "금융",
+     "date": "2026-10-29",
+     "source": "디지털데일리",
+     "title": "금융권 AI·클라우드 컨택센터 규제 대응 전략 공유(망분리 SaaS 예외)",
+     "url": "https://www.ddaily.co.kr/page/view/2026102908435300037"
+    },
+    {
+     "area": "금융",
+     "date": "2026-10-28",
+     "source": "ZDNet",
+     "title": "대신·빗썸·미래에셋 연쇄 침해에 국가안보실 긴급회의",
+     "url": "https://zdnet.co.kr/view/?no=20261028180832"
+    },
+    {
+     "area": "민간",
+     "date": "2026-10-28",
+     "source": "ZDNet",
+     "title": "맥쿼리, 가비아 지분 69.35% 4,933억 원에 인수·상장폐지 재추진",
+     "url": "https://zdnet.co.kr/view/?no=20261028172210"
+    },
+    {
+     "area": "민간",
+     "date": "2026-10-28",
+     "source": "ZDNet",
+     "title": "삼성SDS·LG CNS·현대오토에버 3분기 전망, GPUaaS·MSP 성장",
+     "url": "https://zdnet.co.kr/view/?no=20261028171616"
+    },
+    {
+     "area": "민간",
+     "date": "2026-10-28",
+     "source": "보안뉴스",
+     "title": "PHP2셸 영향 국내 워드프레스·그누보드 사이트 약 46만 개, 공유 호스팅 집중",
+     "url": "https://www.boannews.com/news/articleView.html?idxno=146844"
+    },
+    {
+     "area": "민간",
+     "date": "2026-10-28",
+     "source": "디지털데일리",
+     "title": "LG전자 AIDC 냉각 수주 누적 3조 원 돌파",
+     "url": "https://www.ddaily.co.kr/page/view/2026102818112931125"
+    },
+    {
+     "area": "공공",
+     "date": "2026-10-28",
+     "source": "전자신문",
+     "title": "과기정통부 AI 3강 전략, AIDC 국내외 투자 약 550조 원",
+     "url": "https://www.etnews.com/20261028000031"
+    },
+    {
+     "area": "공공",
+     "date": "2026-10-28",
+     "source": "보안뉴스",
+     "title": "지방 대학 5곳 홈페이지 PHP2셸 노출 의심",
+     "url": "https://www.boannews.com/news/articleView.html?idxno=146837"
+    },
+    {
+     "area": "금융",
+     "date": "2026-10-28",
+     "source": "보안뉴스",
+     "title": "미래에셋자산운용·빗썸 침해사고(그룹웨어 공급망 공격 추정)",
+     "url": "https://www.boannews.com/news/articleView.html?idxno=146818"
+    },
+    {
+     "area": "민간",
+     "date": "2026-10-28",
+     "source": "뉴스1",
+     "title": "하나증권 \"네이버, 브룩필드 투자로 DC 불확실성 해소\" 2028년 네오클라우드 매출 3.3조 원 전망",
+     "url": "https://www.news1.kr/finance/general-stock/6334166"
+    },
+    {
+     "area": "금융",
+     "date": "2026-10-28",
+     "source": "보안뉴스",
+     "title": "대신증권 개인정보 3만 8,490명 유출(비대면 계좌개설 연계서버)",
+     "url": "https://www.boannews.com/news/articleView.html?idxno=146806"
+    }
+   ],
+   "no": 21,
+   "oneline": "유찰된 명지녹산 클라우드 인프라(9억 원)와 한국거래소 클라우드 서비스(5.82억 원, 가격 20%) 재공고로 단독 주관 기회가 늘었고, 금융권은 대신증권·빗썸·미래에셋자산운용 연쇄 침해로 국가안보실이 긴급회의를 열었다"
   },
   {
    "articles": 10,
@@ -2275,14 +2366,6 @@
  ],
  "schedule": [
   {
-   "id": "sc28",
-   "area": "민간",
-   "check": "클라우드·GPUaaS 매출",
-   "date": "2026-10-29",
-   "item": "삼성SDS 3분기 실적 발표(예정)",
-   "label": "10/29(목)"
-  },
-  {
    "area": "입찰",
    "check": "금융·공공 고객 반응",
    "date": "2026-10-30",
@@ -2311,7 +2394,7 @@
    "check": "주관 후보",
    "date": "2026-11-02",
    "id": "sc25",
-   "item": "KLID 지역클라우드센터 정보자원 통합 유지관리·한국무역보험공사 DR센터 운영 의견 마감(23:59)",
+   "item": "KLID 지역클라우드센터 정보자원 통합 유지관리 의견 마감(23:59)",
    "label": "11/2(월)"
   },
   {
@@ -2319,14 +2402,14 @@
    "check": "상장 후 주가",
    "date": "2026-11-03",
    "id": "sc8",
-   "item": "영산강 이중화 재공고 마감(10:00), KLID 공통기반·재해복구 의견 마감(23:59), 래블업 코스닥 상장(11월 초 목표)",
+   "item": "영산강 이중화 재공고 마감(10:00), KLID 공통기반·재해복구·소상공인 지식배움터 클라우드 전환 의견 마감(23:59), 래블업 코스닥 상장(11월 초 목표)",
    "label": "11/3(화)"
   },
   {
-   "id": "sc29",
    "area": "민간",
    "check": "AIDC 전력·냉각",
    "date": "2026-11-04",
+   "id": "sc29",
    "item": "2026 데이터센터코리아(양재 aT센터, 11/4~11/6)",
    "label": "11/4~11/6"
   },
@@ -2335,7 +2418,7 @@
    "check": "참여 여부·낙찰자",
    "date": "2026-11-09",
    "id": "sc9",
-   "item": "명지녹산 클라우드 인프라 재공고 마감(10:00), 석유관리원 가상화 이관 마감(10:00), 강원대 수강신청·포털 마감(16:30), 과총 학회정보화 마감(16:00, 참여 제한), 수협 재해복구 개찰(15:00, 참여 제한)",
+   "item": "명지녹산 클라우드 인프라 재공고 마감(10:00, 관망), 석유관리원 가상화 이관 마감(10:00), 강원대 수강신청·포털 마감(16:30), 과총 학회정보화 마감(16:00, 참여 제한), 수협 재해복구 개찰(15:00, 참여 제한)",
    "label": "11/9(월)"
   },
   {
@@ -2347,10 +2430,18 @@
    "label": "11/10~11/12"
   },
   {
-   "id": "sc30",
+   "id": "sc31",
+   "date": "2026-11-12",
+   "label": "11/12(목)",
+   "area": "금융",
+   "item": "보험업계 제3자 IT리스크 관리 가이드라인 초안 의견 마감",
+   "check": "클라우드 사업자 실사·평가 요건"
+  },
+  {
    "area": "입찰",
    "check": "시장 동향",
    "date": "2026-11-17",
+   "id": "sc30",
    "item": "광주테크노파크 감리(11/17)·동일미래과학고 Google Cloud(11/18) 마감",
    "label": "11/17~11/18"
   },
@@ -2407,7 +2498,7 @@
    "check": "이용 기관 이전처",
    "date": "2026-12-17",
    "id": "sc17",
-   "item": "공공 Cloud Desktop 종료",
+   "item": "공공 Cloud Desktop 종료, 공공 SENS·Cloud Outbound Mailer 서비스 통합",
    "label": "12월 17일"
   },
   {
@@ -2419,11 +2510,19 @@
    "label": "2027년 1월 1일"
   },
   {
+   "id": "sc32",
+   "date": "2027-01-02",
+   "label": "2027년 1월 2일",
+   "area": "금융",
+   "item": "보험업계 제3자 IT리스크 관리 가이드라인 시행(예정)",
+   "check": "클라우드 공급사 위험평가"
+  },
+  {
    "area": "공지",
    "check": "대안 확정",
    "date": "2027-01-21",
    "id": "sc19",
-   "item": "민간·금융 SSL VPN·보안 점검 4종·App Safer, 금융 Live Station·VOD Station 종료",
+   "item": "민간·금융 SSL VPN·보안 점검 4종·App Safer, 금융 Live Station·VOD Station 종료, 민간 NAS Event 관리 기능 종료(Cloud Insight 통합)",
    "label": "2027년 1월 21일"
   },
   {
@@ -2431,7 +2530,7 @@
    "check": "Secure Access·영상 이전",
    "date": "2027-02-23",
    "id": "sc20",
-   "item": "공공 SSL VPN·보안 점검 3종·VOD Station·One Click Multi DRM 종료",
+   "item": "공공 SSL VPN·보안 점검 3종·VOD Station·One Click Multi DRM 종료, 공공 NAS 이벤트 관리 기능 종료(Cloud Insight 통합)",
    "label": "2027년 2월 23일"
   },
   {
@@ -2469,166 +2568,276 @@
  ],
  "news": [
   {
-   "id": "n1029-ms",
    "area": "민간",
    "change": "NEW",
-   "date": "2026-10-29",
+   "date": "2026-10-30",
+   "id": "n1030-aws",
+   "point": "해외 CSP 투자 확대 속 국내 리전·가격 메시지",
    "source": "디지털데일리",
-   "title": "MS 7~9월 매출 19%↑, 애저 48% 성장·설비투자 452억 달러",
-   "url": "https://www.ddaily.co.kr/page/view/2026102906443413783",
-   "point": "해외 CSP 대비 국내 리전·가격 메시지"
+   "title": "아마존 AWS 연환산 매출 1,840억 달러·영업이익률 38.7%, 트레이니엄 외부 판매 2027년 말",
+   "url": "https://www.ddaily.co.kr/page/view/2026103007535340654"
   },
   {
-   "id": "n1029-gcp",
    "area": "민간",
    "change": "NEW",
-   "date": "2026-10-29",
-   "source": "디지털데일리",
-   "title": "구글 클라우드 3분기 매출 103% 급증, 영업이익률 36%",
-   "url": "https://www.ddaily.co.kr/page/view/2026102906581869700",
-   "point": "AI 인프라 수요 확산 근거"
-  },
-  {
-   "id": "n1029-cc",
-   "area": "금융",
-   "change": "NEW",
-   "date": "2026-10-29",
-   "source": "디지털데일리",
-   "title": "금융권 AI·클라우드 컨택센터 규제 대응 전략 공유(망분리 SaaS 예외)",
-   "url": "https://www.ddaily.co.kr/page/view/2026102908435300037",
-   "point": "금융 존 컨택센터 전환 수요"
-  },
-  {
-   "id": "n1028-nsc",
-   "area": "금융",
-   "change": "NEW",
-   "date": "2026-10-28",
+   "date": "2026-10-30",
+   "id": "n1030-naver",
+   "point": "산업 특화 AI 수요를 CSP 연계 제안으로",
    "source": "ZDNet",
-   "title": "대신·빗썸·미래에셋 연쇄 침해에 국가안보실 긴급회의",
-   "url": "https://zdnet.co.kr/view/?no=20261028180832",
-   "point": "중소 금융사 외부 노출 자산 점검"
+   "title": "네이버, AI 모델 전략 다변화…네이버클라우드 국방·보안·제조 특화 모델 상용화",
+   "url": "https://zdnet.co.kr/view/?no=20261024201154"
   },
   {
-   "id": "n1028-gabia",
-   "area": "민간",
-   "change": "NEW",
-   "date": "2026-10-28",
-   "source": "ZDNet",
-   "title": "맥쿼리, 가비아 지분 69.35% 4,933억 원에 인수·상장폐지 재추진",
-   "url": "https://zdnet.co.kr/view/?no=20261028172210",
-   "point": "호스팅 고객 이탈 수요 관찰"
-  },
-  {
-   "id": "n1028-itsvc",
-   "area": "민간",
-   "change": "NEW",
-   "date": "2026-10-28",
-   "source": "ZDNet",
-   "title": "삼성SDS·LG CNS·현대오토에버 3분기 전망, GPUaaS·MSP 성장",
-   "url": "https://zdnet.co.kr/view/?no=20261028171616",
-   "point": "대형 MSP 경쟁 동향"
-  },
-  {
-   "id": "n1028-php-host",
-   "area": "민간",
-   "change": "NEW",
-   "date": "2026-10-28",
-   "source": "보안뉴스",
-   "title": "PHP2셸 영향 국내 워드프레스·그누보드 사이트 약 46만 개, 공유 호스팅 집중",
-   "url": "https://www.boannews.com/news/articleView.html?idxno=146844",
-   "point": "구형 PHP 웹 이전·WAF 제안"
-  },
-  {
-   "id": "n1028-lge",
-   "area": "민간",
-   "change": "NEW",
-   "date": "2026-10-28",
-   "source": "디지털데일리",
-   "title": "LG전자 AIDC 냉각 수주 누적 3조 원 돌파",
-   "url": "https://www.ddaily.co.kr/page/view/2026102818112931125",
-   "point": "AIDC 설비 투자 확대 신호"
-  },
-  {
-   "id": "n1028-msit",
    "area": "공공",
    "change": "NEW",
-   "date": "2026-10-28",
+   "date": "2026-10-29",
+   "id": "n1030-pknu",
+   "point": "대학 대상 관리형 운영·보안 점검 수요",
+   "source": "ZDNet",
+   "title": "부경대 학생 5,106명 정보 유출…대학 침해 2025년 8만 310건(32.0%↑)",
+   "url": "https://zdnet.co.kr/view/?no=20261029185947"
+  },
+  {
+   "area": "공공",
+   "change": "NEW",
+   "date": "2026-10-29",
+   "id": "n1030-php",
+   "point": "호스팅·온프레미스 기관 관리형 전환·패치 대행",
+   "source": "보안뉴스",
+   "title": "PHP2셸 패치 적용률 국내 서버 전체 약 5.5%, 대상 서버 72.7% 미적용",
+   "url": "https://www.boannews.com/news/articleView.html?idxno=146873"
+  },
+  {
+   "area": "금융",
+   "change": "NEW",
+   "date": "2026-10-29",
+   "id": "n1030-nsep",
+   "point": "보안 SaaS·외부 AI 연계, 대체 보안통제 증빙",
+   "source": "뉴스핌",
+   "title": "금융위, 연기된 2차 망분리 완화(15곳) 11월 재개 검토…전면 해제는 신중",
+   "url": "https://www.newspim.com/news/view/20261029001188"
+  },
+  {
+   "area": "민간",
+   "change": "NEW",
+   "date": "2026-10-29",
+   "id": "n1030-sds",
+   "point": "대형사 GPUaaS·MSP 확대, 중소 규모 사업은 속도·가격",
+   "source": "디지털데일리",
+   "title": "삼성SDS 3분기 클라우드 매출 7,961억 원(18%↑), CSP 15%·MSP 25% 성장",
+   "url": "https://www.ddaily.co.kr/page/view/2026102916240484428"
+  },
+  {
+   "area": "공공",
+   "change": "NEW",
+   "date": "2026-10-29",
+   "id": "n1030-brity",
+   "point": "공공 SaaS 경쟁 구도 참고",
+   "source": "ZDNet",
+   "title": "삼성SDS 브리티웍스 중앙부처 14곳·18만 명, 2027년 공공 매출 2배 목표",
+   "url": "https://zdnet.co.kr/view/?no=20261029152638"
+  },
+  {
+   "area": "금융",
+   "change": "NEW",
+   "date": "2026-10-29",
+   "id": "n1030-ins3p",
+   "point": "금융 클라우드 공급사 실사·평가 대비 자료",
    "source": "전자신문",
-   "title": "과기정통부 AI 3강 전략, AIDC 국내외 투자 약 550조 원",
-   "url": "https://www.etnews.com/20261028000031",
-   "point": "AI 인프라 정책 근거"
+   "title": "보험업계 제3자 IT리스크 가이드라인 초안…클라우드 사업자 포함, 2027년 1월 2일 시행 예정",
+   "url": "https://www.etnews.com/20261029000280"
   },
   {
-   "id": "n1028-univ",
+   "area": "금융",
+   "change": "NEW",
+   "date": "2026-10-29",
+   "id": "n1030-fsi",
+   "point": "금융권 보안 강화 기조 지속",
+   "source": "보안뉴스",
+   "title": "금융보안원 \"금융권 해킹, 북한 소행 단정 어려워\"",
+   "url": "https://www.boannews.com/news/articleView.html?idxno=146867"
+  },
+  {
    "area": "공공",
    "change": "NEW",
-   "date": "2026-10-28",
-   "source": "보안뉴스",
-   "title": "지방 대학 5곳 홈페이지 PHP2셸 노출 의심",
-   "url": "https://www.boannews.com/news/articleView.html?idxno=146837",
-   "point": "교육 고객 웹 서버 점검"
+   "date": "2026-10-29",
+   "id": "n1030-kisa",
+   "point": "KISA 인증·평가 일정 변동 여부 확인",
+   "source": "ZDNet",
+   "title": "이상중 KISA 원장 해임, 류재철 비상임이사 직무대행",
+   "url": "https://zdnet.co.kr/view/?no=20261029102950"
   },
   {
-   "id": "n1028-mirae",
-   "area": "금융",
-   "change": "NEW",
-   "date": "2026-10-28",
-   "source": "보안뉴스",
-   "title": "미래에셋자산운용·빗썸 침해사고(그룹웨어 공급망 공격 추정)",
-   "url": "https://www.boannews.com/news/articleView.html?idxno=146818",
-   "point": "그룹웨어·웹 시스템 보안 점검"
-  },
-  {
-   "id": "n1028-naver",
-   "area": "민간",
-   "change": "NEW",
-   "date": "2026-10-28",
-   "source": "뉴스1",
-   "title": "하나증권 \"네이버, 브룩필드 투자로 DC 불확실성 해소\" 2028년 네오클라우드 매출 3.3조 원 전망",
-   "url": "https://www.news1.kr/finance/general-stock/6334166",
-   "point": "네이버클라우드 GPU 공급 안정성"
-  },
-  {
-   "id": "n1028-daishin",
-   "area": "금융",
-   "change": "NEW",
-   "date": "2026-10-28",
-   "source": "보안뉴스",
-   "title": "대신증권 개인정보 3만 8,490명 유출(비대면 계좌개설 연계서버)",
-   "url": "https://www.boannews.com/news/articleView.html?idxno=146806",
-   "point": "비대면 연계 서버 보안 점검"
-  },
-  {
-   "id": "n1029-g2b",
    "area": "입찰",
    "change": "NEW",
-   "date": "2026-10-28",
+   "date": "2026-10-29",
+   "id": "n1030-g2b",
+   "point": "사전규격서 확인 후 의견 제출, 단독 주관 검토",
    "source": "나라장터",
-   "title": "명지녹산 클라우드 인프라·한국거래소 클라우드 서비스 재공고 2건",
-   "url": "https://www.g2b.go.kr/link/PNPE027_01/single/?bidPbancNo=R26BK01796910&bidPbancOrd=000",
-   "point": "유찰 후 단독 주관 기회",
+   "title": "소상공인시장진흥공단 지식배움터 클라우드 전환 사전규격(3.69억 원, 의견 11/3)",
+   "url": "https://www.g2b.go.kr/link/PRVA004_02/single/?bfSpecRegNo=R26BD00292369"
+  },
+  {
+   "area": "민간",
+   "change": "유지",
+   "date": "2026-10-29",
+   "id": "n1029-ms",
+   "point": "해외 CSP 대비 국내 리전·가격 메시지",
+   "source": "디지털데일리",
+   "title": "MS 7~9월 매출 19%↑, 애저 48% 성장·설비투자 452억 달러",
+   "url": "https://www.ddaily.co.kr/page/view/2026102906443413783"
+  },
+  {
+   "area": "민간",
+   "change": "유지",
+   "date": "2026-10-29",
+   "id": "n1029-gcp",
+   "point": "AI 인프라 수요 확산 근거",
+   "source": "디지털데일리",
+   "title": "구글 클라우드 3분기 매출 103% 급증, 영업이익률 36%",
+   "url": "https://www.ddaily.co.kr/page/view/2026102906581869700"
+  },
+  {
+   "area": "금융",
+   "change": "유지",
+   "date": "2026-10-29",
+   "id": "n1029-cc",
+   "point": "금융 존 컨택센터 전환 수요",
+   "source": "디지털데일리",
+   "title": "금융권 AI·클라우드 컨택센터 규제 대응 전략 공유(망분리 SaaS 예외)",
+   "url": "https://www.ddaily.co.kr/page/view/2026102908435300037"
+  },
+  {
+   "area": "금융",
+   "change": "유지",
+   "date": "2026-10-28",
+   "id": "n1028-nsc",
+   "point": "중소 금융사 외부 노출 자산 점검",
+   "source": "ZDNet",
+   "title": "대신·빗썸·미래에셋 연쇄 침해에 국가안보실 긴급회의",
+   "url": "https://zdnet.co.kr/view/?no=20261028180832"
+  },
+  {
+   "area": "민간",
+   "change": "유지",
+   "date": "2026-10-28",
+   "id": "n1028-gabia",
+   "point": "호스팅 고객 이탈 수요 관찰",
+   "source": "ZDNet",
+   "title": "맥쿼리, 가비아 지분 69.35% 4,933억 원에 인수·상장폐지 재추진",
+   "url": "https://zdnet.co.kr/view/?no=20261028172210"
+  },
+  {
+   "area": "민간",
+   "change": "유지",
+   "date": "2026-10-28",
+   "id": "n1028-itsvc",
+   "point": "대형 MSP 경쟁 동향",
+   "source": "ZDNet",
+   "title": "삼성SDS·LG CNS·현대오토에버 3분기 전망, GPUaaS·MSP 성장",
+   "url": "https://zdnet.co.kr/view/?no=20261028171616"
+  },
+  {
+   "area": "민간",
+   "change": "유지",
+   "date": "2026-10-28",
+   "id": "n1028-php-host",
+   "point": "구형 PHP 웹 이전·WAF 제안",
+   "source": "보안뉴스",
+   "title": "PHP2셸 영향 국내 워드프레스·그누보드 사이트 약 46만 개, 공유 호스팅 집중",
+   "url": "https://www.boannews.com/news/articleView.html?idxno=146844"
+  },
+  {
+   "area": "민간",
+   "change": "유지",
+   "date": "2026-10-28",
+   "id": "n1028-lge",
+   "point": "AIDC 설비 투자 확대 신호",
+   "source": "디지털데일리",
+   "title": "LG전자 AIDC 냉각 수주 누적 3조 원 돌파",
+   "url": "https://www.ddaily.co.kr/page/view/2026102818112931125"
+  },
+  {
+   "area": "공공",
+   "change": "유지",
+   "date": "2026-10-28",
+   "id": "n1028-msit",
+   "point": "AI 인프라 정책 근거",
+   "source": "전자신문",
+   "title": "과기정통부 AI 3강 전략, AIDC 국내외 투자 약 550조 원",
+   "url": "https://www.etnews.com/20261028000031"
+  },
+  {
+   "area": "공공",
+   "change": "유지",
+   "date": "2026-10-28",
+   "id": "n1028-univ",
+   "point": "교육 고객 웹 서버 점검",
+   "source": "보안뉴스",
+   "title": "지방 대학 5곳 홈페이지 PHP2셸 노출 의심",
+   "url": "https://www.boannews.com/news/articleView.html?idxno=146837"
+  },
+  {
+   "area": "금융",
+   "change": "유지",
+   "date": "2026-10-28",
+   "id": "n1028-mirae",
+   "point": "그룹웨어·웹 시스템 보안 점검",
+   "source": "보안뉴스",
+   "title": "미래에셋자산운용·빗썸 침해사고(그룹웨어 공급망 공격 추정)",
+   "url": "https://www.boannews.com/news/articleView.html?idxno=146818"
+  },
+  {
+   "area": "민간",
+   "change": "유지",
+   "date": "2026-10-28",
+   "id": "n1028-naver",
+   "point": "네이버클라우드 GPU 공급 안정성",
+   "source": "뉴스1",
+   "title": "하나증권 \"네이버, 브룩필드 투자로 DC 불확실성 해소\" 2028년 네오클라우드 매출 3.3조 원 전망",
+   "url": "https://www.news1.kr/finance/general-stock/6334166"
+  },
+  {
+   "area": "금융",
+   "change": "유지",
+   "date": "2026-10-28",
+   "id": "n1028-daishin",
+   "point": "비대면 연계 서버 보안 점검",
+   "source": "보안뉴스",
+   "title": "대신증권 개인정보 3만 8,490명 유출(비대면 계좌개설 연계서버)",
+   "url": "https://www.boannews.com/news/articleView.html?idxno=146806"
+  },
+  {
+   "area": "입찰",
+   "change": "유지",
+   "date": "2026-10-28",
+   "id": "n1029-g2b",
    "items": [
     {
+     "agency": "재단법인부산테크노파크",
+     "due": "마감 11/9 10:00",
      "kind": "재공고",
      "name": "명지녹산 AX실증산단 에코마린 소부장 특화 클라우드 인프라 구축 및 운영·유지관리",
-     "agency": "재단법인부산테크노파크",
-     "scale": "배정예산 9억 원",
      "no": "R26BK01796910",
-     "url": "https://www.g2b.go.kr/link/PNPE027_01/single/?bidPbancNo=R26BK01796910&bidPbancOrd=000",
+     "scale": "배정예산 9억 원",
      "src": "나라장터",
-     "due": "마감 11/9 10:00"
+     "url": "https://www.g2b.go.kr/link/PNPE027_01/single/?bidPbancNo=R26BK01796910&bidPbancOrd=000"
     },
     {
+     "agency": "(주)한국거래소",
+     "due": "마감 11/10 14:00",
      "kind": "재공고",
      "name": "히스토리컬 대용량 데이터 판매를 위한 클라우드 서비스 이용 계약(재공고)",
-     "agency": "(주)한국거래소",
-     "scale": "배정예산 5.82억 원",
      "no": "R26BK01796099",
-     "url": "https://www.g2b.go.kr/link/PNPE027_01/single/?bidPbancNo=R26BK01796099&bidPbancOrd=000",
+     "scale": "배정예산 5.82억 원",
      "src": "나라장터",
-     "due": "마감 11/10 14:00"
+     "url": "https://www.g2b.go.kr/link/PNPE027_01/single/?bidPbancNo=R26BK01796099&bidPbancOrd=000"
     }
-   ]
+   ],
+   "point": "유찰 후 단독 주관 기회",
+   "source": "나라장터",
+   "title": "명지녹산 클라우드 인프라·한국거래소 클라우드 서비스 재공고 2건",
+   "url": "https://www.g2b.go.kr/link/PNPE027_01/single/?bidPbancNo=R26BK01796910&bidPbancOrd=000"
   },
   {
    "area": "공공",
@@ -4041,98 +4250,38 @@
    "source": "연합뉴스(서플 전재)",
    "title": "국정자원 화재 심평원 연계 자료 354만4,973건 단절, 복구 약 10개월",
    "url": "https://supple.kr/news/cmva233sq001j36o1yncbdjrd"
-  },
-  {
-   "area": "민간",
-   "change": "유지",
-   "date": "2026-10-15",
-   "id": "n1015a",
-   "point": "GPU 클라우드 경쟁 심화",
-   "source": "MTN",
-   "title": "베슬AI, 2030년까지 GPU 20만 장 확보 목표(누락 보완)",
-   "url": "https://news.mtn.co.kr/article/2026101515285059644"
-  },
-  {
-   "area": "금융",
-   "change": "유지",
-   "date": "2026-10-15",
-   "id": "n1015-bankbudget",
-   "point": "은행 이사회 예산 의결 전 관제·점검·DR 제안",
-   "source": "파이낸셜뉴스",
-   "title": "KB국민 내년 정보보호 예산 1,000억 원 이상, 우리 20% 이상 증액 방안",
-   "url": "https://www.fnnews.com/news/202610151827259077"
-  },
-  {
-   "area": "금융",
-   "change": "유지",
-   "date": "2026-10-15",
-   "id": "n1015-fss",
-   "point": "망분리 완화 속도도 질의 대상",
-   "source": "파이낸셜뉴스",
-   "title": "10/19 금감원 국감, 5대 은행장 증인·보안 감독 실효성 쟁점",
-   "url": "https://www.fnnews.com/news/202610151417174719"
-  },
-  {
-   "area": "금융",
-   "change": "유지",
-   "date": "2026-10-15",
-   "id": "n1015-banks",
-   "point": "위탁사·외부 연결 지점 접근통제 수요",
-   "source": "이슈온",
-   "title": "은행별 유출: 신한 약 2만5,000명, KB국민 119명, 하나 89명, 예가람 약 4만 명",
-   "url": "https://www.issueon.co.kr/news/articleView.html?idxno=14118"
-  },
-  {
-   "area": "공공",
-   "change": "유지",
-   "date": "2026-10-15",
-   "id": "n1015-kisa",
-   "point": "클라우드 전환·DR 질의는 보도 미확인",
-   "source": "머니투데이",
-   "title": "과방위 NIA·KISA 국감: KISA 원장 거취, 보안 컨트롤타워 부재 지적",
-   "url": "https://www.mt.co.kr/politics/2026/10/15/2026101513151191949"
-  },
-  {
-   "area": "입찰",
-   "change": "유지",
-   "date": "2026-10-15",
-   "id": "n1015-pps",
-   "point": "정보화 개별 공고 확인 필요",
-   "source": "한국건설기술신문",
-   "title": "조달청 용역 입찰 10/19~10/30: 196건·2,087억 원",
-   "url": "https://www.kcenews.kr/10171"
   }
  ],
  "keywords": [
   {
    "area": "입찰",
-   "keyword": "명지녹산 클라우드 인프라 재공고",
-   "core": "부산테크노파크 9억 원, 일반경쟁 90:10, 11/9 마감, 원공고 RFP 참여 가능",
-   "point": "원공고 제안 자료 재활용, 단독 주관"
+   "keyword": "한국거래소 NCP 클라우드 재공고",
+   "core": "5.82억 원, 일반경쟁 80:20, 11/10 14:00 마감, RFP 참여 가능·NCP 명시",
+   "point": "CSP 파트너사 단독 주관, 기존 운영 MSP 유무 먼저 확인"
   },
   {
    "area": "입찰",
-   "keyword": "한국거래소 클라우드 서비스 재공고",
-   "core": "5.82억 원, 일반경쟁, 기술 80:가격 20, 11/10 마감",
-   "point": "요금 경쟁력이 점수로, CSP 요건 확인"
-  },
-  {
-   "area": "금융",
-   "keyword": "증권·코인거래소 연쇄 침해",
-   "core": "대신증권 3만 8,490명 유출, 빗썸·미래에셋자산운용 침해, 국가안보실 긴급회의",
-   "point": "외부 노출 웹·그룹웨어 점검 수요"
+   "keyword": "소상공인 지식배움터 클라우드 전환",
+   "core": "소상공인시장진흥공단 3.69억 원 사전규격, 의견 11/3 23:59",
+   "point": "사전규격서로 제한경쟁 사유·CSP 요건 확인, 의견 제출"
   },
   {
    "area": "민간",
-   "keyword": "해외 CSP 고성장",
-   "core": "MS 애저 48%, 구글 클라우드 103% 성장(7~9월)",
-   "point": "국내 리전·가격 메시지"
+   "keyword": "삼성SDS 클라우드 7,961억 원",
+   "core": "3분기 클라우드 18%↑, CSP 15%·MSP 25%, 2027년 3월 베라 루빈 GPUaaS",
+   "point": "공공 GPUaaS 경쟁 심화, 중소 규모 GPU 임차는 가격·속도로 대응"
+  },
+  {
+   "area": "금융",
+   "keyword": "망분리 완화 11월 재개",
+   "core": "금융위, 연기된 2차 완화 대상 15곳 선정 11월 재개 검토",
+   "point": "보안 SaaS·외부 AI 연계 수요, 대체 보안통제 증빙 패키지 준비"
   },
   {
    "area": "공공",
-   "keyword": "PHP2셸 호스팅 집중",
-   "core": "국내 워드프레스·그누보드 약 46만 개, 대학 5곳 노출 의심",
-   "point": "공공·교육 웹 서버 점검·이전"
+   "keyword": "PHP 패치 적용률 5.5%",
+   "core": "국내 서버 전체 기준 약 5.5%, 패치 대상 서버 72.7% 미적용",
+   "point": "호스팅·온프레미스 기관 대상 관리형 전환·패치 대행 제안"
   }
  ],
  "g2b": [
@@ -4212,6 +4361,7 @@
    "flags": [],
    "how": "운영 주관사 컨소시엄의 클라우드 운영 구간(GNSS 전문 업무는 주관사)",
    "id": "R26BK01793813",
+   "incumbent_checked": "2026-10-29",
    "kind": "입찰공고",
    "method": "제한경쟁",
    "name": "2027~2029년 GNSS 측위보정정보 서비스 시스템 클라우드 네이티브 운영관리",
@@ -4231,8 +4381,7 @@
     "elig": "가능",
     "src": "RFP 자동 확인"
    },
-   "why": "업무 적합 +10 · 규모 +5 · 계약방법 +5 · 준비 기간 +5",
-   "incumbent_checked": "2026-10-29"
+   "why": "업무 적합 +10 · 규모 +5 · 계약방법 +5 · 준비 기간 +5"
   },
   {
    "agency": "국토지리정보원",
@@ -4243,6 +4392,11 @@
    "fit": "B",
    "how": "운영 주관사 컨소시엄에 클라우드 운영(MSP) 구간으로 참여",
    "id": "R26BK01773255",
+   "incumbent": {
+    "since": 2024,
+    "method": "경쟁입찰"
+   },
+   "incumbent_checked": "2026-10-29",
    "kind": "입찰공고",
    "method": "제한경쟁",
    "name": "2027~2028년 지오프라 등 클라우드 네이티브 운영관리",
@@ -4261,12 +4415,7 @@
     "elig": "가능",
     "src": "RFP 자동 확인"
    },
-   "why": "업무 적합 +10 · 계약방법 +5 · 준비 기간 +5 · 기존 수행사(2024~ 경쟁입찰) −20",
-   "incumbent": {
-    "since": 2024,
-    "method": "경쟁입찰"
-   },
-   "incumbent_checked": "2026-10-29"
+   "why": "업무 적합 +10 · 계약방법 +5 · 준비 기간 +5 · 기존 수행사(2024~ 경쟁입찰) −20"
   },
   {
    "agency": "국토지리정보원",
@@ -4308,6 +4457,7 @@
    "flags": [],
    "how": "SI·운영 주관사 컨소시엄의 클라우드 네이티브 운영 구간 또는 공동수급",
    "id": "R26BD00289289",
+   "incumbent_checked": "2026-10-29",
    "kind": "사전규격",
    "method": "사전규격",
    "name": "2027~2029년 측량성과통합관리시스템 등 클라우드 네이티브 운영관리",
@@ -4327,8 +4477,7 @@
     "elig": "가능",
     "src": "RFP 자동 확인"
    },
-   "why": "업무 적합 +10 · 규모 +5",
-   "incumbent_checked": "2026-10-29"
+   "why": "업무 적합 +10 · 규모 +5"
   },
   {
    "added": "2026-10-26T09:30:00+09:00",
@@ -4488,7 +4637,7 @@
     "elig": "가능",
     "src": "RFP 자동 확인"
    },
-   "why": "기본점(마감까지 13일, 준비 기간 가감 없음)"
+   "why": "기본점(마감까지 11일, 준비 기간 가감 없음)"
   },
   {
    "added": "2026-10-22T09:20:00+09:00",
@@ -4585,7 +4734,7 @@
     "elig": "가능",
     "src": "RFP 자동 확인"
    },
-   "why": "기본점(마감까지 14일, 준비 기간 가감 없음)"
+   "why": "기본점(마감까지 12일, 준비 기간 가감 없음)"
   },
   {
    "added": "2026-10-27T09:30:00+09:00",
@@ -4627,6 +4776,9 @@
    "eval_price": 10,
    "eval_tech": 90,
    "fit": "B",
+   "flags": [
+    "credit"
+   ],
    "how": "통합 유지관리 주관사 컨소시엄의 재해복구·클라우드 운영 구간",
    "id": "R26BD00290964",
    "kind": "사전규격",
@@ -4643,15 +4795,12 @@
    "src": "나라장터",
    "sucsfbid": null,
    "url": "https://www.g2b.go.kr/link/PRVA004_02/single/?bfSpecRegNo=R26BD00290964",
-   "why": "규모 −10 · 사전규격 선점 +5",
    "verified": {
-    "elig": "가능",
     "at": "2026-10-29T07:40:00+09:00",
+    "elig": "가능",
     "src": "RFP 자동 확인"
    },
-   "flags": [
-    "credit"
-   ]
+   "why": "규모 −10 · 사전규격 선점 +5"
   },
   {
    "added": "2026-10-26T09:30:00+09:00",
@@ -5110,109 +5259,115 @@
    "why": "규모 +5 · 계약방법 +5 · 중소기업 제한 가능성 −20(하한 5)"
   },
   {
-   "id": "R26BK01796910",
-   "no": "R26BK01796910",
-   "ord": "000",
-   "kind": "재공고",
-   "name": "명지녹산 AX실증산단 에코마린 소부장 특화 클라우드 인프라 구축 및 운영·유지관리",
-   "orderer": "재단법인부산테크노파크",
+   "added": "2026-10-29T09:20:00+09:00",
    "agency": "재단법인부산테크노파크",
-   "budget_eok": 9.0,
-   "price_eok": 8.1818,
-   "posted": "2026-10-28",
+   "budget_eok": 9,
    "due": "2026-11-09 10:00",
-   "open": "2026-11-09 11:00",
-   "method": "일반경쟁",
-   "fit": "A",
-   "prob": 70,
-   "why": "업무 적합 +10 · 규모 +5 · 재공고 +5",
-   "how": "단독 주관(CSP 기반 클라우드 인프라 구축·운영)",
-   "url": "https://www.g2b.go.kr/link/PNPE027_01/single/?bidPbancNo=R26BK01796910&bidPbancOrd=000",
-   "note": "원공고 R26BK01772829(10/26 마감) 유찰 후 재공고. 원공고 RFP 참여 가능·신용등급 5점",
-   "src": "나라장터",
-   "eval_tech": 90,
    "eval_price": 10,
-   "sucsfbid": "협상에 의한 계약",
+   "eval_tech": 90,
+   "fit": "A",
    "flags": [
     "credit"
    ],
-   "verified": {
-    "elig": "가능",
-    "at": "2026-10-24T22:55:00+09:00",
-    "src": "RFP 자동 확인(원공고)"
-   },
+   "how": "관망(타 CSP 유지 운영 사업)",
+   "id": "R26BK01796910",
    "incumbent_checked": "2026-10-29",
-   "added": "2026-10-29T09:20:00+09:00",
+   "kind": "재공고",
+   "method": "일반경쟁",
+   "name": "명지녹산 AX실증산단 에코마린 소부장 특화 클라우드 인프라 구축 및 운영·유지관리",
+   "no": "R26BK01796910",
+   "note": "원공고 R26BK01772829(10/26 마감) 유찰 후 재공고. 원공고 RFP 참여 가능·신용등급 5점",
+   "open": "2026-11-09 11:00",
+   "ord": "000",
+   "orderer": "재단법인부산테크노파크",
+   "posted": "2026-10-28",
+   "price_eok": 8.1818,
+   "prob": 20,
    "rebid": {
+    "at": "2026-10-30T00:30:00+09:00",
+    "changes": "배정예산 9억 원·추정가격 8.18억 원 그대로, 원공고 마감 이틀 뒤(10/28) 다시 공고 — 요건을 바꾸지 않고 다시 낸 것으로 보임(재공고 RFP 동일 여부 확인 필요)",
     "orig": "R26BK01772829",
     "orig_due": "10/26 16:00",
     "reason": "",
-    "changes": "배정예산 9억 원·추정가격 8.18억 원 그대로, 원공고 마감 이틀 뒤(10/28) 다시 공고 — 요건을 바꾸지 않고 다시 낸 것으로 보임(재공고 RFP 동일 여부 확인 필요)",
-    "src": "board/g2b 원공고·재공고 비교",
-    "at": "2026-10-30T00:30:00+09:00"
-   }
+    "src": "board/g2b 원공고·재공고 비교"
+   },
+   "src": "나라장터",
+   "sucsfbid": "협상에 의한 계약",
+   "url": "https://www.g2b.go.kr/link/PNPE027_01/single/?bidPbancNo=R26BK01796910&bidPbancOrd=000",
+   "verified": {
+    "at": "2026-10-24T22:55:00+09:00",
+    "elig": "가능",
+    "src": "RFP 자동 확인(원공고)"
+   },
+   "why": "업무 적합 +10 · 규모 +5 · 재공고 +5"
   },
   {
-   "id": "R26BK01796099",
-   "no": "R26BK01796099",
-   "ord": "000",
-   "kind": "재공고",
-   "name": "히스토리컬 대용량 데이터 판매를 위한 클라우드 서비스 이용 계약(재공고)",
-   "orderer": "(주)한국거래소 서울사옥",
+   "added": "2026-10-29T09:20:00+09:00",
    "agency": "(주)한국거래소",
    "budget_eok": 5.8205,
-   "price_eok": 5.2913,
-   "posted": "2026-10-28",
    "due": "2026-11-10 14:00",
-   "open": "2026-11-10 15:00",
-   "method": "일반경쟁",
-   "fit": "A",
-   "prob": 70,
-   "why": "업무 적합 +10 · 규모 +5 · 재공고 +5",
-   "how": "단독 주관(CSP 서비스 제공·운영) — 데이터 판매 대상·리전 요건 확인 후 결정",
-   "url": "https://www.g2b.go.kr/link/PNPE027_01/single/?bidPbancNo=R26BK01796099&bidPbancOrd=000",
-   "note": "재공고(원공고 유찰 추정). 기술 80:가격 20",
-   "src": "나라장터",
-   "eval_tech": 80,
    "eval_price": 20,
-   "sucsfbid": "협상에 의한 계약",
-   "flags": [],
-   "added": "2026-10-29T09:20:00+09:00",
+   "eval_tech": 80,
+   "fit": "A",
+   "flags": [
+    "credit"
+   ],
+   "how": "단독 주관(CSP 파트너사로 CSP 서비스 제공·운영)",
+   "id": "R26BK01796099",
+   "kind": "재공고",
+   "method": "일반경쟁",
+   "name": "히스토리컬 대용량 데이터 판매를 위한 클라우드 서비스 이용 계약(재공고)",
+   "no": "R26BK01796099",
+   "note": "재공고(원공고 유찰 추정). 기술 80:가격 20. RFP: 네이버클라우드(NCP) 명시, CSAP 인증 CSP 파트너사 참가자격, 신용평가등급 5점(A+ 이상 5.0)",
+   "open": "2026-11-10 15:00",
+   "ord": "000",
+   "orderer": "(주)한국거래소 서울사옥",
+   "posted": "2026-10-28",
+   "price_eok": 5.2913,
+   "prob": 80,
    "rebid": {
+    "at": "2026-10-30T00:30:00+09:00",
+    "changes": "",
     "orig": "",
     "reason": "",
-    "changes": "",
-    "src": "",
-    "at": "2026-10-30T00:30:00+09:00"
+    "src": ""
+   },
+   "src": "나라장터",
+   "sucsfbid": "협상에 의한 계약",
+   "url": "https://www.g2b.go.kr/link/PNPE027_01/single/?bidPbancNo=R26BK01796099&bidPbancOrd=000",
+   "why": "업무 적합 +10 · 규모 +5 · 재공고 +5 · CSP 상품 연계 +10(RFP NCP 명시)",
+   "verified": {
+    "elig": "가능",
+    "at": "2026-10-30T07:45:00+09:00",
+    "src": "RFP 자동 확인"
    }
   },
   {
-   "id": "R26BD00291578",
-   "no": "R26BD00291578",
+   "id": "R26BD00292369",
+   "no": "R26BD00292369",
    "ord": null,
    "kind": "사전규격",
-   "name": "한국무역보험공사 재해복구센터 운영 사업",
-   "orderer": "한국무역보험공사",
-   "agency": "한국무역보험공사",
-   "budget_eok": 9.86,
+   "name": "2026년 소상공인 지식배움터 클라우드 전환 및 고도화 용역",
+   "orderer": "조달청",
+   "agency": "소상공인시장진흥공단",
+   "budget_eok": 3.694,
    "price_eok": null,
-   "posted": "2026-10-28",
-   "due": "2026-11-02 23:59",
+   "posted": "2026-10-29",
+   "due": "2026-11-03 23:59",
    "open": null,
-   "method": "사전규격",
-   "fit": "B",
-   "prob": 20,
-   "why": "규모 +5 · 사전규격 선점 +5 · 중소기업 제한 가능성 −20",
-   "how": "DR센터 운영 주관사 컨소시엄의 클라우드 DR 구간 또는 운영 하도급",
-   "url": "https://www.g2b.go.kr/link/PRVA004_02/single/?bfSpecRegNo=R26BD00291578",
-   "note": "SW사업 대상(swBizObjYn Y). 운영 성격·20억 원 미만 공공기관 사전규격이라 중소기업 제한 의심",
+   "method": "사전규격(발주계획상 제한경쟁)",
+   "fit": "A",
+   "prob": 70,
+   "why": "업무 적합 +10 · 규모 +5 · 사전규격 선점 +5",
+   "how": "단독 주관(클라우드 전환·고도화, 공공 CSP 제안)",
+   "url": "https://www.g2b.go.kr/link/PRVA004_02/single/?bfSpecRegNo=R26BD00292369",
+   "note": "발주계획 R26DD20910928(2026년 10월, 제한경쟁, 3.66억 원)에서 이어진 사전규격. 세부품명 정보시스템개발서비스(8111159901), SW사업 대상 Y",
+   "item": "정보시스템개발서비스(8111159901)",
+   "flags": [],
+   "added": "2026-10-30T09:20:00+09:00",
    "src": "나라장터",
    "eval_tech": null,
-   "eval_price": null,
-   "flags": [
-    "sme"
-   ],
-   "added": "2026-10-29T09:20:00+09:00"
+   "eval_price": null
   }
  ],
  "opportunities": [
@@ -5227,7 +5382,7 @@
    "scale": "사업비 미공개(2027년 예산안 민간 클라우드 이전 548억 원)",
    "scale_eok": null,
    "stage": "지원사업",
-   "status": "선택 결과 미공개(10/29 09시)",
+   "status": "선택 결과 미공개(10/30 09시)",
    "url": "https://www.ddaily.co.kr/page/view/2026101216392869273",
    "why": "업무 적합 +10 · CSP 상품 연계 +10"
   },
@@ -5320,7 +5475,7 @@
    "scale": "사업 금액 61.41억 원(입찰동향 기사 56억 원)",
    "scale_eok": 61.41,
    "stage": "입찰공고",
-   "status": "10/22 평가(예정) 후 결과 보도·낙찰정보 없음(10/27)",
+   "status": "10/22 평가(예정) 후 결과 보도·낙찰정보 없음(10/30)",
    "url": "https://www.jodaleconomy.com/news/articleView.html?idxno=3397",
    "why": "규모 −10"
   },
@@ -5351,7 +5506,7 @@
    "scale": "예산 2,120억 원",
    "scale_eok": 2120,
    "stage": "공고 예정",
-   "status": "10월 설계 마무리 → 발주 → 연내 착수. 10/21 국정자원 협의회에서 DR 구축 진행 상황 공유(세부 미공개), 나라장터 공고 없음(10/27)",
+   "status": "10월 설계 마무리 → 발주 → 연내 착수. 10/21 국정자원 협의회에서 DR 구축 진행 상황 공유(세부 미공개), 나라장터 공고 없음(10/30)",
    "url": "https://www.ghnews.net/news/article.html?no=244758",
    "why": "규모 −10 · 발주 미확정 −5"
   },
@@ -5366,7 +5521,7 @@
    "scale": "총 구축비 2,857억 원(상용 SW 800억 원대 추정)",
    "scale_eok": 2857,
    "stage": "공고 예정",
-   "status": "4분기 발주 예정, 클라우드 기반 재구축+DR, 상용 SW 분리발주. 나라장터 공고 없음(10/27)",
+   "status": "4분기 발주 예정, 클라우드 기반 재구축+DR, 상용 SW 분리발주. 나라장터 공고 없음(10/30)",
    "url": "https://www.etnews.com/20261016000259",
    "why": "규모 −10 · 발주 미확정 −5"
   },
@@ -5411,7 +5566,7 @@
    "scale": "사업 금액 45.45억 원",
    "scale_eok": 45.45,
    "stage": "평가 예정",
-   "status": "10/27 제안서 평가(예정), 결과 미확인(10/29 09시)",
+   "status": "10/27 제안서 평가(예정), 결과 미확인(10/30 09시)",
    "url": "https://www.jodaleconomy.com/news/articleView.html?idxno=3294",
    "why": ""
   },
@@ -5750,9 +5905,83 @@
     "민간",
     "금융"
    ]
+  },
+  {
+   "id": "nc17",
+   "imp": 1,
+   "kind": "변경",
+   "zones": [
+    "민간"
+   ],
+   "also": [],
+   "svc": "NAS Event 관리 기능(Cloud Insight 통합·상품 내 기능 종료)",
+   "noticed": "2026-10-29",
+   "noticed_note": "",
+   "apply": "2027-01-21",
+   "apply_note": "",
+   "alt": "Cloud Insight 이벤트 관리(공식 통합처)",
+   "diff": "NAS 상품 화면의 Event 관리 기능이 Cloud Insight로 옮겨지고 NAS 안의 기능은 종료된다. 알림 규칙 설정 위치가 바뀌며, Cloud Insight 쪽 과금·기존 규칙 자동 이전 여부는 공개되지 않음(확인 예정)",
+   "action": "NAS 이벤트 알림을 쓰는 민간 고객을 뽑아 Cloud Insight 이벤트 규칙 재설정을 대행하고, 모니터링 통합 운영 제안으로 연결한다",
+   "basis": "민간 공지 목록 제목(10/29) 기준, 상세 본문은 확인 예정",
+   "added": "2026-10-30T09:20:00+09:00"
+  },
+  {
+   "id": "nc18",
+   "imp": 1,
+   "kind": "변경",
+   "zones": [
+    "공공"
+   ],
+   "also": [],
+   "svc": "NAS 이벤트 관리 기능(Cloud Insight 통합·상품 내 기능 종료, 공공)",
+   "noticed": "2026-10-29",
+   "noticed_note": "",
+   "apply": "2027-02-23",
+   "apply_note": "",
+   "alt": "Cloud Insight 이벤트 관리(공식 통합처)",
+   "diff": "민간과 같은 통합이며 공공은 적용일이 2027.02.23으로 민간보다 약 한 달 늦다. 기존 규칙 이전 방식은 공개되지 않음(확인 예정)",
+   "action": "공공 NAS 이용 기관에 적용일·재설정 절차를 안내하고 운영 대행 범위에 포함한다",
+   "basis": "공공 공지 목록(10/29) 기준",
+   "added": "2026-10-30T09:20:00+09:00"
+  },
+  {
+   "id": "nc19",
+   "imp": 2,
+   "kind": "변경",
+   "zones": [
+    "공공"
+   ],
+   "also": [],
+   "svc": "Simple and Easy Notification Service · Cloud Outbound Mailer 서비스 통합(공공)",
+   "noticed": "2026-10-29",
+   "noticed_note": "",
+   "apply": "2026-12-17",
+   "apply_note": "",
+   "alt": "통합 상품(명칭·구성은 확인 예정)",
+   "diff": "내용: 문자·알림(SENS)과 메일 발송(Cloud Outbound Mailer)이 하나의 서비스로 합쳐진다. API 주소·콘솔 메뉴·요금 체계 변경 여부는 공개되지 않음(확인 예정). 같은 날 SENS 이용약관 개정 공지도 게시됨",
+   "action": "공공 SENS·Outbound Mailer 이용 기관의 발송 연동 코드를 점검하고, 12/17 전 API·요금 변경 내용을 확인해 전환 일정을 안내한다",
+   "basis": "공공 공지 목록(10/29) 기준",
+   "added": "2026-10-30T09:20:00+09:00"
   }
  ],
  "results": [
+  {
+   "id": "res-R26BK01756398",
+   "no": "R26BK01756398",
+   "ord": "000",
+   "name": "2026년 클라우드컴퓨팅 전문인력 양성기관 지원사업 교육 용역(긴급)",
+   "agency": "국립경국대학교 산학협력단",
+   "winner": "주식회사 느티나무",
+   "amt_eok": 0.7414,
+   "rate": 99.077,
+   "opened": "2026-10-22 08:43",
+   "bidders": 2,
+   "tracked": false,
+   "fit": null,
+   "src": "나라장터",
+   "note": "교육 용역, 2개사 참여",
+   "added": "2026-10-30T09:20:00+09:00"
+  },
   {
    "added": "2026-10-20T23:40:00+09:00",
    "agency": "경기도 연천군",
@@ -5858,41 +6087,41 @@
  ],
  "plan": [
   {
-   "id": "R26DD20910928",
-   "no": "R26DD20910928",
-   "name": "2026년 소상공인 지식배움터 클라우드 전환 및 고도화 용역",
-   "agency": "소상공인시장진흥공단",
-   "top": null,
-   "year": 2026,
-   "month": 10,
-   "budget_eok": 3.66,
-   "method": "제한경쟁",
-   "posted": "2026-10-28",
-   "bid": "",
-   "url": "https://www.g2b.go.kr/link/PRPA015_01/single/?oderPlanNo=R26DD20910928",
    "added": "2026-10-29",
-   "stage": "사전규격"
+   "agency": "소상공인시장진흥공단",
+   "bid": "",
+   "budget_eok": 3.66,
+   "id": "R26DD20910928",
+   "method": "제한경쟁",
+   "month": 10,
+   "name": "2026년 소상공인 지식배움터 클라우드 전환 및 고도화 용역",
+   "no": "R26DD20910928",
+   "posted": "2026-10-28",
+   "stage": "사전규격",
+   "top": null,
+   "url": "https://www.g2b.go.kr/link/PRPA015_01/single/?oderPlanNo=R26DD20910928",
+   "year": 2026
   },
   {
-   "id": "R26DD20910139",
-   "no": "R26DD20910139",
-   "name": "한국무역보험공사 재해복구센터 운영 사업",
-   "agency": "한국무역보험공사",
-   "top": null,
-   "year": 2026,
-   "month": 10,
-   "budget_eok": 9.86,
-   "method": "제한경쟁",
-   "posted": "2026-10-28",
-   "bid": "",
-   "url": "https://www.g2b.go.kr/link/PRPA015_01/single/?oderPlanNo=R26DD20910139",
    "added": "2026-10-29",
+   "agency": "한국무역보험공사",
+   "bid": "",
+   "budget_eok": 9.86,
+   "id": "R26DD20910139",
+   "method": "제한경쟁",
+   "month": 10,
+   "name": "한국무역보험공사 재해복구센터 운영 사업",
+   "no": "R26DD20910139",
+   "posted": "2026-10-28",
    "spec": "R26BD00291578",
-   "stage": "사전규격"
+   "stage": "사전규격",
+   "top": null,
+   "url": "https://www.g2b.go.kr/link/PRPA015_01/single/?oderPlanNo=R26DD20910139",
+   "year": 2026
   }
  ],
  "perf": {
-  "updated": "2026-10-29T09:50:00+09:00",
+  "updated": "2026-10-30T09:50:00+09:00",
   "recs": [
    {
     "g": "A",
