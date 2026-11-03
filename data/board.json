@@ -124,93 +124,192 @@
    "bid_items": [],
    "delta": {
     "base": 23,
-    "at": "2026-11-04T00:40:00+09:00",
+    "at": "2026-11-04T01:10:00+09:00",
     "items": [
      {
       "b": "dn",
       "bt": "하향",
-      "n": "국토지리정보원 클라우드 운영관리 4건",
+      "n": "국토지리정보원 운영관리 4건",
       "k": 4,
       "from": "B",
       "to": "C",
-      "r": "RFP상 기존 클라우드 유지 운영 · 주간 관제 2인 상주",
+      "tags": [
+       "기존 환경 유지",
+       "상주"
+      ],
       "nos": [
        "R26BK01773255",
        "R26BK01773238",
        "R26BD00289289",
        "R26BD00289294"
-      ]
+      ],
+      "r": ""
+     },
+     {
+      "b": "dn",
+      "bt": "하향",
+      "n": "강원대 수강신청·포털 2건",
+      "k": 2,
+      "from": "B",
+      "to": "C",
+      "tags": [
+       "준비 기간 부족"
+      ],
+      "nos": [
+       "R26BK01793474",
+       "R26BK01793567"
+      ],
+      "r": ""
+     },
+     {
+      "b": "dn",
+      "bt": "하향",
+      "n": "명지녹산 AX실증산단 클라우드",
+      "g": "C",
+      "tags": [
+       "20→10%",
+       "준비 기간 부족"
+      ],
+      "no": "R26BK01796910",
+      "url": "https://www.g2b.go.kr/link/PNPE027_01/single/?bidPbancNo=R26BK01796910&bidPbancOrd=000",
+      "r": ""
      },
      {
       "b": "chk",
       "bt": "확인",
-      "n": "한국거래소 히스토리컬 데이터 클라우드(재공고)",
+      "n": "한국거래소 히스토리컬 데이터",
       "g": "S",
-      "r": "원공고 무응찰 유찰 확인 · 요건 동일 · 마감 11/10",
+      "tags": [
+       "원공고 무응찰",
+       "마감 11/10"
+      ],
       "no": "R26BK01796099",
-      "url": "https://www.g2b.go.kr/link/PNPE027_01/single/?bidPbancNo=R26BK01796099&bidPbancOrd=000"
-     },
-     {
-      "b": "out",
-      "bt": "제외",
-      "n": "새 본공고 4건 참여 불가",
-      "k": 4,
-      "r": "RFP상 중·소기업·소상공인 확인서 요구"
+      "url": "https://www.g2b.go.kr/link/PNPE027_01/single/?bidPbancNo=R26BK01796099&bidPbancOrd=000",
+      "r": ""
      },
      {
       "b": "new",
       "bt": "신규",
-      "n": "(긴급) 인천데이터센터 정보시스템 통합유지관리",
+      "n": "인천데이터센터 통합유지관리",
       "g": "C",
-      "r": "사전규격 · 분야별 기술 인력 상주 필수 · 의견 마감 11/5",
+      "tags": [
+       "사전규격",
+       "상주 필수"
+      ],
       "no": "R26BD00293786",
-      "url": "https://www.g2b.go.kr/link/PRVA004_02/single/?bfSpecRegNo=R26BD00293786"
-     },
-     {
-      "b": "out",
-      "bt": "종료",
-      "n": "GNSS 측위보정정보 클라우드 네이티브 운영관리",
-      "r": "취소공고 게시로 목록에서 제외",
-      "no": "R26BK01793813",
-      "url": "https://www.g2b.go.kr/link/PNPE027_01/single/?bidPbancNo=R26BK01793813&bidPbancOrd=000"
-     },
-     {
-      "b": "dn",
-      "bt": "하향",
-      "n": "강원대 클라우드 수강신청·포털 운영 2건",
-      "k": 2,
-      "from": "B",
-      "to": "C",
-      "r": "마감 11/9까지 준비 기간 부족(−10)",
-      "nos": [
-       "R26BK01793474",
-       "R26BK01793567"
-      ]
-     },
-     {
-      "b": "dn",
-      "bt": "하향",
-      "n": "명지녹산 AX실증산단 클라우드(재공고)",
-      "g": "C",
-      "r": "가능성 20% → 10% · 마감 11/9 준비 기간 부족",
-      "no": "R26BK01796910",
-      "url": "https://www.g2b.go.kr/link/PNPE027_01/single/?bidPbancNo=R26BK01796910&bidPbancOrd=000"
+      "url": "https://www.g2b.go.kr/link/PRVA004_02/single/?bfSpecRegNo=R26BD00293786",
+      "r": ""
      },
      {
       "b": "chk",
       "bt": "확인",
-      "n": "COSS/HUSS 허브 교육 플랫폼 클라우드 운영",
+      "n": "COSS/HUSS 허브 교육 플랫폼",
       "g": "B",
-      "r": "RFP상 제안사가 클라우드 선택 · 마감 11/23",
+      "tags": [
+       "클라우드 제안사 선택"
+      ],
       "no": "R26BK01764360",
-      "url": "https://www.g2b.go.kr/link/PNPE027_01/single/?bidPbancNo=R26BK01764360&bidPbancOrd=000"
+      "url": "https://www.g2b.go.kr/link/PNPE027_01/single/?bidPbancNo=R26BK01764360&bidPbancOrd=000",
+      "r": ""
+     },
+     {
+      "b": "out",
+      "bt": "제외",
+      "n": "프랜차이즈 종합지원 클라우드",
+      "tags": [
+       "중소기업 확인서"
+      ],
+      "no": "R26BK01803695",
+      "url": "https://www.g2b.go.kr/link/PNPE027_01/single/?bidPbancNo=R26BK01803695&bidPbancOrd=000",
+      "r": ""
+     },
+     {
+      "b": "out",
+      "bt": "제외",
+      "n": "조세심판 AI 클라우드 임차",
+      "tags": [
+       "확인서·직접생산"
+      ],
+      "no": "R26BK01804519",
+      "url": "https://www.g2b.go.kr/link/PNPE027_01/single/?bidPbancNo=R26BK01804519&bidPbancOrd=000",
+      "r": ""
+     },
+     {
+      "b": "out",
+      "bt": "제외",
+      "n": "한국부동산원 DR 구축",
+      "tags": [
+       "중소기업 확인서"
+      ],
+      "no": "R26BK01801759",
+      "url": "https://www.g2b.go.kr/link/PNPE027_01/single/?bidPbancNo=R26BK01801759&bidPbancOrd=000",
+      "r": ""
+     },
+     {
+      "b": "out",
+      "bt": "제외",
+      "n": "배움누리터 CDN 임차",
+      "tags": [
+       "중소기업자 간 경쟁"
+      ],
+      "no": "R26BK01804200",
+      "url": "https://www.g2b.go.kr/link/PNPE027_01/single/?bidPbancNo=R26BK01804200&bidPbancOrd=000",
+      "r": ""
+     },
+     {
+      "b": "out",
+      "bt": "제외",
+      "n": "개인정보 이노베이션 존 인프라",
+      "tags": [
+       "소기업·소상공인"
+      ],
+      "no": "R26BK01805239",
+      "url": "https://www.g2b.go.kr/link/PNPE027_01/single/?bidPbancNo=R26BK01805239&bidPbancOrd=000",
+      "r": ""
+     },
+     {
+      "b": "out",
+      "bt": "제외",
+      "n": "JAMS 클라우드 전환 감리",
+      "tags": [
+       "확인서·직접생산"
+      ],
+      "no": "R26BK01800633",
+      "url": "https://www.g2b.go.kr/link/PNPE027_01/single/?bidPbancNo=R26BK01800633&bidPbancOrd=000",
+      "r": ""
+     },
+     {
+      "b": "out",
+      "bt": "제외",
+      "n": "인천데이터허브 통합유지관리",
+      "tags": [
+       "직접생산 확인"
+      ],
+      "no": "R26BD00293798",
+      "url": "https://www.g2b.go.kr/link/PRVA004_02/single/?bfSpecRegNo=R26BD00293798",
+      "r": ""
+     },
+     {
+      "b": "out",
+      "bt": "제외",
+      "n": "한국뇌연구원 GPU서버 관리",
+      "tags": [
+       "직접생산 확인"
+      ],
+      "no": "R26BD00293490",
+      "url": "https://www.g2b.go.kr/link/PRVA004_02/single/?bfSpecRegNo=R26BD00293490",
+      "r": ""
      },
      {
       "b": "out",
       "bt": "종료",
-      "n": "프랜차이즈 지원·부동산원 DR·JAMS 감리 3건",
-      "k": 3,
-      "r": "진행 중 목록에서 빠짐(마감·제외)"
+      "n": "GNSS 측위보정 운영관리",
+      "tags": [
+       "공고 취소"
+      ],
+      "no": "R26BK01793813",
+      "url": "https://www.g2b.go.kr/link/PNPE027_01/single/?bidPbancNo=R26BK01793813&bidPbancOrd=000",
+      "r": ""
      }
     ]
    }
